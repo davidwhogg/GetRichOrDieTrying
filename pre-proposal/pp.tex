@@ -1,0 +1,121 @@
+\documentclass[11pt, letterpaper]{article}
+\usepackage{fancyheadings, color, hyperref}
+
+% hypertex insanity
+  \definecolor{linkcolor}{rgb}{0,0,0.4}
+  \hypersetup{
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=linkcolor,    % color of internal links
+    citecolor=linkcolor,    % color of links to bibliography
+    filecolor=linkcolor,    % color of file links
+    urlcolor=linkcolor      % color of external links
+  }
+
+% other colors
+  \definecolor{grey}{rgb}{0.5,0.5,0.5}
+  \newcommand{\deemph}[1]{\textcolor{grey}{\footnotesize{#1}}}
+
+% Margins and spaces
+  \setlength{\oddsidemargin}{0in}
+  \setlength{\topmargin}{0in}
+  \setlength{\headsep}{0.20in}
+  \setlength{\headheight}{0.25in}
+  \setlength{\textheight}{9.00in}
+%  \addtolength{\textheight}{-\headsep}
+%  \addtolength{\textheight}{-\headheight}
+  \addtolength{\topmargin}{-\headsep}
+  \addtolength{\topmargin}{-\headheight}
+  \setlength{\textwidth}{6.50in}
+  \setlength{\parindent}{0in}
+  \setlength{\parskip}{1ex}
+% Headings and footing
+  \renewcommand{\headrulewidth}{0pt}
+  \pagestyle{fancy}
+  \lhead{\deemph{David W. Hogg}}
+  \chead{\deemph{Extracting Everything from Astronomical Imaging}}
+  \rhead{\deemph{\thepage}}
+  \cfoot{}
+
+\begin{document}\sloppy\sloppypar
+
+Astronomical facilities have taken imaging to cover the sky literally hundreds of times over.
+This imaging comes from many different facilities, taken under different conditions,
+  taken through different bandpasses and with different kinds of detectors,
+  and not (in general) properly archived with correct and standards-compliant meta-data.
+With the superpowers obtained for my group through its collaborations with
+  applied mathematicians, statisticians, and computer scientists,
+  I now believe it is possible to fully exploit the joint information latent in all of these data sets.
+In the next few years,
+  I plan to use this realization to make possible several ambitious scientific projects,
+  in the search for Earth analogs around other stars,
+  in cosmological weak lensing,
+  and in the cataloging and characterization of the most distant stars and galaxies.
+
+\paragraph{The past:}
+I started working on data-driven problems in astrophysics through an unsual connection:
+  my friendship with Sam Roweis (now deceased), a machine learning expert and former high-school friend.
+When Mike Blanton (now NYU faculty) and I were debating the feasibility of an automated self-calibration
+  of astronomical imaging that would have, effectively, several hundred million free parameters,
+  Roweis overheard us and pointed out that \emph{if} we could apply a strictly quadratic cost function,
+  and \emph{if} we could apply only quadratic regularization terms,
+  then the problem would be convex, and therefore ``easy'' to solve.
+This realization created two things:
+The first is the most precise calibration of the \textsl{Sloan Digital Sky Survey} imaging data,
+  and the calibration still in use today.
+The second is a realization that I needed to ``get out more'' and talk to colleagues in different fields.
+
+Later, Roweis and I co-advised PhD student Dustin Lang, who took on a seemingly impossible project:
+Can you tell, just by looking at the pixel content of an image of the night sky,
+  where that image is centered on the sky and what stars it contains?
+It is obvious that you can do this for wide-field images:  Humans do it all the time (``there's Orion!''),
+  but is it possible for deep, narrow-field, science-grade images of the types taken by serious amateur astronomers
+  and professionals?
+Through a combination of geometric hashing, generative modeling, and bayesian decision theory---%
+  none of which I knew about beforehand---we solved this problem and produced \textsl{Astrometry.net}.
+This software package has more than 10,000 downloads, thousands of users (mainly amateurs),
+  and has been incorporated into the automated data analysis pipelines of many astronomical projects.
+
+Soon after \textsl{Astrometry.net} was up and running, however,
+  we realized that we had only just scratched the surface:
+As all these images pour in and get recognized, they also provide new information about the sky,
+  which can be used to improve our models, improve our meaasurements, and revise our catalogs.
+Of course, when you open this box, you realize it is a very difficult problem:
+  If everything is up for debate and revision, then everything changes from being a catalog entry,
+  or a fact about the sky, to being a probability distribution over catalog entries.
+This quickly gets intractable.
+In one direction on this, we have worked with statistician Brendan Brewer (Auckland),
+  who is helping us work towards ``biting the bullet'' and going fully probabilistic;
+  with Brewer we wrote a paper in which we fully marginalize over ``catalog space'' for a realistic astronomical image!
+In another direction, we have worked with machine-learner Bernhard Sch\"olkopf (MPI-IS),
+  who helped us find an approximate solution that can be run ``online'' (streaming) but still benefit
+  as much as possible from all new imaging;
+  we used this system to find a very low-intensity astronomical feature around NGC 5907,
+  not visible in any of the individual images we combined to find it.
+In yet another, Lang and I wrote a quirky paper that used amateur observations of Comet Holmes (posted on the web),
+  with no other data or meta data,
+  to infer the gravitational orbit of the Comet;
+  this showed that the combination of arbitrarily different data is possible.
+
+Fundamentally, in my view, the language of data analysis is Bayesian or probabilistic inference.
+That said, probabilistic inference scales badly and is hard to do ``at scale''.
+For this reason, we have been working with applied mathematicians and statisticians to improve our abilities.
+With my students Hou and Foreman-Mackey, and with applied mathematician Jonathan Goodman (NYU) and Brewer,
+  we have implemented a set of different Markov-Chain Monte Carlo methods,
+  including an affine-invariant ensemble sampler, a bridge sampler, and a nested sampler,
+  and we have plans for more.
+The key idea is that no sampler is ideal for all problems; it is important to have many options.
+We are working on software engineering that makes mixing and switching samplers very easy.
+Our current implementation, \textsl{emcee}, is extremely well engineered (by Foreman-Mackey),
+  and is averaging more than ten citations per month in the refereed literature.
+
+\paragraph{The future:}
+Most of what we want to know about the Universe can be represented by a few numbers:
+We want to know the cosmological parameters, the mass and radius of an exoplanet,
+  the amplitude of primordial fluctuations that grew into the present-day large-scale structure.
+The problem is, that we don't get to ``observe'' these numbers directly;
+  they are always mixed into our observations by a complex model of auxiliary things that we don't much care about.
+For cosmological parameters, they would be easy to measure if we knew how galaxies form,
+  but since we don't (at least not yet), we have to instantiate flexible models
+
+
+\end{document}
