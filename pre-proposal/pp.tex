@@ -26,8 +26,7 @@
   \addtolength{\topmargin}{-\headsep}
   \addtolength{\topmargin}{-\headheight}
   \setlength{\textwidth}{6.50in}
-  \setlength{\parindent}{0in}
-  \setlength{\parskip}{1ex}
+  \setlength{\parskip}{0.5ex}
 % Headings and footing
   \renewcommand{\headrulewidth}{0pt}
   \pagestyle{fancy}
@@ -38,6 +37,7 @@
 
 \begin{document}\sloppy\sloppypar
 
+\noindent
 Astronomical facilities have taken imaging to cover the sky literally hundreds of times over.
 This imaging comes from many different facilities, taken under different conditions,
   taken through different bandpasses and with different kinds of detectors,
@@ -51,7 +51,7 @@ In the next few years,
   in cosmological weak lensing,
   and in the cataloging and characterization of the most distant stars and galaxies.
 
-\paragraph{The past:}
+\noindent\textbf{The past:}
 I started working on data-driven problems in astrophysics through an unsual connection:
   my friendship with Sam Roweis (now deceased), a machine learning expert and former high-school friend.
 When Mike Blanton (now NYU faculty) and I were debating the feasibility of an automated self-calibration
@@ -75,7 +75,20 @@ Through a combination of geometric hashing, generative modeling, and bayesian de
 This software package has more than 10,000 downloads, thousands of users (mainly amateurs),
   and has been incorporated into the automated data analysis pipelines of many astronomical projects.
 
-Soon after \textsl{Astrometry.net} was up and running, however,
+Fundamentally, in my view, the language of data analysis is Bayesian or probabilistic inference.
+That said, probabilistic inference scales badly and is hard to do ``at scale''.
+For this reason, we have been working with applied mathematicians and statisticians to improve our abilities.
+With my students Hou and Foreman-Mackey, and with applied mathematician Jonathan Goodman (NYU) and statistician BrendanBrewer (Auckland),
+  we have implemented a set of different Markov-Chain Monte Carlo methods,
+  including an affine-invariant ensemble sampler, a bridge sampler, and a nested sampler,
+  and we have plans for more.
+The key idea is that no sampler is ideal for all problems; it is important to have many options.
+We are working on software engineering that makes mixing and switching samplers very easy.
+Our current implementation, \textsl{emcee}, is extremely well engineered (by Foreman-Mackey),
+  and is averaging more than ten citations per month in the refereed literature.
+
+\noindent\textbf{The future:}
+Soon after \textsl{Astrometry.net} was up and running,
   we realized that we had only just scratched the surface:
 As all these images pour in and get recognized, they also provide new information about the sky,
   which can be used to improve our models, improve our meaasurements, and revise our catalogs.
@@ -83,7 +96,7 @@ Of course, when you open this box, you realize it is a very difficult problem:
   If everything is up for debate and revision, then everything changes from being a catalog entry,
   or a fact about the sky, to being a probability distribution over catalog entries.
 This quickly gets intractable.
-In one direction on this, we have worked with statistician Brendan Brewer (Auckland),
+In one direction on this, we have worked with Brewer,
   who is helping us work towards ``biting the bullet'' and going fully probabilistic;
   with Brewer we wrote a paper in which we fully marginalize over ``catalog space'' for a realistic astronomical image!
 In another direction, we have worked with machine-learner Bernhard Sch\"olkopf (MPI-IS),
@@ -96,26 +109,56 @@ In yet another, Lang and I wrote a quirky paper that used amateur observations o
   to infer the gravitational orbit of the Comet;
   this showed that the combination of arbitrarily different data is possible.
 
-Fundamentally, in my view, the language of data analysis is Bayesian or probabilistic inference.
-That said, probabilistic inference scales badly and is hard to do ``at scale''.
-For this reason, we have been working with applied mathematicians and statisticians to improve our abilities.
-With my students Hou and Foreman-Mackey, and with applied mathematician Jonathan Goodman (NYU) and Brewer,
-  we have implemented a set of different Markov-Chain Monte Carlo methods,
-  including an affine-invariant ensemble sampler, a bridge sampler, and a nested sampler,
-  and we have plans for more.
-The key idea is that no sampler is ideal for all problems; it is important to have many options.
-We are working on software engineering that makes mixing and switching samplers very easy.
-Our current implementation, \textsl{emcee}, is extremely well engineered (by Foreman-Mackey),
-  and is averaging more than ten citations per month in the refereed literature.
-
-\paragraph{The future:}
 Most of what we want to know about the Universe can be represented by a few numbers:
-We want to know the cosmological parameters, the mass and radius of an exoplanet,
-  the amplitude of primordial fluctuations that grew into the present-day large-scale structure.
+We want to know the ten-ish cosmological parameters, or, say, the mass and radius of an exoplanet.
 The problem is, that we don't get to ``observe'' these numbers directly;
   they are always mixed into our observations by a complex model of auxiliary things that we don't much care about.
 For cosmological parameters, they would be easy to measure if we knew how galaxies form,
-  but since we don't (at least not yet), we have to instantiate flexible models
+  but since we don't (yet), we have to instantiate flexible models and, in principle, marginalize them out.
+Because this is hard, no-one knows how to do this.
+For exoplanets, they would be easy to find if the stars around which they orbit showed no stochastic variability,
+  but since they do, we have to instantiate flexible models again.
+Even in the relatively straightforward image combination problems above,
+  the cameras used to take the imaging have distortions and sensitivity variations
+  that we know nothing about and also need to model flexibly if we are going to make accurate inferences.
 
+One motivating fact behind our interest is that the NASA \textsl{Kepler} mission, which has come to an end,
+  has not detected any good Earth analog.
+It has found habitable-zone planets around Solar-like stars,
+  but they are substantially bigger than Earth,
+  and it has found habitable-zone rocky planets around much cooler, smaller stars,
+  but these stars are very different from the Sun.
+A back-of-the-envelope calculation tells you that there are many thousands of G-type stars in the \textsl{Kepler}
+  data that provide enough \emph{photons} to in principle permit a detection of an Earth analog.
+The reason the detections are challenging is that the stars tend to vary stochastically (the Sun is unusually quiet).
+At low signal-to-noise, statistical choices matter deeply;
+  if we model this noise we want to do so in such a way that it is both flexible and possible to marginalize out in finite time.
+The obvious choice is a Gaussian Process (GP); but with hundreds of thousands of data points,
+  the standard linear algebra gets too heavy; in particular, to compare models or marginalize, one needs to take \emph{determinants},
+  and these are rarely coded for speed in standard packages, even sparse ones.
+We took this problem to applied mathematicians Leslie Greengard and Mike O'Neil (NYU),
+  and they have solved it for us: 
+It turns out that standard GP kernel matrices have smoothness quasi-symmetries that can be used to enormously speed up
+  factorization and determinants.
+We have what we currently believe is the fastest GP code in the world, to appear very soon.
+Foreman-Mackey's PhD project is to find the Earth analogs.
+If we find even one, it will be a huge win for both the methods and for astrophysics.
+Along the way, we have also, I think, found a new calibration for the \textsl{Kepler} data that will make
+  it more precise for every investigator, not just us.
+
+Another field that is having trouble reaching its goals is that of cosmological weak lensing.
+In the standard formulation of this problem,
+  galaxy ``shapes'' (some moments or ellipticities) are measured in a catalog,
+  and the shapes are averaged in some way to determine the weak-lensing shear.
+There is a community understanding that this is inadequate, but no agreement on a ``right'' approach.
+My view is that a proper measurement will require a generative model of faint galaxy images,
+  so that the entire galaxy morphology---all the pixels---are involved in the shear measurement.
+Since we don't have a galaxy formation theory that works at this level,
+  this project will require an extremely flexible model.
+My new student Vakili is exploring some of the possibilities now;
+  his approach is entirely data driven:
+Since we have observed (literally) billions of faint galaxies in all that imaging,
+  can't we just use those to make the model?
+As you can imagine, nothing is quite that simple.
 
 \end{document}
