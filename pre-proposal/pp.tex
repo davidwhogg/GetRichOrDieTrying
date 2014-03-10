@@ -137,10 +137,11 @@ The obvious choice is a Gaussian Process (GP); but with hundreds of thousands of
   the standard linear algebra gets too heavy; in particular, to compare models or marginalize, one needs to take \emph{determinants},
   and these are rarely coded for speed in standard packages, even sparse ones.
 We took this problem to applied mathematicians Leslie Greengard and Mike O'Neil (NYU),
-  and they have solved it for us: 
+  and their colleague Sivaram Ambikasaran (NYU) solved it for us: 
 It turns out that standard GP kernel matrices have smoothness quasi-symmetries that can be used to enormously speed up
   factorization and determinants.
-We have what we currently believe is the fastest GP code in the world, to appear very soon.
+Thanks to Ambikasaran and colleagues,
+  we have what we currently believe is the fastest GP code in the world, to appear very soon.
 Foreman-Mackey's PhD project is to find the Earth analogs.
 If we find even one, it will be a huge win for both the methods and for astrophysics.
 Along the way, we have also, I think, found a new calibration for the \textsl{Kepler} data that will make
