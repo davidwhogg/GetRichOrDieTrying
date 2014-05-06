@@ -9,7 +9,7 @@ NAME        = sk
 
 CHECK_RERUN = grep Rerun $*.log
 
-all: pp.pdf cv.pdf
+all: pp.pdf cv.pdf ppp.pdf
 
 %.pdf: %.tex
 	${LATEX} $<
