@@ -241,17 +241,63 @@ in---high-end methods might increase dramatically.
 % to make open source?}
 \smallskip
 
-Developing and propagating scalable Gaussian Processes.
+One of my principal interests in the work I do is both capitalizing
+and contributing to methodological domains.
 
-Building radical self-calibrations with racks and racks of regressions.
+I already have working relationships with the research groups of
+Leslie Greengard (NYU Applied Math), Jonathan Goodman (NYU Applied
+Math), Brendon Brewer (Auckland Statistics), Bernhard Sch\"olkopf (MPI
+Intelligent Systems) and Rob Fergus (NYU Computer Science); I
+previously worked with Sam Roweis (deceased).
+These collaborations have led to some non-trivial contributions to
+the methodological literature in stats (Bovy \textit{et al},
+\arxiv{0905.2979}), applied mathematics (Ambikasaran \textit{et al},
+\opcit{1403.6015}), and machine learning (Lang \textit{et al},
+\textit{AISTATS} 2014), and we have plans for many more.
+In particular, in the areas of MCMC sampling and Gaussian Processes,
+we have several methodological papers in the short-term plans.
 
-Bringing ideas of causal inference into astrophysics.
+Gaussian Processes are used across an enormous range of domains from
+Earth Science to medical imaging to computer vision.
+There are many projects that could be tranformed by the scalings we
+have improved (what used to be $N^3$ becomes $N\,\log^2N$).
+We have started meetings between applied mathematics and various
+domains to get our code adopted outside astrophysics, and we plan to
+publish some short papers in other fields.
 
-Working out ideas about probabilistic inference in enormous parameter spaces,
-for weak lensing and image modeling generally.
+Some of what we have been doing is taking straightforward ideas in
+stats and inference and just taking it to a much larger scale.
+For example, in our work on \textsl{The Tractor} we have realized that
+in principle we can find a maximum-likelihood catalog that explains
+the \emph{entire} \textsl{Sloan Digital Sky Survey} imaging data set.
+This would represent a ten-billion-ish parameter maximum-likelihood
+optimization.
+That's not deeply innovative, but---being unprecedented in
+scale---various people we know in the methods have pointed out that it
+would be publication-worthy, for its engineering aspects at the very
+least.
+Similarly, if we can really perform the importance-sampling
+hierarchical inference for weak lensing, it will constitute one of the
+highest-dimensional MCMC inferences ever performed in the physical
+sciences.
+That might help us advertise our engineering and software.
 
+Finally, and perhaps most speculatively, the self-calibration methods
+we have been building are inspired by ideas from \emph{causal
+  inference}, where inputs and outputs of an inference are highly
+informative conditional probability relationships.
+If we successfully bring ideas from causal inference into
+astrophysics, it opens up a new set of opportunities for domains in
+the social sciences and natural sciences to interact and exchange
+ideas and tools.
+
+On the open-source point:
 Absolutely everything I do is out in the open; all code is released
-with open-source licensing (principally MIT, sometimes GPLv2).
+with open-source licensing (everything in this proposal will be
+released MIT, some of my old software is GPLv2).
+I am known in the astronomical community as being an open-ness and
+open-source advocate and many of my projects obtain regular downloads,
+bug reports, and pull requests.
 My research day is blogged daily at
 \url{http://hoggresearch.blogspot.com/}.
 I also have a blog for unpublished ideas that I would like to see
