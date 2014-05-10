@@ -47,10 +47,9 @@
 
 If I tried to boil down my projects to a single question, it would be
 this:
-Can we make our discoveries and measurements in astronomical imaging
-at the fundamental precision dictated by the photons?
-Of course this question is uninteresting without specific contexts.
-Two contexts that drive me are in the search for extra-Solar planets
+\emph{Can we make our discoveries and measurements in astronomical imaging
+at the fundamental precision dictated by the photons?}
+Two contexts for this objective are in the search for extra-Solar planets
 (exoplanets) and in the measurement of cosmological parameters.
 In both domains, the signals we care most about are tiny (in any
 dimensionless sense) and the astrophysics community is \emph{not}
@@ -58,9 +57,9 @@ reaching the photon limit; not even close!
 
 In the exoplanet domain, the context that most strongly drives data
 analysis is the search for \emph{Earth analogs}.
-In the search for Earth analogs, the NASA \textsl{Kepler} mission has
+The NASA \textsl{Kepler} mission has
 found many astounding Earth-sized rocky planets.
-The \textsl{Kepler} mission finds these by noticing the light that a
+It finds these by noticing the light that a
 (properly aligned) exoplanet blocks when it transits---passes in front
 of its host star (from our point of view).
 Some of the \textsl{Kepler}-discovered planets are conceivably habitable
@@ -84,8 +83,8 @@ The individual star light curves (brightness vs time) coming out of
 This variability can be attributed to spacecraft (s/c) pointing,
 focus, and temperature variations.
 That means they are shared among stars---the stars (which are
-physically independent) show covariant variability inasmuch as their
-variability is induced by s/c issues.
+physically independent) show covariant apparent variability inasmuch as their
+apparent variability is induced by s/c issues.
 We have found in baby-step experiments that it is best to address
 these issues at the pixel level (that is, model these covariances in
 the pixels before those pixel values are combined into lightcurves).
@@ -101,11 +100,10 @@ cosmology and has a limited calibration observing program budget.
 The second line of research is on optimized photometric estimators.
 In the above, pixels were ``combined'' into lightcurves.
 How?
-The \textsl{Kepler} team has a magic procedure, but we have determined
-that it is not optimized.
+The \textsl{Kepler} team has a magic procedure, but it is not optimized.
 We have found ways to use the data themselves to create a scalar
-objective function that can be optimized to produce optimal (or
-optimized) methods for combining pixel values into lightcurves.
+objective function that can be optimized to produce optimal
+methods for combining pixel values into lightcurves.
 This could have impact not just on \textsl{Kepler} but also the NASA
 \textsl{Spitzer} mission, various ground-based photometric projects
 (for example, \textsl{HATNET}), and future projects such as the NASA
@@ -122,14 +120,14 @@ been able to make these Gaussian-Process computations far, far faster
 (Ambikasaran \textit{et al} \arxiv{1403.6015})
 than any other currently availble implementation.
 We are using this to accelerate science with \textsl{Kepler} but also
-propagating it out to other scientific domains as well.
+propagating it out to other scientific domains.
 Indeed, Gaussian Processes are used in domains as diverse as
 large-scale structure and neuroscience; in many cases projects are
 computation-limited.
 Our work with applied math here could have huge impact across all
 scientific domains (see below).
 
-The fourth line of research is on building physical models for
+The fourth line of exoplanet research is on building physical models for
 telescope--camera combinations.
 The key idea is that if you want to saturate the Cram\'er--Rao bound
 in an estimator, that estimator ought to be a maximum-likelihood
@@ -151,7 +149,7 @@ Here the idea is that inhomogeneous collapsed large-scale structure
 along every line of sight leads to stochastic, percent-level
 distortions of every distant galaxy.
 Inasmuch as the mean shape of collections of unlensed galaxies is
-round, the ``shear map'' can be measured and some statistics of the
+round, the ``shear map'' can be measured and some variances of the
 distribution of inhomogeneous mass density can be inferred.
 Right now, most methods involve making a point estimate of the
 ellipticity of every galaxy, and making a point estimate of the shear
@@ -159,18 +157,18 @@ map by averaging those individual-galaxy point estimates.
 This process involves lossy steps; it cannot be fully
 information-transmitting.
 
-The approach of my group (Dustin Lang at CMU and myself) is to sample
+The approach of my group (including now Dustin Lang at CMU) is to sample
 imaging models at the pixel level, and infer the shear map as an
 importance-sampled hierarchical model on top of the low-level
 samplings.
 The fundamental idea is that information is only fully transmitted if
-we transmit our posterior inferences about every galaxy; or that the
+we pass forward our posterior inferences about every galaxy; or that the
 posterior PDF is a sufficient statistic for the pixel-level data.
 For the low-level samplings---which we create with an MCMC method we
 wrote (Foreman-Mackey \textit{et al}, \arxiv{1202.3665})---we have
 built a generalized image-modeling tool (\textsl{The Tractor}, Lang \&
 Hogg, in prep) that permits the imaging calibration, the imaging PSF,
-and all the galaxy parameters to be unknown, or known only noisily
+and all the galaxy parameters to be treated as unknown, or known only noisily
 \textit{a priori}.
 We used this system to enter the weak-lensing data-analysis
 competition GREAT3 (\url{http://www.great3challenge.info/})
@@ -193,7 +191,7 @@ If we can make prior PDFs over PSFs and galaxies, we can construct
 posterior PDFs for the weak-lensing shear field given the pixel data.
 This effectively makes it possible to ask cosmological questions in
 the space of the pixel data; that is, the question ``what are the
-cosmological parameters?'' is effectively re-cast as ``what is the
+cosmological parameters?''\ is effectively re-cast as ``what is the
 likelihood of the cosmological parameters given the pixels read out
 from the telescope?''
 It is not totally clear whether we are two years away from this dream
@@ -241,21 +239,21 @@ in---high-end methods might increase dramatically.
 % to make open source?}
 \smallskip
 
-One of my principal interests in the work I do is both capitalizing
+One of my principal interests in the work I do is both capitalizing on
 and contributing to methodological domains.
 
 I already have working relationships with the research groups of
 Leslie Greengard (NYU Applied Math), Jonathan Goodman (NYU Applied
 Math), Brendon Brewer (Auckland Statistics), Bernhard Sch\"olkopf (MPI
 Intelligent Systems) and Rob Fergus (NYU Computer Science); I
-previously worked with Sam Roweis (deceased).
-These collaborations have led to some non-trivial contributions to
+previously worked with Sam Roweis (formerly Toronto Computer Science and Google).
+These collaborations have led to some recent contributions to
 the methodological literature in stats (Bovy \textit{et al},
 \arxiv{0905.2979}), applied mathematics (Ambikasaran \textit{et al},
 \opcit{1403.6015}), and machine learning (Lang \textit{et al},
 \textit{AISTATS} 2014), and we have plans for many more.
 In particular, in the areas of MCMC sampling and Gaussian Processes,
-we have several methodological papers in the short-term plans.
+we have several methodological papers among our short-term goals.
 
 Gaussian Processes are used across an enormous range of domains from
 Earth Science to medical imaging to computer vision.
@@ -263,7 +261,7 @@ There are many projects that could be tranformed by the scalings we
 have improved (what used to be $N^3$ becomes $N\,\log^2N$).
 We have started meetings between applied mathematics and various
 domains to get our code adopted outside astrophysics, and we plan to
-publish some short papers in other fields.
+publish some short demonstration papers in other fields.
 
 Some of what we have been doing is taking straightforward ideas in
 stats and inference and just taking it to a much larger scale.
@@ -273,7 +271,7 @@ the \emph{entire} \textsl{Sloan Digital Sky Survey} imaging data set.
 This would represent a ten-billion-ish parameter maximum-likelihood
 optimization.
 That's not deeply innovative, but---being unprecedented in
-scale---various people we know in the methods have pointed out that it
+scale---it
 would be publication-worthy, for its engineering aspects at the very
 least.
 Similarly, if we can really perform the importance-sampling
@@ -291,8 +289,8 @@ astrophysics, it opens up a new set of opportunities for domains in
 the social sciences and natural sciences to interact and exchange
 ideas and tools.
 
-On the open-source point:
-Absolutely everything I do is out in the open; all code is released
+On the open-source question:
+Absolutely \emph{everything} I do is out in the open; all code is released
 with open-source licensing (everything in this proposal will be
 released MIT, some of my old software is GPLv2).
 I am known in the astronomical community as being an open-ness and
@@ -302,6 +300,7 @@ My research day is blogged daily at
 \url{http://hoggresearch.blogspot.com/}.
 I also have a blog for unpublished ideas that I would like to see
 implemented.
+I tweet as \texttt{@davidwhogg}.
 All my grant proposals and papers in preparation and code bases in
 every state of development are up on the web in open code
 repositories.
