@@ -35,6 +35,7 @@
   \rhead{\deemph{\thepage}}
   \cfoot{}
 \newcommand{\arxiv}[1]{\href{http://arxiv.org/abs/#1}{arXiv:#1}}
+\newcommand{\opcit}[1]{\href{http://arxiv.org/abs/#1}{\textit{op cit}}}
 
 \begin{document}\sloppy\sloppypar
 
@@ -88,7 +89,9 @@ variability is induced by s/c issues.
 We have found in baby-step experiments that it is best to address
 these issues at the pixel level (that is, model these covariances in
 the pixels before those pixel values are combined into lightcurves).
-Our approach is modeling pixels with pixels; it seems to work
+Our approach is modeling pixels with pixels
+(we say a tiny bit about it in Hogg \textit{et al} \arxiv{1309.0653});
+it seems to work
 incredibly well in \textsl{Kepler} and might set a standard for
 data-driven self-calibration of imagers into the future.
 This has implications for many new projects, but notably the ESA
@@ -128,8 +131,19 @@ scientific domains (see below).
 
 The fourth line of research is on building physical models for
 telescope--camera combinations.
-
-
+The key idea is that if you want to saturate the Cram\'er--Rao bound
+in an estimator, that estimator ought to be a maximum-likelihood
+estimator for some generative probabilistic model of the data.
+In the case of \textsl{Kepler}, this looks like a model of the
+detector sensitivity (pixel-by-pixel or even finer in resolution) and
+a point-spread function (PSF).  
+We have made baby steps along these lines
+(Hogg \textit{et al}, \opcit{1403.6015})
+and want to bring them to full scale.
+We are also doing the same for the infrared channels of the
+\textsl{Hubble Space Telescope} \textsl{WFC3} imaging instrument
+(Fadely, in prep).
+This instrument and \textsl{Kepler} have a lot in common.
 
 In the cosmological domain, the context that drives my work is weak
 lensing.
