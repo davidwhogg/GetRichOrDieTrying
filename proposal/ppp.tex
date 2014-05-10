@@ -34,6 +34,7 @@
   \chead{\deemph{Extracting Everything from Astronomical Imaging}}
   \rhead{\deemph{\thepage}}
   \cfoot{}
+\newcommand{\arxiv}[1]{\href{http://arxiv.org/abs/#1}{arXiv:#1}}
 
 \begin{document}\sloppy\sloppypar
 
@@ -58,8 +59,13 @@ In the exoplanet domain, the context that most strongly drives data
 analysis is the search for \emph{Earth analogs}.
 In the search for Earth analogs, the NASA \textsl{Kepler} mission has
 found many astounding Earth-sized rocky planets.
-Some of them are conceivably habitable (cite Barclay) and some of them orbit Sun-like
-stars (cite Petigura).
+The \textsl{Kepler} mission finds these by noticing the light that a
+(properly aligned) exoplanet blocks when it passes in front of its
+host star (from our point of view).
+Some of the \textsl{Kepler}-discovered planets are conceivably habitable
+(\textit{eg,} Quintana \textit{et al}, \arxiv{1404.5667})
+and some of them orbit Sun-like stars
+(\textit{eg,} Petigura \textit{et al}, \arxiv{1311.6806}).
 None of them are \emph{both}: We have yet to see a rocky planet in the
 habitable zone of a Sun-like star.
 This isn't because the data aren't good enough:
@@ -68,11 +74,23 @@ The problems are that the instrument isn't well enough calibrated, the
 stars are stochastically variable, and the data searches are
 computationally expensive.
 
+We have identified at least four different lines of research that each
+could improve the precision of searches or measurements in the
+\textsl{Kepler} data, and I intend to pursue all four.
+
+The first is pixel-level (or even sub-pixel) data-driven calibration.
+
+The second line of research is on optimized photometric estimators.
+
+The third line of research is on Gaussian-Process models for stochastic stellar variability.
+
+The fourth line of research is on building physical models for telescope--camera combinations.
+
 In the cosmological domain, the context that drives my work is weak
 lensing.
 
+Here the idea is that 
 
-There are rocky planets
 
 Key questions: Can we find a true Earth analog?  Can we demonstrate
 some non-trivial areas where we saturate the photon-limited bounds on
