@@ -60,8 +60,8 @@ analysis is the search for \emph{Earth analogs}.
 In the search for Earth analogs, the NASA \textsl{Kepler} mission has
 found many astounding Earth-sized rocky planets.
 The \textsl{Kepler} mission finds these by noticing the light that a
-(properly aligned) exoplanet blocks when it passes in front of its
-host star (from our point of view).
+(properly aligned) exoplanet blocks when it transits---passes in front
+of its host star (from our point of view).
 Some of the \textsl{Kepler}-discovered planets are conceivably habitable
 (\textit{eg,} Quintana \textit{et al}, \arxiv{1404.5667})
 and some of them orbit Sun-like stars
@@ -76,15 +76,60 @@ computationally expensive.
 
 We have identified at least four different lines of research that each
 could improve the precision of searches or measurements in the
-\textsl{Kepler} data, and I intend to pursue all four.
-
+\textsl{Kepler} data, and I intend to pursue all four:
 The first is pixel-level (or even sub-pixel) data-driven calibration.
+The individual star light curves (brightness vs time) coming out of
+\textsl{Kepler} are variable at the $10^{-3}$ level.
+This variability can be attributed to spacecraft (s/c) pointing,
+focus, and temperature variations.
+That means they are shared among stars---the stars (which are
+physically independent) show covariant variability inasmuch as their
+variability is induced by s/c issues.
+We have found in baby-step experiments that it is best to address
+these issues at the pixel level (that is, model these covariances in
+the pixels before those pixel values are combined into lightcurves).
+Our approach is modeling pixels with pixels; it seems to work
+incredibly well in \textsl{Kepler} and might set a standard for
+data-driven self-calibration of imagers into the future.
+This has implications for many new projects, but notably the ESA
+\textsl{Euclid} mission, which is doing sensitive imaging for
+cosmology and has a limited calibration observing program budget.
 
 The second line of research is on optimized photometric estimators.
+In the above, pixels were ``combined'' into lightcurves.
+How?
+The \textsl{Kepler} team has a magic procedure, but we have determined
+that it is not optimized.
+We have found ways to use the data themselves to create a scalar
+objective function that can be optimized to produce optimal (or
+optimized) methods for combining pixel values into lightcurves.
+This could have impact not just on \textsl{Kepler} but also the NASA
+\textsl{Spitzer} mission, various ground-based photometric projects
+(for example, \textsl{HATNET}), and future projects such as the NASA
+\textsl{Terrestrial Planet Finder}.
 
-The third line of research is on Gaussian-Process models for stochastic stellar variability.
+The third line of research is on Gaussian-Process models for
+stochastic stellar variability.
+Stars vary, and the stochastic component of their variability is
+effectively a noise for the detection of exoplanet transits.
+A Gaussian Process effectively models the stochastic variability and
+gives us variability-marginalized posterior constraints on transits.
+By working with Greengard's applied mathematics group at NYU, we have
+been able to make these Gaussian-Process computations far, far faster
+(Ambikasaran \textit{et al} \arxiv{1403.6015})
+than any other currently availble implementation.
+We are using this to accelerate science with \textsl{Kepler} but also
+propagating it out to other scientific domains as well.
+Indeed, Gaussian Processes are used in domains as diverse as
+large-scale structure and neuroscience; in many cases projects are
+computation-limited.
+Our work with applied math here could have huge impact across all
+scientific domains (see below).
 
-The fourth line of research is on building physical models for telescope--camera combinations.
+The fourth line of research is on building physical models for
+telescope--camera combinations.
+
+
 
 In the cosmological domain, the context that drives my work is weak
 lensing.
