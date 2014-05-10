@@ -153,29 +153,62 @@ distortions of every distant galaxy.
 Inasmuch as the mean shape of collections of unlensed galaxies is
 round, the ``shear map'' can be measured and some statistics of the
 distribution of inhomogeneous mass density can be inferred.
+Right now, most methods involve making a point estimate of the
+ellipticity of every galaxy, and making a point estimate of the shear
+map by averaging those individual-galaxy point estimates.
+This process involves lossy steps; it cannot be fully
+information-transmitting.
 
-Right now, most methods involve 
+The approach of my group (Dustin Lang at CMU and myself) is to sample
+imaging models at the pixel level, and infer the shear map as an
+importance-sampled hierarchical model on top of the low-level
+samplings.
+The fundamental idea is that information is only fully transmitted if
+we transmit our posterior inferences about every galaxy; or that the
+posterior PDF is a sufficient statistic for the pixel-level data.
+For the low-level samplings---which we create with an MCMC method we
+wrote (Foreman-Mackey \textit{et al}, \arxiv{1202.3665})---we have
+built a generalized image-modeling tool (\textsl{The Tractor}, Lang \&
+Hogg, in prep) that permits the imaging calibration, the imaging PSF,
+and all the galaxy parameters to be unknown, or known only noisily
+\textit{a priori}.
+We used this system to enter the weak-lensing data-analysis
+competition GREAT3 (\url{http://www.great3challenge.info/})
+with collaborators from Stanford KIPAC;
+we didn't win but we only started two months out.
+There are many directions in which what we are doing can be improved,
+including our interim priors, our flexibility for the point-spread
+function model, and our flexibility for the galaxy shape or
+morphology.
 
-inference in imaging projects?  Can we dramatically improve the
-calibration of telescopes and cameras?  Can we develop and propagate
-these ideas and standards to the community as a whole?
-
-Making \textsl{Kepler} more sensitive.
-
-(Obviating calibration programs for big projects.)
-
-Taking cosmological inference down to the raw pixel level.  Weak
-lensing as an example of this.
-
-Saturating known bounds on inference; in astrophysics you can often
-compute (roughly) these bounds.  Conversations with JPL about this
-general point.
+In parallel to this, my student Vakili has been looking at creating
+extremely flexible data-driven priors for PSFs and galaxies.
+These have involved learning new machine-learning methods,
+most notably the GPLVM
+(Lawrence, \href{http://papers.nips.cc/paper/2540-gaussian-process-latent-variable-models-for-visualisation-of-high-dimensional-data.pdf}{\textit{NIPS} 2003}).
+This method permits construction of a probability distribution
+function in a very high dimensional space (like that of galaxy images)
+using a small number of unobserved latent variables.
+If we can make prior PDFs over PSFs and galaxies, we can construct
+posterior PDFs for the weak-lensing shear field given the pixel data.
+This effectively makes it possible to ask cosmological questions in
+the space of the pixel data; that is, the question ``what are the
+cosmological parameters?'' is effectively re-cast as ``what is the
+likelihood of the cosmological parameters given the pixels read out
+from the telescope?''
+It is not totally clear whether we are two years away from this dream
+or twenty, but the performance of the GPLVM and related methods are
+making us optimistic.
 
 Evaluation: Are we improving uncertainties on known small exoplanets
 around Sun-like stars?  Are we increasing the periods and decreasing
 the radii of discovered exoplanets?  Are we doing better and better on
 GREAT3 and GREAT4 and so on?  Are projects adopting self-calibration
 programs and duplicating or generalizing our methods?
+
+Saturating known bounds on inference; in astrophysics you can often
+compute (roughly) these bounds.  Conversations with JPL about this
+general point.
 
 \bigskip
 \noindent\textbf{2. How will I advance data-science methodologies?}
