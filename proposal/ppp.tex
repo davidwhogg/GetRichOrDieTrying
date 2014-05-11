@@ -1,5 +1,5 @@
 \documentclass[11pt, letterpaper]{article}
-\usepackage{fancyheadings, color, hyperref}
+\usepackage{fancyhdr, color, hyperref}
 
 % hypertex insanity
   \definecolor{linkcolor}{rgb}{0,0,0.4}
@@ -58,7 +58,7 @@ reaching the photon limit; not even close!
 In the exoplanet domain, the context that most strongly drives data
 analysis is the search for \emph{Earth analogs}.
 The NASA \textsl{Kepler} mission has
-found many astounding Earth-sized rocky planets.
+found many Earth-sized rocky planets.
 It finds these by noticing the light that a
 (properly aligned) exoplanet blocks when it transits---passes in front
 of its host star (from our point of view).
@@ -66,7 +66,7 @@ Some of the \textsl{Kepler}-discovered planets are conceivably habitable
 (\textit{eg,} Quintana \textit{et al}, \arxiv{1404.5667})
 and some of them orbit Sun-like stars
 (\textit{eg,} Petigura \textit{et al}, \arxiv{1311.6806}).
-None of them are \emph{both}: We have yet to see a rocky planet in the
+None of them---so far---are \emph{both}: We have yet to see a rocky planet in the
 habitable zone of a Sun-like star.
 This isn't because the data aren't good enough:
 There are easily enough photons to do the job.
@@ -105,9 +105,8 @@ We have found ways to use the data themselves to create a scalar
 objective function that can be optimized to produce optimal
 methods for combining pixel values into lightcurves.
 This could have impact not just on \textsl{Kepler} but also the NASA
-\textsl{Spitzer} mission, various ground-based photometric projects
-(for example, \textsl{HATNET}), and future projects such as the NASA
-\textsl{Terrestrial Planet Finder}.
+\textsl{Spitzer} mission, and various ground-based photometric projects
+(\textsl{PanSTARRS}, for example).
 
 The third line of research is on Gaussian-Process models for
 stochastic stellar variability.
@@ -163,7 +162,7 @@ importance-sampled hierarchical model on top of the low-level
 samplings.
 The fundamental idea is that information is only fully transmitted if
 we pass forward our posterior inferences about every galaxy; or that the
-posterior PDF is a sufficient statistic for the pixel-level data.
+posterior pdf is a sufficient statistic for the pixel-level data.
 For the low-level samplings---which we create with an MCMC method we
 wrote (Foreman-Mackey \textit{et al}, \arxiv{1202.3665})---we have
 built a generalized image-modeling tool (\textsl{The Tractor}, Lang \&
@@ -179,22 +178,21 @@ including our interim priors, our flexibility for the point-spread
 function model, and our flexibility for the galaxy shape or
 morphology.
 
-In parallel to this, my student Vakili has been looking at creating
+In parallel to this, we have been looking at creating
 extremely flexible data-driven priors for PSFs and galaxies.
 These have involved learning new machine-learning methods,
 most notably the GPLVM
 (Lawrence, \href{http://papers.nips.cc/paper/2540-gaussian-process-latent-variable-models-for-visualisation-of-high-dimensional-data.pdf}{\textit{NIPS} 2003}).
-This method permits construction of a probability distribution
-function in a very high dimensional space (like that of galaxy images)
-using a small number of unobserved latent variables.
-If we can make prior PDFs over PSFs and galaxies, we can construct
-posterior PDFs for the weak-lensing shear field given the pixel data.
+This method permits construction of a pdf
+in a very high dimensional space (like that of galaxy images)
+using a smaller number of unobserved latent variables.
+If we can make prior pdfs over PSFs and galaxies, we can construct
+posterior pdfs for the weak-lensing shear field given the pixel data.
 This effectively makes it possible to ask cosmological questions in
 the space of the pixel data; that is, the question ``what are the
 cosmological parameters?''\ is effectively re-cast as ``what is the
-likelihood of the cosmological parameters given the pixels read out
-from the telescope?''
-It is not totally clear whether we are two years away from this dream
+likelihood of the cosmological parameters given the imaging pixel data?''
+It is not totally clear whether we are two years away from living this dream
 or twenty, but the performance of the GPLVM and related methods are
 making us optimistic.
 
@@ -212,16 +210,16 @@ Any success here would be huge, for us, for the community, and for
 future NASA missions like \textsl{JWST}.
 
 But we also want our tools and ideas \emph{adopted}.
-Even prior to any publication, we already have several users of our
+We already (prior to publication) have several users of our
 optimized photometry methods and our stochastic stellar variability
 models.
-Colleages in machine learning, neural science, and cosmology have
+Colleagues in machine learning, neural science, and cosmology have
 expressed interest in our fast Gaussian Process code.
 We have been working with the \textsl{Euclid} calibration team to get
 self-calibration methods adopted; we think we might be able to save
-their observing strategy many hundreds of hours; this corresponds to an
-enormous amount of money in full-cost accounting terms.
-Adoptions in all these areas are important signals of success.
+the mission many hundreds of hours of observations; this corresponds to an
+enormous amount of money.
+Adoptions like these would be important signals of success.
 Along those lines, I am headed to the NASA Jet Propulsion Lab next
 fall to discuss the possible establishment of end-to-end data-analysis
 precision requirements on future astrophysics missions and aerospace
@@ -241,7 +239,6 @@ in---high-end methods might increase dramatically.
 
 One of my principal interests in the work I do is both capitalizing on
 and contributing to methodological domains.
-
 I already have working relationships with the research groups of
 Leslie Greengard (NYU Applied Math), Jonathan Goodman (NYU Applied
 Math), Brendon Brewer (Auckland Statistics), Bernhard Sch\"olkopf (MPI
@@ -293,10 +290,10 @@ On the open-source question:
 Absolutely \emph{everything} I do is out in the open; all code is released
 with open-source licensing (everything in this proposal will be
 released MIT, some of my old software is GPLv2).
-I am known in the astronomical community as being an open-ness and
-open-source advocate and many of my projects obtain regular downloads,
+I am known in the community as being a transparency and
+open-source advocate; many of my projects obtain regular downloads,
 bug reports, and pull requests.
-My research day is blogged daily at
+My research is blogged daily at
 \url{http://hoggresearch.blogspot.com/}.
 I also have a blog for unpublished ideas that I would like to see
 implemented.
