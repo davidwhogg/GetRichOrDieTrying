@@ -1,0 +1,10 @@
+David W. Hogg is a Professor of Physics at New York University and the
+Deputy Director of the NYU Center for Data Science, with an Adjunct
+Staff Senior Scientist position at the Max-Planck-Institut für
+Astronomie in Heidelberg, Germany.  His research is focused on the
+areas of astronomy in which probabilistic inference, computational
+statistics, and applied mathematics are of greatest benefit.  These
+include making cosmological inferences in large astronomical surveys,
+calibrating astronomical imaging and spectroscopic devices, and
+searching for the (incredibly tiny) observational signatures of
+extra-solar planets.
