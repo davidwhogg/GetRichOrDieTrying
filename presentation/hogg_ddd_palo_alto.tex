@@ -30,6 +30,10 @@
     \begin{itemize}
     \item \project{The Tractor}
     \end{itemize}
+  \item Milky Way formation and dynamics
+    \begin{itemize}
+    \item \project{Gaia} and \project{APOGEE}
+    \end{itemize}
   \item \emph{exoplanet discovery and characterization}
     \begin{itemize}
     \item \ldots
@@ -54,24 +58,30 @@
   \item radial velocity
   \item \emph{transit}
     \begin{itemize}
-    \item Earth analog: \emph{84 ppm} signal for 13~h, once per year
+    \item Earth analog: \emph{84~ppm} signal for 13~h, once per year
     \end{itemize}
   \item astrometry
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{exoplanet transits}
+  \frametitle{NASA \Kepler\ Satellite}
   \begin{itemize}
-  \item \Kepler\ Satellite
-  \item ~
-  \item ~
-  \item ~
+  \item stared at one patch of sky for 4~yr, exposure every 30~min
+  \item only downlinked tiny fraction of $8\times 10^7$ pixels
+  \item $10^{11}$ total measurements on $10^5$ stars plus meta-data
+  \item optimal for stable photometric measurements (10~ppm precision)
+  \item \emph{pessimal} for self-calibration
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{data-driven calibration}
+  \begin{itemize}
+  \item capitalize on \emph{causal structure} of the problem
+  \item massive regression
+  \item train-and-test framework
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
