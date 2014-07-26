@@ -3,6 +3,8 @@
 
 \documentclass{beamer}
 
+\newcommand{\foreign}[1]{\textsl{#1}}
+\newcommand{\etal}{\foreign{et\,al}}
 \renewcommand{\emph}[1]{\textbf{#1}}
 \newcommand{\project}[1]{\textsl{#1}}
 \newcommand{\Kepler}{\project{Kepler}}
@@ -20,11 +22,23 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{my projects}
+  \frametitle{this talk}
+  \begin{itemize}
+  \item astrophysics projects
+  \item go deep on extra-Solar planets
+    \begin{itemize}
+    \item high-level (planet populations) to low-level (detector pixels)
+    \end{itemize}
+  \item methods projects
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{astrophysics projects}
   \begin{itemize}
   \item data analysis
     \begin{itemize}
-    \item \project{emcee} (top-10 astronomy paper in 2013)
+    \item \project{emcee} (top-10-cited astrophysics paper from 2013)
     \end{itemize}
   \item weak gravitational lensing
     \begin{itemize}
@@ -52,22 +66,16 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{extra-Solar planets: How we find them}
-  \begin{itemize}
-  \item direct imaging
-  \item radial velocity
-  \item \emph{transit}
-    \begin{itemize}
-    \item Earth analog: \emph{84~ppm} signal for 13~h, once per year
-    \end{itemize}
-  \item astrometry
-  \end{itemize}
+  \frametitle{NASA \Kepler\ Satellite}
+  \includegraphics<1>[width=0.49\textwidth]{750603main_Ball_Kepler_A8468_275_lg_blog_main_horizontal.jpg}%
+  \includegraphics<1>[width=0.49\textwidth]{Kepler_FOV_hiRes.jpg}
+  \includegraphics<2>[height=0.9\textheight]{FirstLightLogInvertedPink_wslbld2400.jpg}
 \end{frame}
 
 \begin{frame}
   \frametitle{NASA \Kepler\ Satellite}
   \begin{itemize}
-  \item stared at one patch of sky for 4~yr, exposure every 30~min
+  \item stared at one patch of sky for 4.1~yr, exposure every 30~min
   \item only downlinked tiny fraction of $8\times 10^7$ pixels
   \item $10^{11}$ total measurements on $10^5$ stars plus meta-data
   \item optimal for stable photometric measurements
@@ -75,7 +83,20 @@
     \item 10~ppm precision
     \item \emph{pessimal} for self-calibration
     \end{itemize}
-  \item \project{TESS}
+  \item \project{K2}, \project{TESS}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{extra-Solar planets: How we find them}
+  \begin{itemize}
+  \item direct imaging (ten-ish)
+  \item radial velocity (hundreds)
+  \item \emph{transit} (thousands)
+    \begin{itemize}
+    \item Earth analog: \emph{84~ppm} signal for 13~h, once per year
+    \end{itemize}
+  \item astrometry (zero, for now, but\ldots)
   \end{itemize}
 \end{frame}
 
@@ -87,41 +108,82 @@
   \item in \emph{principle}, \Kepler\ is sensitive enough
     \begin{itemize}
     \item some ``habitable planets'' known
-    \item all around cooler (and smaller) stars
+    \item all around stars cooler (and smaller) than the Sun
     \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{exoplanet populations}
-\end{frame}
-
-\begin{frame}
-  \frametitle{exoplanet populations}
-  [exopop example here]
-\end{frame}
-
-\begin{frame}
-  \frametitle{flexible models and marginalization}
-\end{frame}
-
-\begin{frame}
-  \frametitle{flexible models and marginalization}
-  [George example here]
-\end{frame}
-
-\begin{frame}
-  \frametitle{data-driven self-calibration}
+  \frametitle{exoplanet populations \small{(Foreman-Mackey \etal)}}
   \begin{itemize}
-  \item capitalize on \emph{causal structure} of the problem
-  \item massive regression
-  \item train-and-test framework
+  \item noisy measurements of a bunch of planets
+  \item subject to non-trivial completeness or censoring
+  \item how to infer properties of the ``de-noised'' and complete population?
+    \begin{itemize}
+    \item fully probabilistic inference
+    \item fewer assumptions than any other studies
+    \item more flexible models
+    \item with Dan Foreman-Mackey (NYU)
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{data-driven self-calibration}
-  [PLM example here]
+  \frametitle{exoplanet populations \small{(Foreman-Mackey \etal)}}
+  \includegraphics<2>[height=0.9\textheight]{results-results.pdf}
+  \includegraphics<3>[width=\textwidth]{results-rate.pdf}
+\end{frame}
+
+\begin{frame}
+  \frametitle{flexible models and marginalization \small{(Foreman-Mackey \etal)}}
+  \begin{itemize}
+  \item stars vary stochastically
+    \begin{itemize}
+    \item variability driven by turbulent convection
+    \item ``filtered'' by response of the star and photosphere
+    \end{itemize}
+  \item this is a source of structured noise
+    \begin{itemize}
+    \item correlated (covariant) non-independent noise in the data
+    \item non-trivial time history to stellar brightness
+    \item with Dan Foreman-Mackey (NYU), Sivaram Ambikasaran (NYU), Mike O'Neil (NYU)
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{flexible models and marginalization \small{(Foreman-Mackey \etal)}}
+  [George example here]
+\end{frame}
+
+\begin{frame}
+  \frametitle{data-driven self-calibration \small{(Wang \etal)}}
+  \includegraphics[height=0.9\textheight]{kic_03544595_05_pixels.png}
+\end{frame}
+
+\begin{frame}
+  \frametitle{data-driven self-calibration \small{(Wang \etal)}}
+  \begin{itemize}
+  \item capitalize on \emph{causal structure} of the problem
+    \begin{itemize}
+    \item variations widely separated pixels have \emph{in common} must be induced by spacecraft variability
+    \end{itemize}
+  \item massive regression
+    \begin{itemize}
+    \item using pixels to fit pixels
+    \end{itemize}
+  \item train-and-test framework
+    \begin{itemize}
+    \item controlling model complexity
+    \item with Dun~Wang (NYU), Dan~Foreman-Mackey (NYU), Bernhard~Sch\"olkopf (T\"ubingen MPI-IS)
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{data-driven self-calibration \small{(Wang \etal)}}
+  \includegraphics<1>[width=\textwidth]{lightCurve_5088536_1_90_q5_reg1e+05_pdc_outlier.png}
+  \includegraphics<2>[width=\textwidth]{lightCurve_5088536_1_5_q5_reg0e+00_pdc_outlier.png}
 \end{frame}
 
 \begin{frame}
@@ -136,25 +198,30 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{statistics and applied mathematics}
+  \frametitle{statistics and applied math projects}
   \begin{itemize}
   \item new MCMC methodologies
     \begin{itemize}
     \item with Jonathan Goodman (NYU Mathematics)
     \end{itemize}
-  \item computer vision for astronomy
+  \item computer vision meets astronomy
     \begin{itemize}
     \item with Rob Fergus (NYU Computer Science)
-    \item with Bernhard Sch\"olkpf (MPI-IS)
+    \item with Bernhard Sch\"olkpf (T\"ubingen MPI-IS)
+    \end{itemize}
+  \item causal inference and astrophysics
+    \begin{itemize}
+    \item with Bernhard Sch\"olkpf (T\"ubingen MPI-IS)
+    \item with Jennifer Hill (NYU PRIISM)
+    \end{itemize}
+  \item hierarchical modeling for dummies
+    \begin{itemize}
+    \item with Brendon Brewer (Auckland Statistics)
     \end{itemize}
   \item fast linear algebra ($n\,\log^2n$) for kernel matrices
     \begin{itemize}
     \item with Sivaram Ambikasaran (NYU Mathematics)
     \item with Mike O'Neil (NYU Mathematics)
-    \end{itemize}
-  \item hierarchical modeling for dummies
-    \begin{itemize}
-    \item with Brendon Brewer (Auckland Statistics)
     \end{itemize}
   \end{itemize}
 \end{frame}
@@ -165,8 +232,7 @@
   \item astronomers tend to think of ``engineering'' as ``hardware''
   \item all projects are \emph{integrated hardware--software systems}
     \begin{itemize}
-    \item design, build, operations, data analysis, legacy
-    \item my lab is a software+theory+methods shop
+    \item theory, design, build, operations, data handling, inference, legacy
     \end{itemize}
   \end{itemize}
 \end{frame}
