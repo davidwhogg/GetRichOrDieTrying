@@ -7,11 +7,7 @@ SUFF        = pdf
 
 NAME        = sk
 
-CHECK_RERUN = grep Rerun $*.log
-
 all: hogg_ddd_palo_alto.pdf
 
 %.pdf: %.tex
 	${LATEX} $<
-	( ${CHECK_RERUN} && ${LATEX} $< ) || echo "Done."
-	( ${CHECK_RERUN} && ${LATEX} $< ) || echo "Done."
