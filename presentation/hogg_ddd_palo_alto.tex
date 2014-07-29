@@ -2,6 +2,7 @@
 % Copyright 2014 David W. Hogg (NYU).
 
 \documentclass[aspectratio=169]{beamer}
+\usepackage{ulem}
 
 \setbeamertemplate{footline}[text line]{%
   \parbox{\linewidth}{\vspace*{-8pt}~\hfill David W. Hogg~/~\insertpagenumber}}
@@ -22,21 +23,11 @@
     \begin{itemize}
     \item high-level (planet populations) to low-level (detector pixels)
     \item there are gains available at every level
-    \item probailistic inference is my primary technology
+    \item probabilistic inference is my primary technology
     \end{itemize}
   \item other astrophysics projects
   \item methods projects
   \item \emph{feel free to tweet or blog me}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{David W. Hogg}
-  \begin{itemize}
-  \item \textsl{Professor of Physics,}\\ New York University
-  \item \textsl{Adjunct Senior Staff Scientist,}\\ Max-Planck-Institut f\"ur Astronomie, Heidelberg
-  \item \textsl{Executive Director,}\\ Moore--Sloan Data Science Environment at NYU
-  \item \textsl{Deputy Director,}\\ NYU Center for Data Science
   \end{itemize}
 \end{frame}
 
@@ -116,8 +107,8 @@
     \end{itemize}
   \item calibration and fundamental astronomy
     \begin{itemize}
-    \item \project{Sloan Digital Sky Survey}
-    \item \project{Euclid}
+    \item \project{Sloan Digital Sky Surveys} (now on v. 4)
+    \item 2014 Shaw Prize: Eisenstein: \emph{baryon acoustic feature}
     \end{itemize}
   \item citizen science with amateur astronomers
     \begin{itemize}
@@ -131,6 +122,7 @@
   \frametitle{NASA \Kepler\ Satellite}
   \includegraphics<1>[width=0.5\textwidth]{750603main_Ball_Kepler_A8468_275_lg_blog_main_horizontal.jpg}%
   \includegraphics<1>[height=0.85\textheight]{Kepler_FOV_hiRes.jpg}
+  \includegraphics<2>[width=0.5\textwidth]{750603main_Ball_Kepler_A8468_275_lg_blog_main_horizontal.jpg}%
   \includegraphics<2>[height=0.85\textheight]{FirstLightLogInvertedPink_wslbld2400.jpg}
 \end{frame}
 
@@ -149,27 +141,6 @@
 
 \begin{frame}
   \frametitle{Flexible models and marginalization \small{(Foreman-Mackey \etal)}}
-  \begin{itemize}
-  \item stars vary stochastically
-    \begin{itemize}
-    \item variability driven by turbulent convection
-    \item ``filtered'' by response of the star and photosphere
-    \end{itemize}
-  \item this is a source of structured noise
-    \begin{itemize}
-    \item correlated (covariant) non-independent noise in the data
-    \item non-trivial time history to stellar brightness
-    \end{itemize}
-  \item Methodology: \emph{Gaussian Processes}
-    \begin{itemize}
-    \item fastest code in the world for dense kernel-matrix operations (HODLR)
-    \item with Dan Foreman-Mackey (NYU), Sivaram Ambikasaran (NYU), Mike O'Neil (NYU)
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Flexible models and marginalization \small{(Foreman-Mackey \etal)}}
   \includegraphics[height=0.85\textheight]{kepler-prediction.png}
 \end{frame}
 
@@ -179,29 +150,13 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Flexible models and marginalization}
+  \frametitle<1>{Methods projects}
   \begin{itemize}
-  \item What changed?
+  \item fast linear algebra ($n\,\log^2n$) for kernel matrices \& Gaussian Processes
     \begin{itemize}
-    \item Can \emph{marginalize out} the stellar variability.
-    \item (Even hyper-parameters.)
-    \item Can perform inferences on extremely variable stars.
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Methods projects}
-  \begin{itemize}
-  \item new MCMC methodologies
-    \begin{itemize}
-    \item with Jonathan Goodman (NYU Mathematics)
-    \item \project{emcee} (top-10-cited astrophysics paper from 2013)
-    \end{itemize}
-  \item computer vision meets astronomy
-    \begin{itemize}
-    \item with Bernhard Sch\"olkpf (T\"ubingen MPI-IS)
-    \item with Rob Fergus (NYU Computer Science)
+    \item capitalizing on hierarchical off-diagonal low-rank (HODLR) form
+    \item with Sivaram Ambikasaran (NYU Mathematics)
+    \item with Mike O'Neil (NYU Mathematics)
     \end{itemize}
   \item causal inference and astrophysics
     \begin{itemize}
@@ -212,27 +167,14 @@
     \begin{itemize}
     \item with Brendon Brewer (Auckland Statistics)
     \end{itemize}
-  \item fast linear algebra ($n\,\log^2n$) for kernel matrices
+  \item new MCMC methodologies
     \begin{itemize}
-    \item with Sivaram Ambikasaran (NYU Mathematics)
-    \item with Mike O'Neil (NYU Mathematics)
+    \item with Jonathan Goodman (NYU Mathematics)
+    \item \project{emcee} (\emph{top-10-cited astrophysics paper from 2013})
+    \item top-cited methods paper in all of astrophysics in 2013
     \end{itemize}
   \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{NASA \Kepler\ Satellite}
-  \begin{itemize}
-  \item stared at one patch of sky for 4.1~yr, exposure every 30~min
-  \item only downlinked tiny fraction of $8\times 10^7$ pixels
-  \item tens of pixels per star
-  \item fixed pointing (by quarter)
-    \begin{itemize}
-    \item optimal for photometric stability
-    \item \emph{pessimal} for self-calibration
-    \end{itemize}
-  \item \project{K2}, \project{TESS}
-  \end{itemize}
+  \frametitle<2>{\sout{Methods} Tools projects}
 \end{frame}
 
 \begin{frame}
@@ -243,6 +185,7 @@
 \begin{frame}
   \frametitle{Data-driven self-calibration \small{(Wang \etal)}}
   \begin{itemize}
+  \item \Kepler\ pixel responses vary with time at the percent level
   \item capitalize on \emph{causal structure} of the problem
     \begin{itemize}
     \item variations widely separated pixels have \emph{in common} must be induced by spacecraft variability
@@ -262,8 +205,7 @@
 
 \begin{frame}
   \frametitle{Data-driven self-calibration \small{(Wang \etal)}}
-  \includegraphics<1>[height=0.85\textheight]{lightCurve_5088536_1_90_q5_reg1e+05_pdc_outlier.png}
-  \includegraphics<2>[height=0.85\textheight]{lightCurve_5088536_1_5_q5_reg0e+00_pdc_outlier.png}
+  \includegraphics[height=0.85\textheight]{lightCurve_5088536_1_90_q5_reg1e+05_pdc_outlier.png}
 \end{frame}
 
 \begin{frame}
@@ -278,42 +220,14 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Time-domain astronomy}
-  \begin{itemize}
-  \item top priority for astrophysics in the next decades
-    \begin{itemize}
-    \item exoplanets, supernovae, asteroseismology, light echos
-    \item \project{LSST}, \project{Gaia}, \project{Euclid}, \project{WFIRST}
-    \end{itemize}
-  \item \textit{not going to talk about it, but ask me!}
-    \begin{itemize}
-    \item (or Josh Bloom)
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
   \frametitle{Open Science}
   \begin{itemize}
   \item my group runs \emph{wide open}
     \begin{itemize}
     \item open svn, github, blogging
-    \item \url{https://github.com/davidwhogg/DDD}
+    \item this talk is at \url{https://github.com/davidwhogg/DDD}
     \end{itemize}
   \item \textit{not going to talk about it, but ask me!}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Reclaim of ``engineering''}
-  \begin{itemize}
-  \item astronomers tend to think of ``engineering'' as ``hardware''
-  \item all projects are \emph{integrated hardware--software systems}
-    \begin{itemize}
-    \item theory, design, build, operations, data handling, inference, legacy
-    \item probabilistic modeling is a key technology for all components
-    \item my lab is a data analysis shop working on the full ``scientific stack'' (planets to pixels, for example)
-    \end{itemize}
   \end{itemize}
 \end{frame}
 
@@ -323,7 +237,7 @@
   \item Past
     \begin{itemize}
     \item self-calibration
-    \item fundamental astronomy
+    \item fundamental astronomy and measurements
     \item machine learning in astronomy (image recognition)
     \item cosmology with galaxies (baryon acoustic feature)
     \end{itemize}
@@ -336,7 +250,7 @@
     \end{itemize}
   \item Future
     \begin{itemize}
-    \item non-parametrics
+    \item non-parametrics, Gaussian Processes
     \item flexible instrument models
     \item uncertainty propagation at the catalog level
     \item discovery of the first true Earth analog?
