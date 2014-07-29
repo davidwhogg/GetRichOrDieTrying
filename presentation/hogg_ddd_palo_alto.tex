@@ -2,7 +2,6 @@
 % Copyright 2014 David W. Hogg (NYU).
 
 \documentclass[aspectratio=169]{beamer}
-\usepackage{ulem}
 
 \setbeamertemplate{footline}[text line]{%
   \parbox{\linewidth}{\vspace*{-8pt}~\hfill David W. Hogg~/~\insertpagenumber}}
@@ -75,9 +74,9 @@
 
 \begin{frame}
   \frametitle{Exoplanet populations \small{(Foreman-Mackey \etal)}}
-  \includegraphics<1>[width=0.75\textwidth]{pgm.pdf}
-  \includegraphics<2>[height=0.85\textheight]{results-results.pdf}
-  \includegraphics<3>[height=0.85\textheight]{results-rate.pdf}
+  ~\hfill\includegraphics<1>[width=0.75\textwidth]{pgm.pdf}
+  ~\hfill\includegraphics<2>[height=0.85\textheight]{results-results.pdf}
+  ~\hfill\includegraphics<3>[height=0.85\textheight]{results-rate.pdf}
 \end{frame}
 
 \begin{frame}
@@ -133,26 +132,26 @@
   \item $10^5$ measurements per star, $10^5$ stars
   \item optimized for stable photometric measurements
     \begin{itemize}
-    \item 10~ppm \emph{precision}
-    \item but both the s/c and stars vary!
+    \item \emph{10~ppm precision}
+    \item but \emph{both the spacecraft and stars vary}!
     \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}
   \frametitle{Flexible models and marginalization \small{(Foreman-Mackey \etal)}}
-  \includegraphics[height=0.85\textheight]{kepler-prediction.png}
+  ~\hfill\includegraphics[height=0.85\textheight]{kepler-prediction.png}
 \end{frame}
 
 \begin{frame}
   \frametitle{Flexible models and marginalization \small{(Barclay \etal)}}
-  \includegraphics[height=0.85\textheight]{ten_transits.png}
+  ~\hfill\includegraphics[height=0.85\textheight]{ten_transits.png}
 \end{frame}
 
 \begin{frame}
   \frametitle<1>{Methods projects}
   \begin{itemize}
-  \item fast linear algebra ($n\,\log^2n$) for kernel matrices \& Gaussian Processes
+  \item \emph{World's fastest} linear algebra ($n\,\log^2n$) for Gaussian Processes
     \begin{itemize}
     \item capitalizing on hierarchical off-diagonal low-rank (HODLR) form
     \item with Sivaram Ambikasaran (NYU Mathematics)
@@ -164,22 +163,19 @@
     \item with Bernhard Sch\"olkpf (T\"ubingen MPI-IS)
     \end{itemize}
   \item hierarchical modeling with importance sampling
-    \begin{itemize}
-    \item with Brendon Brewer (Auckland Statistics)
-    \end{itemize}
   \item new MCMC methodologies
     \begin{itemize}
+    \item ensemble methods that don't require problem-specific tuning
+    \item \project{emcee} (top-10-cited astrophysics paper from 2013)
+    \item \emph{top-cited methods paper in all of astrophysics} in 2013
     \item with Jonathan Goodman (NYU Mathematics)
-    \item \project{emcee} (\emph{top-10-cited astrophysics paper from 2013})
-    \item top-cited methods paper in all of astrophysics in 2013
     \end{itemize}
   \end{itemize}
-  \frametitle<2>{\sout{Methods} Tools projects}
 \end{frame}
 
 \begin{frame}
   \frametitle{Data-driven self-calibration \small{(Wang \etal)}}
-  \includegraphics[height=0.85\textheight]{kic_03544595_05_pixels.png}
+  ~\hfill\includegraphics[height=0.85\textheight]{kic_03544595_05_pixels.png}
 \end{frame}
 
 \begin{frame}
@@ -205,7 +201,7 @@
 
 \begin{frame}
   \frametitle{Data-driven self-calibration \small{(Wang \etal)}}
-  \includegraphics[height=0.85\textheight]{lightCurve_5088536_1_90_q5_reg1e+05_pdc_outlier.png}
+  ~\hfill\includegraphics[height=0.85\textheight]{lightCurve_5088536_1_90_q5_reg1e+05_pdc_outlier.png}
 \end{frame}
 
 \begin{frame}
