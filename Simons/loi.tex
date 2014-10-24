@@ -1,0 +1,142 @@
+\documentclass[12pt]{article}
+\usepackage{fancyheadings, color, hyperref}
+
+% hypertex insanity
+  \definecolor{linkcolor}{rgb}{0,0,0.4}
+  \hypersetup{
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=linkcolor,    % color of internal links
+    citecolor=linkcolor,    % color of links to bibliography
+    filecolor=linkcolor,    % color of file links
+    urlcolor=linkcolor      % color of external links
+  }
+% Margins and spaces
+  \setlength{\oddsidemargin}{0in}
+  \setlength{\topmargin}{0in}
+  \setlength{\headsep}{0.20in}
+  \setlength{\headheight}{0.25in}
+  \setlength{\textheight}{9.00in}
+  \addtolength{\topmargin}{-\headsep}
+  \addtolength{\topmargin}{-\headheight}
+  \setlength{\textwidth}{6.50in}
+  \setlength{\parskip}{0.5ex}
+% Headings and footing
+  \renewcommand{\headrulewidth}{0pt}
+  \pagestyle{fancy}
+  \lhead{\deemph{David W. Hogg}}
+  \chead{\deemph{Extracting Everything from Astronomical Imaging}}
+  \rhead{\deemph{\thepage}}
+  \cfoot{}
+
+\begin{document}
+
+\section*{Simons center for astrophysics and}
+
+\textbf{}
+
+\section*{Introduction}
+
+Modern science increasingly relies on finding subtle but fundamental signals in masses 
+of noisy data.
+As one example, the Higgs particle discovery rests on a mass of statistical modeling 
+and computation.
+Several actively debated issues in astrophysics rest on statistical analysis of noisy data.
+One is the BISON (... David? ..).
+Another is the possible abundance of earth analogue planets, with different estimates 
+differing by large factors.
+
+
+\section*{Our contributions}
+Hogg had build several productive collaborations with computational mathematicians, including
+Goodman and O'Neil.
+In both cases, the work created computational methods and quality software that have enabled
+new science.
+The Emcee Hammer package that made possible (....David ..?). 
+It is a sampler for multivariate probability distributions such as those that arise
+as posteriors in Bayesian statistical analyses.
+It has the property of {\em affine invariance}, which means its performance is uneffected  
+by linear changes of variable.
+This allows sampling from distributions that are arbitrarily ill-conditioned.
+Such distributions arise whenever components of a random object have different
+units (time, distance, mass, angle), and also when the data impose approximate relations 
+between variables without bounding variables individually.
+
+The Emcee Hammer package (and ???) have grown into a large well-tested software system
+that has dozens of active contributors and hundreds of users.
+Several developments, including parallel MCMC, were driven by users who were not
+initially collaborators (Dan, is this true?).
+
+Bayesian posterior sampling is sometimes impractical because the forward model is too 
+expensive to allow good sampling even with a very good MCMC algorithm.
+One example is Gaussian process models with many data points that require a determinant
+of a large dense matrix ($10^4\times 10^4$?) each likelihood call.
+The fast linear package ??(name)?? made this possible for the first time.
+That fast determinant software was subsequently used by (?? other team) for XXX.
+
+\section*{New research}
+\subsection*{New samplers **too many words here**}
+We have several ideas for much better MCMC samplers.
+One, which is partly developed, is an MCMC version of the Gauss Newton method for
+nonlinear least squares.
+It is common to fit parameters by optimizing least squares fits of nonlinear models to data.
+Sophisticated Gauss Newton Marquardt algorithms use user developed software to evaluate the 
+model and the Jacobian matrix of model sensitivities.
+We have an MCMC algorithm that uses this derivative information to become affine invariant.
+The proposals are Gaussian centered on the Gauss Newton point.
+We have discovered a robust backoff strategy related to line search without which the 
+algorithm is extremely bad, but with which far out-performs the Emcee Hammer package on 
+some hard exoplanet orbit fitting problems.
+
+We are also working on a Gaussian process model of the posterior log-likelihood surface.
+This uses ideas from experimental design and stochastic gradient descent in the space of
+log-likelihood surfaces.
+Experiments with a 2D highly non-Gaussian Rosenbrock model show that it identifies
+the log-likelihood surface reasonably well in just 50 likelihood evaluations.
+
+
+\subsection*{Evidence based model selection}
+\subsection*{??}
+
+\section*{The research group and funding level}
+The three central faculty of this proposal are Goodman, Hogg, and O'Neil.
+Current graduate student Foreman Mackey, who expects to finish this spring,
+would continue as a postdoctoral fellow.
+We plan for the final proposal to recruit three more tenured, tenure track, or
+equivalent level members at other institutions.
+Significant funding will go to an annual multi-disciplinary workshop and other
+outreach activities.
+We plan to hire six postdoctoral fellows and support six graduate students, in 
+equal proportion in mathematics and astrophysics.
+Collaborations within NYU will be facilitated by the Center for Data Science, which
+this project has significant synergy with.
+
+We estimate a final budget of approximately \$1.2M/year.
+
+Our research and outreach activities will lead to much interdisciplinary knowledge transfer
+as computational mathematicians learn the special features of problems from astrophysics
+and astrophysicists learn new mathematical and computational methods.  
+This interaction will be especially intense at the faculty and postdoc level.
+
+
+\section*{Community involvement and outreach}
+One of the distinctive features of our research is the way we interact and plan to interact
+with the larger mathematical and astrophysics communities.
+In addition to meetings within our group, we are planning several ways to reach out to
+and involve the larger computational mathematics and astrophysics communities.
+We will hold special sessions on Bayesian computation (?) at the annual ?? meetings.
+We will organize minisymposia on computational problems in astrophysics at annual
+SIAM meetings. 
+We will organize longer one week workshops that bring together mathematicians, statisticians,
+computer scientists, and astrophysicists not directly involved in the collaboration of this proposal.
+We will invite members of these larger communities to contribute to and collaborate with 
+software we support.
+
+
+
+
+
+
+
+
+
+\end{document}
