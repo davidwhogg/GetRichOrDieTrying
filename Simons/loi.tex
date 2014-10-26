@@ -23,27 +23,103 @@
 % Headings and footing
   \renewcommand{\headrulewidth}{0pt}
   \pagestyle{fancy}
-  \lhead{\deemph{David W. Hogg}}
-  \chead{\deemph{Extracting Everything from Astronomical Imaging}}
-  \rhead{\deemph{\thepage}}
+  \lhead{\textsf{Goodman, Hogg \& O'Neil: \textit{Making Astrophysical Inferences Tractable}}}
+  \rhead{\textsf{\thepage}}
   \cfoot{}
 
-\begin{document}
+\newcommand{\hoggitem}{$\bullet$}
 
-\section*{Simons center for astrophysics and}
+\begin{document}\sloppyy\sloppypar\thispagestyle{empty}
 
-\textbf{}
+\noindent
+\textbf{Simons Collaboration: Making Precise Astrophysical Inferences Tractable}\\
+\textit{Collaboration Director:} Jonathan Goodman (NYU)\\
+\textit{Core PIs:} Jonathan Goodman, David W. Hogg, Mike O'Neil (NYU)
+\bigskip
 
-\section*{Introduction}
+We propose a Simons Collaboration working at the intersection of
+Applied Mathematics and Astrophysics.
+The focus of the collaboration would be on probabilistic inference
+(think: Bayes), where astrophysics has benefitted from huge successes.
+The thinking in the astrophysics community about the next generation of
+projects, however, is currently limited by computational tractability:
 
-Modern science increasingly relies on finding subtle but fundamental signals in masses 
-of noisy data.
-As one example, the Higgs particle discovery rests on a mass of statistical modeling 
-and computation.
-Several actively debated issues in astrophysics rest on statistical analysis of noisy data.
-One is the BISON (... David? ..).
-Another is the possible abundance of earth analogue planets, with different estimates 
-differing by large factors.
+\hoggitem~For many problems it is nearly impossible to write down (let
+alone compute) a likelihood function.
+\hoggitem~Even when there \emph{is} a likelihood function, execution
+can be very slow, and it usually has to be executed enormous numbers
+of times in some kind of Markov Chain Monte Carlo method for
+inference.
+\hoggitem~There are often enormous numbers of nuisance parameters or
+even continuous functions of space and time that need to be
+marginalized out.
+\hoggitem~Propagtion of noise from the pixel level in detectors (where
+it is well understood) to the scientific quantities of most importance
+can involve exceedingly complex hierarchical structure.
+\hoggitem~At the ``bottom'' of this hierarchical structure is usually
+the telescope and camera (and possibly spectrograph) that took the
+data in the first place; this is part of the physical process by which
+the measurements were made and must be modeled along with all
+astrophysical signals.
+\hoggitem~Many of the signals we care about---here we focus on
+extra-solar planets and cosmological large-scale structure---are
+extremely small and can only be detected by principled simultaneous
+analyses of large collections of data.
+
+The Core Team of PIs already has a good record at developing ideas of
+applied mathematics in astrophysics contexts that address and
+ameliorate these issues in specific astrophysics settings.
+The Core Team has also had good success in propagating those methods
+in the astrophysics community---and a wider community of physical
+scientists---through publications, pedagogical events, and
+high-quality software tools.
+Our Collaboration proposal would involve growing our team into
+something of order eight PIs across several institutions, recruiting
+in a very targeted way from the Applied Mathematics and Astrophysics
+communities.
+
+\paragraph{Our contributions}
+
+Contemporary physics---and science in general---increasingly relies on
+finding subtle but important signals in masses of noisy data.
+Recent examples include the Higgs boson discovery, and the claim of
+signatures of inflation in cosmic background polarization.
+Both of these relied on extremely complex, approximate probabilistic
+inferences, performed on very large data sets subject to enormously
+complex auxilliary (non-fundamental) physical effects and non-trivial
+noise.
+In both cases, the signal of importance is a tiny fraction or a tiny
+perturbation on the primary signals in the data set.
+In its own research projects, the Core Team has been looking for two
+kinds of important signals in large data sets:
+
+One is extra-solar planet (exoplanet) signals in precise
+radial-velocity and photometric measurements of stars.
+
+Here the exoplanet signals are tiny; the planets of greatest interest
+produce signals that are smaller in amplitude than typical
+contributions of stochastic stellar variability (from surface
+convection, helioseismology, and starspots).
+
+...Fengji one
+
+...emcee ...Citations!
+
+...Fengji two
+
+...george + HODLR ...Barclay paper
+
+The other kind of signal we have been looking for is the weak-lensing
+
+...Great, Schneider, etc.
+
+An important unifying component to all of this is camera modeling
+(even spectrographs are cameras).
+
+...Tractor and K2
+
+...Fergus and Sch\"olkopf
+
 
 
 \section*{Our contributions}
