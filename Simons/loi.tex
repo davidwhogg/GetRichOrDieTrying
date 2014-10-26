@@ -1,3 +1,11 @@
+% Copyright 2014 the authors.  All rights reserved.
+
+% ## style guide:
+% - nothing higher level than \paragraph{}
+% - line break between sentences (that means you, O'Neil)
+% - capitalize Collaboration
+% - products and brands are \project{foo}
+
 \documentclass[12pt]{article}
 \usepackage{fancyheadings, color, hyperref}
 
@@ -27,6 +35,10 @@
   \rhead{\textsf{\thepage}}
   \cfoot{}
 
+\newcommand{\foreign}[1]{\textsl{#1}}
+\newcommand{\etal}{\foreign{et~al.}}
+\newcommand{\project}[1]{\textsl{#1}}
+
 \newcommand{\hoggitem}{$\bullet$}
 
 \begin{document}\sloppy\sloppypar\thispagestyle{empty}
@@ -39,7 +51,7 @@
 
 We propose a Simons Collaboration working at the intersection of
 Applied Mathematics and Astrophysics.
-The focus of the collaboration would be on probabilistic inference
+The focus of the Collaboration would be on probabilistic inference
 (think: Bayes), where astrophysics has benefitted from huge successes.
 The thinking in the astrophysics community about the next generation of
 projects, however, is currently limited by computational tractability:
@@ -80,77 +92,108 @@ communities.
 
 \paragraph{Our contributions}
 
+ALL OF THIS IS WAY TOO LONG!!
+
 Contemporary physics---and science in general---increasingly relies on
 finding subtle but important signals in masses of noisy data.
-Recent examples include the Higgs boson discovery, and the claim of
-signatures of inflation in cosmic background polarization.
-Both of these relied on extremely complex, approximate probabilistic
-inferences, performed on very large data sets subject to enormously
-complex auxilliary (non-fundamental) physical effects and non-trivial
-noise.
-In both cases, the signal of importance is a tiny fraction or a tiny
-perturbation on the primary signals in the data set.
-In its own research projects, the Core Team has been looking for two
+In its work to date, the Core Team has been looking for two
 kinds of important signals in large data sets:
-
 One is extra-solar planet (exoplanet) signals in precise
 radial-velocity and photometric measurements of stars.
-
 Here the exoplanet signals are tiny; the planets of greatest interest
 produce signals that are smaller in amplitude than typical
 contributions of stochastic stellar variability (from surface
 convection, helioseismology, and starspots).
+Thousands of planets have been found despite this, but each (even
+small) improvement in modeling either the exoplanetary systems or else
+the stochastic variability of the stars has led to new discoveries and
+better measurements.
 
-...Fengji one
+We have a set of successful exoplanet projects along these lines:
+\hoggitem~We have built a suite of novel MCMC samplers (Hou \etal,
+2012; Foreman-Mackey \etal, 2013; Hou \etal, 2014) some of which are
+based on a self-tuning (affine-invariant) ensemble proposal (Goodman
+\& Weare, 2010).
+The Foreman-Mackey code is currently getting a dozen citations per
+month in the refereed literature in a wide range of disciplines.
+Some of the Hou codes compute the fully marginalized likelihood, which
+can inform decisions in probabilistic inferences.
+\hoggitem~We have built and applied fast linear algebra for
+hierarchical off-diagonal low-rank matrices for doing Gaussian Process
+regression, marginalization, and likelihood function evaluation
+(Ambikasaran \etal, 2014).
+Our code that implements this can do million-by-million problems to
+machine precision on standard laptops and is now being used by many
+researchers in different fields and is generating not just downloads
+but open-source pull requests from researchers working on github.
+\hoggitem~Our methods made it possible to resolve some controversies
+in the astronomical literature, including one about planet
+multiplicity in a radial-velocity system (Hou \etal, 2014), and
+another about the reality of some transits around a highly variable
+giant star (Barclay \etal, 2014).
+They will also make new exoplanet searches more sensitive.
+\hoggitem~We produced the first fully probabilistic hierarchical
+inference of the exoplanet population (Foreman-Mackey \etal, 2014)
+based on an importance-sampling method we published a few years
+earlier (Hogg \etal, 2010).
+This hierarchical inference gave different (by a factor of seven for
+the abundance of Earth-like planets) answers than previous inferences,
+in part because it made far more responsible use of the data
+(propagating noise), and in part because it made far less restrictive
+assumptions.
 
-...emcee ...Citations!
-
-...Fengji two
-
-...george + HODLR ...Barclay paper
-
-The other kind of signal we have been looking for is the weak-lensing
-
-...Great, Schneider, etc.
+The other kind of signal we have been working on is the weak-lensing
+distortions to galaxies induced by large-scale structure in the
+density (dark matter).
+This signal is hard to find because the weak-lensing distortions of
+galaxies are tiny (percent-level) while galaxies have very complex
+morphologies.
+\hoggitem~So far, our biggest contribution is to deliver a system that
+can compute the likelihood of the \emph{pixels} of the read-out
+imaging from the telescope in terms of the cosmological parameters
+(Schneider \etal, in preparation).
+This system works like our exoplanet work with importance sampling.
+We used it to enter the GREAT3 weak lensing challenge, which is being
+written up now (Mandelbaum \etal, in prep).
+\hoggitem~The pixel-level component of this project involves image
+modeling; we have developed an extremely general and flexible
+framework for this and open-source code, \project{The~Tractor} (Lang
+\etal, in prep), which is now being used in multiple cosmological
+projects.
 
 An important unifying component to all of this is camera modeling
-(even spectrographs are cameras).
+(and even spectrographs are cameras).
+In addition to \project{The~Tractor}, we have been doing some work in
+completely data-driven camera modeling.
+\hoggitem~With Rob Fergus (NYU) we are building computer-vision-based
+models for complex astronomical imagers (Fergus \etal, 2014).
+These models made it possible for the first time ever to perform
+infrared spectroscopy of some young exoplanets (Oppenheimer \etal,
+2014).
+\hoggitem~With Bernhard Sch\"olkopf (MPI-IS) we are using ideas from
+causal inference to separate intrinsic and spacecraft-induced
+variability in NASA \project{Kepler} light-curves (Wang \etal, in
+prep; Foreman-Mackey \etal, in prep).
+These models make predictions for stars using other stars; the models
+have enormous flexibility (many input stars and flexible functions of
+those stars in the prediction step).
+\hoggitem~We are trying to build a data-driven model of the
+\project{Kepler} focal plane to improve photometry in the \project{K2}
+mission, the post-\project{Kepler} mission in which the spacecraft
+does not point as precisely (Montet \etal, in prep).
 
-...Tractor and K2
+\paragraph{New Directions}
 
-...Fergus and Sch\"olkopf
+We have identified mathematical and astrophysical directions for
+research in the Collaboration.
+The details of what we propose would depend precisely on the PIs we
+recruit (see below) and the synergies we identify among them.
+Here, for example, are some ideas about directions we have identified
+as clearly promising.
 
+EACH OF THE FOLLOWING NEEDS TO GET DOWN TO LIKE TWO SENTENCES OR SO
 
-
-\section*{Our contributions}
-Hogg had build several productive collaborations with computational mathematicians, including
-Goodman and O'Neil.
-In both cases, the work created computational methods and quality software that have enabled
-new science.
-The Emcee Hammer package that made possible (....David ..?). 
-It is a sampler for multivariate probability distributions such as those that arise
-as posteriors in Bayesian statistical analyses.
-It has the property of {\em affine invariance}, which means its performance is uneffected  
-by linear changes of variable.
-This allows sampling from distributions that are arbitrarily ill-conditioned.
-Such distributions arise whenever components of a random object have different
-units (time, distance, mass, angle), and also when the data impose approximate relations 
-between variables without bounding variables individually.
-
-The Emcee Hammer package (and ???) have grown into a large well-tested software system
-that has dozens of active contributors and hundreds of users.
-Several developments, including parallel MCMC, were driven by users who were not
-initially collaborators (Dan, is this true?).
-
-Bayesian posterior sampling is sometimes impractical because the forward model is too 
-expensive to allow good sampling even with a very good MCMC algorithm.
-One example is Gaussian process models with many data points that require a determinant
-of a large dense matrix ($10^4\times 10^4$?) each likelihood call.
-The fast linear package ??(name)?? made this possible for the first time.
-That fast determinant software was subsequently used by (?? other team) for XXX.
-
-\section*{New research}
-\subsection*{New samplers **too many words here**}
+\hoggitem~\textbf{New MCMC methods:}
 We have several ideas for much better MCMC samplers.
 One, which is partly developed, is an MCMC version of the Gauss Newton method for
 nonlinear least squares.
@@ -169,50 +212,78 @@ log-likelihood surfaces.
 Experiments with a 2D highly non-Gaussian Rosenbrock model show that it identifies
 the log-likelihood surface reasonably well in just 50 likelihood evaluations.
 
+\hoggitem~\textbf{Evidence-based model selection} GOODMAN!
 
-\subsection*{Evidence based model selection}
-\subsection*{??}
+\hoggitem~\textbf{New regimes for fast linear algebra} ONEIL!
 
-\section*{The research group and funding level}
-The three central faculty of this proposal are Goodman, Hogg, and O'Neil.
+\hoggitem~\textbf{Effective models of astronomical instruments} HOGG
+
+\hoggitem~\textbf{Noise models for stochastic variable stars} HOGG
+
+\hoggitem~\textbf{Hierarchical models of exoplanet populations} HOGG
+
+\hoggitem~\textbf{Marginalization of the cosmological density field} HOGG
+
+\paragraph{Collaboration personnel and budget}
+
+The three Core PIs for this proposal are Goodman, Hogg, and O'Neil.
 Current graduate student Foreman Mackey, who expects to finish this spring,
-would continue as a postdoctoral fellow.
-We plan for the final proposal to recruit three more tenured, tenure track, or
-equivalent level members at other institutions.
-Significant funding will go to an annual multi-disciplinary workshop and other
-outreach activities.
-We plan to hire six postdoctoral fellows and support six graduate students, in 
-equal proportion in mathematics and astrophysics.
-Collaborations within NYU will be facilitated by the Center for Data Science, which
-this project has significant synergy with.
+would---if we can retain him---continue as a postdoctoral fellow.
+We plan for the full proposal to recruit three to five more tenured,
+tenure track, or equivalent level members at other institutions.
+Our current list of recruiting candidates includes Tom Hou (Caltech),
+John Johnson (Harvard), Mario Juric (UW), Phil Marshall (KIPAC),
+Bernhard Sch\"olkopf (MPI-IS), ADD NAMES HERE.
+We would plan to hire eight postdoctoral fellows and support eight
+graduate students, in equal proportion in mathematics and
+astrophysics.
+Collaborations within NYU will be facilitated by and leverage the NYU
+Center for Data Science, with which this project has significant
+synergy.
+We estimate a final budget of approximately 2.1M USD per year,
+depending on the number of PIs and their commitments.
 
-We estimate a final budget of approximately \$1.2M/year.
+\paragraph{Collaboration plan and community involvement}
 
-Our research and outreach activities will lead to much interdisciplinary knowledge transfer
-as computational mathematicians learn the special features of problems from astrophysics
-and astrophysicists learn new mathematical and computational methods.  
-This interaction will be especially intense at the faculty and postdoc level.
+Our research and outreach activities will lead to much
+interdisciplinary knowledge transfer as computational mathematicians
+learn the special features of problems from astrophysics and
+astrophysicists learn new mathematical and computational methods.
+Within the Collaboration, this means quality time spent translating
+problems, methods, terminology, and notation between fields, and a lot
+of shared knowledge.
+We would expect to leverage the technology of the NYU Center for Data
+Science to hold regular inter-institutional group meetings to discuss
+work in progress.
 
+Externally, one of the distinctive features of our research is the way
+we interact and plan to interact with the larger mathematical and
+astrophysics communities.
+In addition to an annual Collaboration meeting in New York at the
+Simons Foundation---where we would invite not just our team but
+relevant outsiders---we expect to engage the broader community through
+hack days and tutorials at professional meetings.
+It is already the case that some of the impact of our MCMC and
+Gaussian Process code bases has been generated by our work operating Hack
+Days at the American Astronomical Society (AAS) annual meetings and the
+dotastronomy meetings for astronomy engineering, and also the annual
+Astro Hack Week we have just started with collaborators at UW and
+Berkeley.
 
-\section*{Community involvement and outreach}
-One of the distinctive features of our research is the way we interact and plan to interact
-with the larger mathematical and astrophysics communities.
-In addition to meetings within our group, we are planning several ways to reach out to
-and involve the larger computational mathematics and astrophysics communities.
-We will hold special sessions on Bayesian computation (?) at the annual ?? meetings.
-We will organize minisymposia on computational problems in astrophysics at annual
-SIAM meetings. 
-We will organize longer one week workshops that bring together mathematicians, statisticians,
-computer scientists, and astrophysicists not directly involved in the collaboration of this proposal.
-We will invite members of these larger communities to contribute to and collaborate with 
-software we support.
+We would propose to add events to the annual winter AAS meetings
+during the Collaboration funding period, and do the same at the SIAM
+and possibly JSM.
+These would probably take the form of Applied-Math-meets-Astronomy
+Hack Days, since these have been so successful previously, but the
+style and scope would be related to the interests and capabilities of
+the Collaboration faculty and employees.
 
-
-
-
-
-
-
-
+Importantly, we intend for all work in the Collaboration to proceed
+along a fully ``open'' model, as the work of the Core Team already
+exemplifies.
+We expect that a significant part of our community involvement will
+proceed through sharing of code and projects in progress.
+In particular, all the publications from the Collaboration would be
+supported by open-source code with good licensing (MIT or similar).
 
 \end{document}
