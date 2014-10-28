@@ -38,8 +38,6 @@
   \usepackage{mathpazo}
     \usepackage{pdfpages}
 
-
-
 \newcommand{\foreign}[1]{\textsl{#1}}
 \newcommand{\etal}{\foreign{et~al.}}
 \newcommand{\project}[1]{\textsl{#1}}
@@ -56,97 +54,84 @@
 \textbf{Simons Collaboration: Making Precise Astrophysical Inferences
 Tractable}\\
 \textit{Collaboration Director:} Jonathan Goodman (Mathematics, NYU)\\
-\textit{Core P.I.'s:} Jonathan Goodman, David W. Hogg (Physics, NYU), 
-Mike O'Neil (Mathematics, NYU)\\
-\textit{Collaborating faculty:} Tom Hou (Applied Mathematics, Caltech)
+\textit{Core PIs:} Jonathan Goodman, David W. Hogg (Physics, NYU), Mike O'Neil (Mathematics, NYU)
+% \textit{Collaborating faculty:} Tom Hou (Applied Mathematics, Caltech)
 \end{center}
-\bigskip
+\smallskip
 
 We propose a Simons Collaboration working at the intersection of applied
-mathematics and astrophysics.
-% This isn't German.  Nouns aren't capitalized.
-The collaboration will focus on robust probabilistic inference 
-and detection.
+mathematics and astrophysics, to facilitate probabilistic inference 
+and discovery.
 Probabilistic inference methods have already led to important successes in
-astrophysics, including in the analysis of {\em Kepler} mission data,
+astrophysics, including in the analysis of NASA \project{Kepler} mission data,
 but many calculations and simulations are still out of reach due to their 
 apparent computational intractability.
 This collaboration will bring together leaders in
 modern computational and applied mathematics (fast algorithms, numerical
-analysis, computational stochastics, etc.) with those at the forefront of
-% I don't want to say computational statistics because we're not statisticians.
+analysis, computational stochastics) with those at the forefront of
 developing probabilistic and statistical models of astrophysical
-phenomena with the goal of overcoming many of these computational
+phenomena, with the goal of overcoming many of these computational
 bottlenecks.
 
 Most large-scale probabilistic modeling via numerical
-methods faces two well-known computational bottlenecks: likelihood
+methods faces two computational bottlenecks: likelihood
 evaluation and stochastic simulation.
-In the case where a likelihood function can be analytically written down
-(and this is not always possible), its evaluation can be numerically
+In the case where a likelihood function can be written down
+(and this is not always possible), evaluation can be numerically
 intractable, often involving the application or inversion of
-large-scale, {\em dense} matrices.
-Even when the numerical evaluation of the likelihood function can be
-made efficient, inference methods require that it still be
-performed an enormous number of times from within an optimization or
-Markov Chain Monte Carlo (MCMC) simulation (we have ignored any
-additional marginalization of nuisance parameters).
+large dense matrices.
+Even when the numerical evaluation of the likelihood is
+made efficient, inference methods require that it be
+evaluated an enormous number of times from within an optimization or
+Markov Chain Monte Carlo (MCMC) loop.
 
-For example, the propagation of noise from the pixel level in detectors
+For example, the propagation of noise from the pixel level in astronomical detectors
 (where it is well understood) to the scientific quantities of most
 importance can involve exceedingly complex hierarchical dependencies.
-Each level of this hierarchical structure often involves the full
-statistical inference procedure that we just described.
-At the {\em bottom} of this hierarchical structure is usually the
+Each level of this hierarchical structure often involves a complete
+statistical inference.
+At the \emph{bottom} of this hierarchical structure is usually the
 telescope and camera (and possibly spectrograph) that took the data in
 the first place; a precise first-principles model of the physical
 process by which the measurements were made must be constructed in order
 to properly interpret and quantify the astrophysical signals.
-Many of the signals we will focus on detecting -- namely the existence
-of extra-solar planets and cosmological large-scale structure -- are
-extremely small and can only be detected via a robust simultaneous
-analysis of several large collections of data.
+Many of the signals we will focus on detecting---extra-solar planets and cosmological large-scale structure---are
+extremely small and can only be detected via simultaneous
+analysis of large collections of data.
 
 Just as important as developing new methods, the Core Team intends to
-propagate these methods within the astrophysics community -- and a wider
-community of physical scientists -- through publications, pedagogical
-events, and high-quality software tools. 
-We have a proven history of success in this area.
-Our Collaboration proposal will involve growing our team into one on the
-order of six to eight P.I.'s across several institutions, selectively
-recruiting from the Applied Mathematics and Astrophysics communities.
+propagate these methods within the astrophysics community---and a wider
+community of physical scientists---through publications, pedagogical
+events (hack days and tutorials), and high-quality software tools. 
+We have a proven history of success in all three forms of methodological outreach.
+Our Collaboration proposal will involve growing our team to
+six or eight PIs across several institutions, selectively
+recruiting from the applied mathematics and astrophysics communities.
 
 \paragraph{Our contributions}
 
-%In particular, Goodman and Hogg's recent collaboration has yielded one
-%of the most robust methods for Markov Chain Monte Carlo methods.
-%Furthermore, Hogg and O'Neil's recent collaboration resulted in what is
-%currently the asymptotically fastest algorithm for the computational
-%manipulation of low-dimensional Gaussian processes.
-
-The Core P.I.'s already have an excellent track record of developing
+The Core PIs already have an excellent track record of developing
 techniques to address computational roadblocks in astrophysics which
 utilize recent advances in applied mathematics. We outline some of the
 recent work below.
 
-Contemporary physics -- and science in general -- increasingly relies on
+Contemporary physics---and science in general---increasingly relies on
 finding subtle but important signals in masses of noisy data.
-In its work to date, the Core Team has mainly been searching for two
+The past work of the Core Team has mainly been in searching for two
 types of important signals in large data sets: (i) extra-solar planet
 (exoplanet) signals in precise radial-velocity and photometric
 measurements of stars, and (ii) weak-lensing distortions to galaxies
 induced by large-scale structure in the density (dark matter).
 
-Exoplanet signals are tiny -- often on the order of $0.01\%$???; the
+Exoplanet signals are tiny---on the order of $0.01$~percent---the
 planets of greatest interest produce signals that are smaller in
 amplitude than typical contributions of the background stochastic
 stellar variability (from surface convection, helioseismology, and
 starspots).
 Thousands of planets have been found despite this, but each (even small)
-improvement in modeling {\em either} the physical exoplanetary systems
+improvement in modeling \emph{either} the physical exoplanetary systems
 or the stochastic variability of the stars has led to better
 measurements and new discoveries.
-
 
 We currently have several successful exoplanet projects along these
 lines.
@@ -167,12 +152,12 @@ dense covariance matrices which appear in Gaussian Process modeling
 (Ambikasaran \etal, 2014).
 The resulting code implementation can invert million-by-million matrices
 to nearly machine precision on standard laptops and is now being used by
-several researchers in varying fields, not only generating just
-downloads, but requests for open-source collaboration on GitHub.
+several researchers in varying fields, not only generating
+downloads, but also pull requests (contributions) on GitHub.
 Both of these methods have made it possible to resolve some
 controversies in the astronomical literature, including planet
 multiplicity in a radial-velocity system (Hou \etal, 2014) and
-properties of some transits around a highly variable giant star (Barclay
+properties of some transits around highly variable stars (Barclay
 \etal, 2014).
 %They will also make new exoplanet searches more sensitive.
 We also produced the first fully probabilistic hierarchical inference of
@@ -201,8 +186,8 @@ in prep.), which is now being used in several cosmological projects.
 One important unifying component of our recent work is camera modeling
 (including spectrographs).
 In addition to \project{The~Tractor} and several ongoing first-principle
-{\em physical} models, we have been investigating camera models which
-are completely {\em data-driven}.
+\emph{physical} models, we have been investigating camera models which
+are completely \emph{data-driven}.
 In particular, with Rob Fergus (NYU), we are building
 computer-vision-based models for complex astronomical imagers (Fergus
 \etal, 2014).
@@ -222,20 +207,26 @@ focal plane to improve photometry in the \project{K2} mission, the
 post-\project{Kepler} mission in which the spacecraft is unable to point
 as precisely as in the original design (Montet \etal, in prep).
 
-
-
-
 \paragraph{New Directions}
 
 We have identified many new mathematical and astrophysical avenues for
 research in the Collaboration.
 The details of what we finally propose will depend precisely on the
-P.I.'s that we recruit (see below) and the joint-abilities that we
+PIs that we recruit (see below) and the joint-abilities that we
 identify among them.
 Here, for example, are several directions that we have already
 identified as clearly promising.
 
-\hoggitem~\textbf{Effective models of astronomical instruments} HOGG
+\textbf{Effective models of astronomical instruments:}
+If two sources imaged in a telescope vary or are distorted in a covariant
+way, when the sources are physically separated by enormous distances
+(as are stars or galaxies in typical images, for example), then the covariant
+variability must be telescope-induced.
+This causal structure is a handle with which variability can be separated
+into intrinsic (astrophysical) and artificial (instrument-induced) components.
+Causal structure maps onto conditional dependences in hierarchical modeling;
+we expect large gains to be made possible for future time-domain astrophysics projects
+by capitalizing on this.
 
 \textbf{First principles camera simulation:} 
 The large lenses contained in many telescopes are sometimes millions of
@@ -248,7 +239,19 @@ The combination of moden fast numerical algorithms and recent results in
 high-frequency asymptotics should prove useful in constructing accurate
 forward simulations of telescopic hardware.  
 
-\hoggitem~\textbf{Noise models for stochastic variable stars} HOGG
+\textbf{Noise models for stochastic variable stars:}
+Stars vary stochastically because of surface convection,
+asteroseismology (damped, driven normal modes), and star spots.
+In all three cases, we see opportunities to build physically motivated
+``noise models'' that account for the time-coherence properties of
+these sources of variability.
+In the normal-mode case, we can literally model the stellar surface as
+a damped, driven oscillator driven by some noise spectrum; this
+translates directly into a Gaussian Process for which we have very
+fast code.
+In the star-spot and convection models, it also appears that there may
+be stationary, non-trivial processes that can be developed and made
+tractable.
 
 \textbf{New MCMC methods:}
 We have many ideas for developing next-generation MCMC samplers.
@@ -290,37 +293,52 @@ for distributed computing environments, improvements in the accuracy
 which rely on the analytic formulation of the covariance kernel, and
 extensions to hierarchical probabilistic structures.
 
-\hoggitem~\textbf{Hierarchical models of exoplanet populations} HOGG
+\textbf{Hierarchical models of exoplanet populations:}
+The Core-Team work on making hierarchical problems tractable, by
+sampling with interim priors in the data center, and then combining
+those samplings using importance sampling in the final inference, has
+only scratched the surface of what might be possible going forward.
+It is now (in part because of the Core Team's influence) becoming
+understood in the astrophysics community that hierarchical inference
+is a requirement to propagate catalog-level or pixel-level noise to
+population-level inferences.
+There is abundant work to be done applying and extending these
+methods, in new areas of astrophysics, but also by exploring new ideas
+in MCMC sampling, where the samplers can capitalize on the
+hierarchical structure.
 
 \textbf{Marginalization of the cosmological density field:} 
-... requires a robust and flexible representation of the two-point
-autocorrelation function.
+It appears possible now to create flexible representations of the
+two-point autocorrelation function relevant to cosmology, including
+the general large-scale structure covariance and also the baryon
+acoustic feature (Eisenstein \etal, 2005).
+In principle, cosmological inferences (which currently proceed by
+comparing point estimates of the two-point function) coul dproceed
+through proper inference and marginalization of the density field.
 Several methods from numerical approximation theory and applied analysis
 seem to indicate that this can be made into a computationally tractable 
 problem.
-A flexible parameterization of correlation functions will surely have
-wide-ranging applications in various other fields.
-
-
-
+A flexible parameterization of correlation functions, and their use in
+fast marginalizations over random fields, will surely have wide-ranging
+applications in various other fields.
 
 \paragraph{Collaboration personnel and budget}
 
-The three Core P.I.'s for this proposal are Goodman, Hogg, and O'Neil.
+The three Core PIs for this proposal are Goodman, Hogg, and O'Neil.
 Current graduate student Foreman-Mackey (NYU), who expects to finish
-this spring, will -- if we can retain him -- continue as a postdoctoral
+this spring, will---if we can retain him---continue as a postdoctoral
 fellow.
 We plan for the full proposal to recruit three to five more tenured,
 tenure track, or equivalent level members at other institutions.  Our
 current list of recruiting candidates includes: Tom Hou (Caltech), John
-Johnson (Harvard), Mario Juric (UW), Phil Marshall (KIPAC), Bernhard
-Sch\"olkopf (MPI-IS), ADD NAMES HERE.
+Johnson (Harvard), Mario Juric (UW), Phil Marshall (KIPAC), and Bernhard
+Sch\"olkopf (MPI-IS).
 We will plan to hire eight postdoctoral fellows and support eight
 graduate students, in equal proportion in mathematics and astrophysics.
 Collaborations within NYU will leverage the NYU Center for Data Science,
 with which this project has significant relevance.
 We estimate a final budget of approximately 2.1M USD per year,
-based on a total of eight P.I.'s and their commitments approximate.
+based on a total of eight PIs and their commitments approximate.
 
 \paragraph{Collaboration plan and community involvement}
 
@@ -337,29 +355,14 @@ Externally, one of the distinctive features of our research is the way
 in which we interact, and plan to interact, with the larger mathematical
 and astrophysics communities.
 In addition to an annual Collaboration meeting in New York at the Simons
-Foundation -- where we would invite not just our team but relevant
-outsiders -- we expect to engage the broader community through {\em Hack
-Days} and tutorials at professional meetings.
+Foundation---where we would invite not just our team but relevant
+outsiders---we expect to engage the broader community through \emph{Hack
+Days} and tutorials at professional meetings, especially the AAS and the SIAM meetings.
 This approach has already proven to be extremely successful with regard
 to the impact of our MCMC and Gaussian Process software packages.
 
-%It is already the case that some of the impact of our MCMC and
-%Gaussian Process code bases has been generated by our work operating Hack
-%Days at the American Astronomical Society (AAS) annual meetings and the
-%dotastronomy meetings for astronomy engineering, and also the annual
-%Astro Hack Week we have just started with collaborators at UW and
-%Berkeley.
-
-We will propose to add events to the annual winter American Astronomical
-Society (AAS) meetings during the Collaboration funding period.
-We will do the same at the Society of Industrial and Applied Mathematics
-(SIAM) meetings, and possibly the Joint Statistical Meetings (JSM).
-These events will most likely take the form of
-Applied-Math-meets-Astronomy Hack Days, which have previously proven to
-be exceptionally successful.
-
 Equally important, we intend for all work in the Collaboration to
-proceed along a fully {\em open} model, as the work of the Core Team
+proceed along a fully \emph{open} model, as the work of the Core Team
 already exemplifies.
 We expect that a significant part of our community involvement will
 proceed through the sharing of software packages, as well as projects in
