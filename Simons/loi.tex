@@ -35,8 +35,8 @@
   \rhead{\textsf{\thepage}}
   \cfoot{}
 
-  \usepackage{mathpazo}
-    \usepackage{pdfpages}
+%  \usepackage{mathpazo}
+%    \usepackage{pdfpages}
 
 \newcommand{\foreign}[1]{\textsl{#1}}
 \newcommand{\etal}{\foreign{et~al.}}
@@ -51,93 +51,62 @@
 \begin{document}\sloppy\sloppypar\thispagestyle{empty}
 
 \begin{center}
-\textbf{Simons Collaboration: Making Precise Astrophysical Inferences
-Tractable}\\
+\textbf{Simons Collaboration: Making Precise Astrophysical Inferences Tractable}\\
 \textit{Collaboration Director:} Jonathan Goodman (Mathematics, NYU)\\
-\textit{Core PIs:} Jonathan Goodman, David W. Hogg (Physics, NYU), Mike O'Neil (Mathematics, NYU)
+\textit{Core PIs:} Jonathan Goodman, David W. Hogg (Physics, NYU), Mike O'Neil (Math, NYU)
 % \textit{Collaborating faculty:} Tom Hou (Applied Mathematics, Caltech)
 \end{center}
 \smallskip
 
-
 We propose a Simons Collaboration to develop new mathematical and computational 
 methods for probabilistic inference and discovery in astrophysics.
-Contemporary physics increasingly relies on
-finding subtle but important signals in masses of noisy data.
-Probabilistic inference was crucial for recent discoveries in
-astrophysics, such as the unexpected abundance and distribution of
-exoplanets found using NASA \project{Kepler} mission data.
-%  In my experience, mathematicians don't know what Kepler is.
+Probabilistic inference was crucial for many recent discoveries,
+including the unexpected abundance and distribution of
+exoplanets found in the NASA \project{Kepler} satellite data.
 The next steps involve systematic simultaneous hierarchical inference
 and more detailed physical models, both of the objects being studied and of
 the instruments (lenses, CCD arrays, etc.).
-These steps are very difficult or infeasible
-with present computational algorithms.
+These steps are infeasible with present algorithms.
 
 This Letter of Intent identifies mathematical research areas that may enable
-more subtle and powerful inference from astrophysical data.
-We also suggest modeling (statistical and physical) directions in
-astrophysics that potentially address questions such as the abundance of earth analogue
-planets and the distribution of matter (David -- I'm out of my depth here).
-The core PIs recent contributions demonstrate that this applied mathematics/astrophysics
-collaboration can lead both to interesting new mathematics and to discoveries
-in astrophysics.
+more subtle and powerful inference from astrophysical data,
+and astrophysics research areas that may benefit from new math technology.
+We focus on Earth-analog exoplanets and the distribution of dark matter,
+but the application areas are broad.
+The Core PIs' recent contributions demonstrate that this collaboration
+between applied mathematics and astrophysics
+can lead both to interesting new mathematics and to astronomical discoveries.
 We mention the fast algorithms that were needed to evaluate determinants in
 Gaussian process models, and systematic hierarchical evaluation of the evidence
-integral used to decide between different planet models.
-These led to ... (david) ... 
+integral used to decide between different planet models; these permitted
+us to answer statistical questions that other groups have been unable to answer.
 
 The computational cost of large-scale probabilistic modeling and Bayesian 
-inference depends on the cost likelihood evaluation and on 
-the Markov Chain Monte Carlo (MCMC) sampling strategy.
+inference depends on the cost of a likelihood evaluation and the number of evaluations required.
 The likelihood calls may involve large dense but structured linear algebra
 that is amenable to fast methods, or they might involve differential 
-equations with fast solvers, or they may have low accuracy but cheap 
-approximations.
-Better MCMC strategies require fewer likelihood evaluations.
+equations with fast solvers, or they may have low accuracy but cheap approximations.
+Better MCMC strategies require fewer likelihood evaluations per independent sample.
 This may involve affine invariance, or learning from rejected samples
 via response surface modeling, or using derivative information and
 multi-level sampling.
 
 Better algorithms will allow, and will be driven by, more complex, physical, and
 detailed models for inference.
-This includes more realistic noise and distortion models (begone, independent 
-equal variance Gaussians) that take into account non-linear physics of the source
+This includes more realistic noise and distortion models (begone, iid)
+that take into account non-linear physics of the source
 and the instrument.
 It also includes simultaneous complex inference ranging from groups of stars to
 populations of planets to the matter distribution of the universe.
 
-
-
-
-
-%
-%
-%For example, the propagation of noise from the pixel level in astronomical detectors
-%(where it is well understood) to the scientific quantities of most
-%importance can involve exceedingly complex hierarchical dependencies.
-%Each level of this hierarchical structure often involves a complete
-%statistical inference.
-%At the \emph{bottom} of this hierarchical structure is usually the
-%telescope and camera (and possibly spectrograph) that took the data in
-%the first place; a precise first-principles model of the physical
-%process by which the measurements were made must be constructed in order
-%to properly interpret and quantify the astrophysical signals.
-%Many of the signals we will focus on detecting---extra-solar planets and cosmological large-scale structure---are
-%extremely small and can only be detected via simultaneous
-%analysis of large collections of data.
-
-Our proposal will include creative ways to reach out to and involve people.
-We will propagate new techniques within the astrophysics community---and a wider
-community of physical scientists---through publications, pedagogical
-events (hack days and tutorials), and high-quality open-source
-collaborative software. 
+Our proposal will include creative ways to reach out to and involve people in
+the math and astrophysics communities,
+through publications, pedagogical events (hack days and tutorials), and high-quality open-source
+collaborative software.
 Some of our success of these kinds are described below.
 We will grow our team to six or eight PIs across several institutions, 
 recruiting from the applied mathematics and astrophysics communities.
 People listed below have agreed to participate.
-
-
 
 \paragraph{Our contributions.}
 
