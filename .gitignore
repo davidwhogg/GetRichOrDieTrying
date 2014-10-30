@@ -1,8 +1,9 @@
 *~
 *.aux
 *.log
+*.nav
 *.out
 *.pdf
-*.nav
 *.snm
 *.toc
+vc.tex
