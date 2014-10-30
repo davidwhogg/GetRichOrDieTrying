@@ -6,7 +6,7 @@
 % - capitalize Collaboration
 % - products and brands are \project{foo}
 
-\documentclass[12pt]{article}
+\documentclass[11pt]{article}
 \usepackage{fancyheadings, color, hyperref}
 \usepackage{tabto}
 % hypertex insanity
@@ -48,6 +48,8 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{url}
 
+\renewcommand{\paragraph}[1]{\smallskip\par\noindent\textbf{{#1}:}}
+
 \begin{document}\sloppy\sloppypar\thispagestyle{empty}
 
 \begin{center}
@@ -70,73 +72,56 @@ These steps are infeasible with present algorithms.
 
 This Letter of Intent identifies mathematical research areas that may enable
 more subtle and powerful inference from astrophysical data,
-and astrophysics research areas that may benefit from new math technology.
-We focus on Earth-analog exoplanets and the distribution of dark matter,
-but the application areas are broad.
+and astrophysics research areas that may benefit from new mathematics.
 The Core PIs' recent contributions demonstrate that this collaboration
 between applied mathematics and astrophysics
 can lead both to interesting new mathematics and to astronomical discoveries.
-We mention the fast algorithms that were needed to evaluate determinants in
-Gaussian process models, and systematic hierarchical evaluation of the evidence
-integral used to decide between different planet models; these permitted
-us to answer statistical questions that other groups have been unable to answer.
 
 The computational cost of large-scale probabilistic modeling and Bayesian 
-inference depends on the cost of a likelihood evaluation and the number of evaluations required.
-The likelihood calls may involve large dense but structured linear algebra
-that is amenable to fast methods, or they might involve differential 
-equations with fast solvers, or they may have low accuracy but cheap approximations.
+inference depends on the cost of a likelihood evaluation and the number of such evaluations.
+Likelihood calls may involve large dense but structured linear algebra
+amenable to fast methods, or differential 
+equations with fast solvers, or cheap approximations (at perhaps a cost in accuracy).
 Better MCMC strategies require fewer likelihood evaluations per independent sample.
 This may involve affine invariance, or learning from rejected samples
 via response surface modeling, or using derivative information and
 multi-level sampling.
-
 Better algorithms will allow, and will be driven by, more complex, physical, and
 detailed models for inference.
-This includes more realistic noise and distortion models (begone, iid)
+This includes more realistic noise models
 that take into account non-linear physics of the source
 and the instrument.
 It also includes simultaneous complex inference ranging from groups of stars to
 populations of planets to the matter distribution of the universe.
 
-Our proposal will include creative ways to reach out to and involve people in
-the math and astrophysics communities,
-through publications, pedagogical events (hack days and tutorials), and high-quality open-source
-collaborative software.
-Some of our success of these kinds are described below.
-We will grow our team to six or eight PIs across several institutions, 
+In putting together the full proposal will grow our team to six or eight PIs across several institutions, 
 recruiting from the applied mathematics and astrophysics communities.
-People listed below have agreed to participate.
+Our proposal will also include creative ways to reach out to and involve people in
+the math and astrophysics communities.
 
-\paragraph{Our contributions.}
-
-Much of the research of the core PIs is in the directions described above.
-Our mathematics/astrophysics collaborations, driven by exoplanet questions,
-have been productive.
+\paragraph{Our contributions}
+The Core Team's work, driven by exoplanet questions,
+have been productive:
 We created a suite of novel MCMC samplers 
 (Hou \etal, 2012; Foreman-Mackey \etal, 2013; Hou \etal,
 2014), some of which are based on a self-tuning (affine-invariant)
 ensemble proposal (Goodman \& Weare, 2010).
-We produced the first reliable (quantitatively accurate computationally 
+We produced the first reliable (quantitatively accurate; computationally 
 verified error bars) computations of certain fully
 marginalized likelihoods, which allowed us to address a controversy
 about the number of planets about the star Gliese 581 (Hou \etal, 2014).
-An MCMC code written by Foreman-Mackey receives a dozen
-citations per month across a wide range of disciplines.
+The MCMC code written by Foreman-Mackey receives a dozen
+citations per month across a wide range of physics disciplines.
 
-A project spearheaded by O'Neil and Hogg resulted in
-fast (nearly-optimal), high-accuracy linear algebra
+We created fast (nearly-optimal), high-accuracy linear algebra
 routines for calculating the inverse and determinant of the large-scale
-dense covariance matrices which appear in Gaussian process modeling
+dense covariance matrices which appear in Gaussian processes
 (Ambikasaran \etal, 2014).
 The resulting code can invert million-by-million matrices
 accurately on laptops and is now being used by
 several researchers in varying fields.
-It generates downloads and also pull requests (contributions) 
-on GitHub.
 These tools allowed us to address a controversy concerning properties 
 of some transits around highly variable stars (Barclay \etal, 2014).
-%They will also make new exoplanet searches more sensitive.
 We also produced the first fully probabilistic hierarchical inference of
 the exoplanet population (Foreman-Mackey \etal, 2014) based on an
 earlier importance-sampling method of ours (Hogg \etal, 2010).
@@ -145,57 +130,44 @@ the abundance of Earth-like planets) answers than previous inferences,
 due in part to far more responsible use of the data (propagating noise)
 and far less restrictive assumptions.
 
-Hogg and collaborators have been using these and other tools to study
+We have been using these and other tools to study
 weak-lensing distortions ($\sim 0.1\%$), which are hard to find
 due to the complex morphologies of galaxies.
 The biggest contribution so far is a system
-that can compute the likelihood of the \emph{pixels} of the read-out
+that can compute the probabilities of the \emph{pixels} of the
 imaging from the telescope in terms of the cosmological parameters
 (Schneider \etal, in prep.).
-% Entering a contest (results not announced), more "in preparation"
 The pixel-level component of this project involves image modeling,
 where we have developed a general and flexible framework.
 Our open-source code, \project{The~Tractor} (Lang \etal,
-in prep.) is now being used for cosmological projects by several other groups (??).
-
-We have been investigating other camera models.
-With Rob Fergus (NYU), we are building
-computer-vision-based \emph{data-driven} models for complex astronomical 
-imagers (Fergus \etal, 2014).
-These made it possible to perform infrared spectroscopy of several 
-young exoplanets (Oppenheimer \etal, 2014).
-With Bernhard Sch\"olkopf (MPI-IS), we are working on multi-star models
-of NASA \project{Kepler} light-curves using ideas from
-causal inference. 
-By modeling many star fluctuations at once, we are able to separate
-common fluctuations due to spacecraft-induced variability from idiosyncratic
-star fluctuations that contain transit information (Wang \etal, in prep.;
-Foreman-Mackey \etal, in prep.).
+in prep.) is now being used for cosmological projects by several other groups.
 We have begun to apply these ideas and techniques to 
-possibly improve photometry in \project{K2}, the
+improve photometry in \project{K2}, the
 post-\project{Kepler} mission in which the spacecraft is unable to point
 as precisely as in the original design (Montet \etal, in prep).
 
-\paragraph{New Directions}
+We have been investigating more data-driven camera models.
+With Rob Fergus (NYU), we have built
+effective models for complex astronomical 
+imagers (Fergus \etal, 2014).
+These made it possible to perform infrared spectroscopy of several 
+young exoplanets (Oppenheimer \etal, 2014).
+With Bernhard Sch\"olkopf (MPI-IS), we have created multi-star models
+of NASA \project{Kepler} light-curves using ideas from
+causal inference;
+by modeling many star fluctuations at once, we are able to separate
+common fluctuations due to spacecraft-induced variability from idiosyncratic
+star fluctuations that contain transit information (Wang \etal, in prep.;
+Foreman-Mackey \etal, in prep.).
 
+\paragraph{New Directions}
 We have identified many new mathematical and astrophysical avenues for
 research in the Collaboration.
 The details of what we finally propose will depend precisely on the
-PIs that we recruit (see below) and the joint-abilities that we
+PIs that we recruit (see below) and the joint abilities that we
 identify among them.
 Here, for example, are several directions that we have already
 identified as clearly promising.
-
-%\textbf{Effective models of astronomical instruments:}
-%If two sources imaged in a telescope vary or are distorted in a covariant
-%way, when the sources are physically separated by enormous distances
-%(as are stars or galaxies in typical images, for example), then the covariant
-%variability must be telescope-induced.
-%This causal structure is a handle with which variability can be separated
-%into intrinsic (astrophysical) and artificial (instrument-induced) components.
-%Causal structure maps onto conditional dependences in hierarchical modeling;
-%we expect large gains to be made possible for future time-domain astrophysics projects
-%by capitalizing on this.
 
 \textbf{Effective models of astronomical instruments:}
 Simultaneous modeling of many or all images in a telescope image 
@@ -211,18 +183,6 @@ We bring to this endeavor fast numerical algorithms for Maxwell's equations,
 high-frequency asymptotics, and the ability to calibrate complex systems 
 to data using Bayesian Monte Carlo.
 
-
-%\textbf{First principles camera simulation:} 
-%The large lenses contained in many telescopes are sometimes millions of
-%wavelengths in diameter, and therefore cannot be directly modeled using
-%standard methods in computational electromagnetics.
-%While geometric optics and diffraction have proven extremely useful over
-%the years, many simulations of speckle??? and point-spread functions are
-%still out of reach.
-%The combination of moden fast numerical algorithms and recent results in
-%high-frequency asymptotics should prove useful in constructing accurate
-%forward simulations of telescopic hardware.  
-
 \textbf{Noise models for stochastic variable stars:}
 Signals from stars fluctuate because of asteroseismology 
 (damped, driven normal modes), stochastic surface convection, star
@@ -234,21 +194,6 @@ for which we have very fast code.
 In the star-spot and convection models, it also appears that there may
 be stationary, non-trivial processes that can be developed and made
 tractable.
-
-%\textbf{Noise models for stochastic variable stars:}
-%Stars vary stochastically because of surface convection,
-%asteroseismology (damped, driven normal modes), and star spots.
-%In all three cases, we see opportunities to build physically motivated
-%``noise models'' that account for the time-coherence properties of
-%these sources of variability.
-%In the normal-mode case, we can literally model the stellar surface as
-%a damped, driven oscillator driven by some noise spectrum; this
-%translates directly into a Gaussian Process for which we have very
-%fast code.
-%In the star-spot and convection models, it also appears that there may
-%be stationary, non-trivial processes that can be developed and made
-%tractable.
-
 
 \textbf{New MCMC methods:}
 We have ideas for improved MCMC samplers.
@@ -262,19 +207,6 @@ lack compactness properties of traditional $O(n)$ invariant Metropolis
 samplers.
 There are hints that better affine invariant samplers depend on 
 controlling the different ways metrics can detegenerate.
-
-
-%It is common to fit parameters by optimizing least squares fits of
-%nonlinear models to data.  Sophisticated Gauss Newton Marquardt
-%algorithms use user developed software to evaluate the model and the
-%Jacobian matrix of model sensitivities.  We have an MCMC algorithm that
-%uses this derivative information to become affine invariant.  The
-%proposals are Gaussian centered on the Gauss Newton point.  We have
-%discovered a robust backoff strategy related to line search without
-%which the algorithm is extremely bad, but with which far out-performs
-%the Emcee Hammer package on some hard exoplanet orbit fitting problems.
-
-%  A whole paragraph deleted!  OUCH!
 
 \textbf{Posterior likelihood modeling:}
 Using ideas from experimental design and response surfaces, we plan to 
@@ -303,21 +235,6 @@ population-level inferences.
 Good samplers for hierarchical models would be widely applicable in
 and outside of astrophysics.
 
-%\textbf{Hierarchical models of exoplanet populations:}
-%The Core-Team work on making hierarchical problems tractable, by
-%sampling with interim priors in the data center, and then combining
-%those samplings using importance sampling in the final inference, has
-%only scratched the surface of what might be possible going forward.
-%It is now (in part because of the Core Team's influence) becoming
-%understood in the astrophysics community that hierarchical inference
-%is a requirement to propagate catalog-level or pixel-level noise to
-%population-level inferences.
-%There is abundant work to be done applying and extending these
-%methods, in new areas of astrophysics, but also by exploring new ideas
-%in MCMC sampling, where the samplers can capitalize on the
-%hierarchical structure.
-
-
 \textbf{Marginalization of the cosmological density field:} 
 It appears possible now to create flexible representations of the
 two-point autocorrelation function relevant to cosmology, including
@@ -334,25 +251,7 @@ on assumptions of Gaussianity, which may be unwarranted.
 Such massive inference is impractical without new computational methods
 that are a goal of this Collaboration.
 
-
-
-%\textbf{Marginalization of the cosmological density field:} 
-%It appears possible now to create flexible representations of the
-%two-point autocorrelation function relevant to cosmology, including
-%the general large-scale structure covariance and also the baryon
-%acoustic feature (Eisenstein \etal, 2005).
-%In principle, cosmological inferences (which currently proceed by
-%comparing point estimates of the two-point function) could proceed
-%through proper inference and marginalization of the density field.
-%Several methods from numerical approximation theory and applied analysis
-%seem to indicate that this can be made into a computationally tractable 
-%problem.
-%A flexible parameterization of correlation functions, and their use in
-%fast marginalizations over random fields, will surely have wide-ranging
-%applications in various other fields.
-
 \paragraph{Collaboration personnel and budget}
-
 The three Core PIs for this proposal are Goodman, Hogg, and O'Neil.
 Current graduate student Foreman-Mackey (NYU), who expects to finish
 this spring, will---if we can retain him---continue as a postdoctoral
@@ -366,22 +265,14 @@ Johnson (Harvard), Mario Juric (UW), Phil Marshall (KIPAC), and Bernhard
 Sch\"olkopf (MPI-IS).
 We will plan to hire eight postdoctoral fellows and support eight
 graduate students, in equal proportion in mathematics and astrophysics.
-Collaborations within NYU will leverage the NYU Center for Data Science,
-with which this project has significant relevance.
+The Collaboration will leverage the NYU Center for Data Science.
 We estimate a final budget of approximately 2.1M USD per year,
 based on a total of eight PIs and their commitments approximate.
 
 \paragraph{Collaboration plan and community involvement}
-
 Our research and outreach activities will lead to a mutually beneficial
 transfer of knowledge from computational mathematicians to
 astrophysicists, and vice versa.
-The mathematicians on our team will learn the special features of
-problems from astrophysics, and astrophysicists will be exposed to new
-mathematical and computational methods.
-Within the Collaboration, this means quality time spent translating
-problems, methods, terminology, and notation between fields.
-
 Externally, one of the distinctive features of our research is the way
 in which we interact, and plan to interact, with the larger mathematical
 and astrophysics communities.
