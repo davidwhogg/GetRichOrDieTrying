@@ -45,7 +45,7 @@
 \newcommand{\hoggitem}{$\bullet$}
 \newcommand{\bioindent}{\tabto{1.5in}}
 
-\usepackage[margin=.95in]{geometry}
+\usepackage[margin=.9in]{geometry}
 %\usepackage[margin=1.0in]{geometry}
 \usepackage{url}
 
@@ -88,7 +88,7 @@ The computational burden of large-scale probabilistic modeling and
 Bayesian inference depends on the cost of a likelihood function
 evaluation and the required number of such evaluations.
 Accelerating likelihood function evaluations may involve developing new
-fast numerical algorithms for large dense (but structured) linear systems
+fast numerical algorithms for large dense structured linear systems
 or differential equations, as well as cheap approximations (at perhaps a
 cost in accuracy).
 Improving on existing Markov Chain Monte Carlo (MCMC) methods would
@@ -108,11 +108,25 @@ account the non-linear physics of the source and the instrument.
 In putting together the full proposal, we will grow our team to six or
 eight PIs across several institutions, recruiting from the applied
 mathematics and astrophysics communities.
-Our proposal will also include creative ways to reach out to and involve
-people in the math and astrophysics communities.
+The Core Team is uniquely capable of managing a team of astrophysicists
+and mathematicians.
+In particular, Hogg is an extremely well-known mid-career physicist
+focusing on data-driven problems in astronomy and cosmology, and will
+lead the physicist team members to precisely formulate the relevant 
+questions.
+Goodman is a senior-level applied mathematician that has worked in
+various areas from partial differential equations to stochastics,
+and will lead the stochastic simulation members of our team.
+Lastly, O'Neil is a junior faculty applied mathematician with extensive
+experience in developing what are known as fast {\em analysis-based}
+computational algorithms.
+He will lead the algorithmic and computational aspect of the
+collaboration.
+%Our proposal will also include creative ways to reach out to and involve
+%people in the math and astrophysics communities.
 
 \paragraph{Our contributions}
-The Core Team's work, driven by exoplanet questions,
+The Core Team's recent work, driven by exoplanet questions,
 has been quite productive.
 We created a suite of novel MCMC samplers 
 (Hou \etal, 2012; Foreman-Mackey \etal, 2013; Hou \etal,
@@ -126,7 +140,7 @@ regarding the number of planets orbiting the star Gliese 581 (Hou \etal,
 The resulting MCMC code written by Foreman-Mackey receives a dozen
 citations per month across a wide range of physics disciplines.
 
-We created fast (nearly-optimal), high-accuracy linear algebra
+We created fast $\mathcal O(n \log n)$, high-accuracy linear algebra
 routines for calculating the inverse and determinant of the large-scale
 dense covariance matrices which appear in Gaussian processes
 (Ambikasaran \etal, 2014).
@@ -145,26 +159,27 @@ due in part to far more responsible use of the data (propagating noise)
 and far less restrictive assumptions.
 
 Additionally, we have been using these and other tools to study
-weak-lensing distortions ($\sim 0.1\%$), which are hard to find
-due to the complex morphologies of galaxies.
+weak-lensing distortions ($\sim 0.1\%$) hidden in 
+the complex morphologies of galaxies.
 Our biggest contribution so far is a system
-that can compute the stochastic variation of the \emph{pixels} of the
-imaging from the telescope in terms of standard cosmological parameters
+that can compute the stochastic variation of the telescopic 
+image \emph{pixels}
+in terms of standard cosmological parameters
 (Schneider \etal, in prep.).
 The pixel-level component of this project involves image modeling,
 where we have developed a general and flexible framework.
 Our open-source code, \project{The~Tractor} (Lang \etal,
 in prep.) is now being used for cosmological projects by several other groups.
-We have begun to apply these ideas and techniques to 
+We have started applying these ideas and techniques to 
 improve photometry in \project{K2}, the
 post-\project{Kepler} mission in which the spacecraft is unable to point
 as precisely as in the original design (Montet \etal, in prep).
 
 We have also been investigating more data-driven camera models.
-Working with Rob Fergus~(NYU), we have built
+Along with Rob Fergus~(NYU), we have built
 {\em effective models} for complex astronomical 
 imagers (Fergus \etal, 2014).
-These made it possible to perform infrared spectroscopy of several 
+These made it possible to perform infrared spectroscopy of many 
 young exoplanets (Oppenheimer \etal, 2014).
 Furthermore, with Bernhard Sch\"olkopf (MPI-IS), we have created
 multi-star models of NASA \project{Kepler} light-curves using ideas from
@@ -189,7 +204,7 @@ a telescope's [[[field of view WRONG PHRASE]]]
 may allow us to distinguish variability due to the instrument from
 variability of the objects themselves.  
 This should make it possible to identify weak photometric or spectroscopic
-signals with much more confidence.
+signals with much higher confidence.
 
 \textbf{First principles camera simulation:} 
 There has been a lot of work aimed at the accurate forward simulation of the
@@ -205,7 +220,7 @@ Signals from stars fluctuate because of asteroseismology
 spots, etc.
 A Bayesian noise model built on this physics will make it possible to 
 find ever smaller exoplanet signals with confidence.
-Normal-mode noise translates directly into Gaussian processes 
+Normal-mode noise translates directly into Gaussian processes,
 for which we have very fast computational tools.
 In the star-spot and convection models, it also appears that there may
 be stationary, non-trivial processes that can be developed and made
@@ -263,9 +278,8 @@ acoustic feature (Eisenstein \etal, 2005).
 Cosmological inferences, which currently seek to estimate the two-point 
 function, could instead infer and marginalize {\em directly}
 over the density field itself.
-Direct field models allow for more realistic noise modeling that does
-not rely
-on assumptions of Gaussianity, which may be unwarranted.
+Direct field models allow for more realistic noise modeling with no
+assumption of Gaussianity, which may be unwarranted.
 Such massive inference is impractical without several new computational
 methods
 that are goals of this Collaboration.
@@ -312,6 +326,9 @@ proceed through the sharing of software packages, as well as projects in
 progress.
 In particular, all the publications from the Collaboration would be
 supported by open-source software with liberal licensing (MIT or similar).
+
+
+
 
 
 \end{document}
