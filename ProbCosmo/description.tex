@@ -30,6 +30,45 @@ of lossy data-analysis steps.
 ...In exoplanets
 
 ...In weak lensing
+\subsection{PSF estimation for weak lensing}
+
+Extracting the cosmic shear from galaxy images is one of the most challenging tasks in astronomical
+data analysis. Shear signal induced by lensing on the images of background galaxies
+is coherent but much smaller than the typical 
+ellipticities of those galaxies. Moreover, the image of lensed galaxies is convolved with 
+an unknown spatially varying kernel, the Point spread function, whose typical
+anisotropy is greater than the cosmic shear itself.
+ 
+Effectively, we have 
+noisy estimates of the PSF at the positions of stars. We need to use these estimates to infer the
+underlying two dimenstional pattern of the PSF. The spatial variation at large angular scales is 
+generally smooth and can be well-modeled by the high signal-to-noise stars. However, both atmospheric
+turbulance and telescope optics, introduce PSF that varys on scales smaller than the distance
+distance between the bright stars. 
+
+Inaccurate estimation of the PSF at the positions of galaxies will lead to bias in shear estimates,
+which will propagate into the dark energy constraints if not accounted for. In order to
+tackle this issue, we propose to infer the propability distribution function over the PSF
+at the positions of galaxies, so that we can marginalize over the PSF instead of treating it 
+as a rigid object.
+
+This probability distribution function (a) needs to be flexible enough to capture the complicated 
+features of the shape of the PSF as well as its spatial variation, (b) needs to propagate uncertainties
+from the pixel level to the PSF, and (c) needs to be easy to evaluate and easy to sample from. By 
+projecting the images of stars into lower dimensional KL basis, and imposing Gaussian Process priors 
+over each direction of the KL basis we satisfy all the mentioned requirements. This model successfully propagates
+the uncertainties in the form of a posterior PDF over PSFs; 
+that is, it returns probabilistic information about the PSF at the positions of galaxies. At each
+position of the astronomical image, this posterior PDF has a simple form of a Gaussian.
+
+We also examine the performance of this method on estimation of the PSF for simulations 
+of $\LSST$. First, we identify the bright stars on the image and then we randomly divid
+them to training set and validation sets of equal size. After learning the KL basis and 
+hyper parameters of the Gaussian Process model in the training set, we infer the posterior 
+PDF of PSF at the position of stars in the validation set. Figure [\ref{1}] shows a star
+in the validation set, and three different draws from the posterior PDF of PSF at that position.
+
+
 
 ...How are we making these things possible?  Applied-math developments
 
