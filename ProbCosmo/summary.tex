@@ -1,3 +1,6 @@
+% This file is part of the GetRichOrDieTrying project.
+% Copyright 2014 David W. Hogg (NYU) and MJ Vakili (NYU).
+
 \documentclass[12pt]{article}
 \setlength{\headheight}{0ex} % must be *before* \input{hogg_nsf}
 \setlength{\headsep}{0ex} % must be *before* \input{hogg_nsf}
@@ -8,33 +11,31 @@
 \textbf{New Probabilistic Methods for Observational Cosmology} % must be synchronized with description.tex
 \smallskip
 
-New imaging and spectroscopic astronomical surveys present
-increasingly ambitious challenges and opportunities for cosmology.
-We want to measure smaller signals with larger numbers of galaxies
-observed at lower signal-to-noise ratios.
-These goals, in the long, run, will require us to perform data
+As new cosmological surveys get underway,
+we expect to measure smaller signals with larger numbers of galaxies
+observed (individually) at lower confidence.
+These goals require us to perform data
 analyses that are as information-preserving as possible.
 This proposal is to create new methods for cosmological data analysis
-that will bring the cosmology community to performing cosmological
+that will permit the cosmology community to perform cosmological
 inferences using not lossy, derived data products (N-sigma galaxy
 catalogs, best-fit redshifts, correlation function point estimates),
 but something much closer to the original imaging and spectroscopic
 data.
 The new methods will have to be informed by principles of
-probabilistic inference, but also good applied-mathematics technology,
-to make them practical.
+probabilistic inference, and also good applied-mathematics technology.
 
 There are three (related) Toolsets comprising this proposal.
-Toolset~1 is for reconstruction and marginalization
+\textsl{Toolset~1} is for reconstruction and marginalization
 of cosmological density fields, given typical data.
-The density field could be the mass density, galaxy density,
-neutral gas density, or the two-dimensional projected mass density
-that appears in gravitational lensing, depending on the cosmological tracer.
-This reconstruction and marginalization involves solving and taking
-the determinants of million-element dense linear systems;
-For the first time ever, we have an applied-mathematics toolkit for this.
+The density field could be the mass, galaxy, or 
+neutral-gas density field, or the two-dimensional projected mass density,
+depending on the tracer.
+This Toolset requires repeated solves and determinants for
+million-element dense linear systems.  For the first time, we
+have applied-math tools for this.
 
-Toolset~2 is for cosmological inference that make proper
+\textsl{Toolset~2} is for cosmological inference that make proper
 use of probabilistic information about galaxy and quasar redshifts.
 All justified methods involve ``forward modeling'' (which, in turn,
 capitalizes on Toolset~1).  The tools will also, simultaneously,
@@ -42,7 +43,7 @@ capitalizes on Toolset~1).  The tools will also, simultaneously,
 informative imputation of missing redshifts, thereby producing
 predictions and tools for smaller-scale scientific questions.
 
-Toolset~3 is for propagation of probabilistic image-level quantities---%
+\textsl{Toolset~3} is for propagation of probabilistic image-level quantities---%
 galaxy shapes and the point-spread function (PSF)---%
 into weak-lensing studies of large-scale structure.
 The tools will permit inference from survey data conditional priors over
@@ -51,12 +52,12 @@ They will also make use of these in a justified forward-modeling
 measurement of the shear field and cosmological parameters.
 
 \noindent
-\textbf{Intellectual Merit:}
-Stage-III cosmological projects (such as \sdss, \des)
-and Stage-IV survey teams (such as \lsst, \euclid, and \wfirst)
+\textbf{$\bullet$~Intellectual Merit:}
+Projects in Stage-III (\eg, \boss, \des)
+and Stage-IV (\eg, \lsst, \euclid, \wfirst)
 are starting to see the limits of point estimates and rigid catalogs;
-they are all looking at producing probabilistic information about redshifts,
-galaxy shapes, and deblending and photometry.
+they are all looking at probabilistic output for redshifts,
+shapes, and photometry.
 The Toolsets from this project will be among the first practical methods for
 cosmological inference and large-scale structure measurement that can
 make full and proper (justified) use of these probabilistic outputs.
@@ -67,20 +68,26 @@ Simultaneous inference is expected to significantly \emph{reduce statistical
 biases in cosmological measurements},
 and also reduce variance in catalog-level quantities.
 
-In general, full probabilistic inference at the survey level is intractable computationally.
-The methods developed here will make use of the PI's expertise in, and collaborations with,
-applied mathematics to make the impossible possible.
+Full probabilistic inference at the survey level has so far appeared
+computationally intractable.
+The methods developed here will make use of---and propagate more
+generally in the field---collaborations with applied mathematics that
+make the impossible possible.
 
 \noindent
-\textbf{Broader Impacts:}
+\textbf{$\bullet$~Broader Impacts:}
+The Toolsets will papers with methods but also open-source codebases
+that will benefit all cosmological projects, and also projects that
+are not in cosmology at all.
+The development of the toolsets will aid in the development of
+standards for generating and delivering probabilistic outputs, which
+will influence Stage-IV projects.
 
-...General methods and open-source code that will benefit all cosmological projects.
-Feedback on probabilistic outputs; new standards for those...
-
-...Pedagogical papers on MCMC and GPs for the beginning grad school or late undergrad level
-
-...Hack days and hack weeks
-
-...Bringing inference concepts into cosmology.  Bringing applied math.
+The PI will continue his practice of producing pedagogical papers on
+inference, data analysis, and computational statistics in the physical
+sciences.
+These reach a range of populations inside and outside academia.
+He will also continue to work with his students to organize and staff
+influential data-analysis Hack Days at scientific meetings.
 
 \end{document}
