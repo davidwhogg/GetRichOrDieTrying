@@ -24,13 +24,31 @@ The new methods will have to be informed by principles of
 probabilistic inference, but also good applied-mathematics technology,
 to make them practical.
 
-In weak lensing studies, 
+There are three (related) Toolsets comprising this proposal.
+Toolset~1 is for reconstruction and marginalization
+of cosmological density fields, given typical data.
+The density field could be the mass density, galaxy density,
+neutral gas density, or the two-dimensional projected mass density
+that appears in gravitational lensing, depending on the cosmological tracer.
+This reconstruction and marginalization involves solving and taking
+the determinants of million-element dense linear systems;
+For the first time ever, we have an applied-mathematics toolkit for this.
 
-...Weak lensing p(galaxy) and p(PSF)
+Toolset~2 is for cosmological inference that make proper
+use of probabilistic information about galaxy and quasar redshifts.
+All justified methods involve ``forward modeling'' (which, in turn,
+capitalizes on Toolset~1).  The tools will also, simultaneously,
+\emph{improve} probabilistic redshift information, and provide
+informative imputation of missing redshifts, thereby producing
+predictions and tools for smaller-scale scientific questions.
 
-...LSS p(z)
-
-...LSS and WL GP density reconstruction and marginalization; deconvolution, etc.
+Toolset~3 is for propagation of probabilistic image-level quantities---%
+galaxy shapes and the point-spread function (PSF)---%
+into weak-lensing studies of large-scale structure.
+The tools will permit inference from survey data conditional priors over
+galaxy shapes and PSFs, and posteriors relevant every object.
+They will also make use of these in a justified forward-modeling
+measurement of the shear field and cosmological parameters.
 
 \noindent
 \textbf{Intellectual Merit:}
@@ -39,7 +57,7 @@ and Stage-IV survey teams (such as \lsst, \euclid, and \wfirst)
 are starting to see the limits of point estimates and rigid catalogs;
 they are all looking at producing probabilistic information about redshifts,
 galaxy shapes, and deblending and photometry.
-The methods developed in this project will be among the first practical methods for
+The Toolsets from this project will be among the first practical methods for
 cosmological inference and large-scale structure measurement that can
 make full and proper (justified) use of these probabilistic outputs.
 For the first time, it will be possible to perform
