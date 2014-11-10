@@ -7,6 +7,13 @@
   \lhead{\textsf{David W. Hogg / New Probabilistic Methods for Observational Cosmology}}
   \rhead{\textsf{\thepage}}
   \cfoot{}
+
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\data}{y}
+\newcommand{\intrinsic}{\epsilon}
+\newcommand{\shear}{\gamma}
+\newcommand{\psf}{\psi}
+
 \begin{document}\sloppy\sloppypar
 
 ...The theory of experimental cosmology
@@ -77,7 +84,7 @@ that is, it returns probabilistic information about the PSF at the positions of 
 position of the astronomical image, this posterior PDF has a simple form of a Gaussian.
 
 We also examine the performance of this method on estimation of the PSF for simulations 
-of $\LSST$. First, we identify the bright stars on the image and then we randomly divid
+of \lsst. First, we identify the bright stars on the image and then we randomly divid
 them to training set and validation sets of equal size. After learning the KL basis and 
 hyper parameters of the Gaussian Process model in the training set, we infer the posterior 
 PDF of PSF at the position of stars in the validation set. Figure [\ref{1}] shows a star
@@ -105,8 +112,8 @@ of galaxies, and also the PSF
 
 \begin{eqnarray}
 p(\data_n\given\shear)
-  &=& \int p(\data_n\given\intrinsic_n , \omega_{n}, \text{PSF} , \shear)
-  \,p(\intrinsic_n , \omega_{n} , \given\prior)p(\text{PSF})\,\dd\intrinsic_n \dd\omega_n
+  &=& \int p(\data_n\given\intrinsic_n , \omega_{n}, \psf , \shear)
+  \,p(\intrinsic_n, \omega_{n})\,p(\psf)\,\dd\intrinsic_n\,\dd\omega_n\,\dd\psf
   \quad ,
 \label{integral}
 \end{eqnarray}
