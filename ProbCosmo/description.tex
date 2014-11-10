@@ -33,6 +33,110 @@ of lossy data-analysis steps.
 
 ...In weak lensing; \thetractor.
 
+Cosmic shear, small distortion of the images of distant
+galaxies by large-scale structure in the universe,
+is a major probe of cosmolgy. Measurement of the cosmological
+weak lensing signal provides extremely powerful probe of the
+evolution of dark energy, since the shear signal depends on
+both the growth of structure, and the distance-redshift relation.
+In this document we present tractable probabilistic methods that
+make less constraining assumption about the flow of information
+from the data to the cosmological parameters, and help us fully exploit
+the potential of weak lensing in  constraining cosmology using the
+imaging data from wide field surveys.
+
+\subsection{PSF estimation for weak lensing}
+
+Extracting the cosmic shear from galaxy images is one of the most challenging tasks in astronomical
+data analysis. Shear signal induced by lensing on the images of background galaxies
+is coherent but much smaller than the typical 
+ellipticities of those galaxies. Moreover, the image of lensed galaxies is convolved with 
+an unknown spatially varying kernel, the Point spread function, whose typical
+anisotropy is greater than the cosmic shear itself.
+ 
+Effectively, we have 
+noisy estimates of the PSF at the positions of stars. We need to use these estimates to infer the
+underlying two dimenstional pattern of the PSF. The spatial variation at large angular scales is 
+generally smooth and can be well-modeled by the high signal-to-noise stars. However, both atmospheric
+turbulance and telescope optics, introduce PSF that varys on scales smaller than the distance
+distance between the bright stars. 
+
+Inaccurate estimation of the PSF at the positions of galaxies will lead to bias in shear estimates,
+which will propagate into the dark energy constraints if not accounted for. In order to
+tackle this issue, we propose to infer the propability distribution function over the PSF
+at the positions of galaxies, so that we can marginalize over the PSF instead of treating it 
+as a rigid object.
+
+This probability distribution function (a) needs to be flexible enough to capture the complicated 
+features of the shape of the PSF as well as its spatial variation, (b) needs to propagate uncertainties
+from the pixel level to the PSF, and (c) needs to be easy to evaluate and easy to sample from. By 
+projecting the images of stars into lower dimensional KL basis, and imposing Gaussian Process priors 
+over each direction of the KL basis we satisfy all the mentioned requirements. This model successfully propagates
+the uncertainties in the form of a posterior PDF over PSFs; 
+that is, it returns probabilistic information about the PSF at the positions of galaxies. At each
+position of the astronomical image, this posterior PDF has a simple form of a Gaussian.
+
+We also examine the performance of this method on estimation of the PSF for simulations 
+of $\LSST$. First, we identify the bright stars on the image and then we randomly divid
+them to training set and validation sets of equal size. After learning the KL basis and 
+hyper parameters of the Gaussian Process model in the training set, we infer the posterior 
+PDF of PSF at the position of stars in the validation set. Figure [\ref{1}] shows a star
+in the validation set, and three different draws from the posterior PDF of PSF at that position.
+
+\subsection{probabilistic inference of shear}
+
+Typically, after measuring the shapes
+of a large ensemble of galaxies in a way that
+the effect of PSF is elliminated, ellipticities
+of these galaxies are averaged together in order to
+find a point estimator of the shear.
+The methods based on ensemble averaging make strong assumption
+about the probability distribution of the intrinsic shape parameters,
+and are able to deliver unbiased estimate of shear only if we
+have access to unbiased measurements of individual galaxy
+ellipticites. 
+
+Our aim is to deliver a fully probabilistic approach for estimation of shear.
+We want to write down a likelihood function $p(\data_n\given\shear)$, where $\{\data_n\}$
+represents the set of galaxy images. In order to do so, we need to marginalize over the
+nuisance parameters that we do not care about. This set of nuisance paramters includes 
+shape parameters (e.g., ellipticities), non-shape parameters (e.g., flux, centroid, etc.)
+of galaxies, and also the PSF
+
+\begin{eqnarray}
+p(\data_n\given\shear)
+  &=& \int p(\data_n\given\intrinsic_n , \omega_{n}, \text{PSF} , \shear)
+  \,p(\intrinsic_n , \omega_{n} , \given\prior)p(\text{PSF})\,\dd\intrinsic_n \dd\omega_n
+  \quad ,
+\label{integral}
+\end{eqnarray}
+where $\{\intrinsic\}$ ($\{\omega_{n}\}$) represents the set of shape
+(non-shape) parameters.
+
+Schematically, equation (\ref{integral}) can be shown by the probabilistic
+graphical model (PGM) in Figure[\ref{2}]. Therefore, in this model we need
+a prior PDF over intrinsic (unlensed, PSF deconvolved) parameters of galaxies.
+This can be done by (a) finding a deep subset (containing a large number of high
+signal-to-noise galaxies) of the data, (b) finding the maximum-likelihood estimates
+of parameters of those galaxies, (c) and fitting an empirical prior to those parameters. 
+
+Importance sampling ........
+
+\subsection{multi-exposure data}
+The imaging data from the upcoming WL surveys will consists of several
+short exposures of each individual galaxy. Stacking has been widely used
+as a method to combine information from multiple exposures. 
+Although stacking is able to deliver high signal-to-noise images, it distroys a
+huge amount of information regarding the spatial variation of
+the PSF, and it involves image transformation that could lead to correlated noise
+in the final product and distortion of the PSF.
+
+An important advantage of our model is that it can be easily extended
+to making inference of shear from multi-exposure data. The graphical model 
+regarding corresponding to application of our probabilistic inference to
+multi-exposure data is shown in Figure[\ref{3}].
+
+
 ...How are we making these things possible?  Applied-math developments
 
 ...Very fast GPs
