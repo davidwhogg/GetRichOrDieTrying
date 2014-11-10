@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-\usepackage{fancyheadings}
+\usepackage{fancyheadings, graphicx}
 \setlength{\headsep}{2ex}
 \input{hogg_nsf}
   \renewcommand{\headrulewidth}{0pt}
@@ -9,38 +9,84 @@
   \cfoot{}
 
 \newcommand{\dd}{\mathrm{d}}
-\newcommand{\data}{y}
+\newcommand{\data}{D}
 \newcommand{\intrinsic}{\epsilon}
 \newcommand{\shear}{\gamma}
 \newcommand{\psf}{\psi}
 
 \begin{document}\sloppy\sloppypar
 
-...The theory of experimental cosmology
+\paragraph{Introduction}
+This proposal is to improve the way we make cosmological measurements.
+It is to make this improvement by building and bringing to the
+community practical tools for performing probabilistic inference with
+cosmological data sets.
 
-...Standard practice in cosmology today:
-For example, in typical large-scale structure surveys, the standard
-method of imaging the sky, creating a catalog of sources, obtaining a
-best value for each source's redshift, computing a standard point
-estimate of the auto-correlation function, and then performing
-cosmological inferences on that correlation function, is a daisy-chain
-of lossy data-analysis steps.
+The scale of cosmological surveys---in terms of sky area ($\pi$ to
+$4\pi$ steradians), number of sources ($10^6$ to $10^9$), dynamic
+range (the faintest sources can be 8~mag fainter than the brightest
+sources), and heterogeneity of scientific objectives (luminosity
+functions, expansion history, baryon acoustic feature)---makes them
+inhospitable playgrounds for principled probabilistic inference.
+Probabilistic inference (think:\ likelihood function and possibly also
+Bayes) requires (in the cosmological context) generating the data, in
+the sense of either being able to \emph{simulate} the data (with all
+its warts) or else being able to write down a \emph{probability
+  distribution in the space of the data}.
+In either case, the problem is very hard:
+The rawest data (pixel intensities read out by the CCD) are related to
+the quantities of greatest interest only extremely indirectly, through
+a model that includes not just fundamental cosmology but also the
+formation of galaxies within the dark-matter density field, star
+formation, intergalactic medium physics, emission and absorption and
+distortions from the Earth's atmosphere, and an exceedingly complex
+telescope and camera.
+(We are not going to solve \emph{all} of these problems in this proposal!)
 
-...Aside:  Bias--variance trade-off.
+That is, it is for \emph{very good reasons} that the standard practice
+of observational cosmology has a ``traditional'' feel to it:
+In a typical large-scale structure survey, the standard practice is to
+image the sky, create a catalog of sources, obtaining a best value for
+each source's redshift (by spectroscopy or photometric redshift
+estimation), compute a standard point estimate of the auto-correlation
+function, and then perform cosmological inferences on that correlation
+function.
+This is a daisy-chain of lossy data-analysis steps; information is
+lost (and noise propagation becomes approximate or impossible) each
+time an intermediate point-estimate is made.
+Any juncture at which we can remove one of these lossy steps, or
+replace it with an information-preserving step, we will improve our
+inferences, in terms of bias, and sometimes also variance.
+
+This proposal is motivated by four observations:
+
+1. Surveys getting bigger, questions getting more subtle, biases
+(systematic errors) more likely to dominate.
+
+...Stage-III and Stage-IV projects...
+
+2. There is a bias--variance trade-off, and the harder your
+assumptions, the smaller your variance but the bigger your bias!
+
+3. It costs information to make conclusions about things you don't
+care about.
+
+4. Amazing progress has been made, in the PI's group and in the
+community, in large, principled inferences.  Much of the credit for
+this goes to applied math and computational stats.
 
 ...Why doing the right thing would be hard
 
 ...Example:  Using p(z) in standard large-scale structure!
 
-...Stage-III and Stage-IV projects and probabilistic outputs.
+...Want to develop more fully the ``theory'' of experimental cosmology
 
+\paragraph{Why this PI?}
 ...What have we achieved so far?
 
 ...In exoplanets
 
 ...In weak lensing; \thetractor.
-
-
 
 ...How are we making these things possible?  Applied-math developments
 
@@ -56,7 +102,7 @@ of lossy data-analysis steps.
 
 ...Pedagogical role in the community
 
-\paragraph*{\package{Toolset 1}: Density-field inference and marginalization}
+\paragraph{\package{Toolset 1}: Density-field inference and marginalization}
 
 ...theory paper
 
@@ -66,9 +112,9 @@ of lossy data-analysis steps.
 
 ...ab-initio run on some new data sets; could be XXX
 
-\paragraph*{\package{Toolset 2}: Using and improving probabilistic redshift information}
+\paragraph{\package{Toolset 2}: Using and improving probabilistic redshift information}
 
-\paragraph*{\package{Toolset 3}: Creating and using probabilistic shape and PSF information}
+\paragraph{\package{Toolset 3}: Creating and using probabilistic shape and PSF information}
 
 Cosmic shear, small distortion of the images of distant
 galaxies by large-scale structure in the universe,
@@ -171,7 +217,7 @@ to making inference of shear from multi-exposure data. The graphical model
 regarding corresponding to application of our probabilistic inference to
 multi-exposure data is shown in Figure[\ref{3}].
 
-\paragraph*{Prior NSF support}
+\paragraph{Prior NSF support}
 
 ...Fergus grant
 
@@ -179,9 +225,9 @@ multi-exposure data is shown in Figure[\ref{3}].
 
 ...Moore--Sloan \emph{not} providing direct research support!
 
-\paragraph*{Broader impacts}
+\paragraph{Broader impacts}
 
-\paragraph*{Project management and products}
+\paragraph{Project management and products}
 
 ...Just a PI and students
 
@@ -195,8 +241,7 @@ multi-exposure data is shown in Figure[\ref{3}].
 
 ...Hack Days and Weeks
 
-\paragraph*{References cited}
-
+\paragraph{References cited}
 
 \clearpage
 
@@ -207,7 +252,7 @@ multi-exposure data is shown in Figure[\ref{3}].
 \caption{Plots showing a star in the validation set
 (first column), and three different draws (second column)
 from our probabilistic PSF model at the
-position of star, and the residuals (third column).}\label{1}
+position of star, and the residuals (third column).\label{1}}
 \end{figure}
 
 \begin{figure}[!htb]
@@ -216,9 +261,9 @@ position of star, and the residuals (third column).}\label{1}
 \endminipage
 \caption{PGM showing the flow of information
 from cosmological parameters $\Omega$, PSF at different
-exposures \psf_j, and 
+exposures $\psf_j$, and 
 the underlying distribution of shape parameters 
-$\alpha$, to the data at each exposure \data_nj.}\label{3}
+$\alpha$, to the data at each exposure $\data_{nj}$.\label{3}}
 \end{figure}
 
 \end{document}
