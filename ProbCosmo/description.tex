@@ -59,21 +59,55 @@ replace it with an information-preserving step, we will improve our
 inferences, in terms of bias, and sometimes also variance.
 
 This proposal is motivated by four observations:
+\begin{enumerate}
+\item
+Cosmological surveys are getting bigger, and our precision demand are
+getting higher.
+The community has defined ``Stage-III'' and ``Stage-IV'' cosmological
+projects; Stage-III is underway now, with projects like \boss and \des
+and \panstarrs.
+Stage-IV projects, like \lsst, \euclid, and \wfirst will be
+multi-billion-source surveys that cover large fractions of the sky and
+a huge part of the Hubble volume.
+These projects are getting close to saturating the bounds set by the
+finite volume of the Observable Universe!
+We expect them to see the baryon acoustic feature at multiple redshift
+slices, and detect a tiny non-Gaussianity in the initial conditions;
+that is, we expect our inferences to improve as the square-root of the
+sample size or na\"ive information.
+Inference methods that worked in Stage-II and are being used in
+Stage-III are not necessarily going to deliver completely in Stage-III
+and Stage-IV:
+In general, as the data get better and more numerous, inferences only
+improve if the systematic errors and model errors are smaller than the
+root-variance or precision of the measurements!
+That is, we may be getting to a place where bigger is not better.
+\item
+In the statistics community, there is a general notion of the
+trade-off between bias and variance.
+(For the purposes of this proposal, I am going to equate what a
+statistician calls a ``bias'' with what a cosmologist calls a
+``systematic error'' and what a statistician calls ``variance'' with
+the inverse of what a cosmologist calls ``preicision''.  I will
+generally use the statistician's language.)
+The current methods of cosmology make hard choices (cutting a catalog,
+for example) which are equivalent (under some analysis) with making
+very hard assumptions.
+These assumptions are informed and informative---they make inferences
+more precise.
+But they only make inferences more \emph{correct} inasmuch as they are
+correct.
 
-1. Surveys getting bigger, questions getting more subtle, biases
-(systematic errors) more likely to dominate.
-
-...Stage-III and Stage-IV projects...
-
-2. There is a bias--variance trade-off, and the harder your
+There is a bias--variance trade-off, and the harder your
 assumptions, the smaller your variance but the bigger your bias!
-
-3. It costs information to make conclusions about things you don't
+\item
+It costs information to make conclusions about things you don't
 care about.
-
-4. Amazing progress has been made, in the PI's group and in the
+\item
+Amazing progress has been made, in the PI's group and in the
 community, in large, principled inferences.  Much of the credit for
 this goes to applied math and computational stats.
+\end{enumerate}
 
 ...Why doing the right thing would be hard
 

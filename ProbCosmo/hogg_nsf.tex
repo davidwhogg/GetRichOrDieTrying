@@ -56,15 +56,15 @@
   \setlength{\parsep}{0.0ex}%
   \setlength{\partopsep}{0.0ex}%
   \setlength{\itemsep}{0.0ex}%
-  \setlength{\leftmargin}{1.5\parindent}}}{\end{list}}
+  \setlength{\leftmargin}{1.0\parindent}}}{\end{list}}
 \newcounter{actr}
-\renewenvironment{enumerate}{\begin{list}{\arabic{actr}.}{%
+\renewenvironment{enumerate}{\begin{list}{\scriptsize{\textbf{\textsf{(\arabic{actr})}}}}{%
   \usecounter{actr}%
   \setlength{\topsep}{0.0ex}%
   \setlength{\parsep}{0.0ex}%
   \setlength{\partopsep}{0.0ex}%
   \setlength{\itemsep}{0.0ex}%
-  \setlength{\leftmargin}{1.5\parindent}}}{\end{list}}
+  \setlength{\leftmargin}{1.0\parindent}}}{\end{list}}
 
 %----- mess with paragraph spacing!
 \makeatletter
