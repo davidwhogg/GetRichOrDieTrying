@@ -40,6 +40,36 @@ of lossy data-analysis steps.
 
 ...In weak lensing; \thetractor.
 
+
+
+...How are we making these things possible?  Applied-math developments
+
+...Very fast GPs
+
+...Samplers that don't require tuning
+
+...Importance sampling for hierarchical inference
+
+...Aside:  $p(d\given z)$ vs $p(z\given d)$
+
+...Aside:  ABC on cosmological data
+
+...Pedagogical role in the community
+
+\paragraph*{\package{Toolset 1}: Density-field inference and marginalization}
+
+...theory paper
+
+...expansion for the correlation function and kernel
+
+...toolset and demo on BOSS data
+
+...ab-initio run on some new data sets; could be XXX
+
+\paragraph*{\package{Toolset 2}: Using and improving probabilistic redshift information}
+
+\paragraph*{\package{Toolset 3}: Creating and using probabilistic shape and PSF information}
+
 Cosmic shear, small distortion of the images of distant
 galaxies by large-scale structure in the universe,
 is a major probe of cosmolgy. Measurement of the cosmological
@@ -52,8 +82,7 @@ from the data to the cosmological parameters, and help us fully exploit
 the potential of weak lensing in  constraining cosmology using the
 imaging data from wide field surveys.
 
-\subsection{PSF estimation for weak lensing}
-
+PSF estimation for weak lensing:
 Extracting the cosmic shear from galaxy images is one of the most challenging tasks in astronomical
 data analysis. Shear signal induced by lensing on the images of background galaxies
 is coherent but much smaller than the typical 
@@ -90,8 +119,7 @@ hyper parameters of the Gaussian Process model in the training set, we infer the
 PDF of PSF at the position of stars in the validation set. Figure [\ref{1}] shows a star
 in the validation set, and three different draws from the posterior PDF of PSF at that position.
 
-\subsection{probabilistic inference of shear}
-
+probabilistic inference of shear:
 Typically, after measuring the shapes
 of a large ensemble of galaxies in a way that
 the effect of PSF is elliminated, ellipticities
@@ -129,7 +157,7 @@ of parameters of those galaxies, (c) and fitting an empirical prior to those par
 
 Importance sampling ........
 
-\subsection{multi-exposure data}
+multi-exposure data:
 The imaging data from the upcoming WL surveys will consists of several
 short exposures of each individual galaxy. Stacking has been widely used
 as a method to combine information from multiple exposures. 
@@ -142,35 +170,6 @@ An important advantage of our model is that it can be easily extended
 to making inference of shear from multi-exposure data. The graphical model 
 regarding corresponding to application of our probabilistic inference to
 multi-exposure data is shown in Figure[\ref{3}].
-
-
-...How are we making these things possible?  Applied-math developments
-
-...Very fast GPs
-
-...Samplers that don't require tuning
-
-...Importance sampling for hierarchical inference
-
-...Aside:  $p(d\given z)$ vs $p(z\given d)$
-
-...Aside:  ABC on cosmological data
-
-...Pedagogical role in the community
-
-\paragraph*{\package{Toolset 1}: Density-field inference and marginalization}
-
-...theory paper
-
-...expansion for the correlation function and kernel
-
-...toolset and demo on BOSS data
-
-...ab-initio run on some new data sets; could be XXX
-
-\paragraph*{\package{Toolset 2}: Using and improving probabilistic redshift information}
-
-\paragraph*{\package{Toolset 3}: Using probabilistic shape and PSF information}
 
 \paragraph*{Prior NSF support}
 
