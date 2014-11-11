@@ -84,12 +84,11 @@ root-variance or precision of the measurements!
 That is, we may be getting to a place where bigger is not better.
 \item
 In statistics, there is a general notion of the trade-off between bias
-and variance.
-(For the purposes of this proposal, I am going to equate what a
+and variance.\footnote{For the purposes of this proposal, I am going to equate what a
 statistician calls a ``bias'' with what a cosmologist calls a
 ``systematic error'' and what a statistician calls ``variance'' with
-the inverse of what a cosmologist calls ``preicision''.  I will
-generally use the statistician's language.)
+the inverse of what a cosmologist calls ``precision''.  I will
+generally use the statistician's language.}
 The current methods of cosmology make hard choices (cutting a catalog,
 for example) which are equivalent (under some analysis) with making
 very hard assumptions.
@@ -104,10 +103,10 @@ In every important scientific question or data set, there are both
 parameters, say) and \emph{nuisance parameters} we don't.
 For example, we might care about the spectral index and amplitude of
 the cosmological power spectrum, but we might not care about the
-specific angular position or redshift of any individual galaxy in the
-density field.
-These galaxy positions constitute an example of a \emph{very large}
-set of nuisance parameters in any large-scale structure analysis.
+specific redshift of any individual galaxy in the density field.
+These galaxy redshifts constitute an example of a \emph{very large}
+set of nuisance parameters in any large-scale structure or
+weak-lensing analysis.
 Because both fundamental and nuisance parameters affect the data, both
 matter; they both have to be inferred.
 That is, information in the data must flow into both; the nuisances
@@ -117,21 +116,78 @@ conclusions about the nuisances; it is better if we either never infer
 them, or else marginalize them out of our final inferences about the
 fundamentals.
 The current standard of making a rigid catalog, point-estimating the
-auto-correlation function, and only then doing cosmological inference
-violates this principle.
+galaxy--galaxy or ellipticity auto-correlation function, and only
+\emph{then} doing cosmological inference violates this principle.
 We are measuring things we don't need to be.
 That must be costing us in precision.
 \item
-Amazing progress has been made, in the PI's group and in the
-community, in large, principled inferences.  Much of the credit for
-this goes to applied math and computational stats.
+Amazing progress has been made---in the PI's group and in the
+community---in performing large, principled inferences.
+We have performed astrometry and photometry on imaging without making
+hard choices about the catalog limits nor requiring object detections
+(CITE LANG; CITE BREWER).
+There are weak and strong gravitational lensing methods that are fully
+probabilistic, reconstructing cluster masses while marginalizing out
+all source galaxy redshifts (CITE STUFF).
+There are first attempts to marginalize out the density field in
+large-scale structure (CITE WANDELT) and the intergalactic medium
+(CITE JASCHE).
+We have performed the first inferences about the exoplanet population
+that marginalize out the (very large) uncertainties on the exoplanet
+radii (CITE FOREMAN-MACKEY).
+Much of the credit for this goes to applied math and computational
+stats; we rely on very fast linear algebra (CITE SIVA), high-end MCMC
+samplers (CITE MURRAY; CITE BREWER; CITE FOREMAN-MACKEY), and distributed methods
+for hierarchical probabilistic inference (CITE HOGG).
+This proposal capitalizes on and leverages the PI's interdisciplinary
+collaborations with applied mathematics and statistics.
 \end{enumerate}
 
-...Why doing the right thing would be hard
+All this said, what is proposed here is going to be hard:
+The dimensionality of the nuisance parameter space tends to grow with
+the size of the data set.
+The models of large-scale structure are fundamentally cosmological
+simulations, or approximations thereto.
 
-...Example:  Using p(z) in standard large-scale structure!
+For example, imagine that we want to infer the auto-correlation of the
+large-scale structure, but with a catalog that is based on imprecise
+photometric redshifts, not precise spectroscopic redshifts.
+That is, for each galaxy, there is some function $f(z)$ that expresses
+either the likelihood function (probability of the data given the
+redshift) or the posterior pdf (probability of the redshift given the
+data).
+How would we use such information in correlation-function inference?
+Current practice---when there are rigid redshift estimates rather than
+redshift probability functions---is to count pairs of galaxies and
+build the correlation function estimate out of histograms of pair
+counts from the data and from ``random'' (unclustered; Poisson)
+catalogs with a similar selection function.
+With the redshift functions $f(z)$ what to do?
+You can resample the data from $f(z)$ and make correlation-function
+estimates from the resampled data.
+This is \emph{completely wrong}.
+It constitutes, in effect, re-convolving the data with the
+uncertainty; reducing the precision of inferences and substantially
+biasing the results.
 
-...Want to develop more fully the ``theory'' of experimental cosmology
+The right thing to do is draw samples of the density field \emph{and}
+the true redshifts, where the weight of such samples in the answer is
+in proportion to the likelihood---the probability that the density
+field and the true redshifts can generate the positional data.
+This requires an ability to (within the data-analysis iteration loop)
+draw density fields.
+It also requires a jettison of the whole idea of the point estimate
+(Landy--Szalay estimator or whatever) of the two-point function; there
+is no use of such an estimator within this inference in which the
+redshift inferences are being penalized by their consistency with the
+density field.
+That alone appears intractable at the present day (but see below), and
+this is just one of many problems faced by a principled probabilistic
+reasoner in cosmology.
+
+This proposal, in some sense, is to develop the \emph{theory} of
+experimental cosmology, plus tools to execute some approximation
+tractably.
 
 \paragraph{Why this PI?}
 ...What have we achieved so far?
