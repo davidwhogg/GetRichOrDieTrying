@@ -83,8 +83,8 @@ improve if the systematic errors and model errors are smaller than the
 root-variance or precision of the measurements!
 That is, we may be getting to a place where bigger is not better.
 \item
-In the statistics community, there is a general notion of the
-trade-off between bias and variance.
+In statistics, there is a general notion of the trade-off between bias
+and variance.
 (For the purposes of this proposal, I am going to equate what a
 statistician calls a ``bias'' with what a cosmologist calls a
 ``systematic error'' and what a statistician calls ``variance'' with
@@ -94,15 +94,33 @@ The current methods of cosmology make hard choices (cutting a catalog,
 for example) which are equivalent (under some analysis) with making
 very hard assumptions.
 These assumptions are informed and informative---they make inferences
-more precise.
+more precise---they reduce the variance of our inferences.
 But they only make inferences more \emph{correct} inasmuch as they are
 correct.
-
-There is a bias--variance trade-off, and the harder your
-assumptions, the smaller your variance but the bigger your bias!
+We may be locking in substantial bias on our current path.
 \item
-It costs information to make conclusions about things you don't
-care about.
+In every important scientific question or data set, there are both
+\emph{fundamental parameters} we care about (the cosmological
+parameters, say) and \emph{nuisance parameters} we don't.
+For example, we might care about the spectral index and amplitude of
+the cosmological power spectrum, but we might not care about the
+specific angular position or redshift of any individual galaxy in the
+density field.
+These galaxy positions constitute an example of a \emph{very large}
+set of nuisance parameters in any large-scale structure analysis.
+Because both fundamental and nuisance parameters affect the data, both
+matter; they both have to be inferred.
+That is, information in the data must flow into both; the nuisances
+draw information away from the fundamentals.
+We will do better on the fundamentals if we don't come to firm
+conclusions about the nuisances; it is better if we either never infer
+them, or else marginalize them out of our final inferences about the
+fundamentals.
+The current standard of making a rigid catalog, point-estimating the
+auto-correlation function, and only then doing cosmological inference
+violates this principle.
+We are measuring things we don't need to be.
+That must be costing us in precision.
 \item
 Amazing progress has been made, in the PI's group and in the
 community, in large, principled inferences.  Much of the credit for
