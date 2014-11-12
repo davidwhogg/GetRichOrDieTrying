@@ -246,9 +246,9 @@ relationship between the density field and the Gaussian initial
 conditions, so it is possible to draw Gaussian initial ``latent''
 fields and then distort them according to second-order perturbation
 theory to make realistic, weakly non-Gaussian density fields.
-We believe that this project is feasible; there are many examples in
+We believe that this project is feasible; there are examples in
 the machine-learning literature of full inference in a model of a
-field that is a distortion of a Gaussian random field, and then
+field that is a distortion of a Gaussian random field (\eg, CITE MURRAY), and then
 sampled by points (galaxies, in our case).
 
 One challenge of this approach is that out-of-the-box Gaussian Process
@@ -304,11 +304,97 @@ that could be pursued by the project personnel.
 
 \paragraph{\package{Toolset 2}: Using and improving probabilistic redshift information}
 
-...how would the probabilities come in to luminosity function estimates and correlation function estimates?
+For the faintest sources in the Stage-IV projects (and even, say, the
+Stage-II \sdss\ imaging), there is no accurate redshift information.
+Indeed, there can't be:
+We can never take spectroscopic data as faint as we can do imaging,
+and photometric redshifts are not just somewhat imprecise, they are
+difficult (or perhaps impossible) to calibrate or test where no
+spectroscopy is available.
+In addition, we want to be able to use in large-scale structure and
+cosmology projects sources that did not get spectroscopy for other
+reasons, or where spectroscopy is ambiguous or low in signal-to-noise.
+In the brave future of Stage-IV projects, we expect this to be the
+vast majority of sources of interest.
 
-...what is the difference between likelihood and posterior information?
+Facing this reality, many projects---but in particular \lsst---are
+planning on creating and delivering redshift probability products,
+which describe either the redshift likelihood function for each source
+or else the redshift posterior under simple priors.\footnote{It turns
+  out that we \emph{always} want the likelihood function, and
+  \emph{never} want the posterior pdf for the redshift.  The reasons
+  for this are technical; they relate to the marginalizations that are
+  required.  No more will be said about this, but the PI has polemics
+  available (CITE HOGG).}
+The question is:  How should we use these probabilistic outputs?
+Most proposed (and some actual) uses of these have turned out to be
+misguided, in the sense that they are not expected to improve the
+biases in resulting inferences.
+That is, there are no \emph{inexpensive} uses of probabilistic
+redshift information that improve inferences; all the inexpensive
+ideas make things \emph{worse}.
 
-...re-infer the BAO using SDSS imaging but only photometric redshifts
+For the purposes of this proposal, two general areas where
+probabilistic redshift information might be used will be discussed:
+the inference of galaxy luminosity functions (and their evolution) and
+the inference of the large-scale structure correlation function.
+In each case, it is tempting for an investigator, faced with
+probabilistic redshift information, to resample the galaxy population,
+drawing for each galaxy randomly from its redshift probability
+distrubution.
+Then the investigator could perform inference for each such draw and
+take the distribution over results to be a propagation of the redshift
+noise into the results.
+This kind of approach has been performed multiple times in the
+cosmological literature.
+
+It turns out that all methods of this kind are incorrect:
+They treat the probabilistic redshift functions as applying to the
+data---as being tools for distorting the data.
+They are not!
+Distorting the data is never appropriate, and in the cases of interest
+here will enworsen any results.
+The redshift functions apply to the model (the latent, true redshifts); they are tools
+for distorting the \emph{predictions} to make them match the data.
+That is, the probabilistic information about redshift must be used in
+the data-generating model.
+They must be used as part of a data simulation or a likelihood
+function (probability in the data space).
+The cool bonus thing is that when they are used in this way---as part
+of a generative model---not only do they improve inferences, the
+inference will \emph{also} return improved redshift estimates.  That
+is, the inference gets better \emph{and} the model provides
+information back to the redshifts.
+This is the magic of hierarchical modeling.
+
+In the case of luminosity-function inference,
+the idea is that any parameterized model of the luminosity function
+(even a very general model that is, say, a mixture of Gaussians or a
+step function with hundreds of steps) is a model of how galaxy
+luminosities and redshifts are generated (by the fundamental or
+effective model).
+The model for how the data are generated from those luminosities
+involves the redshift likelihoods; they take true galaxy redshifts and
+luminosities (and other spectral properties) and give back a
+probability for the data.
+The individual-object redshift likelihood functions are tools that
+take a model that can generate true redshifts and convolve that model
+into one that generates the \emph{data}.
+Then, within that model, all the galaxy true redshifts and
+luminosities are model parameters (possibly nuisance parameters) to be
+inferred along with the luminosity-function parameters.
+The redshifts and luminosities can be marginalized out to provide good
+luminosity-function estimates,
+or the luminosity-function parameters and luminosities can be marginalized
+out to provide better redshift estimates.
+\package{Toolset~2} will perform this hierarchical inference.
+
+In the case of correlation-function inference, the story is very much
+the same, only harder to execute:
+...
+Again, \package{Toolset~2} will perform this hierarchical inference.
+
+...re-infer the LRG LF and BAO using SDSS imaging but only photometric redshifts
 
 \paragraph{\package{Toolset 3}: Creating and using probabilistic shape and PSF information}
 
