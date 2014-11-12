@@ -212,6 +212,22 @@ tractably.
 
 \paragraph{\package{Toolset 1}: Density-field inference and marginalization}
 
+The standard estimator for the auto-correlation function of galaxies
+is a point estimator that makes two critical assumptions:
+It assumes that the galaxy positions are perfectly known, and that the
+density field is a Gaussian random field, with only a mean value and
+variance structure.
+On the latter point---Gaussianity---the assumption came in by way of
+\emph{efficiency}; the estimator only saturates the Cram\'er--Rao
+bound if the density field is a Gaussian random field.
+
+If all of cosmology is built on these hard (and known wrong)
+assumptions, we can only do better by relaxing them.
+We can relax them both if we can make practical ways of generating the
+galaxy density field---or mass density field---simultaneously
+constrained by the observed galaxy positions \emph{and} the
+correlation function.
+
 ...theory paper
 
 ...expansion for the correlation function and kernel
@@ -221,6 +237,12 @@ tractably.
 ...ab-initio run on some new data sets; could be XXX
 
 \paragraph{\package{Toolset 2}: Using and improving probabilistic redshift information}
+
+...how would the probabilities come in to luminosity function estimates and correlation function estimates?
+
+...what is the difference between likelihood and posterior information?
+
+...re-infer the BAO using SDSS imaging but only photometric redshifts
 
 \paragraph{\package{Toolset 3}: Creating and using probabilistic shape and PSF information}
 
