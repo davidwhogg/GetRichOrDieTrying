@@ -227,14 +227,80 @@ We can relax them both if we can make practical ways of generating the
 galaxy density field---or mass density field---simultaneously
 constrained by the observed galaxy positions \emph{and} the
 correlation function.
+That is, we need to be able to build a simultaneous probabilistic
+model of the three-dimensional data field \emph{and} all of the true
+redshifts, constrained by the data (the galaxy positions and the weak
+redhift information).
 
-...theory paper
+There is one regime in which this can be feasible:
+Using a Gaussian Process (CITE RASMUSSEN), for which we currently have
+the fastest code in the world (CITE SIVA), we can draw density fields
+constrained by data for any true-redshift realization, in the case
+when the density field is indeed Gaussian!
+That is, the project proposed here is easier at larger scales (where
+the density is closer to Gaussian) and harder at smaller scales (where
+fully cosomological simulations become more important).
 
-...expansion for the correlation function and kernel
+In addition, where the density field is weakly non-linear, there is a close
+relationship between the density field and the Gaussian initial
+conditions, so it is possible to draw Gaussian initial ``latent''
+fields and then distort them according to second-order perturbation
+theory to make realistic, weakly non-Gaussian density fields.
+We believe that this project is feasible; there are many examples in
+the machine-learning literature of full inference in a model of a
+field that is a distortion of a Gaussian random field, and then
+sampled by points (galaxies, in our case).
 
-...toolset and demo on BOSS data
+One challenge of this approach is that out-of-the-box Gaussian Process
+packages do not permit specification of an \emph{arbitrary}
+correlation function (covariance function or kernel function) for the
+latent field.
+Here, one of the objectives is to \emph{determine} the correlation
+function, and indeed \emph{marginalize out} the density field (and all
+other nuisances).
+This requires a method for specifying arbitrary correlation functions.
+With Mike O'Neil (NYU Math) and Jon Wilkening (Berkeley Math), we have
+developed a fully general expansion for positive-definite covariance
+functions that correspond to free functions for the correlation
+function.
+This expansion---plus an ability to take large matrix determinants
+(which we have; CITE SIVA)---will permit simultaneous inference of the
+latent field controlling the density, the correlation function, and
+any aspects of galaxy position (say redshifts) that are uncertain.
+Since we will sample in all dimensions with MCMC (or, realistically, a
+Gibbs or slice-sampling version of MCMC), it will be possible to
+deliver posterior samples for the correlation function \emph{fully
+  marginalized} over density and galaxy-position realizations.
+This full set of capabilities comprise \package{Toolset~1}.
 
-...ab-initio run on some new data sets; could be XXX
+We propose to develop and execute a method of this kind to perform
+large-scale structure inference at intermediate regimes (few Mpc and
+larger).
+We will test this method on the Stage-III \boss\ galaxy data, and show
+that we confirm or improve on results obtained by the standard
+methods.
+We will write a theory and method-oriented paper, and a data and
+results paper on this toolset.
+We will also release the toolset as documented, MIT-licensed,
+open-source code.
+
+\package{Toolset~1} will make fewer assumptions than the standard
+methods for cosmological inference.
+In particular, it will estimate the correlation function with an
+implicit generative model that is more correct than that underlying
+the Landy--Szalay estimator.
+It ought, therefore, to provide less biased cosmological results.
+However, it will not necessarily provide lower variance results (more
+precise results).
+This is because the method is \emph{also} more flexible.
+
+The density estimation and correlation inference made possible by
+\package{Toolset~1} is very general; it could be applied to other
+kinds of density fields, such as the two-dimensional projected
+mass-density field observed with weak lensing, and the neutral-gas
+density field absorbed through quasar absorption lines.
+Inasmuch as time permits, such inferences represent enhanced goals
+that could be pursued by the project personnel.
 
 \paragraph{\package{Toolset 2}: Using and improving probabilistic redshift information}
 
