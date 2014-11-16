@@ -389,8 +389,36 @@ or the luminosity-function parameters and luminosities can be marginalized
 out to provide better redshift estimates.
 \package{Toolset~2} will perform this hierarchical inference.
 
+In the literature, some have ``propagated'' the redshift uncertainty
+into the luminosity uncertainty, and measured the luminosity function
+using less precise but more conservative luminosity uncertainties.
+While this approach is more conservative and less biased than ignoring
+the redshift uncertainty, it does not deliver the precision of a
+hierarchical inference.
+That's because it does not use the learning about the luminosity
+function to simultaneously improve the redshift estimation and vice
+versa.
+It doesn't capture all of the information available from our understanding
+that the true redshifts are ``generated'' by the model.
+We have demonstrated this (in exoplanet contexts) in several projects
+now (CITE DFM; CITE HOGG).
+Again, \package{Toolset~2} will give us and the community these powers.
+
 In the case of correlation-function inference, the story is very much
 the same, only harder to execute:
+Now the model has correlation-function parameters, which in turn act
+like priors on the a latent ``true'' density field, and then the
+galaxies are samples of either that field or else a ``true'' galaxy
+field from which galaxies are generated.
+(This only works for scales $>$Mpc, where galaxy generation can be
+seen as a local, independent process.)
+Now each galaxy ``true'' redshift can be informed both by the likelihood
+function $f(z)$ and also the current inferences about the density field
+that are themselves informed by the correlation function.
+
+This whole chain of reasoning comprises a hierarchical inference that
+makes use of \package{Toolset~1} for density-field inference, and
+also 
 ...
 Again, \package{Toolset~2} will perform this hierarchical inference.
 
