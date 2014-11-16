@@ -1,3 +1,12 @@
+% This document is part of the GetRichOrDieTrying project.
+% Copyright 2014 David W. Hogg (NYU).
+
+% # to-do
+% - references
+% - equations
+% - broader impacts
+% - management plan
+
 \documentclass[12pt]{article}
 \usepackage{fancyheadings, graphicx}
 \setlength{\headsep}{2ex}
@@ -279,10 +288,24 @@ larger).
 We will test this method on the Stage-III \boss\ galaxy data, and show
 that we confirm or improve on results obtained by the standard
 methods.
-We will write a theory and method-oriented paper, and a data and
-results paper on this toolset.
-We will also release the toolset as documented, MIT-licensed,
-open-source code.
+This real-data test will both demonstrate the methods functionally,
+and make us into not just the builder of the toolset but also the
+\emph{customer} for the toolset.
+It is our experience that tools are much better built when the
+customer is involved.
+
+It is possible that our work on the \boss\ data will create
+different answers (because bias has been reduced) or more precise
+answers (because the model is more appropriate) than have been found
+previously.
+Obviously, if this is the case, we will work to understand the
+differences and from where they emerge.
+
+In terms of outputs from this proposal, in addition to the code for
+\package{Toolset~1}, we will also publish a theory and method-oriented
+paper, and also a data and results paper from the \boss\ experiment.
+We will release the toolset as documented, MIT-licensed, open-source
+code.
 
 \package{Toolset~1} will make fewer assumptions than the standard
 methods for cosmological inference.
@@ -418,11 +441,42 @@ that are themselves informed by the correlation function.
 
 This whole chain of reasoning comprises a hierarchical inference that
 makes use of \package{Toolset~1} for density-field inference, and
-also 
-...
-Again, \package{Toolset~2} will perform this hierarchical inference.
+also work we have done in exoplanet contexts (CITE DFM) to infer a
+Gaussian process in the face of data points with noisy \emph{locations}.
+This requires, for efficiency, specialized samplers (CITE MURRAY), one
+of which we will release along with everything else in
+\package{Toolset~2}.
 
-...re-infer the LRG LF and BAO using SDSS imaging but only photometric redshifts
+We will use \package{Toolset~2} to measure the luminous red galaxy
+(LRG) luminosity function and its evolution, and also the clustering
+of luminous red galaxies on intermediate and large scales, in the
+\sdss\ imaging data.
+One goal is to reproduce what is known about the LRG luminosity
+function, another the correlation function, including the baryon
+acoustic feature (CITE EISENSTEIN).
+For the LRG redshifts, we will use not the spectroscopic redshifts but
+instead the photometric redshifts, to make sure that $f(z)$ is
+non-trivial for all sources.
+Because we will be re-inferring for a known population but with worse
+data, we---in some sense---know the truth, or what we must get in the
+best possible case.
+That makes this \sdss\ analysis a true functional test of
+\package{Toolset~2}; this is important, because it is such a radical
+departure from the standard methodologies.
+
+In the test of \package{Toolset~2} with \sdss\ we can not just try to
+reproduce the cosmological quantities, but also to obtain better
+posterior beliefs about the redshifts.
+This will be another output of the hierarchical model.
+Again, since we know the spectroscopic redshifts, we can test these
+posterior inferences in a very strong way.
+
+The deliverables of this part of the proposal will be the
+\package{Toolset~2} code, and two papers, one that is theory and
+method oriented, and another that reports the results of the testing
+and inferences on the \sdss\ imaging data.
+Again, we will try to understand in these papers the quantitative
+differences we get with the (now famous) results of \sdss.
 
 \paragraph{\package{Toolset 3}: Creating and using probabilistic shape and PSF information}
 
