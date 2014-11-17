@@ -101,10 +101,10 @@ generally use the statistician's language.}
 The current methods of cosmology make hard choices (cutting a catalog,
 for example) which are equivalent (under some analysis) with making
 very hard assumptions.
-These assumptions are informed and informative---they make inferences
-more precise---they reduce the variance of our inferences.
+These assumptions are informed and informative---they con make sometimes inferences
+more precise---they can sometimes reduce the variance of our inferences.
 But they only make inferences more \emph{correct} inasmuch as they are
-correct.
+themselves correct.
 We may be locking in substantial bias on our current path.
 \item
 In every important scientific question or data set, there are both
@@ -195,28 +195,122 @@ reasoner in cosmology.
 
 This proposal, in some sense, is to develop the \emph{theory} of
 experimental cosmology, plus tools to execute some approximation
-tractably.
+to that, tractably.
+
+One side note worth making here is that there is a huge literature
+already on the theory of cosmological observables.
+There is work on making more and more precise predictions for the
+non-linearities induced by gravity, the distortions caused by our
+working in redshift (rather than pure position) space, the shape of
+the baryon acoustic feature as a function of redshift, and the
+statistics of the shapes of galaxies and covariances in those induced
+by galaxy--galaxy interactions (so many good theory papers that it
+would be impossible to fairly cite this literature, and also beside
+the point).
+This work is getting ever more sophisticated and remarkable, as the
+practitioners of observational cosmology demand higher and higher
+precision predictions to match the higher and higher precision of the
+data.
+Indeed, this whole literature and community stands as a great example
+of how mature science ought to work:
+Interactions between large observational efforts and large theoretical
+efforts, every step improving our ability to refine and rule out
+models.
+
+The projects proposed in this proposal are \emph{perfectly
+  complementary} to other theory work in cosmology.
+Indeed, any inference performed with the toolsets I propose will
+simultaneously make use of the best practical predictions emerging
+from the body of cosmology theory.
+The projects proposed in this proposal are also \emph{perfectly apt},
+in some form, for \emph{any} cosmological data set.
+That is, what is proposed here leverages all cosmology theory and the
+capabilities of all new observational projects to make cosmological
+measurements less biased and more precise.
 
 \paragraph{Why this PI?}
-...What have we achieved so far?
 
-...In exoplanets
+If you are convinced that precise cosmological measureents are
+important, and if you are convinced that data sets are getting more
+precise, then it is hard to deny that we should be looking at whether
+our measurement precision is limited by our inference or measurement
+tools.
+The hard questions are: Who should do this, and is there any chance it
+is even possible, anyway?
+Although the projects proposed (below) are ambitious, the PI's group
+has a range of theoretical, technical, and technological successes
+that make it the ideal to work towards the proposed goals:
+\begin{itemize}
+\item
+In exoplanet and astrometric research contexts, we have developed valuable new Markov
+Chain Monte Carlo sampling technologies, including affine-invariant
+samplers (Hou \etal, 2012; Foreman-Mackey \etal, 2013), nested
+samplers (Hou \etal, 2014), reversible-jump nested samplers (Brewer
+\etal, 2013), and elliptical slice samplers (Foreman-Mackey \etal,
+2014).
+\item
+We have developed novel methods (based on importance sampling) for
+performing hierarchical probabilistic inferences in problems where
+data sets are large.  These methods have permitted us to perform the
+inferences ``in the data center'' rather than in a single core (Hogg
+\etal, 2010; Foreman-Mackey \etal, 2014).
+\item
+In spacecraft and survey self-calibration projects, we have built
+data-driven models of instrument throughputs and sensitivity with
+hundreds of millions to billions of parameters (Padmanabhan \etal,
+2008; Holmes \etal, 2012) and we now have a model of the
+\kepler\ focal plane with (literally) more than $10^9$ parameters per
+target star!  These models are incredibly flexible but the methods are
+designed so that they can \emph{only} fit out variability in the data
+that does not project onto the astrophysical signals of interest.
+\item
+We have built systems to perform pixel-level image modeling to create
+probabilistic catalogs, probabilistic photometric information,
+probabilistic source separation and deblending, and prior-influenced
+photometry in astronomical imaging.  There is a huge project called
+\thetractor\ that we have started, and it is bearing fruit in a
+massive re-analysis of the \observatory{WISE} data (Lang \etal, 2014) and weak
+lensing (next up).
+\item
+In cosmological weak lensing, we have built the first-ever shear-field
+measurement code that delivers likelihood about the shear field based
+only on the pixel values from the telescope, marginalizing out beliefs
+about any individual galaxy (Schneider \etal, 2014).  We entered the
+\project{GREAT3} weak lensing challenge with this code, which can
+perform the sampling and marginalization at scale.
+\item
+Gaussian process regression and density estimation require---when you
+want to infer the hyperparameters too---not just fast, large matrix
+factorizations and solves, but also fast determinant calculations.
+When you want the hyperparameters to represent some physical reality
+(like the Universe), it is not possible to keep these matrices sparse.
+We have the fastest method and code in the world for
+machine-precision, fast, dense matrix operations (Ambikasaran, 2014).
+\item
+We have performed Gaussian-process-controlled inference in a context
+in which the data are noisy in all dimensions, including the
+``features'' used for the Gaussian process (Foreman-Mackey \etal,
+2014).  This is a classically ``hard'' problem in machine learning,
+but we now have technology that seems to work for small problems and
+there is hope for scaling up.
+\end{itemize}
 
-...In weak lensing; \thetractor.
-
-...How are we making these things possible?  Applied-math developments
-
-...Very fast GPs
-
-...Samplers that don't require tuning
-
-...Importance sampling for hierarchical inference
-
-...Aside:  $p(d\given z)$ vs $p(z\given d)$
-
-...Aside:  ABC on cosmological data
-
-...Pedagogical role in the community
+In additon to all these technical achievements, all of which are
+relevant to what follows, the PI has a positive and valued pedagogical
+role in the astrophysics community.
+He is invited to participate as teacher or co-organizer in roughly
+four astronomical statistics and data-analysis workshops and schools
+each year (most recently at SAMSI, CMU, UW Seattle, and ESAC in
+Madrid); about half of his dozen research seminars per year focus on
+data analysis and statistical inference (most recently a plenary talk
+at the American Astronomical Society, and Toronto, Princeton, and MPIA
+in Heidelberg).
+He is known for putting pedagogical texts on the arXiv, most notably
+on cosmological distance measures (Hogg, 1999) and on fitting data
+with simple models (Hogg \etal, 2010b).
+These are not strictly relevant to the technical goals of this proposal,
+but they will increase the potential for \emph{broader impact} of this work, and
+help make sure the methods and tools get used as widely as possible.
 
 \paragraph{\package{Toolset 1}: Density-field inference and marginalization}
 
@@ -239,6 +333,8 @@ That is, we need to be able to build a simultaneous probabilistic
 model of the three-dimensional data field \emph{and} all of the true
 redshifts, constrained by the data (the galaxy positions and the weak
 redhift information).
+
+...schematically in equations this looks like...
 
 There is one regime in which this can be feasible:
 Using a Gaussian Process (Rasmussen \& Williams, 2006), for which we currently have
@@ -420,6 +516,8 @@ or the luminosity-function parameters and luminosities can be marginalized
 out to provide better redshift estimates.
 \package{Toolset~2} will perform this hierarchical inference.
 
+...schematically this is in equations...  both to get LF right and to get redshifts...
+
 In the literature, some have ``propagated'' the redshift uncertainty
 into the luminosity uncertainty, and measured the luminosity function
 using less precise but more conservative luminosity uncertainties.
@@ -446,6 +544,8 @@ seen as a local, independent process.)
 Now each galaxy ``true'' redshift can be informed both by the likelihood
 function $f(z)$ and also the current inferences about the density field
 that are themselves informed by the correlation function.
+
+...schematically in equations...
 
 This whole chain of reasoning comprises a hierarchical inference that
 makes use of \package{Toolset~1} for density-field inference, and
@@ -594,7 +694,13 @@ multi-exposure data is shown in Figure[\ref{3}].
 The PI has been an active author of methods, software, and pedagogical
 documents for the astrophysics and cosmology communities (CITE STUFF).
 
-...MCMC and model selection Data Analysis Recipes; aimed at undergraduates and beginning graduate students
+...Bringing not just ideas of inference, but real, practical tools for inference into the community.
+
+...Developing Data Science curricula at NYU for domain scientists
+
+...Bringing together methodologists and domain scientists; translation, etc.
+
+...MCMC and model selection and Gaussian Process Data Analysis Recipes; aimed at undergraduates and beginning graduate students
 
 ...Organization and leadership of Hack Days and AstroHackWeek.
 
@@ -611,7 +717,7 @@ is now a postdoctoral scholar in computer science at MIT.
 The grant was explicitly inter-disciplinary between computer vision
 and astrophysics.
 
-This grant has supported 12 refereed publications.
+This grant has supported 13 refereed publications.
 In the category of \textbf{Intellectual Merit},
 research highlights from this grant include the most highly used MCMC
 sampler in the astrophysics community (Foreman-Mackey \etal, 2013)
@@ -665,17 +771,19 @@ independently of the PI's group or research.
 
 \paragraph{Project management and products}
 
-This project is very lean, it is comprised of just a PI and two
+This project is very lean; it is comprises just a PI and two
 students, one of them part-time.
 The rough scheduling would be to work on \package{Toolset~1} and
 \package{Toolset~3} in year one, \package{Toolset~2} in year two, and
 finish all paper-writing and documentation of code in year three.
-The ordering of toolsets is based on the current level of expertise
-and comfort with the tools in the PIs group as of today.
+The ordering of toolsets is based on the current level of shovel-readiness
+in the PIs group as of today.
 It would be nice to write the theory and method papers prior to the
 real-data papers, but this is probably not realistic; they will
 probably have to be written together, given the interplay between
 functional testing and theory in these projects.
+Another way to put it: The approximations and methods will be strongly
+driven by what really works with real data.
 
 The toolsets will be released publicly under the MIT open-source
 license using the platform \project{github} or equivalent.
