@@ -295,7 +295,7 @@ but we now have technology that seems to work for small problems and
 there is hope for scaling up.
 \end{itemize}
 
-In additon to all these technical achievements, all of which are
+In addition to all these technical achievements, all of which are
 relevant to what follows, the PI has a positive and valued pedagogical
 role in the astrophysics community.
 He is invited to participate as teacher or co-organizer in roughly
@@ -334,12 +334,29 @@ model of the three-dimensional data field \emph{and} all of the true
 redshifts, constrained by the data (the galaxy positions and the weak
 redhift information).
 
-...schematically in equations this looks like...
+Schematically, we could write down the plan like this:
+\begin{equation}
+p(d\given \Omega) = \int p(d\given z)\,p(z\given \rho)\,p(\rho\given \xi)\,p(\xi\given \Omega)\,\dd z\,\dd\rho\,\dd\xi
+\end{equation}
+where $d$ represents all the data, $z$ represents all the galaxy
+positional information, $\rho$ represents the density field, $\xi$
+represents the correlation function or power spectrum of the density
+field, and $\Omega$ represents the cosmological parameters.
+\package{Toolset~1} aims to make the functions $p(z\given\rho)$ and
+$p(\rho\given\xi)$ tractable to sample from, infer, and integrate out.
+Note that this equation (above) is only intended to be schematic;
+there are a lot of details, since $d$, $z$, $\rho$ and so on are very
+complex, heterogenous objects.  This equation is also an example of a
+hierarchical model: $\xi$, for example, only affects $z$ by the fact
+that it generates $\rho$ which in turn generates $z$.  That
+hierarchical structure is exploited in our sampling and integration
+strategies.
 
+This big probabilistic model is a bit scary.
 There is one regime in which this can be feasible:
 Using a Gaussian Process (Rasmussen \& Williams, 2006), for which we currently have
 the fastest code in the world (Ambikasaran \etal, 2014), we can draw density fields
-constrained by data for any true-redshift realization, in the case
+constrained by data (draw from $p(z\given\rho)$) for any true-redshift realization, in the case
 when the density field is indeed Gaussian!
 That is, the project proposed here is easier at larger scales (where
 the density is closer to Gaussian) and harder at smaller scales (where
@@ -516,7 +533,19 @@ or the luminosity-function parameters and luminosities can be marginalized
 out to provide better redshift estimates.
 \package{Toolset~2} will perform this hierarchical inference.
 
-...schematically this is in equations...  both to get LF right and to get redshifts...
+Schematically, here, we could write:
+\begin{eqnarray}
+p(d\given \Phi) &=& \int p(d\given L, z)\,p(L, z\given \Phi)\,\dd L\,\dd z \\
+p(d\given z) &=& \int p(d\given L, z)\,p(L, z\given \Phi)\,\dd L\,\dd\Phi
+\end{eqnarray}
+where $d$ represents all the data, $L, z$ represents all the galaxy
+luminosity and redshift information, and $\Phi$ represents the redshift-evolving luminosity function.
+In the first case we are inferring the luminosity function, integrating out
+the luminosities and redshifts.
+In the second case we are getting better redshift estimates, integrating out
+everything else.
+Again, there are a lot of details, since $d$, $L$, $z$, and $\Phi$ and so on are very
+complex, heterogenous objects.
 
 In the literature, some have ``propagated'' the redshift uncertainty
 into the luminosity uncertainty, and measured the luminosity function
@@ -545,7 +574,16 @@ Now each galaxy ``true'' redshift can be informed both by the likelihood
 function $f(z)$ and also the current inferences about the density field
 that are themselves informed by the correlation function.
 
-...schematically in equations...
+Schematically, this is:
+\begin{eqnarray}
+p(d\given \xi) &=& \int p(d\given z)\,p(z\given \rho)\,p(\rho\given \xi)\,\dd z\,\dd\rho \\
+p(d\given z) &=& \int p(d\given z)\,p(z\given \rho)\,p(\rho\given \xi)\,\dd\rho\,\dd\xi
+\end{eqnarray}
+where once again, $d$ represents all the data, $z$ represents all the galaxy
+positional information, $\rho$ represents the density field, and $\xi$
+represents the correlation function or power spectrum of the density
+field.  Again, the latter uses the density field to improve the redshift estimates.
+That sounds like the tail wagging the dog, but it might be immensely powerful.
 
 This whole chain of reasoning comprises a hierarchical inference that
 makes use of \package{Toolset~1} for density-field inference, and
@@ -691,18 +729,73 @@ multi-exposure data is shown in Figure[\ref{3}].
 
 \paragraph{Broader impacts}
 
-The PI has been an active author of methods, software, and pedagogical
-documents for the astrophysics and cosmology communities (CITE STUFF).
+As mentioned above, the PI has been an active author of methods,
+software, and pedagogical documents for the astrophysics and cosmology
+communities.
+These documents are aimed at undergraduate physics majors, graduate
+students, and professional researchers.
+He has also been active in professional education from undergraduate
+through to research professional, influencing a large part of the
+community.
+The tools he has released have had an impact in a huge set of domains,
+and made it possible for different groups to think differently about
+their data and experiments.
 
-...Bringing not just ideas of inference, but real, practical tools for inference into the community.
+The PI is also a member and an administrator of the NYU Center for
+Data Science.
+This interdisciplinary (and inter-school) initiative at NYU is hiring
+faculty in joint appointments, starting a PhD program between the
+methods and the science domains, running a masters program, and
+operating events to educate all levels of the NYU and NYC communities
+about data and inferences from data.
+This has given the PI many opportunities to translate methodological
+ideas for domain scientists, especially early-career and junior
+members of the community.
+It has also given great opportunities to advertise astronomical
+research and data sets to the methods communities; the latter has led
+to many new projects in computer science, applied mathematics, and
+statistics.
+These activities are having an effect on research and education across
+the university and in the community of research universities, through
+curriculum development, career-path analysis, and new roles for
+scientists, engineers, and developers in science projects and the
+academy.
 
-...Developing Data Science curricula at NYU for domain scientists
+Examples of the PI's success in interdisciplinary work are given
+above; they include co-authored publications with faculty in the three
+classes of methods departments---Mathematics, Statistics, and Computer
+Science---and tools with high uptake.
 
-...Bringing together methodologists and domain scientists; translation, etc.
+In addition to all this, the PI has influential arXiv-only documents
+(\project{Data Analysis Recipes}) with pedagogical content, and as
+part of this proposal proposes to write three more,
+\begin{enumerate}
+\item
+a \project{Data Analysis Recipes} on model selection, discussing
+traditional methods related to $chi^2$ improvement, engineering
+methods of cross-validation, pure Bayesian methods, and practical
+decision theory,
+\item
+a \project{Data Analysis Recipes} on MCMC sampling, discussing the
+basic method, initialization, burn-in, tuning, convergence analysis,
+and trouble-shooting,
+\item
+and a \project{Data Analysis Recipes} on Gaussian processes,
+discussing non-parametrics, regression, inference, and sampling, noise
+modeling, linear algebra, noisy features, and high-dimensional feature
+(ambient) spaces.
+\end{enumerate}
+Each of these techniques or issues is either highly used in astronomy
+or growing fast, and many students are encountering similar issues.
+Perhaps more importantly, these kinds of subjects are becoming a part
+of the physics and astronomy undergraduate curriculum.
+If we can move the curriculum in this direction, that would be a very
+satisfying broader impact of the proposed work.
 
-...MCMC and model selection and Gaussian Process Data Analysis Recipes; aimed at undergraduates and beginning graduate students
-
-...Organization and leadership of Hack Days and AstroHackWeek.
+One of the ways that the PI is influential (on the youth, anyway) is
+by participating in Hack Days and other informal-education events (see
+above and below for more details).  This will continue and serve to
+create and amplify these broader impacts.
 
 \paragraph{Prior NSF support}
 
