@@ -626,26 +626,29 @@ differences we get with the (now famous) results of \sdss.
 
 \paragraph{\package{Toolset 3}: Creating and using probabilistic shape and PSF information}
 
-Cosmic shear, small distortion of the images of distant
-galaxies by large-scale structure in the universe,
-is a major probe of cosmolgy. Measurement of the cosmological
-weak lensing signal provides extremely powerful probe of the
-evolution of dark energy, since the shear signal depends on
-both the growth of structure, and the distance-redshift relation.
-In this document we present tractable probabilistic methods that
-make less constraining assumption about the flow of information
-from the data to the cosmological parameters, and help us fully exploit
-the potential of weak lensing in  constraining cosmology using the
-imaging data from wide field surveys.
+In this section propose building tractable probabilistic methods aimed
+at maximizing the flow of information from imaging data to the
+cosmological parameters in the specific context of weak lensing.
+Many of the ideas here are inspired by our baby-steps success in the
+\project{GREAT3} weak lensing challenge, where we entered a fully
+probabilistic hierarchical method that, for example, fully marginalized out
+galaxy shapes and \emph{also} the intrinsic distribution of galaxy shapes
+(Schneider \etal, 2014).
 
-PSF estimation for weak lensing:
-Extracting the cosmic shear from galaxy images is one of the most challenging tasks in astronomical
-data analysis. Shear signal induced by lensing on the images of background galaxies
-is coherent but much smaller than the typical 
-ellipticities of those galaxies. Moreover, the image of lensed galaxies is convolved with 
-an unknown spatially varying kernel, the Point spread function, whose typical
-anisotropy is greater than the cosmic shear itself.
- 
+This toolset builds on \package{Toolset~1} because it will require
+marginalization over continuous density or convergence fields.
+In principle it also builds on \package{Toolset~2} because the weak
+lensing community will never have precise redshifts for the bulk of
+its targets.
+However, actually performing the hierarchical inference on all
+weak-lensing target redshifts is beyond our current scope.
+
+The baic context for this work is that the cosmic shear signal induced
+by lensing on the images of background galaxies is coherent but much
+smaller than the typical ellipticities of those galaxies, and comparable
+to or smaller than the ellipticity of the point-spread function (PSF).
+Moreover, the PSF is a spatially varying kernel, measured noisily,
+with a sparse set of stellar calibrators in each field.
 Effectively, we have 
 noisy estimates of the PSF at the positions of stars. We need to use these estimates to infer the
 underlying two dimenstional pattern of the PSF. The spatial variation at large angular scales is 
@@ -655,45 +658,81 @@ distance between the bright stars.
 
 Inaccurate estimation of the PSF at the positions of galaxies will lead to bias in shear estimates,
 which will propagate into the dark energy constraints if not accounted for. In order to
-tackle this issue, we propose to infer the propability distribution function over the PSF
+tackle this issue, we propose to infer the probability distribution function over the PSF
 at the positions of galaxies, so that we can marginalize over the PSF instead of treating it 
 as a rigid object.
 
-This probability distribution function (a) needs to be flexible enough to capture the complicated 
-features of the shape of the PSF as well as its spatial variation, (b) needs to propagate uncertainties
-from the pixel level to the PSF, and (c) needs to be easy to evaluate and easy to sample from. By 
-projecting the images of stars into lower dimensional KL basis, and imposing Gaussian Process priors 
-over each direction of the KL basis we satisfy all the mentioned requirements. This model successfully propagates
-the uncertainties in the form of a posterior PDF over PSFs; 
-that is, it returns probabilistic information about the PSF at the positions of galaxies. At each
-position of the astronomical image, this posterior PDF has a simple form of a Gaussian.
+This probability distribution function needs to be flexible enough to capture the complicated 
+features of the shape of the PSF as well as its spatial variation, needs to propagate uncertainties
+from the pixel level to the PSF, and needs to be easy to evaluate and easy to sample from. By 
+projecting the images of stars into a lower dimensional linear basis, and imposing Gaussian Process priors 
+over each direction of the basis, we find that we can satisfy all the requirements. This model successfully propagates
+the uncertainties in the form of a posterior PDF over PSFs, constrained by the noisy stars in the image; 
+that is, it returns probabilistic information about the PSF at the positions of every galaxy.
+This model is related to \package{Toolset~1} in that it also makes use
+of our fast Gaussian process technology
 
-We also examine the performance of this method on estimation of the PSF for simulations 
-of \lsst. First, we identify the bright stars on the image and then we randomly divid
-them to training set and validation sets of equal size. After learning the KL basis and 
-hyper parameters of the Gaussian Process model in the training set, we infer the posterior 
-PDF of PSF at the position of stars in the validation set. Figure [\ref{1}] shows a star
-in the validation set, and three different draws from the posterior PDF of PSF at that position.
+We have taken the baby step of examining the performance of a simple version of this method on simulations 
+of \lsst\ imaging data. First, we identify the bright stars on the image and then we randomly divide
+them into training set and validation sets of equal size. After learning a linear basis (by KL) and 
+hyperparameters of the Gaussian Process model in the training set, we infer the posterior 
+PDF of PSF at the position of stars in the validation set. Figure~\ref{1} shows a star
+in the validation set, and three different draws from the posterior PDF of PSF at that position;
+Figure~\ref{3} shows the variation of a PSF parameter over the field
+in our model and in a standard astronomical PSF implementation.
+One of the big benefits of Gaussian process inference rather than
+polynomial interpolation is that the GP is much better behaved at the
+edges of the field.
+\begin{figure}[!ht]
+\noindent
+\minipage{.8\textwidth}
+  \includegraphics[width=\linewidth]{112.png}
+\endminipage
+\caption{\textsl{Plots showing a star in the validation set
+(first column), and three different draws (second column)
+from our probabilistic PSF model at the
+position of star, and the residuals (third column).}\label{1}}
+\end{figure}
+\begin{figure}[!ht]
+\noindent\minipage{\textwidth}
+  \includegraphics[width=\linewidth]{validation_e1.png}
+\endminipage
+\caption{\textsl{Map showing the underlying (true) pattern of atmospheric PSF ellipticities (left) for a simulated \lsst\ field,
+mean of the Gaussian-process posterior probability (middle), and the prediction of 5-th
+order polynomial regression (right).  Note that the standard method of polynomial regression is bad at capturing the structure, goes terrible at the edges, and isn't (trivially) probabilistic in it's predictions.  The small-scale power in the true map on the (left) is not resolved by the stellar sample; hence the lower resolution of our posterior pdf.}\label{3}}
+\end{figure}
 
-probabilistic inference of shear:
-Typically, after measuring the shapes
-of a large ensemble of galaxies in a way that
-the effect of PSF is elliminated, ellipticities
-of these galaxies are averaged together in order to
+In \package{Toolset~3} we will build practical, fast methods for
+building probabilistic PSF models for Stage-IV cosmology experiments.
+We have been told by \lsst\ collaborators that if we deliver a
+probabilistic PSF model that works and scales, they would be
+interested in building it into their data-analysis framework and
+running it in a routine manner.  Even if this doesn't pan out, the
+\lsst\ framework is flexible and community-driven, so we can and will
+do this ourselves at the end of the project.
+
+In typical weak-lensing projects, once the PSF is point-estimated
+and the shape measurements are PSF-deconvolved (again by point estimation),
+galaxy ellipticities
+are averaged together in order to
 find a point estimator of the shear.
-The methods based on ensemble averaging make strong assumption
+The methods based on ensemble averaging make strong assumptions
 about the probability distribution of the intrinsic shape parameters,
 and are able to deliver unbiased estimate of shear only if we
 have access to unbiased measurements of individual galaxy
-ellipticites. 
+ellipticites.
+Worse than that these methods make strong assumptions, it is not
+trivial to understand or write down precisely what those assumptions
+are.
 
-Our aim is to deliver a fully probabilistic approach for estimation of shear.
+Our aim with \package{Toolset~3} is to deliver the necessary
+components for a fully probabilistic approach for estimation of shear.
 We want to write down a likelihood function $p(\data_n\given\shear)$, where $\{\data_n\}$
 represents the set of galaxy images. In order to do so, we need to marginalize over the
 nuisance parameters that we do not care about. This set of nuisance paramters includes 
-shape parameters (e.g., ellipticities), non-shape parameters (e.g., flux, centroid, etc.)
-of galaxies, and also the PSF
-
+shape parameters (ellipticities and more), non-shape parameters (size, flux, centroid, and so on)
+of galaxies, and also the PSF.
+Schematically:
 \begin{eqnarray}
 p(\data_n\given\shear)
   &=& \int p(\data_n\given\intrinsic_n , \omega_{n}, \psf , \shear)
@@ -702,30 +741,36 @@ p(\data_n\given\shear)
 \label{integral}
 \end{eqnarray}
 where $\{\intrinsic\}$ ($\{\omega_{n}\}$) represents the set of shape
-(non-shape) parameters.
+(non-shape) parameters, $\psf$ represents the PSF parameters, and $\shear$ represents the description of the full shear map.
 
-Schematically, equation (\ref{integral}) can be shown by the probabilistic
-graphical model (PGM) in Figure[\ref{2}]. Therefore, in this model we need
-a prior PDF over intrinsic (unlensed, PSF deconvolved) parameters of galaxies.
-This can be done by (a) finding a deep subset (containing a large number of high
-signal-to-noise galaxies) of the data, (b) finding the maximum-likelihood estimates
-of parameters of those galaxies, (c) and fitting an empirical prior to those parameters. 
+As mentioned above, one part of \package{Toolset~2} is to deliver the
+prior over PSF $p(\psf)$; this is a \emph{prior} because it is
+inferred from the stars prior to analysis of the galaxies in the same
+image.
+Another part of \package{Toolset~3} is to develop a good prior PDF
+over intrinsic (unlensed, PSF deconvolved) parameters of galaxies
+$p(\intrinsic_n, \omega_n)$.
+In the simplest empirical style, this can be built by finding a deep
+subset (containing a large number of high signal-to-noise galaxies) of
+the data, and finding the maximum-likelihood estimates of parameters
+of those galaxies, and fitting an empirical prior to those parameters
+that is forced (by symmetry) to be rotationally invariant.
 
-Importance sampling ........
-
-multi-exposure data:
-The imaging data from the upcoming WL surveys will consists of several
-short exposures of each individual galaxy. Stacking has been widely used
-as a method to combine information from multiple exposures. 
-Although stacking is able to deliver high signal-to-noise images, it distroys a
-huge amount of information regarding the spatial variation of
-the PSF, and it involves image transformation that could lead to correlated noise
-in the final product and distortion of the PSF.
-
-An important advantage of our model is that it can be easily extended
-to making inference of shear from multi-exposure data. The graphical model 
-regarding corresponding to application of our probabilistic inference to
-multi-exposure data is shown in Figure[\ref{3}].
+We have done experiments along these lines using the GPVLM model, in
+which we use a huge sample of measured galaxies to constrain a
+flexible distribution model based on a smaller number of free
+parameters and very flexible transformations that take these latent
+parameters into image space.  This is promising.  As is an approach
+based on restricted boltzmann machines (the generalization of deep
+learning to generative models).
+The next most sophisticated method is to learn hyperparameters of the
+intrinsic-property pdf simultaneously with the shear field.  This is
+what we did for \project{GREAT3} (Schneider \etal, 2014).  Here we are
+doing something closer to what's correct, but more restricted in the
+flexibility of our models, since sampling becomes prohibitive.
+The proposal for \package{Toolset~3} is to understand the trade-offs
+and deliver a practical set of tools for describing, learning,
+updating, and marginalizing out a prior pdf over intrinsic galaxy shapes.
 
 \paragraph{Broader impacts}
 
@@ -898,46 +943,5 @@ teaching, by the students.
 These hack sessions at these meetings have already been established by
 the PI, so these involve no new development or risk; indeed they are
 already highly successful operations.
-
-\clearpage
-
-\begin{figure}[!htb]
-\minipage{.8\textwidth}
-  \includegraphics[width=\linewidth]{112.png}
-\endminipage
-\caption{Plots showing a star in the validation set
-(first column), and three different draws (second column)
-from our probabilistic PSF model at the
-position of star, and the residuals (third column).\label{1}}
-\end{figure}
-
-\begin{figure}[!htb]
-
-\minipage{.3\textwidth}
-  \includegraphics[width=\linewidth]{data_e1.png}
-\endminipage
-
-\minipage{1.\textwidth}
-  \includegraphics[width=\linewidth]{validation_e1.png}
-\endminipage
-
-\caption{Top: scatter plot showing the first components of the ellipticities
-of the atmospheric PSF in LSST short exposure imaging data. 
-Bottom: Map showing the underlying pattern of atmospheric PSF ellipticities (left),
-mean of the posterior probability(middle), and the prediction of 5-th
-order polynomial regression (right).
-\label{2}}
-\end{figure}
-
-\begin{figure}[!htb]
-\minipage{.8\textwidth}
-  \includegraphics[width=\linewidth]{weaklensing1.png}
-\endminipage
-\caption{PGM showing the flow of information
-from cosmological parameters $\Omega$, PSF at different
-exposures $\psf_j$, and 
-the underlying distribution of shape parameters 
-$\alpha$, to the data at each exposure $\data_{nj}$.\label{3}}
-\end{figure}
 
 \end{document}
