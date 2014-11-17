@@ -134,20 +134,19 @@ Amazing progress has been made---in the PI's group and in the
 community---in performing large, principled inferences.
 We have performed astrometry and photometry on imaging without making
 hard choices about the catalog limits nor requiring object detections
-(CITE LANG; CITE BREWER).
+(Lang \etal, 2009; Brewer \etal, 2013).
 There are weak and strong gravitational lensing methods that are fully
 probabilistic, reconstructing cluster masses while marginalizing out
-all source galaxy redshifts (CITE STUFF).
+all source galaxy redshifts (\eg, Applegate \etal, 2014).
 There are first attempts to marginalize out the density field in
-large-scale structure (CITE WANDELT) and the intergalactic medium
-(CITE JASCHE).
+large-scale structure (Jasche \& Wandelt, 2013; Jasche \& Lavaux, 2014).
 We have performed the first inferences about the exoplanet population
 that marginalize out the (very large) uncertainties on the exoplanet
 radii (Foreman-Mackey \etal, 2014).
 Much of the credit for this goes to applied math and computational
-stats; we rely on very fast linear algebra (CITE SIVA), high-end MCMC
-samplers (CITE MURRAY; CITE BREWER; Foreman-Mackey \etal, 2013), and distributed methods
-for hierarchical probabilistic inference (CITE HOGG).
+stats; we rely on very fast linear algebra (Ambikasaran \etal, 2014), high-end MCMC
+samplers (Brewer \etal, 2013; Foreman-Mackey \etal, 2013), and distributed methods
+for hierarchical probabilistic inference (Hogg \etal, 2010).
 This proposal capitalizes on and leverages the PI's interdisciplinary
 collaborations with applied mathematics and statistics.
 \end{enumerate}
@@ -242,8 +241,8 @@ redshifts, constrained by the data (the galaxy positions and the weak
 redhift information).
 
 There is one regime in which this can be feasible:
-Using a Gaussian Process (CITE RASMUSSEN), for which we currently have
-the fastest code in the world (CITE SIVA), we can draw density fields
+Using a Gaussian Process (Rasmussen \& Williams, 2006), for which we currently have
+the fastest code in the world (Ambikasaran \etal, 2014), we can draw density fields
 constrained by data for any true-redshift realization, in the case
 when the density field is indeed Gaussian!
 That is, the project proposed here is easier at larger scales (where
@@ -257,7 +256,7 @@ fields and then distort them according to second-order perturbation
 theory to make realistic, weakly non-Gaussian density fields.
 We believe that this project is feasible; there are examples in
 the machine-learning literature of full inference in a model of a
-field that is a distortion of a Gaussian random field (\eg, CITE MURRAY), and then
+field that is a distortion of a Gaussian random field, and then
 sampled by points (galaxies, in our case).
 
 One challenge of this approach is that out-of-the-box Gaussian Process
@@ -273,7 +272,7 @@ developed a fully general expansion for positive-definite covariance
 functions that correspond to free functions for the correlation
 function.
 This expansion---plus an ability to take large matrix determinants
-(which we have; CITE SIVA)---will permit simultaneous inference of the
+(which we have; Ambikasaran \etal, 2014)---will permit simultaneous inference of the
 latent field controlling the density, the correlation function, and
 any aspects of galaxy position (say redshifts) that are uncertain.
 Since we will sample in all dimensions with MCMC (or, realistically, a
@@ -281,6 +280,12 @@ Gibbs or slice-sampling version of MCMC), it will be possible to
 deliver posterior samples for the correlation function \emph{fully
   marginalized} over density and galaxy-position realizations.
 This full set of capabilities comprise \package{Toolset~1}.
+
+There is some prior work in this area, most notably by Jasche \& Wandelt (2013) and Jasche \& Lavaux (2014).
+Our differences with them are first, our very fast linear algebra, the fastest in the world, second,
+our methods for expanding the correlation function in real space, and third, our commitment to build
+and release useful tools.
+The success of Jasche and collaborators is one of the things that have inspired us to propose these toolsets.
 
 We propose to develop and execute a method of this kind to perform
 large-scale structure inference at intermediate regimes (few Mpc and
@@ -348,7 +353,7 @@ or else the redshift posterior under simple priors.\footnote{It turns
   \emph{never} want the posterior pdf for the redshift.  The reasons
   for this are technical; they relate to the marginalizations that are
   required.  No more will be said about this, but the PI has polemics
-  available (CITE HOGG).}
+  available (``Telescopes don't make catalogs'', Hogg \& Lang 2011).}
 The question is:  How should we use these probabilistic outputs?
 Most proposed (and some actual) uses of these have turned out to be
 misguided, in the sense that they are not expected to improve the
@@ -424,7 +429,7 @@ versa.
 It doesn't capture all of the information available from our understanding
 that the true redshifts are ``generated'' by the model.
 We have demonstrated this (in exoplanet contexts) in several projects
-now (CITE HOGG; Foreman-Mackey \etal, 2014).
+now (Hogg \etal, 2010; Foreman-Mackey \etal, 2014).
 Again, \package{Toolset~2} will give us and the community these powers.
 
 In the case of correlation-function inference, the story is very much
@@ -443,7 +448,7 @@ This whole chain of reasoning comprises a hierarchical inference that
 makes use of \package{Toolset~1} for density-field inference, and
 also work we have done in exoplanet contexts (Foreman-Mackey \etal, 2014) to infer a
 Gaussian process in the face of data points with noisy \emph{locations}.
-This requires, for efficiency, specialized samplers (CITE MURRAY), one
+This requires, for efficiency, specialized samplers, one
 of which we will release along with everything else in
 \package{Toolset~2}.
 
@@ -453,7 +458,7 @@ of luminous red galaxies on intermediate and large scales, in the
 \sdss\ imaging data.
 One goal is to reproduce what is known about the LRG luminosity
 function, another the correlation function, including the baryon
-acoustic feature (CITE EISENSTEIN).
+acoustic feature (Eisenstein \etal, 2005).
 For the LRG redshifts, we will use not the spectroscopic redshifts but
 instead the photometric redshifts, to make sure that $f(z)$ is
 non-trivial for all sources.
@@ -630,19 +635,38 @@ independently of the PI's group.
 
 \paragraph{Project management and products}
 
-...Just a PI and students
+This project is very lean, it is comprised of just a PI and two
+students, one of them part-time.
+The rough scheduling would be to work on \package{Toolset~1} and
+\package{Toolset~3} in year one, \package{Toolset~2} in year two, and
+finish all paper-writing and documentation of code in year three.
+The ordering of toolsets is based on the current level of expertise
+and comfort with the tools in the PIs group as of today.
+It would be nice to write the theory and method papers prior to the
+real-data papers, but this is probably not realistic; they will
+probably have to be written together, given the interplay between
+functional testing and theory in these projects.
 
-...Theory papers in year 1
+The toolsets will be released publicly under the MIT open-source
+license using the platform \project{github} or equivalent.
+We also expect to work in a generally open mode, so that all of our
+work can be seen and inspected as it is underway.
+We have had great success in this mode and it has brought a lot of
+expertise and visibility to the group and our projects.
 
-...Tool papers with small demos in year 2
+The PI will produce, with student help and co-authorship as
+appropriate, \project{Data Analysis Recipes} papers, one per year, on
+the topics mentioned above.
 
-...New large-scale data analyses in year 3
-
-...Open-source toolkits
-
-...Hack Days and Weeks
-
-\paragraph{References cited}
+At two meetings per year, the American Astronomical Society winter
+meeting, and the new, annual \project{AstroHackWeek} meeting
+co-organized by NYU, University of Washington, and UC Berkeley, we
+will operate hack sessions.  These will be organized by the PI, but
+with expected participation, both in hacking and in leading and
+teaching, by the students.
+These hack sessions at these meetings have already been established by
+the PI, so these involve no new development or risk; indeed they are
+already highly successful operations.
 
 \clearpage
 
