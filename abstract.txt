@@ -1,23 +1,47 @@
 Ultra-precise photometry in crowded fields: A self-calibration approach.
 
-We delivered the first systematic search for periodic transiting exoplanets in K2.
+We delivered the first systematic search for periodic transiting exoplanets in
+K2.
 
-This was based on aperture photometry: It depended on having (relatively) isolated stars at the Kepler imaging resolution.
+This was based on aperture photometry: It depended on having (relatively)
+isolated stars at the Kepler imaging resolution.
 
-The K2 Campaign 9 (K2C9) imaging will contain many more stars than pixels; the targets will be the extreme opposite of "isolated".
+The K2 Campaign 9 (K2C9) imaging will contain many more stars than pixels; the
+targets will be the extreme opposite of "isolated".
 
-There are many approaches to crowded-field photometry, with the dominant techniques involving either point-source modeling (the field is a mixture of PSFs) or image differencing.
+There are many approaches to crowded-field photometry, with the dominant
+techniques involving either point-source modeling (the field is a mixture of
+PSFs) or image differencing.
 
-Both of these techniques require exquisite flat-field knowledge, if the aim is to deliver high-precision flux differences over time.
+Both of these techniques require exquisite flat-field knowledge, if the aim is
+to deliver high-precision flux differences over time.
 
-Preliminary work performed in preparation for the K2 mission suggested that sub-pixel (intra-pixel) variations in the detector sensitivity - combined with spacecraft orientation drifts - might be affecting Kepler photometric measurements at relevant levels.
+Preliminary work performed in preparation for the K2 mission suggested that
+sub-pixel (intra-pixel) variations in the detector sensitivity - combined with
+spacecraft orientation drifts - might be affecting Kepler photometric
+measurements at relevant levels.
 
-We have shown (Hogg et al., arXiv/XXX) that we can in principle (with K2-like data) infer the sub-pixel flat-field and the astronomical scene, conditioned on a PSF, provided that there are multiple stars in the field, and that their centers move significantly relative to the focal-plane pixel grid.
+We have shown (Hogg et al., arXiv/XXX) that we can in principle (with K2-like
+data) infer the sub-pixel flat-field and the astronomical scene, conditioned on
+a PSF, provided that there are multiple stars in the field, and that their
+centers move significantly relative to the focal-plane pixel grid.
 
-We have also shown (Lang et al., arXiv/XXX) that we can use high angular resolution imaging to inform photometry performed at much lower angular resolution (and with much coarser pixel scale) to perform precise photometry on point sources.
+We have also shown (Lang et al., arXiv/XXX) that we can use high angular
+resolution imaging to inform photometry performed at much lower angular
+resolution (and with much coarser pixel scale) to perform precise photometry on
+point sources.
 
-The K2C9 data will be near-optimal for this kind of self-calibration:   The crowded bulge field will non-trivially illuminate a large number of pixels simultaneously, and the pixel drift of the spacecraft pointing will cause that illumination to change, providing a data lever to infer the scene (the stars), the PSF, and the sub-pixel flat-field.
+The K2C9 data will be near-optimal for this kind of self-calibration:   The
+crowded bulge field will non-trivially illuminate a large number of pixels
+simultaneously, and the pixel drift of the spacecraft pointing will cause that
+illumination to change, providing a data lever to infer the scene (the stars),
+the PSF, and the sub-pixel flat-field.
 
-These data, combined with higher resolution bulge imaging, will permit a full generative model of the K2C9 observations and deliver extremely precise light curves for a large number of bulge stars (larger, in principle, than the number of pixels!).
+These data, combined with higher resolution bulge imaging, will permit a full
+generative model of the K2C9 observations and deliver extremely precise light
+curves for a large number of bulge stars (larger, in principle, than the number
+of pixels!).
 
-If there is any flexibility in the spacecraft attitude management policy, there are pointing maneuvers that could be used to improve the fidelity of, and information avaiable to, any self-calibration.
+If there is any flexibility in the spacecraft attitude management policy, there
+are pointing maneuvers that could be used to improve the fidelity of, and
+information avaiable to, any self-calibration.
