@@ -1,4 +1,3 @@
-
 Ultra-precise photometry in crowded fields: A self-calibration approach.
 
 We delivered the first systematic search for periodic transiting exoplanets in K2.
