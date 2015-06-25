@@ -24,6 +24,100 @@
 
 \begin{document}
 
-Hello world.
+The \ktwo\ Campaign 9 (K2C9) data will present new challenges, hereby
+unmet by the \ktwo\ team and the \kepler\ community.
+The critical difference between K2C9 and previous Campaigns (and the
+\kepler\ Main Mission) is that the stars of importance will not be
+\emph{isolated}.
+That is, the success of K2C9 depends on the success of photometry in a
+crowded field.
+This means that simple aperture photometry (the basis of almost all
+\kepler\ science to date) will no longer be an option.
+It also means (as we will describe below) that we need (for the first
+time) to understand the detector flat-field at high precision.
+
+There are two general approaches to crowded-field photometry (in our view):
+The first is, essentially, to perform \emph{full forward modeling} of the
+focal plane, in which the data are fit with a model consisting of a
+large number of point sources, a (pixel-convolved) point-spread
+function, a DC (or tilted) sky background, and so on.
+In this approach, the light curves of the stars will be model parameters
+in a baroque model of the whole sky and focal plane.
+The second is, essentially, to perform \emph{image differencing}.
+In this approach, changess to any star's brightness is seen as a
+residual difference between an individual exposure and a reference
+image, made by accounting for changes to the telescope pointing (and
+PSF, if necessary).
+
+\paragraph{Precise photometry in crowded fields requires an instrument model.}
+
+In this proposal, we are neutral between these approaches for extracting
+science from crowded-field imaging.
+Our point is that \emph{no matter what kind of crowded-field photometry
+we use, we need a high-precision estimate of the detector flat-field}.
+
+In the case of full forward modeling this is perhaps obvious:
+The detailed data model is a convolution of the scene with the
+pixel-convolved PSF\footnote{From here on, all references to the
+  ``PSF'' should be read as ``pixel-convolved PSF'' or what the
+  \kepler\ team sometimes calls the ``pixel response function'' or
+  PRF.}, multiplied by the flat-field map.
+At the precision of \kepler\ data---often parts in $10^5$---the
+flat-field matters immensely:
+Typical detectors have flat-field variations in the percent range.
+
+In the case of image differencing, we are slightly less sensitive to the
+PSF but still sensitive:
+When we difference two images, we have to account for small positional
+shifts (expected to be fraction-of-a-pixel in the case of K2C9).
+If the flat-field is unknown or wrong, the shift of the stars relative
+to the pixels does not manifest itself as a pure shift, because light
+is moving from one pixel to another, and those pixels have different
+sensitivities.
+Therefore, to perform image differencing at the information-theory
+limit set by the photon noise (the Cram\'er-Rao bound), we need to
+understand the flat-field.
+And our failure or residuals in the flat-field will translate directly
+into noise in the difference image.
+That noise will be highest where the image is most crowded where, for
+the microlensing applications that are the target of this proposal,
+the signals are most likely to appear.
+
+In principle, to perform photmetry at the information-theory limit,
+we need to know not just the flat-field but also the PSF, the bias,
+the dark (or zero), and properties of the sky.
+(If you really want to go to town, there is (in principle) a different
+flat-field that applies to sky photons as applies to star photons,
+because of the differences in which the sky and a star illuminate the
+spacecraft.)
+Here we propose to infer everything we need to perform precise
+photometry, but with a strong emphasis on the flat-field, which we
+think will lead to dominant systematic-noise terms in the extracted
+photometry, given current techniques and spacecraft (s/c) knowledge.
+For example, as long as sources are bright, the star flux dominates
+over the background; in addition, if images are being differenced, the
+difference signal is not expected to be a crowded field, even though
+the direct image is.
+These properties of the K2C9 microlensing data, thought of as an
+image-differencing project, much more sensitive to the flat-field than
+any other aspect of the s/c imaging.
+
+One important and relevant thing, but which is \emph{not} part of this
+proposal, is that everything we achieve in K2C9 will improve photometric
+measurements in other Campaigns, at least where they overlap the
+telemetry region of K2C9.
+Also, all of the techniques and codes we develop will be released
+open-source (as is all the work we do), so they can be employed to
+infer s/c properties for other Campaigns and other missions.
+
+\paragraph{We perform forward modeling of the s/c to learn instrument model parameters.}
+
+PSF-convolved scene, sky background, sky and star flats.  Striping.  Etc.
+
+\paragraph{The flat-field probably has intra-pixel variations that are non-negligible.}
+
+\paragraph{Project management and timeline:}
+
+\paragraph{We bring unique skills and expertise to the K2C9 team.}
 
 \end{document}
