@@ -44,7 +44,7 @@ function, a DC (or tilted) sky background, and so on.
 In this approach, the light curves of the stars will be model parameters
 in a baroque model of the whole sky and focal plane.
 The second is, essentially, to perform \emph{image differencing}.
-In this approach, changess to any star's brightness is seen as a
+In this approach, changes to any star's brightness is seen as a
 residual difference between an individual exposure and a reference
 image, made by accounting for changes to the telescope pointing (and
 PSF, if necessary).
@@ -79,7 +79,7 @@ limit set by the photon noise (the Cram\'er-Rao bound), we need to
 understand the flat-field.
 And our failure or residuals in the flat-field will translate directly
 into noise in the difference image.
-That noise will be highest where the image is most crowded where, for
+That noise will be highest where the image is most crowded---that's where, for
 the microlensing applications that are the target of this proposal,
 the signals are most likely to appear.
 
@@ -96,14 +96,14 @@ think will lead to dominant systematic-noise terms in the extracted
 photometry, given current techniques and spacecraft (s/c) knowledge.
 For example, as long as sources are bright, the star flux dominates
 over the background; in addition, if images are being differenced, the
-difference signal is not expected to be a crowded field, even though
+difference signal itself is not expected to be a crowded field, even though
 the direct image is.
 These properties of the K2C9 microlensing data, thought of as an
-image-differencing project, much more sensitive to the flat-field than
+image-differencing project, make it much more sensitive to the flat-field than
 any other aspect of the s/c imaging.
 
-One important and relevant thing, but which is \emph{not} part of this
-proposal, is that everything we achieve in K2C9 will improve photometric
+One important and relevant thing---but which is \emph{not} part of this
+proposal---is that everything we achieve in K2C9 will improve photometric
 measurements in other Campaigns, at least where they overlap the
 telemetry region of K2C9.
 Also, all of the techniques and codes we develop will be released
@@ -112,7 +112,7 @@ infer s/c properties for other Campaigns and other missions.
 
 \paragraph{We perform forward modeling of the s/c to learn instrument model parameters:}
 
-pcPSF-convolved scene, sky background, sky and star flats.  Striping.  Etc.
+DWH: pcPSF-convolved scene, sky background, sky and star flats.  Striping.  Etc.
 
 \paragraph{The flat-field probably has intra-pixel variations that are non-negligible:}
 
@@ -139,7 +139,7 @@ That is, there is no such thing as a pure ``pixel-convolved PSF'' but
 rather there will be a slightly different pcPSF,
 appropriate for each pixel.
 However, in the limit of small intra-pixel variations in sensitivity,
-it is possible to represent the pixel-convolved PSF for pixel $i$ as a
+it is possible to represent the pcPSF for pixel $i$ as a
 linear combination of the fiducial pcPSF and two
 derivatives with respect to position; these three components are
 coadded in proportion to the monopole and two dipole coefficients
@@ -161,13 +161,17 @@ We propose in this project to learn or infer the flat-field to second
 order, to assess whether there is evidence in the data to support such
 an increase in flat-field model complexity, and to see if that upgrade
 leads to an increase in the performance of our models of the data.
-
-We have showed that inference at this level is possible in...DWH
+We have showed that inference at this level is possible in one of our
+\kepler\ two-wheel-era white papers (Hogg \etal, 2013, arXiv:1309.0653).
+In particular, we showed that images with smearing or dithering reveal
+information about the sub-pixel flat-field (in that work we used a
+$2\times 2$ subsampled flat-field model, not a multipole expansion,
+but the principles are the same).
 
 \paragraph{We might want adjustments to s/c attitude management:}
 
-The main idea behind self-calibration is that there is proper
-\emph{redunancy} across observations.
+The principal requirement for the success of any self-calibration project
+is that there be proper \emph{redunancy} across observations.
 In the relevant self-calibration context, ``redundancy'' is achieved
 by having the same stars observed in different pixels, and having the
 same pixels subject to very different illumination.
@@ -237,7 +241,7 @@ flat-field and any other determined self-calibration parameters.
 might be of great value.)
 
 It is CampHogg standard practice that we don't develop tools without
-also being users of those tools.
+also being \emph{users} of those tools.
 For this reason, in both stages, we would prepare a version of our
 image-differencing package (\project{Duh}; https://github.com/davidwhogg/Duh)
 to be ready for use on the K2 data.
@@ -253,6 +257,32 @@ necessary to build confidence in our calibration results.
 
 \paragraph{We bring unique skills and expertise to the K2C9 team:}
 
-DWH!!
+Our team is uniquely situated to help with the success of K2C9:\\
+$\bullet$ We are the first (and only) group to algorithmically
+generate a full exoplanet catalog with \ktwo\ data, along with
+completeness information (Foreman-Mackey \etal, 2015,
+arXiv:1502.04715).\\
+$\bullet$ Our group is the leading group in (optical) astronomical
+image modeling, which we have used to perform Bayesian weak lensing
+inference (Schneider \etal, 2014, arXiv:1411.2608) and
+massive forced photometry with the \project{WISE} and \project{SDSS}
+missions (Lang, Hogg, \& Schlegel, 2014,
+arXiv:1410.7397).\\
+$\bullet$ We have been developing a literature on the technical
+principles underlying self-calibration, in terms of project design
+(Holmes \etal, \opcit) and statistical inference
+(Sch\"olkopf \etal, 2015, arXiv:1505.03036).\\
+$\bullet$ We put in two extensive white papers in the call following
+the second reaction-wheel failure (Hogg \etal, \opcit; and
+Montet \etal, 2013, arXiv:1309.0654), and the PI has
+been involved in reviewing and advising the \kepler\ Mission.\\
+$\bullet$ We have released open-source code for MCMC methods
+(\project{emcee}), astrometric calibration (\project{Astrometry.net}),
+astronomical image modeling (\project{The Tractor}), \ktwo\ photometry
+and exoplanet discovery (\project{ketu}), and Gaussian Processes
+(\project{george}).  We have an extensive and clear track record of
+delivering valuable open-source code to the community.
+
+We care!
 
 \end{document}
