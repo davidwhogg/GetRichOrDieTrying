@@ -83,7 +83,7 @@ That noise will be highest where the image is most crowded---that's where, for
 the microlensing applications that are the target of this proposal,
 the signals are most likely to appear.
 
-In principle, to perform photmetry at the information-theory limit,
+In principle, to perform photometry at the information-theory limit,
 we need to know not just the flat-field but also the pcPSF, the bias,
 the dark (or zero), and properties of the sky.
 (If you really want to go to town, there are (in principle) two different
@@ -112,6 +112,8 @@ infer s/c properties for other Campaigns and other missions.
 
 \paragraph{We perform forward modeling of the s/c to learn instrument model parameters:}
 
+
+
 DWH: pcPSF-convolved scene, sky background, sky and star flats.  Striping.  Etc.
 
 \paragraph{The flat-field probably has intra-pixel variations that are non-negligible:}
@@ -121,8 +123,10 @@ that it has one scalar sensitivity value per pixel, but otherwise the
 pixels are identical.
 (The ``zeroth-order'' assumption would be that every pixel has the same
 sensitivity!)
-In reality, we know that pixels have non-trivial sensitivity maps as a
-function of sub-pixel location, so each pixel is \emph{not} identical,
+In reality, we know that detector pixels in general have non-trivial sensitivity maps as a
+function of sub-pixel location (as demonstrated, for example, by \spitzer;
+Ingalls \etal, 2012, SPIE, 8442, id.84421Y)
+so each pixel is \emph{not} identical,
 not just in sensitivity, but in shape or detailed sensitivity map.
 If we think about expanding the pixel sensitivity, order by order, the
 ``second-order'' assumption about a detector is that there is some dipole
@@ -261,7 +265,9 @@ Our team is uniquely situated to help with the success of K2C9:\\
 $\bullet$ We are the first (and only) group to algorithmically
 generate a full exoplanet catalog with \ktwo\ data, along with
 completeness information (Foreman-Mackey \etal, 2015,
-arXiv:1502.04715).\\
+arXiv:1502.04715).
+To achieve this, we built a data-driven model of \ktwo\ systematic
+noise sources.\\
 $\bullet$ Our group is the leading group in (optical) astronomical
 image modeling, which we have used to perform Bayesian weak lensing
 inference (Schneider \etal, 2014, arXiv:1411.2608) and
@@ -274,15 +280,20 @@ principles underlying self-calibration, in terms of project design
 (Sch\"olkopf \etal, 2015, arXiv:1505.03036).\\
 $\bullet$ We put in two extensive white papers in the call following
 the second reaction-wheel failure (Hogg \etal, \opcit; and
-Montet \etal, 2013, arXiv:1309.0654), and the PI has
-been involved in reviewing and advising the \kepler\ Mission.\\
+Montet \etal, 2013, arXiv:1309.0654), the former of which is very directly
+related to this proposal.\\
+$\bullet$ The Hogg \etal\ white paper is, aside from the work with
+\spitzer (Ingalls \etal, \opcit; which is not the same), the first attempt
+to infer or even instantiate a sub-pixel flat-field.\\
+$\bullet$ The PI has
+been involved in reviewing and advising the \kepler\ Mission
+in matters related to the occurence rate of exoplanets.\\
 $\bullet$ We have released open-source code for MCMC methods
 (\project{emcee}), astrometric calibration (\project{Astrometry.net}),
 astronomical image modeling (\project{The Tractor}), \ktwo\ photometry
 and exoplanet discovery (\project{ketu}), and Gaussian Processes
 (\project{george}).  We have an extensive and clear track record of
-delivering valuable open-source code to the community.
-
-We care!
+delivering valuable open-source code to the community.\\
+$\bullet$ We care!
 
 \end{document}
