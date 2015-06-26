@@ -58,16 +58,16 @@ we use, we need a high-precision estimate of the detector flat-field}.
 
 In the case of full forward modeling this is perhaps obvious:
 The detailed data model is a convolution of the scene with the
-pixel-convolved PSF\footnote{From here on, all references to the
-  ``PSF'' should be read as ``pixel-convolved PSF'' or what the
+pixel-convolved PSF (hearafter ``pcPSF''\footnote{From here on, all references to the
+  ``pcPSF'' should be read as ``pixel-convolved PSF'' or what the
   \kepler\ team sometimes calls the ``pixel response function'' or
-  PRF.}, multiplied by the flat-field map.
+  PRF.}), multiplied by the flat-field map.
 At the precision of \kepler\ data---often parts in $10^5$---the
 flat-field matters immensely:
 Typical detectors have flat-field variations in the percent range.
 
 In the case of image differencing, we are slightly less sensitive to the
-PSF but still sensitive:
+pcPSF but still sensitive:
 When we difference two images, we have to account for small positional
 shifts (expected to be fraction-of-a-pixel in the case of K2C9).
 If the flat-field is unknown or wrong, the shift of the stars relative
@@ -84,7 +84,7 @@ the microlensing applications that are the target of this proposal,
 the signals are most likely to appear.
 
 In principle, to perform photmetry at the information-theory limit,
-we need to know not just the flat-field but also the PSF, the bias,
+we need to know not just the flat-field but also the pcPSF, the bias,
 the dark (or zero), and properties of the sky.
 (If you really want to go to town, there is (in principle) a different
 flat-field that applies to sky photons as applies to star photons,
@@ -112,9 +112,57 @@ infer s/c properties for other Campaigns and other missions.
 
 \paragraph{We perform forward modeling of the s/c to learn instrument model parameters.}
 
-PSF-convolved scene, sky background, sky and star flats.  Striping.  Etc.
+pcPSF-convolved scene, sky background, sky and star flats.  Striping.  Etc.
 
 \paragraph{The flat-field probably has intra-pixel variations that are non-negligible.}
+
+What one might call the ``first-order'' assumption about a detector is
+that it has one scalar sensitivity value per pixel, but otherwise the
+pixels are identical.
+(The ``zeroth-order'' approximation is that every pixel has the same
+sensitivity!)
+In reality, we know that pixels have non-trivial sensitivity maps as a
+function of sub-pixel location, so each pixel is \emph{not} identical,
+not just in sensitivity, but in shape or detailed sensitivity map.
+If we think about expanding the pixel sensitivity, order by order, the
+``second-order'' assumption about a detector is that there is some dipole
+distortion of each pixel away from the fiducial or mean pixel shape.
+A dipole is a vector quantity, so the second-order flat-field has
+three numbers per pixel: A scalar ``monopole'' and a vector
+``dipole''.
+(The dipole is like a mean pixel offset away from the pure rectangular
+grid.)
+The ``third-order'' flat-field would also have a quadrupole tensor
+distortion, and so on.
+
+That is, there is no such thing as a pure ``pixel-convolved PSF'' but
+rather there will be a slightly different pcPSF,
+appropriate for each pixel.
+However, in the limit of small intra-pixel variations in sensitivity,
+it is possible to represent the pixel-convolved PSF for pixel $i$ as a
+linear combination of the fiducial pcPSF and two
+derivatives with respect to position; these three components are
+coadded in proportion to the monopole and two dipole coefficients
+that are appropriate for pixel $i$.
+This is a principled way of building up, order-by-order, more and more
+sophisticated flat-field information, and (relatedly) pcPSF
+information.
+Similarly, this operation can be applied to a pcPSF-convolved scene of
+arbitrary origin (that is, it doesn't require a scene model that is
+a mixture of delta-functions).
+At second order, the effective scene illuminating the device is a
+linear combination of three scenes, with a different set of three
+coefficients for each pixel, which are the monopole and dipole
+coefficients.
+(At third order, it would be a linear combination of six scenes, and
+so on.)
+
+We propose in this project to learn or infer the flat-field to second
+order, to assess whether there is evidence in the data to support such
+an increase in flat-field model complexity, and to see if that upgrade
+leads to an increase in the performance of our models of the data.
+
+We have showed that inference at this level is possible in...
 
 \paragraph{Project management and timeline:}
 
