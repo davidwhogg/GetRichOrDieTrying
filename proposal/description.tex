@@ -31,7 +31,7 @@ The critical difference between K2C9 and previous Campaigns (and the
 \emph{isolated}.
 That is, the success of K2C9 depends on the success of photometry in a
 crowded field.
-This means that simple aperture photometry (the basis of almost all
+This means that aperture photometry (the basis of almost all
 \kepler\ science to date) will no longer be an option.
 It also means (as we will describe below) that we need (for the first
 time) to understand the detector flat-field at high precision.
@@ -49,7 +49,7 @@ residual difference between an individual exposure and a reference
 image, made by accounting for changes to the telescope pointing (and
 PSF, if necessary).
 
-\paragraph{Precise photometry in crowded fields requires an instrument model.}
+\paragraph{Precise photometry in crowded fields requires an instrument model:}
 
 In this proposal, we are neutral between these approaches for extracting
 science from crowded-field imaging.
@@ -67,7 +67,7 @@ flat-field matters immensely:
 Typical detectors have flat-field variations in the percent range.
 
 In the case of image differencing, we are slightly less sensitive to the
-pcPSF but still sensitive:
+pcPSF but still very sensitive to the flat-field:
 When we difference two images, we have to account for small positional
 shifts (expected to be fraction-of-a-pixel in the case of K2C9).
 If the flat-field is unknown or wrong, the shift of the stars relative
@@ -86,12 +86,12 @@ the signals are most likely to appear.
 In principle, to perform photmetry at the information-theory limit,
 we need to know not just the flat-field but also the pcPSF, the bias,
 the dark (or zero), and properties of the sky.
-(If you really want to go to town, there is (in principle) a different
-flat-field that applies to sky photons as applies to star photons,
-because of the differences in which the sky and a star illuminate the
-spacecraft.)
+(If you really want to go to town, there are (in principle) two different
+flat-fields, one that applies to sky photons and one that applies to star photons,
+because of the differences in how the sky and a star illuminate the
+s/c.)
 Here we propose to infer everything we need to perform precise
-photometry, but with a strong emphasis on the flat-field, which we
+photometry, but with a strong emphasis on the stellar flat-field, which we
 think will lead to dominant systematic-noise terms in the extracted
 photometry, given current techniques and spacecraft (s/c) knowledge.
 For example, as long as sources are bright, the star flux dominates
@@ -110,16 +110,16 @@ Also, all of the techniques and codes we develop will be released
 open-source (as is all the work we do), so they can be employed to
 infer s/c properties for other Campaigns and other missions.
 
-\paragraph{We perform forward modeling of the s/c to learn instrument model parameters.}
+\paragraph{We perform forward modeling of the s/c to learn instrument model parameters:}
 
 pcPSF-convolved scene, sky background, sky and star flats.  Striping.  Etc.
 
-\paragraph{The flat-field probably has intra-pixel variations that are non-negligible.}
+\paragraph{The flat-field probably has intra-pixel variations that are non-negligible:}
 
 What one might call the ``first-order'' assumption about a detector is
 that it has one scalar sensitivity value per pixel, but otherwise the
 pixels are identical.
-(The ``zeroth-order'' approximation is that every pixel has the same
+(The ``zeroth-order'' assumption would be that every pixel has the same
 sensitivity!)
 In reality, we know that pixels have non-trivial sensitivity maps as a
 function of sub-pixel location, so each pixel is \emph{not} identical,
@@ -162,10 +162,97 @@ order, to assess whether there is evidence in the data to support such
 an increase in flat-field model complexity, and to see if that upgrade
 leads to an increase in the performance of our models of the data.
 
-We have showed that inference at this level is possible in...
+We have showed that inference at this level is possible in...DWH
+
+\paragraph{We might want adjustments to s/c attitude management:}
+
+The main idea behind self-calibration is that there is proper
+\emph{redunancy} across observations.
+In the relevant self-calibration context, ``redundancy'' is achieved
+by having the same stars observed in different pixels, and having the
+same pixels subject to very different illumination.
+This requires dithering, and preferably dithering that is random (or
+pseudo-random in various ways; Holmes, Hogg, \& Rix, 2012, PASP, 124,
+1219)
+For this reason, it is important to the success of this project that
+the s/c \emph{not} point perfectly!
+
+Indeed, our simulations suggest that it would be good for the stellar
+scene to ``travel'' over a (roughly) $2\times2$ pixel patch over the
+course of (or during some substantial part of) K2C9.
+As the K2 team has improved its understanding of the s/c and its
+attitude management in the two-wheel era, it has become very good at
+locking down the pointing to within a pixel, with the solar-angle
+management and thruster activity every $\sim 6$\,h.
+However, we might be better off in understanding the flat-field with
+slightly \emph{worse} attitude management, because we want the scene
+to travel relative to the detector by \emph{more than} one pixel to
+see the full range of pixel sensitivity.
+(We would want even more travel if the device were better sampled!)
+
+The attitude variability we want could be achieved by any number of
+changes to current procedures.
+In one class of solutions, we could just reduce the frequency of the
+thruster events for the entire duration of K2C9.
+In another, we could perform a set of dithering maneuvers in the first
+few days of K2C9, to provide a baseline dither set for calibration
+purposes.
+In another, we could deliberately adjust the s/c so that it is not as
+close as possible to the zero-torque attitude.
+Obviously many of the considerations involved here are far above the 
+``pay grade'' of these poposers.
+However, we would be enthusiastic about having an opportunity to influence
+s/c attitude management, and the pay-off for calibration might be immense.
+
+It is worth emphasizing here that \emph{if there are no changes to s/c
+  attitude management, it will not be possible to self-calibrate the
+  K2C9 data} to the levels required for optimal photometric monitoring.
+At very low cost, small adjustments to attitude policies could greatly
+improve the precision of K2C9's microlensing science.
 
 \paragraph{Project management and timeline:}
 
-\paragraph{We bring unique skills and expertise to the K2C9 team.}
+As per instructions, this proposal is not being delivered with a complete
+budget.
+However, our estimated budget is 98,590\,USD.
+This budget includes one year of graduate-student support,
+10,000\,USD of travel budget to get the team together at NASA Ames a
+few times for hacking and sprinting with the K2 team,
+and 2,000\,USD of publication support to cover page charges for
+the inevitable scientific papers in the refereed literature.
+
+There are two important stages to this project:
+The first, which happens well before the start of K2C9 observations,
+is to build a small-scale K2C9 simulation, based on what we know from
+all the K2 data to date, and use this as a sandbox for writing the
+self-calibration code.
+In this first stage, we would intend to get working methods and code,
+and a solid, written description of both.
+The second stage, which begins right at the beginning of K2C9 data
+telemetry, is to run this code on the data as soon as it is
+telemetered, and perform the relevant visualizing, debugging,
+patching-and-rerunning, and so on, to deliver to the community the
+flat-field and any other determined self-calibration parameters.
+(In particular, we expect that a good model of the ``stripy sky''
+might be of great value.)
+
+It is CampHogg standard practice that we don't develop tools without
+also being users of those tools.
+For this reason, in both stages, we would prepare a version of our
+image-differencing package (\project{Duh}; https://github.com/davidwhogg/Duh)
+to be ready for use on the K2 data.
+We would modify \project{Duh} to work with the second-order flat-field
+information (this is a very straightforward adjustment), and test
+\project{Duh} on the data as it comes in.
+Success with \project{Duh} would be scientfically valuable in its own
+right, but for the purposes of this proposal, it will be necessary as
+an end-to-end functional test of our self-calibration outputs.
+That is, the point of this project is \emph{not} to deliver the image
+differencing software, but we anticipate that such development will be
+necessary to build confidence in our calibration results.
+
+\paragraph{We bring unique skills and expertise to the K2C9 team:}
+
+DWH!!
 
 \end{document}
