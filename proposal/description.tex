@@ -5,6 +5,7 @@
 % - Use \textbf{} for emphasis of key deliverables or proposed items.
 
 % ## issues:
+% - Search for ``DWH'' for incomplete sections.
 
 \documentclass[12pt,preprint]{aastex}
 \setlength{\headheight}{2ex}
@@ -75,7 +76,7 @@ to the pixels does not manifest itself as a pure shift, because light
 is moving from one pixel to another, and those pixels have different
 sensitivities.
 Therefore, to perform image differencing at the information-theory
-limit set by the photon noise (the Cram\'er-Rao bound), we need to
+limit set by the photon noise (the Cram\'er--Rao bound), we need to
 understand the flat-field.
 And our failure or residuals in the flat-field will translate directly
 into noise in the difference image.
@@ -112,9 +113,69 @@ infer s/c properties for other Campaigns and other missions.
 
 \paragraph{We perform forward modeling of the s/c to learn instrument model parameters:}
 
+Our approach to self-calibration is to build a causal, generative model
+of the telemetered data.
+(And by ``model'' here we mean a likelihood function---a probability for
+the data given parameters---and prior pdfs over those parameters.)
+The calibration parameters (the flat-field, the pcPSF, the sky level,
+and so on) all appear as physical parameters in this large model.
+The model is baroque---it includes a lot of parameters and code.
+However, once the model is constructed, self-calibration proceeds
+straightforwardly as simple Bayesian inference.
 
+Part of this model is the pcPSF-convolved astronomical scene.
+This can be modeled as a mixture of delta functions, convolved with
+the pcPSF (a mixture of pcPSFs).
+Or it can be modeled as a smooth function of position, without
+explicitly instantiating the point sources.
+It is a point of research for this proposal which is the better
+approach.
+If all we want to know is the flat-field, it is not obvious that we
+need to instantiate all the point sources in the model.
 
-DWH: pcPSF-convolved scene, sky background, sky and star flats.  Striping.  Etc.
+Both the pcPSF and the sky background vary spatially across the
+device.
+Another important question is how much freedom to provide to both
+of these spatially varying functions.
+Based on our our exploratory work with the K2C0 data (unpublished),
+within which a large patch of crowded-field imaging was telemetered
+(open clusters), we have learned that we can probably treat the pcPSF
+as constant over significant angular patches.
+That is, we can control complexity of the pcPSF model by controlling
+the sizes of the patches over which we treat it as ``constant''.
+
+In that same K2C0 data, we can see that the sky background is not a
+smooth function of position but is ``stripy'', with bright sources
+leaving low-amplitude linear stripes along (presumably) the read-out
+column directions.
+We have had good success in modeling the K2C0 data where we treat
+the sky level as depending only on column number (and not row number).
+This permits the sky to be arbitrarily stripy but still doesn't
+over-fit.
+
+Our experiments with fake data and real K2C0 data suggest that with a
+full K2C9 data set, we will be able to infer the sky background, the
+pcPSF-convolved astronomical scene, and the relevant parts of the
+detector flat-field, all at very high precision.
+We expect that nonetheless, even in this baroque model, there will
+be residual, unaccounted-for systematic noise remaining in all the
+stellar light-curves and in any difference imaging.
+These will remain because no matter how baroque we get, we are
+unlikely to give the pcPSF-convolved scene and the flat-field (see
+below) precisely the freedom (and prior pdfs) that the need to match
+the data at the Cram\'er--Rao limit.
+However, we would intend to use a data-driven systematics model, as we
+use in Foreman-Mackey \etal, 2015 (arXiv:1502.04715) to empirically
+model the remaining residuals in the data.
+In that project and paper, we build an empirical data-driven model of
+stellar variability that accounts for spacecraft pointing variability
+and its (effective) projection (given flat-field variability) onto the
+light curves of all the stars, which we then use as a noise model in
+the search and inference.
+This same kind of model can be built for pixel residuals;
+we propose to fit our imaging model simultaneously with something like this systematic
+noise model, to deliver more accurate and less systematically distorted
+information about the s/c and detector.
 
 \paragraph{The flat-field probably has intra-pixel variations that are non-negligible:}
 
@@ -213,8 +274,8 @@ However, we would be enthusiastic about having an opportunity to influence
 s/c attitude management, and the pay-off for calibration might be immense.
 
 It is worth emphasizing here that \emph{if there are no changes to s/c
-  attitude management, it will not be possible to self-calibrate the
-  K2C9 data} to the levels required for optimal photometric monitoring.
+  attitude management, it will be very difficult to self-calibrate the
+  K2C9 data} at the levels required for bound-saturating photometric monitoring.
 At very low cost, small adjustments to attitude policies could greatly
 improve the precision of K2C9's microlensing science.
 
@@ -227,7 +288,7 @@ $\bullet$ For the PI we budget 0.25\,mo of summer salary.\\
 $\bullet$ We budget one year of graduate-student support, for a
 graduate student at NYU who will work on the project full-time for a full
 year, part of which will be before K2C9 data telemetry, and the rest
-after.\\
+after (see below).\\
 $\bullet$ We include 10,000\,USD of travel budget to get the team
 together at NASA Ames a few times for hacking and sprinting with the
 \ktwo\ Team.  This travel funding is the only direct support for the
@@ -273,8 +334,7 @@ necessary to build confidence in our calibration results.
 Our team is uniquely situated to help with the success of K2C9:\\
 $\bullet$ We are the first (and only) group to algorithmically
 generate a full exoplanet catalog with \ktwo\ data, along with
-completeness information (Foreman-Mackey \etal, 2015,
-arXiv:1502.04715).
+completeness information (Foreman-Mackey \etal, 2015, \opcit).
 To achieve this, we built a data-driven model of \ktwo\ systematic
 noise sources.\\
 $\bullet$ Our group is the leading group in (optical) astronomical
@@ -285,14 +345,16 @@ missions (Lang, Hogg, \& Schlegel, 2014,
 arXiv:1410.7397).\\
 $\bullet$ We have been developing a literature on the technical
 principles underlying self-calibration, in terms of project design
-(Holmes \etal, \opcit) and statistical inference
+(Holmes \etal, 2012, \opcit) and statistical inference
 (Sch\"olkopf \etal, 2015, arXiv:1505.03036).\\
 $\bullet$ We put in two extensive white papers in the call following
-the second reaction-wheel failure (Hogg \etal, \opcit; and
+the second reaction-wheel failure (Hogg \etal, 2013, \opcit; and
 Montet \etal, 2013, arXiv:1309.0654), the former of which is very directly
-related to this proposal.\\
+related to this proposal.
+(And the latter of which describes a two-wheel program that is uncannily
+like what the \kepler\ Project adopted for \ktwo.)\\
 $\bullet$ The Hogg \etal\ white paper is, aside from the work with
-\spitzer (Ingalls \etal, \opcit; which is not the same), the first attempt
+\spitzer\ (Ingalls \etal, 2012, \opcit; which is not the same), the first attempt
 to infer or even instantiate a sub-pixel flat-field.\\
 $\bullet$ The PI has
 been involved in reviewing and advising the \kepler\ Mission
