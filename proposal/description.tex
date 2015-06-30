@@ -89,8 +89,7 @@ we need to know not just the flat-field but also the pcPSF, the bias,
 the dark (or zero), and properties of the sky.
 (If you really want to go to town, there are (in principle) two different
 flat-fields, one that applies to sky photons and one that applies to star photons,
-because of the differences in how the sky and a star illuminate the
-s/c.)
+because of the differences in how the sky and a star illuminate the telescope.)
 Here we propose to infer everything we need to perform precise
 photometry, but with a strong emphasis on the stellar flat-field, which we
 think will lead to dominant systematic-noise terms in the extracted
@@ -172,7 +171,7 @@ stellar variability that accounts for spacecraft pointing variability
 and its (effective) projection (given flat-field variability) onto the
 light curves of all the stars, which we then use as a noise model in
 the search and inference.
-This same kind of model can be built for pixel residuals;
+This same kind of model can be built for pixel residuals (Wang, Hogg, \etal, in preparation);
 we propose to fit our imaging model simultaneously with something like this systematic
 noise model, to deliver more accurate and less systematically distorted
 information about the s/c and detector.
@@ -198,9 +197,10 @@ three numbers per pixel: A scalar ``monopole'' and a vector
 (The dipole is like a mean pixel offset away from the pure rectangular
 grid.)
 The ``third-order'' flat-field would also have a quadrupole tensor
-distortion, and so on.
+distortion (different for every pixel), and so on.
 
-That is, there is no such thing as a pure ``pixel-convolved PSF'' but
+That is---with every pixel bespoke---there is
+(in this second-order view) no such thing as a pure ``pixel-convolved PSF'' but
 rather there will be a slightly different pcPSF,
 appropriate for each pixel.
 However, in the limit of small intra-pixel variations in sensitivity,
@@ -210,8 +210,8 @@ derivatives with respect to position; these three components are
 coadded in proportion to the monopole and two dipole coefficients
 that are appropriate for pixel $i$.
 This is a principled way of building up, order-by-order, more and more
-sophisticated flat-field information, and (relatedly) pcPSF
-information.
+sophisticated flat-field information, and (relatedly) bespoke,
+ individual-pixel pcPSF information.
 Similarly, this operation can be applied to a pcPSF-convolved scene of
 arbitrary origin (that is, it doesn't require a scene model that is
 a mixture of delta-functions).
@@ -222,10 +222,10 @@ coefficients.
 (At third order, it would be a linear combination of six scenes, and
 so on.)
 
-We propose in this project to learn or infer the flat-field to second
+\emph{We propose in this project to learn or infer the flat-field to both first and second
 order, to assess whether there is evidence in the data to support such
 an increase in flat-field model complexity, and to see if that upgrade
-leads to an increase in the performance of our models of the data.
+leads to an increase in the performance of our models of the data.}
 We have showed that inference at this level is possible in one of our
 \kepler\ two-wheel-era white papers (Hogg \etal, 2013, arXiv:1309.0653).
 In particular, we showed that images with smearing or dithering reveal
@@ -269,7 +269,7 @@ purposes.
 In another, we could deliberately adjust the s/c so that it is not as
 close as possible to the zero-torque attitude.
 Obviously many of the considerations involved here are far above the
-``pay grade'' of these poposers.
+``pay grade'' of these proposers.
 However, we would be enthusiastic about having an opportunity to influence
 s/c attitude management, and the pay-off for calibration might be immense.
 
@@ -319,16 +319,16 @@ also being \emph{users} of those tools.
 For this reason, in both stages, we will collaborate closely with other
 members of the K2C9 science team to test the ability of this generative model
 to answer scientific questions.
-In particular, Foreman-Mackey is also a contributor on the proposal
-``Free-Floating and Bound Planet Mass Measurements with K2'' (P.I.~Penny) to
+In particular, Co-I Foreman-Mackey is also a contributor on the proposal
+``Free-Floating and Bound Planet Mass Measurements with K2'' (PI~Penny) to
 apply difference imaging to the K2C9 imaging to measure stellar light curves.
-These proposals are extremely complementary and, if selected, both will be
+These proposals are extremely complementary and, if selected, will be
 mutually beneficial.
 Any improvements in the generative model of the \ktwo\ focal plane will
 greatly improve the precision of difference imaging pipelines and, since the
 point of improving the model is increased precision, the performance of this
-model of the focal plane will be best measured by applying it to real data.
-
+model of the focal plane will be best measured by applying it to the real data
+in the context of the microlensing event search and characterization.
 
 \paragraph{We bring unique skills and expertise to the K2C9 team:}
 
