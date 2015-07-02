@@ -1,0 +1,371 @@
+% This file is part of the K2 Cash Money project.
+% Copyright 2015 the authors.
+
+% ## style notes:
+% - Use \textbf{} for emphasis of key deliverables or proposed items.
+
+% ## issues:
+% - Search for ``DWH'' for incomplete sections.
+
+\documentclass[12pt,preprint]{aastex}
+\setlength{\headheight}{2ex}
+\setlength{\headsep}{3ex}
+\input{hogg_nasa}
+
+% specials for this proposal
+\newcommand{\shortauthor}{Hogg, Lang \& Foreman-Mackey}
+\newcommand{\fulltitle}{Ultra-precise photometry in crowded fields: A self-calibration approach.}
+\renewcommand{\shorttitle}{Ultra-precise photometry:~A self-calibration approach}
+
+% the usuals
+\pagestyle{myheadings}
+\markright{\textsf{\shortauthor~/~\shorttitle}}
+\usepackage{url}
+\usepackage{hyperref}
+
+\begin{document}
+
+The \ktwo\ Campaign 9 (K2C9) data will present new challenges, hereby
+unmet by the \ktwo\ Team and the \kepler\ community.
+The critical difference between K2C9 and previous Campaigns (and the
+\kepler\ Main Mission) is that the stars of importance will not be
+\emph{isolated}.
+That is, the success of K2C9 depends on the success of photometry in a
+crowded field.
+This means that aperture photometry (the basis of almost all
+\kepler\ science to date) will no longer be an option.
+It also means (as we will describe below) that we need (for the first
+time) to understand the detector flat-field at high precision.
+
+There are two general approaches to crowded-field photometry (in our view):
+The first is, essentially, to perform \emph{full forward modeling} of the
+focal plane, in which the data are fit with a model consisting of a
+large number of point sources, a (pixel-convolved) point-spread
+function, a DC (or tilted) sky background, and so on.
+In this approach, the light curves of the stars will be model parameters
+in a baroque model of the whole sky and focal plane.
+The second is, essentially, to perform \emph{image differencing}.
+In this approach, changes to any star's brightness is seen as a
+residual difference between an individual exposure and a reference
+image, made by accounting for changes to the telescope pointing (and
+PSF, if necessary).
+
+\paragraph{Precise photometry in crowded fields requires an instrument model:}
+
+In this proposal, we are neutral between these approaches for extracting
+science from crowded-field imaging.
+Our point is that \emph{no matter what kind of crowded-field photometry
+we use, we need a high-precision estimate of the detector flat-field}.
+
+In the case of full forward modeling this is perhaps obvious:
+The detailed data model is a convolution of the scene with the
+pixel-convolved PSF (hearafter ``pcPSF''\footnote{From here on, all references to the
+  ``pcPSF'' should be read as ``pixel-convolved PSF'' or what the
+  \kepler\ team sometimes calls the ``pixel response function'' or
+  PRF.}), multiplied by the flat-field map.
+At the precision of \kepler\ data---often parts in $10^5$---the
+flat-field matters immensely:
+Typical detectors have flat-field variations in the percent range.
+
+In the case of image differencing, we are slightly less sensitive to the
+pcPSF but still very sensitive to the flat-field:
+When we difference two images, we have to account for small positional
+shifts (expected to be fraction-of-a-pixel in the case of K2C9).
+If the flat-field is unknown or wrong, the shift of the stars relative
+to the pixels does not manifest itself as a pure shift, because light
+is moving from one pixel to another, and those pixels have different
+sensitivities.
+Therefore, to perform image differencing at the information-theory
+limit set by the photon noise (the Cram\'er--Rao bound), we need to
+understand the flat-field.
+And our failure or residuals in the flat-field will translate directly
+into noise in the difference image.
+That noise will be highest where the image is most crowded---that's where, for
+the microlensing applications that are the target of this proposal,
+the signals are most likely to appear.
+
+In principle, to perform photometry at the information-theory limit,
+we need to know not just the flat-field but also the pcPSF, the bias,
+the dark (or zero), and properties of the sky.
+(If you really want to go to town, there are (in principle) two different
+flat-fields, one that applies to sky photons and one that applies to star photons,
+because of the differences in how the sky and a star illuminate the telescope.)
+Here we propose to infer everything we need to perform precise
+photometry, but with a strong emphasis on the stellar flat-field, which we
+think will lead to dominant systematic-noise terms in the extracted
+photometry, given current techniques and spacecraft (s/c) knowledge.
+For example, as long as sources are bright, the star flux dominates
+over the background; in addition, if images are being differenced, the
+difference signal itself is not expected to be a crowded field, even though
+the direct image is.
+These properties of the K2C9 microlensing data, thought of as an
+image-differencing project, make it much more sensitive to the flat-field than
+any other aspect of the s/c imaging.
+
+One important and relevant thing---but which is \emph{not} part of this
+proposal---is that everything we achieve in K2C9 will improve photometric
+measurements in other Campaigns, at least where they overlap the
+telemetry region of K2C9.
+Also, all of the techniques and codes we develop will be released
+open-source (as is all the work we do), so they can be employed to
+infer s/c properties for other Campaigns and other missions.
+
+\paragraph{We perform forward modeling of the s/c to learn instrument model parameters:}
+
+Our approach to self-calibration is to build a causal, generative model
+of the telemetered data.
+(And by ``model'' here we mean a likelihood function---a probability for
+the data given parameters---and prior pdfs over those parameters.)
+The calibration parameters (the flat-field, the pcPSF, the sky level,
+and so on) all appear as physical parameters in this large model.
+The model is baroque---it includes a lot of parameters and code.
+However, once the model is constructed, self-calibration proceeds
+straightforwardly as simple Bayesian inference.
+
+Part of this model is the pcPSF-convolved astronomical scene.
+This can be modeled as a mixture of delta functions, convolved with
+the pcPSF (a mixture of pcPSFs).
+Or it can be modeled as a smooth function of position, without
+explicitly instantiating the point sources.
+It is a point of research for this proposal which is the better
+approach.
+If all we want to know is the flat-field, it is not obvious that we
+need to instantiate all the point sources in the model.
+
+Both the pcPSF and the sky background vary spatially across the
+device.
+Another important question is how much freedom to provide to both
+of these spatially varying functions.
+Based on our our exploratory work with the K2C0 data (unpublished),
+within which a large patch of crowded-field imaging was telemetered
+(open clusters), we have learned that we can probably treat the pcPSF
+as constant over significant angular patches.
+That is, we can control complexity of the pcPSF model by controlling
+the sizes of the patches over which we treat it as ``constant''.
+
+In that same K2C0 data, we can see that the sky background is not a
+smooth function of position but is ``stripy'', with bright sources
+leaving low-amplitude linear stripes along (presumably) the read-out
+column directions.
+We have had good success in modeling the K2C0 data where we treat
+the sky level as depending only on column number (and not row number).
+This permits the sky to be arbitrarily stripy but still doesn't
+over-fit.
+
+Our experiments with fake data and real K2C0 data suggest that with a
+full K2C9 data set, we will be able to infer the sky background, the
+pcPSF-convolved astronomical scene, and the relevant parts of the
+detector flat-field, all at very high precision.
+We expect that nonetheless, even in this baroque model, there will
+be residual, unaccounted-for systematic noise remaining in all the
+stellar light-curves and in any difference imaging.
+These will remain because no matter how baroque we get, we are
+unlikely to give the pcPSF-convolved scene and the flat-field (see
+below) precisely the freedom (and prior pdfs) that are needed to match
+the data at the Cram\'er--Rao limit.
+However, we would intend to use a data-driven systematics model, as we
+use in Foreman-Mackey \etal, 2015 (arXiv:1502.04715) to empirically
+model the remaining residuals in the data.
+In that project and paper, we build an empirical data-driven model of
+stellar variability that accounts for spacecraft pointing variability
+and its (effective) projection (given flat-field variability) onto the
+light curves of all the stars, which we then use as a noise model in
+the search and inference.
+This same kind of model can be built for pixel residuals (Wang, Hogg, \etal, in preparation);
+we propose to fit our imaging model simultaneously with something like this systematic
+noise model, to deliver more accurate and less systematically distorted
+information about the s/c and detector.
+
+\paragraph{The flat-field probably has intra-pixel variations that are non-negligible:}
+
+What one might call the ``first-order'' assumption about a detector is
+that it has one scalar sensitivity value per pixel, but otherwise the
+pixels are identical.
+(The ``zeroth-order'' assumption would be that every pixel has the same
+sensitivity!)
+In reality, we know that detector pixels in general have non-trivial sensitivity maps as a
+function of sub-pixel location (as demonstrated, for example, by \spitzer;
+Ingalls \etal, 2012, SPIE, 8442, id.84421Y)
+so each pixel is \emph{not} identical,
+not just in sensitivity, but in shape or detailed sensitivity map.
+If we think about expanding the pixel sensitivity, order by order, the
+``second-order'' assumption about a detector is that there is some dipole
+distortion of each pixel away from the fiducial or mean pixel shape.
+A dipole is a vector quantity, so the second-order flat-field has
+three numbers per pixel: A scalar ``monopole'' and a vector
+``dipole''.
+(The dipole is like a mean pixel offset away from the pure rectangular
+grid.)
+The ``third-order'' flat-field would also have a quadrupole tensor
+distortion (different for every pixel), and so on.
+
+That is---with every pixel bespoke---there is
+(in this second-order view) no such thing as a pure ``pixel-convolved PSF'' but
+rather there will be a slightly different pcPSF,
+appropriate for each pixel.
+However, in the limit of small intra-pixel variations in sensitivity,
+it is possible to represent the pcPSF for pixel $i$ as a
+linear combination of the fiducial pcPSF and two
+derivatives with respect to position; these three components are
+coadded in proportion to the monopole and two dipole coefficients
+that are appropriate for pixel $i$.
+This is a principled way of building up, order-by-order, more and more
+sophisticated flat-field information, and (relatedly) bespoke,
+ individual-pixel pcPSF information.
+Similarly, this operation can be applied to a pcPSF-convolved scene of
+arbitrary origin (that is, it doesn't require a scene model that is
+a mixture of delta-functions).
+At second order, the effective scene illuminating the device is a
+linear combination of three scenes, with a different set of three
+coefficients for each pixel, which are the monopole and dipole
+coefficients.
+(At third order, it would be a linear combination of six scenes, and
+so on.)
+
+\emph{We propose in this project to learn or infer the flat-field to both first and second
+order, to assess whether there is evidence in the data to support such
+an increase in flat-field model complexity, and to see if that upgrade
+leads to an increase in the performance of our models of the data.}
+We have showed that inference at this level is possible in one of our
+\kepler\ two-wheel-era white papers (Hogg \etal, 2013, arXiv:1309.0653).
+In particular, we showed that images with smearing or dithering reveal
+information about the sub-pixel flat-field (in that work we used a
+$2\times 2$ subsampled flat-field model, not a multipole expansion,
+but the principles are the same).
+
+\paragraph{We might want adjustments to s/c attitude management:}
+
+The principal requirement for the success of any self-calibration project
+is that there be proper \emph{redunancy} across observations.
+In the relevant self-calibration context, ``redundancy'' is achieved
+by having the same stars observed in different pixels, and having the
+same pixels subject to very different illumination.
+This requires dithering, and preferably dithering that is random (or
+pseudo-random in various ways; Holmes, Hogg, \& Rix, 2012, PASP, 124,
+1219)
+For this reason, it is important to the success of this project that
+the s/c \emph{not} point perfectly!
+
+Indeed, our simulations suggest that it would be good for the stellar
+scene to ``travel'' over a (roughly) $2\times2$ pixel patch over the
+course of (or during some substantial part of) K2C9.
+As the \ktwo\ Team has improved its understanding of the s/c and its
+attitude management in the two-wheel era, it has become very good at
+locking down the pointing to within a pixel, with the solar-angle
+management and thruster activity every $\sim 6$\,h.
+However, we might be better off in understanding the flat-field with
+slightly \emph{worse} attitude management, because we want the scene
+to travel relative to the detector by \emph{more than} one pixel to
+see the full range of pixel sensitivity.
+(We would want even more travel if the device were better sampled!)
+
+The attitude variability we want could be achieved by any number of
+changes to current procedures.
+In one class of solutions, we could just reduce the frequency of the
+thruster events for the entire duration of K2C9.
+In another, we could perform a set of dithering maneuvers in the first
+few days of K2C9, to provide a baseline dither set for calibration
+purposes.
+In another, we could deliberately adjust the s/c so that it is not as
+close as possible to the zero-torque attitude.
+Obviously many of the considerations involved here are far above the
+``pay grade'' of these proposers.
+However, we would be enthusiastic about having an opportunity to influence
+s/c attitude management, and the pay-off for calibration might be immense.
+
+It is worth emphasizing here that \emph{if there are no changes to s/c
+  attitude management, it will be very difficult to self-calibrate the
+  K2C9 data} at the levels required for bound-saturating photometric monitoring.
+At very low cost, small adjustments to attitude policies could greatly
+improve the precision of K2C9's microlensing science.
+
+\paragraph{Project budget and timeline:}
+
+As per instructions, this proposal is not being delivered with a complete
+budget.
+However, our estimated budget is 98,590\,USD:\\[1ex]
+\textbf{Senior personnel:} For the PI we budget 0.25\,mo of summer salary.\\
+\textbf{Junior personnel:} We budget one year of graduate-student support, for a
+graduate student at NYU who will work on the project full-time for a full
+year, part of which will be before K2C9 data telemetry, and the rest
+after (see below).\\
+\textbf{Travel:} We include 10,000\,USD of travel budget to get the team
+together at NASA Ames a few times for hacking and sprinting with the
+\ktwo\ Team.  This travel funding is the only direct support for the
+Co-Is.\\
+\textbf{Publications:} We include 2,000\,USD of publication support to cover page
+charges for the inevitable scientific papers in the refereed
+literature.\\
+\textbf{Other:} The estimated budget includes fringe, overhead, and tuition
+remission charges at the standard NYU rates.\vspace{1ex}
+
+As for timeline, there are two important stages to this project:
+The first, which happens well before the start of K2C9 observations,
+is to build a small-scale K2C9 simulation, based on what we know from
+all the \ktwo\ data to date, and use this as a sandbox for writing the
+self-calibration code.
+In this first stage, we would intend to get working methods and code,
+and a solid, written description of both.
+The second stage, which begins right at the beginning of K2C9 data
+telemetry, is to run this code on the data as soon as it is
+telemetered, and perform the relevant visualizing, debugging,
+patching-and-rerunning, and so on, to deliver to the community the
+flat-field and any other determined self-calibration parameters.
+(In particular, we expect that a good model of the ``stripy sky''
+might be of great value.)
+
+It is CampHogg standard practice that we don't develop tools without
+also being \emph{users} of those tools.
+For this reason, in both stages, we will collaborate closely with other
+members of the K2C9 science team to test the ability of this generative model
+to answer scientific questions.
+In particular, Co-I Foreman-Mackey is also a contributor on the proposal
+``Free-Floating and Bound Planet Mass Measurements with K2'' (PI~Penny) to
+apply difference imaging to the K2C9 imaging to measure stellar light curves.
+These proposals are extremely complementary and, if selected, will be
+mutually beneficial.
+Any improvements in the generative model of the \ktwo\ focal plane will
+greatly improve the precision of difference imaging pipelines and, since the
+point of improving the model is increased precision, the performance of this
+model of the focal plane will be best measured by applying it to the real data
+in the context of the microlensing event search and characterization.
+
+\paragraph{We bring unique skills and expertise to the K2C9 team:}
+
+Our team is uniquely situated to help with the success of K2C9:\\
+$\bullet$ We are the first (and only) group to algorithmically
+generate a full exoplanet catalog with \ktwo\ data, along with
+completeness information (Foreman-Mackey \etal, 2015, \opcit).
+To achieve this, we built a data-driven model of \ktwo\ systematic
+noise sources.\\
+$\bullet$ Our group is the leading group in (optical) astronomical
+image modeling, which we have used to perform Bayesian weak lensing
+inference (Schneider \etal, 2014, arXiv:1411.2608) and
+massive forced photometry with the \project{WISE} and \project{SDSS}
+missions (Lang, Hogg, \& Schlegel, 2014,
+arXiv:1410.7397).\\
+$\bullet$ We have been developing a literature on the technical
+principles underlying self-calibration, in terms of project design
+(Holmes \etal, 2012, \opcit) and statistical inference
+(Sch\"olkopf \etal, 2015, arXiv:1505.03036).\\
+$\bullet$ We put in two extensive white papers in the call following
+the second reaction-wheel failure (Hogg \etal, 2013, \opcit; and
+Montet \etal, 2013, arXiv:1309.0654), the former of which is very directly
+related to this proposal.
+(And the latter of which describes a two-wheel program that is uncannily
+like what the \kepler\ Project adopted for \ktwo.)\\
+$\bullet$ The Hogg \etal\ white paper is, aside from the work with
+\spitzer\ (Ingalls \etal, 2012, \opcit; which is not the same), the first attempt
+to infer or even instantiate a sub-pixel flat-field.\\
+$\bullet$ The PI has
+been involved in reviewing and advising the \kepler\ Mission
+in matters related to the occurence rate of exoplanets.\\
+$\bullet$ We have released open-source code for MCMC methods
+(\project{emcee}), astrometric calibration (\project{Astrometry.net}),
+astronomical image modeling (\project{The Tractor}), \ktwo\ photometry
+and exoplanet discovery (\project{ketu}), and Gaussian Processes
+(\project{george}).  We have an extensive and clear track record of
+delivering valuable open-source code to the community.\\
+$\bullet$ We care!
+
+\end{document}
