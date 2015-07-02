@@ -17,4 +17,5 @@ Copyright 2014 the author and contributors.
 - `ProbCosmo`: Probabilistic approaches to cosmology; for NSF
 - `Simons`: Applied mathematics and astrophysics inference; for Simons
 - `DDD`: Individual investigator proposal for Moore
+- `K2flatfield`: K2C9 proposal on calibration; for NASA
 - *Many more proposals live in the Astrometry.net SVN and the NYU Astro CVS.*
