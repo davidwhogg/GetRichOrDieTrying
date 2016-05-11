@@ -1,0 +1,49 @@
+%----- exact 1-in margins
+% nb: headheight and headsep must exist and be set
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+\addtolength{\textheight}{-1.0\headheight}
+\addtolength{\textheight}{-1.0\headsep}
+\setlength{\topmargin}{0.0in}
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+
+%----- typeset certain kinds of words
+\newcommand{\observatory}[1]{\textsl{#1}}
+\newcommand{\package}[1]{\textsf{#1}}
+\newcommand{\project}[1]{\textsl{#1}}
+\newcommand{\foreign}[1]{\textsl{#1}}
+\newcommand{\nasa}{\observatory{NASA}}
+\newcommand{\Kepler}{\observatory{Kepler}}
+\newcommand{\Spitzer}{\observatory{Spitzer}}
+\newcommand{\etal}{\foreign{et~al.}}
+\newcommand{\etc}{\foreign{etc.}}
+\newcommand{\ie}{\foreign{i.e.}}
+\newcommand{\vs}{\foreign{vs.}}
+\newcommand{\opcit}{\foreign{op~cit.}}
+
+%----- typeset journals
+% \newcommand{\aj}{astron.\,j.}
+% \newcommand{\apj}{astrophys.\,j.}
+% \newcommand{\apjl}{astrophys.\,j.\,lett.}
+% \newcommand{\apjs}{astrophys.\,j.\,supp.\,ser.}
+% \newcommand{\mnras}{mon.\,not.\,roy.\,ast.\,soc.}
+% \newcommand{\aap}{astron.\,\&~astrophys.}
+
+%----- tighten up paragraphs and lists
+\setlength{\parskip}{0.0ex}
+\setlength{\parindent}{\baselineskip}
+\renewenvironment{itemize}{\begin{list}{}{%
+  \topsep=0ex \parsep=0ex \partopsep=0ex \itemsep=0ex \itemindent=-1em \leftmargin=1em
+  }}{\end{list}}
+
+%----- mess with paragraph spacing!
+\renewcommand{\paragraph}[1]{\smallskip\noindent{\textbf{#1}}}
+
+%----- deal with pdf page-size stupidity
+\special{papersize=8.5in,11in}
+\setlength{\pdfpageheight}{\paperheight}
+\setlength{\pdfpagewidth}{\paperwidth}
+
+% no more bad lines!
+\sloppy\sloppypar\frenchspacing
