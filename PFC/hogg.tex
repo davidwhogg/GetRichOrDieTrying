@@ -1,0 +1,201 @@
+\documentclass[12pt]{article}
+\begin{document}
+
+There are three \emph{Major Activities} proposed as part of the
+planetary systems direction of this proposal: Discovery,
+Characterization, and Population Inference.
+
+\paragraph{Planet Discovery:}
+This Major Activity revolves around the
+extreme observational precision required to detect planets around
+their host stars. The technical challenge emerges from the fact that
+stars are far more massive and far more luminous than the
+planetary systems they host.
+
+In the \emph{imaging domain}, planets can appear because (with luck)
+they can induce \emph{periodic transit signals} in an (unresolved) star's light
+curve (brightness as a function of time). For Earth-like planets
+around Sun-like stars, these transits block (only) $10^{-4}$ of the
+star's light, and only for about a dozen hours once every hundreds of
+days. Detection of these signals requires long time baselines, extreme
+photometric precision, and suppression or modeling of both spacecraft and stellar
+variability, which (in most cases) are larger in amplitude than the
+transits. In imaging, exoplanets can also appear as \emph{microlensing
+  events}, which are brighter events but which are much rarer, and
+essentially never repeat. Here the challenge is not so much
+suppression of noise as confident and rapid identification of
+non-repeating microlensing against a background of stellar flaring and
+other variability (and data artifacts). With the launch of the
+\textsl{Gaia} Spacecraft, it will be possible to see planets in the
+imaging domain as \emph{astrometric wobble}.
+
+In the \emph{spectroscopic domain}, planets appear as
+\emph{radial-velocity perturbations} on the rest-frame velocity of
+their host star. Here the detection challenge is that stellar surfaces
+are seething with convection and quasi-coherent oscillation modes,
+leading to stochastic and time-structured radial-velocity variations
+that are larger (once again) than the most interesting planetary
+signals. There are also currently unexplained issues with spectrograph
+radial-velocity calibration that may be contributing to---or even
+dominating---radial-velocity noise.
+
+Our approaches to these problems, in keeping with the physical themes
+of this proposal, are to divide the incoming effects into different
+causal categories (CITE BS), and model each cause with as much
+flexibility and physical input as possible. Spacecraft or instrument
+variations or problems imprint themselves coherently onto many
+observations of different, independent stars, and can therefore be
+separated (in principle) from astrophysical signals. We have been
+pioneers in making extremely flexible models of spacecraft variability
+(CITE DUN, DFM, DFMK2, ANGUS), but we have only scratched the surface,
+because our spacecraft models have been \emph{purely} data-driven and
+have not made use of the fact that dominant sources of noise come from
+instrument pointing and temperature. That is, our high dimensional
+linear models will be replaceable with lower-dimensional but nonlinear
+model that represent physically possible responses to perturbations.
+These models---which are easiest to implement in imaging data---also
+need to be taken to spectroscopic data, where there are additional
+issues from slit or fiber losses and effects, wavelength calibration
+variations, and superimposed calibration signals.
+
+When working at scale, or preparing for population inferences (see
+below), it is imperative that planet search and vetting proceed
+according to automated methods and involve no human interaction. This
+may seem obvious, but few planet detection systems are \emph{truly}
+hands-free. We are the community leaders in developing such methods,
+where we usually take a generative modeling approach to false-positive
+signals like system jumps or drop-outs, cosmic rays, stellar surface
+events, and contamination by binary star systems (CITE DFM
+LONG-PERIOD). These issues only become more important (and more
+important to automate) as searches get more sensitive. Our analysis
+suggests that radial-velocity searches could benefit signficantly from
+false-positive and system-event models.
+
+We have observed---but not yet capitalized on the fact---that stellar
+surfaces can be modeled to reasonable approximation as a
+time-correlated linear response to stochastic driving, in a kind of
+Green's function or linear ode framework (CITE FENGJI THESIS). If we
+make the further assumption that the stochastic driving is Gaussian on
+some timescales, there is a physically justifiable Gaussian Process
+model for stellar surface variability that can be used in both
+imaging and spectroscopic planetary systems discovery projects. These
+models are also valuable for characterization (below).
+
+Modeling of exoplanet signals themselves appears trivial, but optimal
+sensitivity to small planets might require that models be built of the
+aperiodic perturbations to transit and radial-velocity signals induced
+by gravitational interactions and orbit evolution. This requires
+high-performance dynamical modeling (more below).
+
+In all of the above, when we search we actually fit the instrument,
+anomaly, star, and planet models simultaneously, because we have shown
+that the flexibility of the models permits over-fitting if each effect
+is independently fit and subtracted or suppressed (CITE DFM, DUN
+WANG).
+
+\paragraph{Planet characterization:}
+This Major Activity involves generating full likelihood
+information---or posterior information under (technically vague)
+interim priors---about planetary system properties (phase-space state
+or system architecture), given all available data. It turns out that
+it is just as important to precisely characterize the star as it is to
+characterize the planet, because planet properties are measured
+relative to star properties.
+
+On star characterization, we have been pioneering data-driven methods
+to precisely label stars with relevant physical parameters,
+capitalizing on large spectroscopic data sets and small numbers of
+stars with good physical labels (CITE CANNON; CITE CASEY). These
+methods are data-driven, but physically informed, because they are
+incredibly flexible, but constrained to produce dependencies on
+physical parameters that are physically reasonable. They also
+incorporate the heteroskedastic noise models provided by the
+spectroscopic experiments. These methods have only scratched the
+surface, because they need to be generalized to take data from
+heterogeneous mixtures of spectrographs and photometers, and account
+for differing spectral resolutions and wavelength domains. They also
+need to accept prior information from atomic physics and new data
+sources such as the \textsl{Gaia} Mission data which will come
+available in the next few years.
+
+On planetary system characterization, one challenge is that the most
+interesting systems involve gravitational interactions that must be
+modeled \emph{inside the MCMC} iteration (CITE THINGS). That is, they
+require very fast n-body codes; our experience is that these can and
+should be high-order integrators (CITE?), but sometimes these
+integrators need to be modified to output data on fine time-steps;
+after all, the whole point of a high-order integrator is that you can
+take long steps. This is a rich area for new research. It is also the
+case that the same kind of dynamics that goes into the integrators
+also goes into the MCMC code: The leading inference systems use
+Hamiltonian MCMC (CITE THINGS), along with analytically differentiated
+code. The relationships between the Hamiltonian structure of the
+dynamics and the Hamiltonian structure of the sampling might are worth
+exploring further.
+
+Stellar surface variations and spacecraft or telescope issues affect
+characterization as well as discovery; the models described above for
+discovery matter here too. One direction of interest is mapping
+stellar and planetary surfaces with time-domain imaging and
+spectroscopy, which has led to a number of breakthroughs (CITE
+SUNSPOTS, CITE hot-Jupiter TEMPERATURE MAPS, CITE
+ROSSITER-McLAUGHLIN). Again, there is a lot to do here; a transiting
+exoplanet makes (effectively) a sparse map of the stellar surface;
+understanding this can deliver information about both the star and the
+planet.
+
+\paragraph{Population inference}
+There are thousands of planetary systems known, but there are still
+great controversies---and only imprecise conclusions---about the
+abundance of planets and planetary systems of different types (CITE
+AND CITE). This Major Activity seeks to address this.
+
+There are manifold reasons that planetary system populations are only
+known imprecisely, but some leading causes include the following:
+$\bullet$~There aren't yet good and agreed-upon parameterizations for
+arbitrary n-body planetary systems; the current description of
+multiple-planet systems (around possibly multiple-star hosts) are
+physically vague and contain massive degeneracies (including but not
+limited to labeling degeneracies). $\bullet$~The catalogs of
+exoplanets on which population inferences are created as hard catalogs
+with completeness and false-alarm rates estimated; neither of these
+rates are confidently measured, and there is no way to perform the
+population inference \emph{in the space of the raw
+  data}. $\bullet$~Planets are measured with substantial mass and
+radius uncertainties, such that a simple completeness-corrected
+histogram of distributions is not a good population estimator. Proper
+inference requires a hierarchical (multi-level) model (CITE
+DFM). $\bullet$~Some of the most interesting planetary systems, and
+the ones most like our own Solar System, include dominant planets at
+long periods, where no parameters (not even periods) of the planets
+are well constrained. The need for sophisticated inference is even
+more severe here, and will become only more important with a future of
+time-constrained \textsl{TESS} Satellite data coming soon.
+
+We intend to work along all of these directions, in particular
+exploring system representations, moving inferences closer to the raw
+data where possible, and making hierarchical inferences more
+sophisticated and better in performance. We would also like to
+constrain population inferences to have stability and consistency
+properties, such that the inferred population could really exist in a
+dynamically generated Universe. This involves understanding long-term
+stability (CITE DECK AND OTHERS), but also conditioning either the
+representation or else the density as expressed with the
+representation to be invariant with time, or really slowly varying
+with time.
+
+Along these lines, it is interesting to find planetary systems that
+appear to be unstable or short-lived. These might give important clues
+to system formation.
+
+At the present day, planetary system formation models are
+computational simulations; the do not put probabilities over
+outcomes---they do not generate a likelihood function. We will explore
+statistically principled methods (such as ABC; CITE STUFF) for
+comparing planet-formation simulations to observed planetary systems;
+in principle this could either follow or obviate direct population
+inferences. The long-term goal of extra-solar planetary science is to
+understand the formation and evolution of our and other planetary
+systems.
+
+\end{document}
