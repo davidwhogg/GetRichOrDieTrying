@@ -1,1 +1,32 @@
-foo
+Data-driven approaches for extreme precision radial-velocity measurement.
+
+David W. Hogg (NYU)
+
+In a forward-looking move, NASA has partnered with NSF to create
+NN-EXPLORE, a project to provide extremely high precision ground-based
+radial velocity measurements for exoplanet discovery and
+characterization. The instrument NEID being built for this partnership
+will be an extremely stable and precise spectrograph. In addition to
+NEID, there are multiple existing and new projects world-wide to
+provide large numbers of extreme precision radial velocities for the
+follow-up of NASA-led exoplanet discoveries. Typically these
+spectrographs produce internal precisions, or theoretically best-case
+measurement noise, on the order of 0.1 m/s. This is precise enough to
+detect and characterize Earth-like planets around Sun-like stars!
+
+At the present, no spectrographs are returning stellar measurements
+with empirical scatter below something like 1 m/s. There are many
+reasons for the mismatch between the theoretical (0.1 m/s) and
+empirical (1 m/s) precisions: Spectrograph calibration is non-trivial;
+there are spectral distortions from flexure and atmospheric
+conditions; stars oscillate seismically; stellar surfaces are heaving
+stochastically with convection; and there are spots and time-dependent
+activity on the rotating stellar surface. Preliminary work by my group
+suggests that convection may dominate these effects for quiet,
+Sun-like stars, but this is by no means demonstrated.
+
+Causal approaches to disentangling noise sources.
+
+Data-driven approaches to building models of nuisances.
+
+Budget, management, and deliverables.
