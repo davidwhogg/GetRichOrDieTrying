@@ -7,12 +7,14 @@
 \setlength{\topmargin}{0.0in}
 \setlength{\oddsidemargin}{0.0in}
 \setlength{\evensidemargin}{0.0in}
-\raggedright
 
 %----- typeset certain kinds of words
 \newcommand{\acronym}[1]{{\small{#1}}}
+\newcommand{\NYU}{\acronym{NYU}}
+\newcommand{\AAS}{\acronym{AAS}}
 \newcommand{\NASA}{\acronym{NASA}}
 \newcommand{\NSF}{\acronym{NSF}}
+\newcommand{\PI}{\acronym{PI}}
 \newcommand{\ESA}{\acronym{ESA}}
 \newcommand{\ESO}{\acronym{ESO}}
 \newcommand{\observatory}[1]{\textsl{#1}}
@@ -22,6 +24,8 @@
 \newcommand{\Kepler}{\observatory{Kepler}}
 \newcommand{\Ktwo}{\observatory{\acronym{K2}}}
 \newcommand{\HARPS}{\project{\acronym{HARPS}}}
+\newcommand{\NEID}{\project{\acronym{NEID}}}
+\newcommand{\NNEXPLORE}{\project{\acronym{NN-EXPLORE}}}
 \newcommand{\foreign}[1]{\textsl{#1}}
 \newcommand{\eg}{\foreign{e.g.}}
 \newcommand{\etal}{\foreign{et~al.}}
@@ -31,6 +35,9 @@
 
 %----- math shih
 \newcommand{\given}{\,|\,}
+
+%----- units
+\newcommand{\mps}{{\mathrm{m\,s^{-1}}}}
 
 %----- typeset journals
 \newcommand{\aj}{Astron.\,J.}
