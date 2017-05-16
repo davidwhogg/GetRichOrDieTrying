@@ -14,40 +14,124 @@
 Laundry list it. Refer to literature. Discuss the basis on
 which the quantitative estimates have been made.
 
-\paragraph{Surface convection}
+Few open-source pipelines. MB only knows of one.
 
-\paragraph{Activity and sunspots}
+No open-source pipelines get down to m/s precision.
 
-\paragraph{Asteroseismic modes}
+\paragraph{Surface convection:}
+CITE papers Bedell sent. Use the word ``granulation''.
 
-\paragraph{Planetary system noise}
+Say ``convective blue-shift effect'' (look that up).
 
-\paragraph{Interstellar lines}
+Interplay of convection and rotation. Interplay of spots and convection.
 
-\paragraph{Cosmic rays}
+\paragraph{Activity and sunspots:}
+Show results we have in hand now.
 
-\paragraph{Atmosphere and tellurics}
+Plages may suppress convection locally. So change the net convective signal.
 
-\paragraph{Spectrograph calibration}
+Interplay of spots and rotation. But rotations aren't always visible.
 
-\paragraph{Data extraction and analysis}
+latitude dependence to sunspots of possible relevance.
 
-\paragraph{A quantitative noise budget for the \HARPS\ data}
+\paragraph{Asteroseismic modes:}
+CITE relevant HARPS results.
+
+P-modes would dominate if we integrated over times shorter than 5 mins.
+
+\paragraph{Planetary system and companion noise:}
+Concept of adversarial planetary system. And other sub-stellar and stellar companions.
+
+Also dilution of spectrum by companions can alter the spectral shape.
+
+Very localized dust orbiting within the planetary system. Like gas
+coming off very hot Jupiters, or accreting zodi. Freakin' comets.
+
+\paragraph{Extra-solar technology}
+
+\paragraph{Interstellar lines:}
+Could there be micro-DIBs? Could there be micro-PAHs?
+
+Certain lines exist in the ISM as well as the stellar photosphere. Ca
+lines are polluted by the ISM and therefore might be thrown off as
+pure activity indicators.
+
+What about line-of-sight changes in the ISM? Like relative motions
+between the star and ISM. Like stars that produce ISM jets.
+
+\paragraph{Cosmic rays:}
+Could these possibly matter?
+
+Could fuck up continuum normalization?
+
+\paragraph{Atmosphere and tellurics and micro-tellurics:}
+Quantifying the influence of micro-tellurics.
+
+Variable velocity structure and water and CO2 and dust content to the atmosphere.
+
+Are there differential refraction issues if the astrometry is wrong?
+
+(Possible sunlight or moon scattering injection into the spectral aperture.)
+
+\paragraph{Telescope optics}
+Flecture, and fiber. The position of the star on the fiber, and the
+incomplete ``scrambling'' in the fiber.
+
+\paragraph{Spectrograph calibration:}
+Accuracy and precision of the wavelength solution.
+
+Combs and gas cells.
+
+If lamps, long-term changes in the lamps.
+
+LSF as a function of wavelength.
+
+Hierarchical self-calibration---living the dream.
+
+\paragraph{Photon noise:}
+
+\paragraph{Data extraction and analysis:}
+Two-d to one-d extraction and distortions to line shapes?
+
+CRs appear again here.
+
+Internal reflections of the spectrum inside the spectrograph.
+
+CCV has to be stable to movements of the spectrum relative to the
+pixels. Edge effects, and flat-field effects, other detector effects.
+
+CCV should be using accurate spectral and telluric models.
+
+Barycentric corrections.
+
+Working entirely in 2-d---living the dream. Some systematics will be
+simpler or more apparent in 2-d than the individual 1-d orders.
+
+\paragraph{Why me? Why now?}
+
+\paragraph{Component 1---A quantitative noise budget for the \HARPS\ data:}
 A set of procedures for assessing the 
 
-\paragraph{Cross-correlation radial velocities}
+\paragraph{Component 1a---Cross-correlation radial velocities:}
 Comments on the relationship to max-like. How things go wrong
 if the templates are bad, or if there are unmodeled components?
 Possibility that some of the noise budget comes from these
-problems.
+problems. Cosmic rays. Tellurics. Etc.
 
-\paragraph{A non-parametric model for an observed spectrum}
+\paragraph{Component 1b---Causal inference on the noise budget:}
+
+\paragraph{Component 1x---Other projects:}
+Interpolation onto a common grid / combined spectrum.
+
+\paragraph{Component 2---Reducing noise by modeling nuisances:}
+
+\paragraph{Component 2a---A non-parametric model for an observed spectrum:}
 Modeling spectrum, tellurics, and ISM all with some kind of
 process (probably Gaussian process).
 
 Make remarks about very fast linear algebra.
 
-\paragraph{A finite-dimensionality tellurics model}
+\paragraph{Component 2b---A finite-dimensionality tellurics and interstellar model:}
 How we can look at the variability in the tellurics.
 How we can determine the principal directions of variation.
 How we can capitalize on these results.
@@ -55,17 +139,24 @@ How we can capitalize on these results.
 Emphasize that we can use all stars ever observed with \HARPS\ to
 build and support this model.
 
-\paragraph{Hierarchical models for the time domain}
+\paragraph{Component 2c---Spectral signatures of convection (and other nuisances):}
+Convection is not activity! But open with wavelength-dependence of
+activity and activity indicators.
+
+\paragraph{Component 2d---Hierarchical models for the time domain:}
 Ultimately, we have very strong prior beliefs about some aspects
 of the radial-velocity variability. For examples: The orbital
 companions imprint Kepler-like variations. The asteroseismic modes
 imprint combs of quasi-periodic signals. The convection is stochastic
 but with identifiable time covariance.
 
-\paragraph{Prior \NASA\ support}
+\paragraph{Comnponent 2x---Other possible projects:}
+Other projects. Laundry list.
+
+\paragraph{Prior \NASA\ support:}
 The \GALEX\ and \Ktwo\ projects are of great relevance.
 
-\paragraph{Management and timeline}
+\paragraph{Management and timeline:}
 Very lean project; just the PI, unfunded collaborators, and graduate students.
 
 \end{document}
