@@ -1,0 +1,241 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fancyhdr, afterpage}
+\usepackage{color, hyperref}
+\usepackage{ifthen}
+
+% put in the date -- or not
+  \renewcommand{\today}{}
+
+% hypertex insanity
+  \definecolor{linkcolor}{rgb}{0,0,0.33}
+  \definecolor{grey}{rgb}{0.5,0.5,0.5}
+  \hypersetup{
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=grey,        % color of internal links
+    citecolor=linkcolor,    % color of links to bibliography
+    filecolor=black,        % color of file links
+    urlcolor=linkcolor      % color of external links
+  }
+
+% repeated text formatting
+  \newcommand{\latin}[1]{\textsl{#1}}
+  \newcommand{\etal}{\latin{et~al.}}
+  \newcommand{\satellite}[1]{\textsl{#1}}
+  \newcommand{\project}[1]{\textsl{#1}}
+  \newcommand{\grantnumber}[2]{{\footnotesize{#1}}; #2,~\textsc{pi}}
+% literature links--use doi if you can
+  \newcommand{\doi}[2]{\href{http://dx.doi.org/#1}{{#2}}}
+  \newcommand{\ads}[2]{\href{http://adsabs.harvard.edu/abs/#1}{{#2}}}
+  \newcommand{\isbn}[1]{{\footnotesize(\textsc{isbn:}{#1})}}
+  \newcommand{\arxiv}[2]{\href{http://arxiv.org/abs/#1}{{#2}\ (\texttt{arXiv:#1})}}
+% define de-emphasize commands
+  \newcommand{\deemph}[1]{\textcolor{grey}{\footnotesize{#1}}}
+  \newcommand{\pubnumber}[1]{\deemph{{#1}.}}
+% define heading command SERIOUS HACKING HERE
+  \newcommand{\hoggheading}[1]{\addvspace{0.5ex}\pagebreak[2]%
+    \par\textbf{#1}%
+    \afterpage{\markboth{}{}}
+    \nopagebreak}
+% custom list characteristics
+  \newcounter{refpubnum}
+  \newcommand{\hogglist}{%
+    \rightmargin=0in
+    \leftmargin=0.18in
+    \topsep=0ex
+    \partopsep=0pt
+    \itemsep=0.1ex
+    \parsep=0pt
+    \itemindent=-1.0\leftmargin
+    \listparindent=0.0\leftmargin
+    \settowidth{\labelsep}{~}
+    \usecounter{refpubnum}
+  }
+  \newcommand{\note}[1]{{\small\par{#1}}}
+% Margins and spaces
+  \raggedright
+  \setlength{\oddsidemargin}{0in}
+  \setlength{\topmargin}{0in}
+  \setlength{\headsep}{0.20in}
+  \setlength{\headheight}{0.25in}
+  \setlength{\textheight}{9.00in}
+%  \addtolength{\textheight}{-\headsep}
+%  \addtolength{\textheight}{-\headheight}
+  \addtolength{\topmargin}{-\headsep}
+  \addtolength{\topmargin}{-\headheight}
+  \setlength{\textwidth}{6.50in}
+  \setlength{\parindent}{0in}
+  \setlength{\parskip}{1ex}
+% Headings and footing
+  \renewcommand{\headrulewidth}{0pt}
+  \pagestyle{fancy}
+  \lhead{\deemph{\leftmark}}
+  \rhead{\deemph{\thepage}}
+  \cfoot{}
+
+\begin{document}\thispagestyle{empty}\sloppy\sloppypar\raggedbottom\frenchspacing
+\textbf{\Large David W. Hogg} \hfill \url{http://cosmo.nyu.edu/hogg/}
+
+\hoggheading{Education}
+\begin{list}{}{\hogglist}
+\item
+PhD 1998, Department of Physics, California Institute of Technology.
+\item
+SB 1992 (Major in Physics), Massachusetts Institute of Technology.
+\end{list}
+
+\hoggheading{Current positions}
+\begin{list}{}{\hogglist}
+\item
+Professor of Physics and Data Science, New York University.
+\item
+Group Leader, Astronomical Data Group, Center for Computational Astrophysics,
+Flatiron Institute, New York.
+\item
+Adjunct Senior Staff Scientist, Max-Planck-Institut f\"ur Astronomie,
+Heidelberg, Germany.
+\end{list}
+
+\hoggheading{Scientific, technical, and management roles}
+\begin{list}{}{\hogglist}
+\item
+Director of Undergraduate Studies, Department of Physics, New York University, 2008--2015.
+\item
+Executive Director of the \textsc{usd}12.6M \project{Moore--Sloan Data Science Environment at \textsc{nyu}}, 2013--2015.
+\item
+Postdoc advisor or mentor for nine postdocs, at NYU or the Flatiron Institute.
+\item
+PI of 9 \textsc{nasa} research grants, from the ADAP, \satellite{K2}, \satellite{Spitzer}, and \satellite{HST} programs.
+\item
+Supervised the production of multiple open-source software projects, including \project{Astrometry.net}
+and the \project{emcee} MCMC sampler.
+\end{list}
+
+\hoggheading{Recent community service}
+% reverse chronological by END date.
+\begin{list}{}{\hogglist}
+\item
+Astronomy and Astrophysics Advisory Committee
+(established by the US Congress to advise \textsc{nsf}, \textsc{nasa}, and \textsc{doe} on areas of mutual interest)
+2014--present.
+\item
+\satellite{Spitzer} Science Center Oversight Committee
+(to advise the \satellite{Spitzer Space Telescope} project),
+2008--present.
+\item
+\project{Sloan Digital Sky Survey \textsc{iv}} Collaboration Council,
+2013--present.
+\item
+\project{\textsc{nasa} Extragalactic Database} Users Committee,
+2006--2013.
+\end{list}
+
+\hoggheading{Exoplanet-related PhD supervision}
+\begin{list}{}{\hogglist}
+\item
+Fengji~Hou, 2014, \textit{Bayesian inference on stellar radial velocity data},
+PhD thesis, New York University (co-supervised by Jonathan~Goodman at NYU).
+\item
+Daniel~Foreman-Mackey, 2015, \textit{Methods for the detection and characterization of exoplanets and their population},
+PhD thesis, New York University.
+\item
+Dun~Wang,
+current PhD student, New York University.
+\end{list}
+
+\hypersetup{linkcolor=black}%
+\hoggheading{Selected relevant recent publications}%% use \etal when there are >9 authors!
+\hypersetup{linkcolor=grey}%
+\begin{list}{}{\hogglist}
+\item
+Price-Whelan,~A.~M. \& Hogg,~D.~W., 2010,
+\doi{10.1086/651009}{What bandwidth do I need for my image?},
+\textit{Pubs.\,Astr.\,Soc.\,Pac.}\ \textbf{122} 207--214.
+\item
+Bovy,~J., Murray,~I., \& Hogg,~D.~W., 2010,
+\doi{10.1088/0004-637X/711/2/1157}{Dynamical inference from a kinematic snapshot:\ The force law in the Solar System},
+\textit{Astrophys.\,J.}\ \textbf{711} 1157--1167.
+\item
+Hogg,~D.~W., Myers,~A.~D., \& Bovy,~J., 2010,
+\doi{10.1088/0004-637X/725/2/2166}{Inferring the eccentricity distribution},
+\textit{Astrophys.\,J.}\ \textbf{725} 2166--2175.
+\item
+Hou,~F., Goodman,~J., Hogg,~D.~W., Weare,~J., \& Schwab,~C., 2012,
+\doi{10.1088/0004-637X/745/2/198}{An affine-invariant sampler for exoplanet fitting and discovery in radial velocity data},
+\textit{Astrophys.\,J.}\ \textbf{745} 198.
+\item
+Tsalmantza,~P. \& Hogg,~D.~W., 2012,
+\doi{10.1088/0004-637X/753/2/122}{A data-driven model for spectra:\ Finding double redshifts in the \project{Sloan Digital Sky Survey}},
+\textit{Astrophys.\,J.}\ \textbf{753} 122.
+\item
+Lang,~D. \& Hogg,~D.~W., 2012,
+\doi{10.1088/0004-6256/144/2/46}{Searching for comets on the World Wide Web:\ The orbit of 17P/Holmes from the behavior of photographers},
+\textit{Astron.\,J.}\ \textbf{144} 46.
+\item
+Foreman-Mackey,~D., Hogg,~D.~W., Lang,~D., \& Goodman,~J., 2013,
+\doi{10.1086/670067}{\project{emcee}:\ The MCMC Hammer},
+\textit{Pubs.\,Astr.\,Soc.\,Pac.}\ \textbf{125} 306--312.
+\item
+Oppenheimer,~B.~R. \etal, 2013,
+\doi{10.1088/0004-637X/768/1/24}{Reconnaissance of the HR~8799 exosolar system.\ I.\ Near-infrared spectroscopy},
+\textit{Astrophys.\,J.}\ \textbf{768} 24.
+\item
+Fergus,~R., Hogg,~D.~W., Oppenheimer,~R., Brenner,~D. \& Pueyo,~L., 2014,
+\doi{10.1088/0004-637X/794/2/161}{\project{S4}: A spatial-spectral model for speckle suppression},
+\textit{Astrophys.\,J.}\ \textbf{794} 161.
+\item
+Foreman-Mackey~D., Hogg,~D.~W., \& Morton,~T.~D., 2014,
+\doi{10.1088/0004-637X/795/1/64}{Exoplanet population inference and the abundance of Earth analogs from noisy, incomplete catalogs},
+\textit{Astrophys.\,J.}\ \textbf{795} 64.
+\item
+Ambikasaran,~S., Foreman-Mackey,~D., Greengard,~L., Hogg,~D.~W., \& O'Neil,~M., 2015,
+\doi{10.1109/TPAMI.2015.2448083}{Fast direct methods for Gaussian Processes and the analysis of \textsc{nasa} \satellite{Kepler} Mission Data},
+\textit{IEEE Transactions on Pattern Analysis and Machine Intelligence}\ \textbf{PP} (99) 1,1.
+\item
+Foreman-Mackey,~D., Montet,~B.~T., Hogg,~D.~W., Morton,~T.~D.,
+Wang,~D., \& Sch\"olkopf,~B., 2015,
+\doi{10.1088/0004-637X/806/2/215}{A systematic search for transiting planets in the \project{K2} data},
+\textit{Astrophys.\,J.}\ \textbf{806} 215.
+\item
+Ness,~M., Hogg,~D.~W., Rix,~H.-W., Ho,~A.~Y.~Q., \& Zasowski,~G., 2015,
+\doi{10.1088/0004-637X/808/1/16}{\project{The~Cannon}: A data-driven
+approach to stellar label determination},
+\textit{Astrophys.\,J.}\ \textbf{808} 16.
+\item
+Czekala,~I., Andrews,~S.~M., Mandel,~K.~S., Hogg,~D.~W., \& Green,~G.~M., 2015,
+\doi{10.1088/0004-637X/812/2/128}{Constructing a flexible likelihood
+  function for spectroscopic inference},
+\textit{Astrophys.\,J.}\ \textbf{812} 128.
+\item
+Sch\"olkopf,~B., Hogg,~D.~W., Wang,~D., Foreman-Mackey,~D., Janzing,~D.,
+Simon-Gabriel,~C.-J., \& Peters,~J., 2015,
+\arxiv{1505.03036}{Removing systematic errors for exoplanet search via latent causes},
+\textit{Proc.\,32\,Intl.\,Conf.\,Machine\,Learning}, in press.
+\item
+Fischer,~D.~A. \etal, 2016,
+\doi{10.1088/1538-3873/128/964/066001}{State of the field:\ Extreme precision radial velocities},
+\textit{Pubs.\,Astr.\,Soc.\,Pac.}\ \textbf{128} 066001.
+\item
+Sch\"olkopf,~B., Hogg,~D.~W., Wang,~D., Foreman-Mackey,~D., Janzing,~D., Simon-Gabriel,~C.-J., \& Peters,~J., 2016,
+\doi{10.1073/pnas.1511656113}{Modeling confounding by half-sibling regression},
+\textit{Proc.\,Natl.\,Acad.\,Sci.}\ \textbf{113}(27) 7391–-7398.
+\item
+Wang,~D., Hogg,~D.~W., Foreman-Mackey,~D., \& Sch\"olkopf,~B., 2016,
+\doi{10.1088/1538-3873/128/967/094503}{A Causal, Data-driven Approach to Modeling the \satellite{Kepler} Data},
+\textit{Pubs.\,Astr.\,Soc.\,Pac.}\ \textbf{128} 094503.
+\item
+Foreman-Mackey,~D., Morton,~T.~D., Hogg,~D.~W., Agol,~E., \& Sch\"olkopf,~B., 2016,
+\doi{10.3847/0004-6256/152/6/206}{The population of long-period transiting exoplanets},
+\textit{Astron.\,J.}\ \textbf{152} 206.
+\item
+Henderson,~C.~B. \etal, 2016,
+\doi{10.1088/1538-3873/128/970/124401}{Campaign 9 of the \project{K2} Mission:\ 
+Observational parameters, scientific drivers, and community involvement
+for a simultaneous space- and ground-based microlensing survey},
+\textit{Pubs.\,Astr.\,Soc.\,Pac.}\ \textbf{128} 124401.
+\item
+Price-Whelan,~A.~M., Hogg,~D.~W., Foreman-Mackey,~D., \& Rix,~H.-W., 2017,
+\doi{10.3847/1538-4357/aa5e50}{The Joker: A Custom Monte Carlo Sampler for Binary-star and Exoplanet Radial Velocity Data},
+\textit{Astrophys.\,J.}\ \textbf{837} 20.
+\end{list}
+
+\end{document}
