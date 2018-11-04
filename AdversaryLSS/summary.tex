@@ -1,0 +1,96 @@
+% This file is part of the GetRichOrDieTrying / AdversaryLSS project
+% Copyright 2018 the authors.
+
+% to-do
+% -----
+% - get down to one page
+
+\documentclass[12pt, fullpage, letterpaper]{article}
+\usepackage{fancyheadings, graphicx}
+\setlength{\headsep}{0ex}
+\input{hogg_nsf}
+  \renewcommand{\headrulewidth}{0pt}
+  \pagestyle{empty}
+
+\begin{document}
+
+\paragraph{Project summary:}
+Cosmology is a very mature field with a very successful standard model
+(LCDM).
+So new projects either have to obtain far more precision in
+measurements, or else look for subtle departures of data from
+predictions.
+At the same time, new observational projects are mapping far larger
+volumes and far more distant targets, with consequently noisier and
+more complex individual-object data.
+As we simultaneously push to more challenging data and greater
+precisions, we will encounter systematic errors and complexities that
+have never mattered previously.
+
+This project will build general-purpose methods and tools that will
+make the next generation of cosmological (galaxy, quasar, and
+intensity-mapping) surveys more precise, more powerful, and more
+capable of making truly new discoveries.
+These tools fall into three categories:
+
+The project will build adversarial simulated data that is designed to
+defeat current methodologies for finding and subtracting or correcting
+for systematic effects of calibration and target selection in
+large-scale structure surveys.
+And then we will build far more general methods, based on
+non-parametric modeling, for survey operation that can defeat the
+adversaries.
+
+The project will build, optimize, and operate a new estimator for
+galaxy clustering that obviates binning of objects (galaxies or
+quasars or pixels) or pairs into bins; rather it estimates continuous
+functional forms for clustering as a function of scale, galaxy mass,
+color, and so on.
+These continuous functional forms make a better representation of the
+clustering than any binning; therefore this estimator can do more with
+fewer clustering-model components.
+This in turn lets it make more powerful measurements with less data,
+and with less of the computation that is used to do uncertainty
+propagation.
+We will use the estimator to make, for the first time,
+bound-saturating measurements of cosmological parameters.
+
+The project will build methodologies that perform (and perform
+ourselves) statistically principled searches of large-scale structure
+surveys (current and future) for theory-motivated departures from
+predictions of the LCDM model.
+The cosmological model is very successful.
+But the discovery of a departure at intermediate-to-large scales
+(where the physical model is extremely accurate) would be so important
+and significant that it is worth investing effort here.
+The principled aspects of the project will include pre-registration of
+hypotheses (that is, an enumeration of the specific forms and kinds of
+deviations) prior to search.
+And this tool category is related to the previous two, because we need
+to distinguish small departures from systematic effects, and we need
+to extract signatures at bound-saturating precision.
+
+\paragraph{Intellectual Merit:}
+This project will make NSF-funded cosmology projects (including
+SDSS-V, DESI, and LSST) more productive, more precise, and more
+capable of making ground-breaking discoveries.
+It will deliver both general methods and specific, released,
+open-source code that works efficiently on current data and can be
+incorporated into current and future analysis pipelines.
+It will also establish methods for pre-registration of hypotheses that
+will be of general value in cosmology and other areas in the natural
+sciences.
+
+In addition to being relevant to NSF division AST, this project also
+touches on the NSF theme Harnessing the Data Revolution and division
+OAC.
+
+\paragraph{Broader Impacts:}
+In executing the project, the investigators will build curricular
+materials for undergraduate-to-PhD bridge programs, preparing students
+in the physical sciences to have better data-science and statistics
+skills and therefore better PhD preparations.
+We will test and refine these curricular materials in workshops for
+students of broad backgrounds in New York City.
+
+\end{document}

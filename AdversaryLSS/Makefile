@@ -5,7 +5,7 @@ RM          = rm -rf
 TMP_SUFFS   = pdf aux bbl blg log dvi ps eps out
 CHECK_RERUN = grep Rerun $*.log
 
-all: facilities.pdf data.pdf
+all: facilities.pdf data.pdf summary.pdf
 
 %.pdf: %.tex hogg_nsf.tex
 	${LATEX} $<
