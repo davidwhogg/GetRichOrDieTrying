@@ -9,14 +9,15 @@
 \usepackage{fancyheadings, graphicx}
 \setlength{\headsep}{0ex}
 \input{hogg_nsf}
-  \renewcommand{\headrulewidth}{0pt}
-  \pagestyle{empty}
+\renewcommand{\headrulewidth}{0pt}
+\pagestyle{empty}
+\newcommand{\LCDM}{\acronym{LCDM}}
 
 \begin{document}
 
 \paragraph{Project summary:}
 Cosmology is a very mature field with a very successful standard model
-(LCDM).
+(\LCDM).
 So new projects either have to obtain far more precision in
 measurements, or else look for subtle departures of data from
 predictions.
@@ -30,10 +31,9 @@ have never mattered previously.
 This project will build general-purpose methods and tools that will
 make the next generation of cosmological (galaxy, quasar, and
 intensity-mapping) surveys more precise, more powerful, and more
-capable of making truly new discoveries.
-These tools fall into three categories:
+capable of making truly new discoveries:
 
-The project will build adversarial simulated data that is designed to
+\textsl{(1)}~The project will build adversarial simulated data that is designed to
 defeat current methodologies for finding and subtracting or correcting
 for systematic effects of calibration and target selection in
 large-scale structure surveys.
@@ -41,7 +41,7 @@ And then we will build far more general methods, based on
 non-parametric modeling, for survey operation that can defeat the
 adversaries.
 
-The project will build, optimize, and operate a new estimator for
+\textsl{(2)}~The project will build, optimize, and operate a new estimator for
 galaxy clustering that obviates binning of objects (galaxies or
 quasars or pixels) or pairs into bins; rather it estimates continuous
 functional forms for clustering as a function of scale, galaxy mass,
@@ -55,7 +55,7 @@ propagation.
 We will use the estimator to make, for the first time,
 bound-saturating measurements of cosmological parameters.
 
-The project will build methodologies that perform (and perform
+\textsl{(3)}~The project will build methodologies that perform (and perform
 ourselves) statistically principled searches of large-scale structure
 surveys (current and future) for theory-motivated departures from
 predictions of the LCDM model.
@@ -72,7 +72,7 @@ to extract signatures at bound-saturating precision.
 
 \paragraph{Intellectual Merit:}
 This project will make NSF-funded cosmology projects (including
-SDSS-V, DESI, and LSST) more productive, more precise, and more
+\SDSSIV, \DESI, and \LSST) more productive, more precise, and more
 capable of making ground-breaking discoveries.
 It will deliver both general methods and specific, released,
 open-source code that works efficiently on current data and can be
@@ -81,9 +81,9 @@ It will also establish methods for pre-registration of hypotheses that
 will be of general value in cosmology and other areas in the natural
 sciences.
 
-In addition to being relevant to NSF division AST, this project also
-touches on the NSF theme Harnessing the Data Revolution and division
-OAC.
+In addition to being relevant to \NSF\ Division \acronym{AST}, this project also
+connects to Divisions \acronym{OAC} and \acronym{IIS}, and touches on the \NSF\ theme
+Harnessing the Data Revolution.
 
 \paragraph{Broader Impacts:}
 In executing the project, the investigators will build curricular
