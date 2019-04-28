@@ -1,0 +1,96 @@
+% This file is part of the GetRichOrDieTrying project.
+% Copyright 2019 David W. Hogg and Megan Bedell
+
+% # Style notes
+% - Third person, not first person!!
+% - Use macros for acronyms, project names, and so on!
+% - Use \nasasection{} not \section{} so we can tweak typography
+
+% # To-do list
+% - Write zeroth draft!
+% - Put in references.
+
+\documentclass[12pt, fullpage, letterpaper]{article}
+\usepackage{fancyheadings, graphicx, soul}
+\setlength{\headsep}{2ex}
+\input{hogg_nasa}
+  \renewcommand{\headrulewidth}{0pt}
+  \pagestyle{fancy}
+  \lhead{\textsf{Hogg \& Bedell / Extreme-precision radial-velocity in the presence of stellar variability}}
+  \rhead{\textsf{\thepage}}
+  \cfoot{}
+\begin{document}
+
+\nasasection{Project summary}
+
+Many hundreds of exoplanets have been discovered or characterized
+through extreme-precision radial-velocity (\EPRV) measurements made with
+high-resolution spectrographs.
+The current challenge is to reach Earth-like planets around Sun-like stars.
+At present, the best published \EPRV\ programs exhibit $1\,\mps$ (ish)
+empirical scatter, an order of magnitude higher than the signal of an
+Earth.
+This scatter is not dominated by instrument calibration (which is now
+at the $0.1\,\mps$ level or better), it is largely coming from
+not-purely-Doppler variability in the stellar spectrum, including
+surface convection and granulation, asteroseismic pulsations, and
+magnetic activity.
+
+We propose to develop and implement principled methods for mitigating
+the effects of stellar noise in RVs by building data-driven
+spectro-temporal models of stellar variability.
+
+The issue of stellar noise in RV planet observations is pressing right now, as \NASA\ has invested in the \NEID\ Spectrograph on the \WIYN\ Telescope; part of the \NNEXPLORE\ program), and there are many parallel projects by other players. These new spectrographs are instrumental to the primary goals of \NASA’s \TESS\ Mission and \NASA’s exoplanet programs. Without observing and analysis methods capable of dealing with stellar variability, the new generation of instruments are unlikely to achieve their science goals. 
+
+This project operates in a set of temporally overlapping stages, each of which delivers methods, code, and refereed papers. In the first stage, the problem is to quantitatively determine how precisely radial velocities could in principle be measured in the presence of stellar variability. This problem can be cast as a problem in information theory or as a problem in causal inference. The proposal is to pursue both of these approaches and to deliver a refereed paper on each. The outcome will be a principled statistical framework for the RV community’s ongoing efforts in data analysis.
+
+In the second stage, the problem is to look at mitigation of asteroseismic modes. These modes represent the most straightforward kind of stellar variability, since they have coherent time-domain properties and appear in the spectrum as adiabatic changes. There are at least three methods for mitigation of asteroseismic noise: The modes can be resolved by taking very short exposures. The modes can be near-cancelled by clever choice of exposure times. Or the modes can be fit out from arbitrary exposure sets with customized non-stationary Gaussian processes. The proposal is to explore and compare these, to produce reference implementations that work on real data, and to write a paper for the refereed literature documenting these and delivering conclusions and recommendations.
+
+In the third stage, the project will expand its scope to all kinds of variability associated with convection, granulation, convective shifts, star-spots, faculae, magnetic activity, and flares. Each of these have expected structure in both the time and spectral domains, which will set the causal structure of appropriate data-driven models. The proposal is to build on success the PIs have had in modeling RV data with their ‘wobble’ package to build these models, release high-quality open-source code, and produce refereed publications. 
+
+The public-data environment for radial-velocity spectroscopy is evolving fast, but the anticipation is that the data used for this study will (at the beginning at least) be primarily public HARPS data, and then public NEID data as they become available during the funding period. HARPS data already in-hand provide an excellent test-bed for all of the physical effects investigated in this project. The main budget item for this three-year project is salary for a graduate research assistant at NYU. The budget also covers some summer salary, travel, publications, and supplies.
+
+\nasasection{Introduction}
+
+\noindent
+From a fundamental perspective, there is essentially no limit to how
+precisely astronomers might measure the radial velocity of the center of mass
+of a distant star with an extreme precision radial-velocity (\EPRV) spectrograph.
+Of course in real life, there are real limits, set
+by (for example) photon noise, stellar surface convection and activity,
+variations in the atmosphere, and spectrograph flexure and illumination. In practice,
+essentially no stars have had their center-of-mass velocities measured
+consistently with an empirical scatter (\acronym{RMS} around the mean,
+say) smaller than $1\,\mps$.
+
+At the same time, \EPRV\ is responsible for hundreds of \foreign{ab initio}
+exoplanet discoveries and many hundreds more \foreign{a posteriori}
+characterizations of planets
+discovered elsewhere. That is, \EPRV\ is hugely successful.
+Because most of the discoveries and characterizations have been made
+at or near precision limits---that is, near what is detectable at noise levels
+greater than $1\,\mps$ per epoch---\hl{any improvement in precision directly
+translates into increased scientific return on investment},
+both from existing archival data and from new data from new programs.
+
+\nasasection{First stage: Information theory}
+
+\nasasection{Second stage: Mitigation of asteroseismic variability}
+
+\nasasection{Third stage: Mitigation of stochastic variabilities}
+
+\nasasection{Other kinds of time variability}
+
+\nasasection{Timeline and project management}
+
+\nasasection{Prior NASA support}
+
+\nasasection{Frequently asked questions}
+
+\paragraph{Why this team?}
+
+\paragraph{Why do this now?}
+
+\paragraph{How does this connect to program priorities?}
+
+\end{document}
