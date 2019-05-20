@@ -54,7 +54,12 @@
 \newcommand{\aap}{Astron.\,\&~Astrophys.}
 
 %----- Ensmallen headers
-\newcommand{\nasasection}[1]{\subsection*{#1}}
+\makeatletter
+\newcommand\nasasection{\@startsection {section}{1}{\z@}%
+                                   {-2.0ex \@plus -1.0ex \@minus -.2ex}% Change this line to modify space above heading
+                                   {1.0ex \@plus.2ex}% Change this line to modify space below heading
+                                   {\normalfont\bfseries}}
+\makeatother
 
 %----- Tighten up paragraphs and lists
 \setlength{\parskip}{0.0ex}
