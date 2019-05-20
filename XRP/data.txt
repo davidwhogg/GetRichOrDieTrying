@@ -1,0 +1,12 @@
+FIRST PARAGRAPH NEEDS DETAIL
+SEARCH FOR HOGG
+
+This project will not produce new data per se, but it does produce methods, code, and [HOGG INSERT THINGS HERE]. All of the code, documentation, data, and all written documents relating to the project will be maintained in publicly visible version-control repositories on the GitHub and GitLab platforms. These repositories can be cloned and reproduced by any user in the world.
+
+The code and documents will be licensed for re-use by others under permissive licenses (MIT for code, CC-by for documents). This permits re-use, reproducibility, and re-publication by others.
+
+Although we do not expect to deliver radial-velocity measurements directly, if we do create any catalog of stellar radial velocities, we will return these to the HARPS Archive (or whatever is the relevant hosting archive). [HOGG DOES THIS MAKE SENSE??] We will also publish them in GitHub repositories, and license them for re-use.
+
+Any cite-able data, code, or documentation will be delivered to Zenodo for preservation and creation of a cite-able DOI. All documents and papers will be submitted to the arXiv and also AAS-family journals for long-term preservation, cite-ability, and publication.
+
+The PI has a strong tradition in his group for open science, performing all data analysis and writing in the open, with a strong preference for working in open and public data sets. He also supports maintainance and development of open-source software systems of wide use in the astronomical community.
