@@ -122,12 +122,14 @@ And it is extensible, flexible, and open source, so that it can be
 tweaked and used by different teams with different harware and goals.
 
 In addition to building this software, the proposing team is known for
-convening and running hack-week style workshops in which participants
-learn to use new data sets, new data-analysis methods, and new
-software for their scientific goals.
+convening and running hack-week-style workshops (such as \project{Gaia
+  Sprint}, \project{Preparing for TESS}, and \project{Telluric Line
+  Hack Week}) in which participants learn to use new data sets, new
+data-analysis methods, and new software for their scientific goals.
 Since a big part of this proposal is dissemination and community adoption,
 this track record is very relevant to the current proposal.
-And for the long-term value and sustainability of the proposed projects.
+And for the long-term value and sustainability of the open-source methods
+and software we develop.
 
 \paragraph{Relevance to \NASA\ \XRP\ objectives:} The 2018 \acronym{NSPIRES}
 Amendment 68 appendix E.5 (Second Exoplanets Research) description of this
@@ -195,10 +197,11 @@ This project has some limited relevance to \NASA's plans for technology developm
 Results related to the advisability of performing \EPRV\ work in space are related to
 the prioritization of improving technology readiness for spectrograph components.
 \item
-\textit{Voyages: Charting the Course for Sustainable Human Space Exploration}:
-Since the strategic plan for \NASA\ human exploration does not yet include plans
-for planets outside the Solar System, we admit that our relevance to this part
-of the \NASA\ Strategy is weak!
+\textit{Voyages: Charting the Course for Sustainable Human Space
+  Exploration}: Since the strategic plan for \NASA\ human exploration
+does not yet include plans for planets outside the Solar System
+(nothing past Mars?), we admit that our relevance to this part of the
+\NASA\ Strategy is weak!
 \end{itemize}
 
 \paragraph{This proposal, in a nutshell:}
@@ -210,6 +213,33 @@ Our goal is to make \EPRV\ measurements an order of mangnitude more precise
 that can be done with the current and next generation of spectrographs.
 
 \nasasection{First Stage: Information about \EPRV\ in time-varying stars (information)}
+
+Perhaps the strangest thing about what we are proposing here is that
+it is \emph{conceptually impossible}!
+
+Okay, not really, but it is worth remembering that the entire
+\EPRV\ program is built on the premise that you can measure
+\emph{relative} velocities far more precisely than you can measure
+\emph{absolute} velocities, because the relative velocity between two
+exposures of the same star is seen as a spectral shift from one
+exposure to the next.
+This point depends on the assumption that the spectrum does not vary
+between exposures!
+Or that it doesn't vary \emph{adversarially} between exposures.
+
+Once the spectrum is permitted to vary between exposures (and we know that
+it does), the fundamental assumptions of the \EPRV\ literature break down.
+In the First Stage (information) we propose to fix this problem, by
+working out the conceptual framework for thinking about
+\textbf{information theory in \EPRV\ in the presence of a variable
+  spectrum}.
+We have identified a few approaches to this problem, and we intend to
+work down all paths.
+This First Stage will produce papers from each of the paths that proves
+to deliver useful results or frameworks.
+This is the \emph{theory part} of this proposal.
+
+...HOGG
 
 Important to bring up at the end of this section that when the star
 varies, the \CCF\ no longer contains all of the \RV\ information in the
