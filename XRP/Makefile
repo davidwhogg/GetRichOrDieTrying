@@ -2,7 +2,7 @@ LATEX       = pdflatex
 BASH        = bash -c
 ECHO        = echo
 RM          = rm -rf
-TMP_SUFFS   = pdf aux bbl blg log dvi ps eps out
+TMP_SUFFS   = aux bbl blg log dvi eps out
 CHECK_RERUN = grep Rerun $*.log
 
 all: facilities.pdf description.pdf biosketch_hogg.pdf
@@ -13,4 +13,4 @@ all: facilities.pdf description.pdf biosketch_hogg.pdf
 	( ${CHECK_RERUN} && ${LATEX} $< ) || echo "Done."
 
 clean:
-	${RM} $(foreach suff, ${TMP_SUFFS}, ${NAME}.${suff})
+	${RM} $(foreach suff, ${TMP_SUFFS}, *.${suff})
