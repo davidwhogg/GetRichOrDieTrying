@@ -33,15 +33,15 @@ by (for example) photon noise, stellar surface convection and activity,
 variations in the atmosphere, and spectrograph calibration stability.
 In practice, essentially no stars have had their center-of-mass
 velocities measured consistently with an empirical scatter
-(\acronym{RMS} around the mean, say) smaller than $1\,\mps$.
+(\acronym{RMS} around the mean, say) smaller than $\approx 100\,\cmps$ ($1\,\mps$).
 
 (Or at least not in the literature! Rumors abound, and we have seen
 figures flashed at meetings that suggest that the \acronym{ESO} spectrograph
 \ESPRESSO\ and the Yale spectrograph \EXPRES\ might both
-be seeing 0.3-ish $\mps$ around certain very quiet stars. That's exciting
+be seeing 30-ish $\cmps$ around certain very quiet stars. That's exciting
 if true, but even then it would only be so good for the very quietest stars, which
 are both rare and not expected to last: Activity cycles are expected to
-appear.)
+appear. And besides, we'd like to get better than 10-ish.)
 
 At the same time, \EPRV\ is responsible for hundreds of \foreign{ab
 initio} exoplanet discoveries and many hundreds more \foreign{a
@@ -53,17 +53,81 @@ greater than $1\,\mps$ per epoch---\textbf{any improvement in precision directly
 translates into increased scientific return on investment},
 both from existing archival data and from new data from new programs.
 
-Make the point that instrument calibration looks good in the new generation
-of instruments...
+\paragraph{Stellar variability is the ``tall pole'':}
+Right now the best spectrographs are obtaining internal calibration
+consistencies of a few $\cmps$ (BEDELL: REFERENCE?).
+These internal precisions are determined by repeatability and
+stability of calibration references such as arc lamps, etalon
+(Fabry--Perot) interferometer signals, gas cells, or laser-frequency
+combs.
 
-Then make the point that you can't stabilize the star!
+It is therefore now fairly well established (and convincingly
+established to us) that the majority of the radial-velocity variance
+in \EPRV\ campaigns is coming from the stars themselves, or what's
+often called ``astrophysical noise'' (convection, star spots,
+asteroseismic modes, plages, faculi, and flares, for example).
+This proposal is, therefore, \textbf{to address the dominant sources of
+  noise in \EPRV\ experiments and to create working methods to
+  mitigate them}.
+You can precisely calibrate the variations in the spectrograph.
+Here we ask: Can you also precisely calibrate the variations in the star?
+We believe that the answer is ``yes''.
 
-So in our view, stellar variability is the tall pole for EPRV. Say it loud.
+There is also noise coming from telluric lines in the Earth's atmosphere
+(especially unmodeled tiny micro-tellurics).
+In a separate but related project (HOGG CITE WOBBLE) we are addressing this
+source of noise as well.
+Our work suggests that tellurics and micro-tellurics are addressable problems
+and do not currently dominate the end-to-end noise budget.
+But it is certainly also an important area for work and study.
 
-(then Extensive words about how data-driven models are changing stellar science, and
-that we two are at the forefront of that.)
+Our approach to stellar variability is to build data-driven models of what
+we don't understand, but with model structure carefully constructed to
+match what little we \emph{do} understand. (HOGG MAKE SURE THIS THEME CARRIES THROUGH.)
+That is, to build flexible models which have their capacity tuned to
+capture the variations we expect to see.
+The proposers have strong cred in this area.
 
-In our view, you have to solve these problems data-driven.
+\paragraph{Why this team?}
+PI Hogg has built novel data-driven models of the color--magnitude diagram of
+stars, improving ESA \Gaia\ parallax measurements (HOGG CITE).
+These models re-purpose machine-learning tools to build models that
+have causal structure useful to astronomers (they know about
+luminosity distances and parallaxes, for example).
+The Co-I Bedell has developed new techniques to make exceedingly
+precise measurements of stellar element abundances without explicit
+use of stellar models, by designing perfectly differential stellar
+comparisons (BEDELL CITE).
+PI Hogg has the current best-in-class methods for determining stellar
+parameters and abundances from survey-quality spectroscopy (HOGG
+CITE).
+These methods (called \project{The Cannon} after Annie Jump) are
+data-driven but designed to capture the smooth variations (with
+respect to parameters) that we expect in stellar spectra.
+
+And most relevant of all, PI Hogg and Co-I Bedell built an open-source
+pipeline for \EPRV\ data analysis (\wobble, HOGG CITE).
+This pipeline has many novel aspects to it, but some of the key ideas
+are the following: 
+It separates stellar and telluric signals in the data in a purely
+data-driven way.
+It delivers Fisher-information-saturating \RV\ measurements without any
+theory-derived or external stellar template; it gets the stellar model
+almost losslessly from the data themselves.
+It makes use of \project{TensorFlow} and ideas from convex optimization
+for computational tractability and performance.
+It permits telluric variability and can be extended to permit stellar
+variability (that's this proposal).
+And it is extensible, flexible, and open source, so that it can be
+tweaked and used by different teams with different harware and goals.
+
+In addition to building this software, the proposing team is known for
+convening and running hack-week style workshops in which participants
+learn to use new data sets, new data-analysis methods, and new
+software for their scientific goals.
+Since a big part of this proposal is dissemination and community adoption,
+this track record is very relevant to the current proposal.
+And for the long-term value and sustainability of the proposed projects.
 
 \paragraph{Relevance to \NASA\ \XRP\ objectives:} The 2018 \acronym{NSPIRES}
 Amendment 68 appendix E.5 (Second Exoplanets Research) description of this
@@ -101,9 +165,10 @@ The answer to this question depends critically on the detailed error budget on
 \EPRV\ measurements.
 If \EPRV\ measurements have uncertainties dominated by instrument
 stability, atmosphere, and tellurics, then space is the place to be.
-\textbf{If \EPRV\ measurements are dominated by stellar astrophysical
-  noise sources---the objects of study in this proposal---then taking
+\textbf{If we cannot calibrate out or mitigate stellar variability
+  in \EPRV\ measurements, then taking
   \EPRV\ to space is not a good use of \NASA\ resources}.
+(BEDELL CAN THAT BE PHRASED POSITIVELY?)
 Thus the mitigation of astrophysical noise sources is of critical
 importance to \NASA's near-term and middle-term planning and strategy
 for its exoplanet missions and programs.
@@ -137,12 +202,17 @@ of the \NASA\ Strategy is weak!
 \end{itemize}
 
 \paragraph{This proposal, in a nutshell:}
-HOGG Summarize the point that variability is the tall pole, and we intend to shorten it.
+Stellar variability is the tall pole in \EPRV\ at the present day.
+We propose to build customized, data-driven models to capture and mitigate these
+stellar astrophysical noise sources.
+Our goal is to make \EPRV\ measurements an order of mangnitude more precise
+(two orders of magnitude more informative) and thereby transform the science
+that can be done with the current and next generation of spectrographs.
 
 \nasasection{First Stage: Information about \EPRV\ in time-varying stars (information)}
 
 Important to bring up at the end of this section that when the star
-varies, the CCF no longer contains all of the RV information in the
+varies, the \CCF\ no longer contains all of the \RV\ information in the
 spectrum!
 
 \nasasection{Second Stage: Mitigation of asteroseismic variability (p-modes)}
@@ -155,19 +225,19 @@ Although the three parts of this project are presented as ``stages'',
 they will not be staged serially.
 Rather we will run all three in parallel to make best use of our
 personnel.
-All three stages will involve PI Hogg, Co-PI Bedell, and the project
-graduate student student (GRA). 
+All three stages will involve PI Hogg, Co-I Bedell, and the project
+graduate student student (\GRA). 
 
 The First Stage (information) will be led by PI Hogg, with experiments (the
-toy-model experiments) performed by the GRA, and writing by the full
+toy-model experiments) performed by the \GRA, and writing by the full
 team.
 It will occupy parts of Years~1 and 2, producing a paper
 in each of those two years.
 One paper will focus on the information-theoretic approach to the problem,
 and the second will focus on the causal-inference approaches.
 
-The Second Stage (p-modes) will be led by Co-PI Bedell, with
-experiments performed by the GRA, and writing by the full team.
+The Second Stage (p-modes) will be led by Co-I Bedell, with
+experiments performed by the \GRA, and writing by the full team.
 The scientific analysis will take place in Years~1 and 2, with
 writing and dissemination in Years~2 and 3.
 This stage will also produce two papers, one focusing on passive
@@ -182,15 +252,15 @@ They are important to the project because some of the approaches we
 will be advocating will be ``outside the box'' for some projects.
 
 The Third Stage (stochastics) will have different components led by PI
-Hogg, Co-PI Bedell, and the GRA, with a schedule that depends on the
-particular interests of the GRA.
+Hogg, Co-I Bedell, and the \GRA, with a schedule that depends on the
+particular interests of the \GRA.
 Each of the sources of stochastic variability will have different
 signatures in time--spectrum space (as discussed above); we will use
 Year~1 to do exploratory work in the model residuals to set priorities
 (which projects will be easier to see in the data, which harder).
 That prioritization will create a schedule for projects, with data
-analyses and experiments performed by the GRA, and projects supervised
-by PI Hogg and Co-PI Bedell as it makes sense.
+analyses and experiments performed by the \GRA, and projects supervised
+by PI Hogg and Co-I Bedell as it makes sense.
 Some of the exploratory experiments will produce publishable results
 to write up in Year~2 and more holistic mitigation will require
 methods and software that will be built in Years~2 and 3 and published
@@ -203,9 +273,9 @@ tiny project; most of the management will involve decisions about our
 priorities given the experiments we perform in Year~1 and the
 challenges we discover there.
 PI Hogg will also be responsible for academic supervision of, and
-career mentoring for, the GRA.
-The two workshops will be chaired by Co-PI Bedell, with PI Hogg and
-the GRA on the organizing committees.
+career mentoring for, the \GRA.
+The two workshops will be chaired by Co-I Bedell, with PI Hogg and
+the \GRA on the organizing committees.
 
 \nasasection{Prior and current \NASA\ support}
 
@@ -216,11 +286,11 @@ The three most recent grants are the following:
 
 \paragraph{\acronym{80NSSC19K0533} (Bean, PI):
 Improving the sensitivity of radial velocity spectrographs with data-driven techniques:}
-This project (which involves both PI Hogg and Co-PI Bedell on a subcontract)
+This project (which involves both PI Hogg and Co-I Bedell on a subcontract)
 is to
 build out our data-driven model (\wobble) of \EPRV\ spectroscopic data
 to work with gas-cell-calibrated spectrographs. This project has only
-just started; the subcontract to NYU has not yet arrived.
+just started; the subcontract to \NYU\ has not yet arrived.
 
 \paragraph{\acronym{NNX16AC70G} (Hogg PI):
 Ultra-precise photometry in crowded fields: A self-calibration approach:}
@@ -229,7 +299,7 @@ was to bring a data-driven model to light-curve calibration
 in the \Ktwo\ extension of the \Kepler\ Mission.
 It resulted in a paper (HOGG CITE), a codebase (HOGG GitHub link),
 and a set of methods that were deployed in the \Ktwo\ microlensing campaign (HOGG CITE).
-This grant also supported the PhD research and dissertation of NYU graduate
+This grant also supported the PhD research and dissertation of \NYU\ graduate
 student Dun Wang (now at Kensho Technologies, Cambridge, MA) and work
 by PI Hogg, Bernhard Sch\"olkopf (T\"ubingen), Dan Foreman-Mackey
 (Flatiron), and others.
