@@ -429,19 +429,76 @@ high-signal-to-noise \EPRV\ spectral observations.
 We propose to explore four mitigation strategies for p-modes:
 \begin{itemize}
 \item
-\textbf{Choosing resonant integration times:}.... (HOGG CITE CHAPMAN)
+\textbf{Choosing resonant integration times:}
+There is hope in the \EPRV\ community that cleverly chosen integration
+times can obviate p-mode noise (see, \eg, HOGG CITE CHAPMAN).
+Current work in this area makes somewhat naive assumptions about the
+stability of the p-mode amplitudes.
+We will revisit this with real data; the \HARPS\ Archive includes
+asteroseismic campaigns that can be empirically coadded into different
+exposure times and analyzed for residual p-mode noise.
+We expect to find that although some exposure times are better than
+others, we need to actively mitigate, not passively avoid, p-mode
+noise.
 \item
-\textbf{Resolving modes and fitting them coherently:}...
+\textbf{Resolving modes and fitting them coherently:}
+The alternative strategy to p-mode avoidance is to take short exposures,
+short enough that they Nyquist-sample the highest-frequency p-modes of
+the star.
+Any (say, 30-minute) visit to the star could be split into short (say,
+2-minute) exposures.
+This incurs some observing and read-noise overheads, but permits
+resolution of the p-modes directly.
+Then the obtained \RV\ measurements can be fit with a sum of coherent
+sinusoids, regularized with the (presumed known) power spectrum of the
+star.
+That is, the amplitudes permitted for the coherent sinusoids would be
+forced by regularization (or priors) to be consistent with the
+expected p-mode spectrum.
+Then the stellar \RV\ measurement relevant to exoplanet detection and
+characterization could be corrected for the state of the p-mode
+sinusoids during the exposure set.
 \item
-\textbf{Fitting the observations incoherently:}...
+\textbf{Fitting the observations incoherently:}
+The power spectrum of p-modes can be Fourier Transformed into a kernel
+for a Gaussian Process.
+This Process captures the time-correlations of the p-mode
+radial-velocity variations across exposures taken at different times.
+Because the integral of a Gaussian Process is also a Gaussian Process,
+this kernel can be used to compute the correlations between exposures
+taken for any time intervals at any time lags.
+Thus it might be possible to fit any set of exposures with a bespoke
+Gaussian Process, perfectly suited to capture the p-modes for each
+star, including the coherent and incoherent effects all simultaneously.
+There has been some work in other domains along this direction (CITE
+SOMETHING), but it hasn't been applied to \EPRV\ and it is extremely
+promising for p-mode mitigation.
 \item
-\textbf{Simultaneous temperature monitoring:}...
+\textbf{Simultaneous temperature monitoring:}
+It has been shown that \RV\ variations from p-modes can be predicted
+to some extent with stellar luminosity variations (BEDELL WHAT TO
+CITE?); the \RV\ variations are related to the time derivative of the
+luminosity variations.
+As we note above, luminosity variations will be associated with
+temperature variations, and at high signal-to-noise these may be
+visible in \EPRV\ campaigns.
+To find them, we might need to beat the observed spectra against an
+expected temperature derivative at known p-mode frequencies.
+That is, we might need to build a matched filter in the joint
+two-dimensional domain of wavelength and time.
+If we can detect the temperature variations, they will provide great
+prior information about \RV\ variations and create another mitigation
+strategy.
 \end{itemize}
 
 ...We will do experiments on \HARPS\ data in hand. Maybe other data if it
 starts to appear, like \ESPRESSO\ and \NEID....
 
-...Deliverables here will be strategies, methods, papers, and associated open-source code....
+...paragraph about engineering trade-offs for short exposures...
+
+...Deliverables here will be strategies, methods, and associated
+open-source code. And two papers which are some refactoring of the
+strategies above....
 
 \nasasection{Third Stage: Mitigation of myriad other variabilities (stochastics)}
 
