@@ -51,15 +51,15 @@ planets on Earth-like orbits.
 
 From a fundamental perspective, there is essentially no limit to how
 precisely astronomers might measure the radial velocity variations
-of the center of mass of a distant star with an \EPRV spectrograph.
+of the center of mass of a distant star with an \EPRV\ spectrograph.
 Of course in real life, there are real limits, set
 by (for example) photon noise, stellar surface convection and activity,
 variations in the atmosphere, and spectrograph calibration stability.
 In practice, almost no stars have had their center-of-mass
 velocities measured consistently with an empirical scatter
-(\acronym{RMS} around the mean) smaller than $\approx~100\,\cmps$ ($1\,\mps$).
-\footnote{At least not in the literature! We have heard rumors and seen flashes
-of figures suggesting that the \acronym{ESO} spectrograph
+(\acronym{RMS} around the mean) smaller than $\approx~100\,\cmps$ 
+($1\,\mps$).\footnote{At least not in the literature! We have heard rumors and 
+seen flashes of figures suggesting that the \acronym{ESO} spectrograph
 \ESPRESSO\ (CITE) and the Yale spectrograph \EXPRES\ (CITE) are seeing 
 30-ish $\cmps$ around certain very quiet stars. This is very promising but 
 unlikely to hold true for the vast majority of stars, or even for these targets during a
@@ -300,7 +300,7 @@ onto RV derivative) affect fundamental limits on the precision of
 That is, in the First Stage we are trying to understand what is theoretically
 possible for \EPRV.
 
-BEDELL: SHOULD WE SET THIS PARAGRAPH OUT AS A BOX CALLED ``FISHER INFORMATION''?
+HOGG: YES, BOX THIS SHIT
 As a reminder, in the case in which the stellar spectrum never varies,
 the fundamental \EPRV\ precision is limited by the Cramer-Rao Bound, which is
 the Fisher Information in this case.
@@ -325,14 +325,16 @@ spectral pixels.
 Things get a bit more complicated when there are nuisance parameters, but
 not fundamentally different (and we know how to deal with it; the derivatives
 become rectangular projection operators and the Information tensor (matrix)
-must be matrix-inverted to deliver nuisance-marginalized uncertainties).
+must be matrix-inverted to deliver nuisance-marginalized uncertainties). 
+HOGG: rephrase the above to explicitly tie ``nuisance parameters'' to the situation 
+where the spectrum is intrinsically variable?
 
 There are four approaches we will take in the First Stage (information)
 to answering these theory questions,
-and the papers we write in The First Stage depend on our success with each
+and the papers we write in the First Stage depend on our success with each
 approach, and how appropriate each approach is, given the magnitudes, spectral
 shapes, and time structures of the noise sources we find in the data (and in
-the Second and Third Stages).
+the Second and Third Stages). 
 These four approaches are the following:
 \begin{itemize}
 \item
@@ -394,6 +396,15 @@ However, there are many such projects starting now.
 \Kepler\ and \Ktwo\ for planet discovery (HOGG CITE WANG DFM).)
 \end{itemize}
 
+HOGG: THIS IS ALL VERY VAPORWARE-SOUNDING. CAN WE ADD A 
+``CASE STUDY'' OF WHAT PURSUING ONE OF THESE APPROACHES 
+MIGHT LOOK LIKE? e.g. how would we simulate these things? 
+what's the metric of success or failure in terms
+of whether these approaches are the right ones to pursue? 
+what useful things for the EPRV community would we produce - probably 
+useful metrics for what kinds of stars to observe and what kind of observing 
+strategy to use, right? would we use any real data to test our conclusions? 
+
 As we work down these approaches, we will develop results and assemble them
 into something like two papers on the theory of \EPRV\ in the presence of
 stellar spectral variability. These two papers, and the associated open-source
@@ -420,11 +431,18 @@ supportive, and honest?
 
 \nasasection{Second Stage: Mitigation of asteroseismic variability (p-modes)}
 
-Asteroseismic p-modes straightforwardly contaminate any \EPRV\ measurements.
-When the star pulsates, its surface sinusoidally moves towards and away from
-the observer.
-However, p-modes have two very important properties that give us hope that they
-can be almost completely mitigated through spectral and temporal modeling:
+Asteroseismic p-modes are one significant source of contamination in \EPRV\
+measurements. 
+As the star pulsates, its surface sinusoidally moves towards and away from
+the observer, imparting a Doppler shift at the (NUMBER) level.
+Traditionally these oscillations are dealt with by ``integrating over'' them
+with a 15-minute exposure, but recent works have cast doubt on the efficiency 
+of this approach (BEDELL CITE). 
+While the exact correct method for dealing with p-modes in \EPRV\ has yet 
+to be convincingly established, we can regard this noise source as a 
+\textit{best-case} scenario for correlated noise. That is, we believe that 
+p-modes can be nearly completely mitigated through spectral and temporal modeling, 
+because they have the following two properties:
 \begin{itemize}
 \item
 \textbf{p-modes are temporally coherent} on reasonable time scales (days to months, depending on
@@ -505,11 +523,12 @@ prior information about \RV\ variations and create another mitigation
 strategy.
 \end{itemize}
 
-Because we have access to public \HARPS\ campaigns on [BEDELL WHICH STARS?],
+Because we have access to public \HARPS\ asteroseismic campaigns for 
+several seismic stars including $\beta$ Hyi, $\alpha$ Cen B, and 18 Sco,
 we can perform these experiments on existing, real data.
 We don't have to make assumptions about how p-modes work.
 And over the course of this project, more data sets may appear
-with the right properties, from \ESPRESSO\ and \NEID.
+with the right properties at even higher precision from \ESPRESSO\ and \NEID.
 
 If we find that mitigation strategies are best when exposures
 are short, we will look seriously at the engineering trade-offs
@@ -522,7 +541,13 @@ and analyzed strategies and advice for \EPRV\ programs. It will
 also be methods and associated open-source code for each of the successful
 mitigation strategies.
 The expectation is that this Stage will produce at least one
-refereed paper about p-modes.
+refereed paper about p-modes. 
+
+Together, the First and Second Stages set the scene for tackling more
+pernicious sources of correlated noise in \EPRV. We have now established 
+both simulated and real data sets that can be used as a testing ground for 
+mitigation strategies that address less well-understood sources of 
+stochastic noise.
 
 \nasasection{Third Stage: Mitigation of myriad other variabilities (stochastics)}
 
@@ -544,7 +569,7 @@ Therefore they ought to be visible in the two-dimensional space of
 spectrum and wavelength as a cooler stellar patch slightly more
 localized in velocity than the whole stellar surface.... HOGG...
 \item
-\textbf{plages, faculi, and other surface features:}
+\textbf{plages, faculae, and other surface features:}
 \item
 \textbf{flares:}
 \item
@@ -561,6 +586,9 @@ proposal is to do the work to make those priority decisions.
 
 ...Again, we will do experiments on \HARPS\ data in hand. Maybe other data if it
 starts to appear, like \ESPRESSO\ and \NEID....
+
+use HARPS-N solar spectra! (or, failing data access, HARPS solar spectra after their 2-yr 
+proprietary period is up)
 
 ...Deliverables here will be methods, papers, and associated open-source code. Also
 parameters of data-driven models.
