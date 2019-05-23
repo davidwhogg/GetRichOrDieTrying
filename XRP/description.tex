@@ -1,4 +1,5 @@
-% This file is part of the GetRichOrDieTrying project.
+% This file is part of the SolveAllOfAstronomy project.
+% The GetRichOrDieTrying project is a different thing entirely.
 % Copyright 2019 David W. Hogg and Megan Bedell
 
 % # Style notes
@@ -38,27 +39,34 @@ I APOLOGIZE FOR SHOUTING, BUT I AM WRITING THIS ON A LOUD AIRPLANE.
 \nasasection{Introduction}
 
 \noindent
+Many fundamental measurements for the detection and characterization of 
+exoplanetary systems rest crucially on extreme precision radial-velocity (\EPRV)
+measurements. Through \EPRV, we can detect planets in the medium-to-long 
+orbital period regime that is mostly lacking from the transit approach; we can measure the 
+masses of known transiting planets, a crucial piece of the \TESS\ mission's 
+fundamental goal; and we can characterize host stars and systems in exquisite 
+detail using the Rossiter-McLaughlin effect. In the next generation of \EPRV\ 
+instruments, including the \NEID\ spectrograph, we hope to detect terrestrial 
+planets on Earth-like orbits.
+
 From a fundamental perspective, there is essentially no limit to how
 precisely astronomers might measure the radial velocity variations
-of the center of mass
-of a distant star with an extreme precision radial-velocity (\EPRV) spectrograph.
+of the center of mass of a distant star with an \EPRV spectrograph.
 Of course in real life, there are real limits, set
 by (for example) photon noise, stellar surface convection and activity,
 variations in the atmosphere, and spectrograph calibration stability.
-In practice, essentially no stars have had their center-of-mass
+In practice, almost no stars have had their center-of-mass
 velocities measured consistently with an empirical scatter
-(\acronym{RMS} around the mean, say) smaller than $\approx 100\,\cmps$ ($1\,\mps$).
-
-(Or at least not in the literature! Rumors abound, and we have seen
-figures flashed at meetings that suggest that the \acronym{ESO} spectrograph
-\ESPRESSO\ (CITE) and the Yale spectrograph \EXPRES\ (CITE) might both
-be seeing 30-ish $\cmps$ around certain very quiet stars. That's exciting
-if true, but even then it would only be so good for the very quietest stars, which
-are both rare and not expected to last: Activity cycles are expected to
-appear. And besides, we'd like to get better than 10-ish.)
+(\acronym{RMS} around the mean) smaller than $\approx~100\,\cmps$ ($1\,\mps$).
+\footnote{At least not in the literature! We have heard rumors and seen flashes
+of figures suggesting that the \acronym{ESO} spectrograph
+\ESPRESSO\ (CITE) and the Yale spectrograph \EXPRES\ (CITE) are seeing 
+30-ish $\cmps$ around certain very quiet stars. This is very promising but 
+unlikely to hold true for the vast majority of stars, or even for these targets during a
+different phase of their activity cycles.}
 
 At the same time, \EPRV\ is responsible for hundreds of \foreign{ab
-initio} exoplanet discoveries and many hundreds more \foreign{a
+initio} exoplanet discoveries and hundreds more \foreign{a
 posteriori} characterizations of planets discovered elsewhere.
 That is, \EPRV\ is hugely successful.
 Because most of the discoveries and characterizations have been made
@@ -75,11 +83,11 @@ stability of calibration references such as arc lamps, etalon
 (Fabry--Perot) interferometer signals, gas cells, or laser-frequency
 combs.
 
-It is therefore now fairly well established (and convincingly
+It is therefore now widely accepted (and convincingly
 established to us) that the majority of the radial-velocity variance
 in \EPRV\ campaigns is coming from the stars themselves, or what's
 often called ``astrophysical noise'' (convection, star spots,
-asteroseismic modes, plages, faculi, and flares, for example).
+asteroseismic pulsations, plages, faculae, and flares, for example).
 This proposal is, therefore, \textbf{to address the dominant sources of
   noise in \EPRV\ experiments and to create working methods to
   mitigate them}.
@@ -99,8 +107,11 @@ Our approach to stellar variability is to build data-driven models of what
 we don't understand, but with model structure carefully constructed to
 match what little we \emph{do} understand. (HOGG MAKE SURE THIS THEME CARRIES THROUGH.)
 That is, to build flexible models which have their capacity tuned to
-capture the variations we expect to see.
-The proposers have strong cred in this area.
+capture the variations we expect to see. 
+Such models will capitalize on our physics-based expectations to
+maximize interpretability, while simultaneously having the flexibility to absorb 
+the ``unknown unknown'' effects of stellar variability.
+%The proposers have strong cred in this area.
 
 \paragraph{Why this team?}
 PI Hogg has built novel data-driven models of the color--magnitude diagram of
