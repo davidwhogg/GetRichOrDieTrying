@@ -538,14 +538,72 @@ They are localized in velocity space, and they have a different
 temperature from the surface of the star.
 Therefore they ought to be visible in the two-dimensional space of
 spectrum and wavelength as a cooler stellar patch slightly more
-localized in velocity than the whole stellar surface.... HOGG...
+localized in velocity than the whole stellar surface.
+Our approach on star spots, building on prior work (CITE GULLY) will
+be to consider lower-temperature spectral components with small
+velocity shifts try to fit everything simultaneously.
+If the spots are reliably lower in temperature, it should be possible
+to detect and mitigate them using physical photosphere models, at
+least to first order.
+This modeling is possible to implement as an extremely straightforward
+extension of the \wobble\ framework.
 \item
 \textbf{plages, faculi, and other surface features:}
+These features are similar to star spots and will imprint in similar
+ways.
+The main difference between star spots and other kinds of surface
+features is that we don't have a good idea of the intrinsic spectral
+properties of other kinds of features, which can show up as chemical
+anomalies (HOGG CITE), temperature anomalies, or mixtures of the two.
+If we want to be flexible about surface features, we want to model
+them as we propose for star spots, but permitting their spectral
+properties to be determined by the data directly.
+This is also possible as an extension of the \wobble\ framework.
+Indeed it is very natural because in the current \wobble\ setup, the
+star and tellurics are both modeled in a completely data-driven way.
+In addition to all this, both spots and surface features should show
+time coherence, as they rotate in and out of view on the stellar
+surface.
+As noted in the description of the First Stage (information), this
+time coherence could be critical for identifying these effects and
+separating them from the \RV\ signals from exoplanets.
 \item
-\textbf{flares:}
+\textbf{flares and magnetic activity:}
+The concept of ``stellar activity'' is often combining effects of
+magnetic flares and star spots.
+From our perspective, star spots appear in the data as rotating
+surface patches, whereas flares appear as emission lines and possibly
+also effective temperature changes in particular lines, again possibly
+also with velocity shifts relative because of rotation or
+chromospheric velocities.
+Because we don't know exactly what to expect here, we might start by
+regressing spectra or spectral residuals (away from \wobble\ fits)
+against activity indicators to find full-spectrum indicators of
+magnetic activity (work along these lines is also happening in the
+Cisewski group at Yale).
+If we can build a low-dimensional data-driven model (from, say, these
+regressions or a latent-variable extension), we could hope to correct
+the spectra for flaring, and measure the \RV\ off the corrected
+spectrum.
 \item
 \textbf{surface convection:}
+Hot material wells up and cold material sinks on the surface of the star.
+On average these motions cancel, but they don't fully cancel spectrally.
+Thus there are convective blueshifts in stellar spectra.
+But the variance of this process also ought to have spectral
+properties, and also some time coherence because the convection
+pattern is a smoothly varying, slowly rotating property of the stellar
+surface.
+Our hope is that even this extremely stochastic process will have
+low-dimensional structure in the spectral domain (it's mainly
+temperature, after all, and some non-LTE effects) and also have
+valuable covariance structure in the time domain.
+If our hopes are justified, it will be possible to fit a stochastic
+process (like a Gaussian Process) to the time domain, in a low-rank
+representation of the spectral domain.
+That's speculative, but it is worth finding out if it is true.
 \end{itemize}
+
 We will not consider all of the possible sources of stochastic variability;
 the project staffing and timeline are not large enough.
 We will instead prioritize around the intersection of team interests (and
