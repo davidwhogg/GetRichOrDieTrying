@@ -239,7 +239,89 @@ This First Stage will produce papers from each of the paths that proves
 to deliver useful results or frameworks.
 This is the \emph{theory part} of this proposal.
 
-...HOGG
+The question is: How precisely can a stellar RV be measured in the context
+of stellar spectral variability?
+Of course the answer depends on precisely how the star is varying;
+in detail it depends on questions about the variability like the following:
+\begin{itemize}
+\item
+\emph{What is the amplitude of the variability?}
+If the amplitude is tiny, it won't strongly affect \RV\ measurements.
+\item
+\emph{What is the dimensionality of the spectral variability?}
+If the spectrum varies in a low-dimensional space spanned by a small set
+of eigen-spectra, \EPRV\ measurements can be made in the tangent space
+orthogonal to the specral variability.
+\item
+\emph{What is the time coherence of the variability?}
+If the variability is uncorrelated from observation to observation, it
+can be mitigated by repeat exposures. If it isn't, more complicated
+strategies are required.
+\item
+\emph{What is the projection of the spectral variability onto the RV derivative?}
+The most adversarial kind of spectral variability is that which looks
+like the derivative of the spectrum with respect to \RV.
+\end{itemize}
+All of these issues will come up again below in the Second Stage (p-modes)
+and Third Stage (stochastics).
+But in the First Stage, we want to understand precisely and quantitatively
+how these issues (amplitude, dimensionality, time coherence, and projection
+onto RV derivative) affect fundamental limits on the precision of
+\EPRV\ measurements.
+That is, in the First Stage we are trying to understand what is theoretically
+possible for \EPRV.
+
+As a reminder, in the trivial case in which the stellar spectrum never varies,
+the fundamental \EPRV\ precision is limited by the Cramer-Rao Bound, which is
+the Fisher Information in this case.
+The Fisher Information is the best possible inverse-variance that can be obtained
+on any \RV\ measurement, and it appears in the literature in multiple places,
+although not usually written in this language (BEDELL CITES?).
+Symbolically the Fisher Information $\sigma_v^{-2}$ is given by
+\begin{equation}
+\sigma_v^{-2} =
+\left[\frac{\dd f}{\dd v}\right]^{\mathsf T}\cdot C^{-1}\cdot
+\left[\frac{\dd f}{\dd v}\right] \quad ,
+\end{equation}
+where $\sigma_v$ is the \RV\ uncertainty, the derivatives are the derivative
+of the spectral expectation $f$ (seen as a column vector) with respect to \RV\ $v$,
+and the inverse variance of the noise in the spectrum is $C^{-1}$ (diagonal in the
+simple case that all spectral pixels are independently measured; more complex in
+what follows!).
+That is, the inverse of the squared uncertainty (the inverse variance) on the
+\RV\ is an inner product of the derivative of the spectrum with
+respect to \RV\ with itself, taken through the inverse variance tensor on the
+spectral pixels.
+Things get a bit more complicated when there are nuisance parameters, but
+not fundamentally different (and we know how to deal with it; the derivatives
+become rectangular projection operators and the Information must be.....).
+
+There are four approaches we will take in the First Stage (information)
+to answering these theory questions,
+and the papers we write in The First Stage depend on our success with each
+approach, and how appropriate each approach is, given the magnitudes, spectral
+shapes, and time structures of the noise sources we find in the data (and in
+the Second and Third Stages).
+These four approaches are the following:
+\begin{itemize}
+\item
+\textbf{Pure noise model:}
+If the stellar spectral variability has low amplitude, and either has
+no spectral or time structure, or else we are pessimistic about
+modeling it in any way, we face the \emph{worst-case scenario}.
+In this scenario, all we can do is add the spectral noise to the photon noise
+(maintaining the spectral correlations in the noise, which are important),
+and re-compute the Fisher Information in this bad context.
+The Fisher Information will get smaller as the stellar variability
+gets worse, and the resulting theoretical \EPRV\ uncertainties will
+get larger.
+\item
+Spectral projection
+\item
+Time-domain process priors
+\item
+Causal inference
+\end{itemize}
 
 Important to bring up at the end of this section that when the star
 varies, the \CCF\ no longer contains all of the \RV\ information in the
