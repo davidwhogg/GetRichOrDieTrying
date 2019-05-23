@@ -271,14 +271,15 @@ onto RV derivative) affect fundamental limits on the precision of
 That is, in the First Stage we are trying to understand what is theoretically
 possible for \EPRV.
 
-As a reminder, in the trivial case in which the stellar spectrum never varies,
+BEDELL: SHOULD WE SET THIS PARAGRAPH OUT AS A BOX CALLED ``FISHER INFORMATION''?
+As a reminder, in the case in which the stellar spectrum never varies,
 the fundamental \EPRV\ precision is limited by the Cramer-Rao Bound, which is
 the Fisher Information in this case.
 The Fisher Information is the best possible inverse-variance that can be obtained
 on any \RV\ measurement, and it appears in the literature in multiple places,
 although not usually written in this language (BEDELL CITES?).
 Symbolically the Fisher Information $\sigma_v^{-2}$ is given by
-\begin{equation}
+\begin{equation}\label{eq:fisher}
 \sigma_v^{-2} =
 \left[\frac{\dd f}{\dd v}\right]^{\mathsf T}\cdot C^{-1}\cdot
 \left[\frac{\dd f}{\dd v}\right] \quad ,
@@ -294,7 +295,8 @@ respect to \RV\ with itself, taken through the inverse variance tensor on the
 spectral pixels.
 Things get a bit more complicated when there are nuisance parameters, but
 not fundamentally different (and we know how to deal with it; the derivatives
-become rectangular projection operators and the Information must be.....).
+become rectangular projection operators and the Information tensor (matrix)
+must be matrix-inverted to deliver nuisance-marginalized uncertainties).
 
 There are four approaches we will take in the First Stage (information)
 to answering these theory questions,
@@ -310,26 +312,94 @@ If the stellar spectral variability has low amplitude, and either has
 no spectral or time structure, or else we are pessimistic about
 modeling it in any way, we face the \emph{worst-case scenario}.
 In this scenario, all we can do is add the spectral noise to the photon noise
+in the noise tensor $C$ in the Fisher Information definition (\ref{eq:fisher})
 (maintaining the spectral correlations in the noise, which are important),
-and re-compute the Fisher Information in this bad context.
+and re-compute the Information in this bad context.
 The Fisher Information will get smaller as the stellar variability
 gets worse, and the resulting theoretical \EPRV\ uncertainties will
 get larger.
 \item
-Spectral projection
+\textbf{Spectral filtering:}
+If the ....
 \item
-Time-domain process priors
+\textbf{Time-domain process priors:} ....
 \item
-Causal inference
+\textbf{Causal inference:} ....
 \end{itemize}
+As we work down these approaches, we will develop results and assemble them
+into something like two papers on the theory of \EPRV\ in the presence of
+stellar spectral variability.
 
-Important to bring up at the end of this section that when the star
-varies, the \CCF\ no longer contains all of the \RV\ information in the
-spectrum!
+One extremely important point, which we want to make in the papers we write
+in the First Stage, is the following:
+In the case that the stellar spectrum does not vary, the
+cross-correlation function (\CCF) between the observed spectrum and a
+(very good) spectral template (model spectrum) is a \emph{sufficient
+  statistic} for the \RV\ measurement.
+That is, the \CCF\ contains all of the \RV\ information in the data.
+This is \emph{no longer true} once the spectrum starts to vary!
+That means that approaches for dealing with stellar spectral variability
+that are confined to considerations about the shape of the \CCF\ are
+doomed to fail---or at least doomed to under-perform.
+\textbf{Once the spectrum starts to vary, we have to adopt approaches that model
+the data in the full two-dimensional space of photon wavelength and time.}
+One of our primary high-level goals is to move the community in the
+right direction on this point.
+BEDELL: Can you figure out how to cite things here in a way that is constructive,
+supportive, and honest?
 
 \nasasection{Second Stage: Mitigation of asteroseismic variability (p-modes)}
 
+Asteroseismic p-modes straightforwardly contaminate any \EPRV\ measurements.
+When the star pulsates, its surface sinusoidally moves towards and away from
+the observer.
+However, p-modes have two very important properties that give us hope that they
+can be almost completely mitigated through spectral and temporal modeling:
+\begin{enumerate}
+\item
+\textbf{p-modes are temporally coherent} on reasonable time scales (days to months, depending on
+stellar type). Therefore, they can be fit as sinusoids over time intervals 
+short relative to the coherence time. Furthermore, the frequencies are known,
+or can be known, through monitoring (with the \EPRV\ spectrogaph itself (BEDELL CITE),
+or photometrically with a \TESS-like mission).
+\item
+\textbf{p-modes have associated temperature signatures}. Indeed, the star gets
+hotter when it contracts and cooler when it expands, adiabatically. Although for
+G-type stars these temperature variations are tiny, they ought to be visible in
+high-signal-to-noise \EPRV\ spectral observations.
+\end{enumerate}
+
+......
+
+We propose to explore four mitigation strategies for p-modes:
+\begin{enumerate}
+\item
+\textbf{Choosing resonant integration times:}.... (HOGG CITE CHAPMAN)
+\item
+\textbf{Resolving modes and fitting them coherently:}...
+\item
+\textbf{Fitting the observations incoherently:}...
+\item
+\textbf{Simultaneous temperature monitoring:}...
+\end{enumerate}
+
 \nasasection{Third Stage: Mitigation of myriad other variabilities (stochastics)}
+
+The Third Stage is to consider the incoherent variabilities of stars
+that are not well understood theoretically, or which imprint
+stochastic time-variable signatures on both the spectrum and the
+derived \RV\ measurements.
+These include (but are not limited to):
+\begin{enumerate}
+\item
+\textbf{star spots:} ....
+\item
+\textbf{plages, faculi, and other surface features:}
+\item
+\textbf{flares:}
+\item
+\textbf{surface convection:}
+\end{enumerate}
 
 \nasasection{Timeline and project management}
 
@@ -470,5 +540,10 @@ Three things: (1)~detection and characterization of exoplanets in
 general, across many projects and communities. (2)~suppport of the
 existing \NNEXPLORE\ program goals. (3)~answering the hard question
 about taking \EPRV\ to space.
+
+\clearpage
+\nasasection*{References}
+
+(BEDELL CAN YOU START THIS?)
 
 \end{document}
