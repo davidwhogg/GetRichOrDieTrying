@@ -350,6 +350,8 @@ right direction on this point.
 BEDELL: Can you figure out how to cite things here in a way that is constructive,
 supportive, and honest?
 
+...Deliverables here will be papers. And associated open-source code....
+
 \nasasection{Second Stage: Mitigation of asteroseismic variability (p-modes)}
 
 Asteroseismic p-modes straightforwardly contaminate any \EPRV\ measurements.
@@ -371,7 +373,7 @@ G-type stars these temperature variations are tiny, they ought to be visible in
 high-signal-to-noise \EPRV\ spectral observations.
 \end{itemize}
 
-......
+......words go here...
 
 We propose to explore four mitigation strategies for p-modes:
 \begin{itemize}
@@ -384,6 +386,11 @@ We propose to explore four mitigation strategies for p-modes:
 \item
 \textbf{Simultaneous temperature monitoring:}...
 \end{itemize}
+
+...We will do experiments on \HARPS\ data in hand. Maybe other data if it
+starts to appear, like \ESPRESSO\ and \NEID....
+
+...Deliverables here will be strategies, methods, papers, and associated open-source code....
 
 \nasasection{Third Stage: Mitigation of myriad other variabilities (stochastics)}
 
@@ -402,13 +409,27 @@ These include (but are not limited to):
 \item
 \textbf{surface convection:}
 \end{itemize}
+We will not consider all of the possible sources of stochastic variability;
+the project staffing and timeline are not large enough.
+We will instead prioritize around the intersection of team interests (and
+especially GRA interests), opportunity relative to other community efforts
+(to use our resources for highest impact), and opportunity in terms of
+impact on \EPRV\ (amplitudes of signals, flowed down to final measurements.
+Since we don't yet understand these variabilities in detail, part of this
+proposal is to do the work to make those priority decisions.
+
+...Again, we will do experiments on \HARPS\ data in hand. Maybe other data if it
+starts to appear, like \ESPRESSO\ and \NEID....
+
+...Deliverables here will be methods, papers, and associated open-source code. Also
+parameters of data-driven models.
 
 \nasasection{Timeline and project management}
 
 Although the three parts of this project are presented as ``stages'',
 they will not be staged serially.
 Rather we will run all three in parallel to make best use of our
-personnel.
+personnel and benefit most from the conceptual and data overlaps of the three stages.
 All three stages will involve PI Hogg, Co-I Bedell, and the project
 graduate student student (\GRA). 
 
@@ -524,24 +545,87 @@ Perimeter) and David Schiminovich (Columbia).
 Since this is a proposal, no-one has actually really asked us that many questions
 about it. But here's pretending!
 
-\paragraph{Why this team?}
-
-\paragraph{Related: How can these two influence the whole community?}
-
 \paragraph{Why do this now?}
+There are a few extremely precise spectrographs operating now (BEDELL
+CITATIONS), and many more on the horizon (BEDELL CITATIONS?).
+\EPRV\ is entering a golden era, brought on in part by missions like
+\TESS, which require solid follow-up, and in part by a hope that
+\EPRV\ can detect the true Earth analogs (long-period, low-mass, rocky
+planets around G-type stars).
+If we don't solve these stellar spectral-variability issues, these
+projects will not live up to their greatest promise.
+And the three-year time scale of this grant is well matched to the
+commissioning of many new instruments.
+
+\paragraph{How can these two influence the whole community?}
+We might look like outsiders (and especially the PI).
+But we are not: We have one of the very few open-source \EPRV\ codes
+(\wobble; HOGG CITE WOBBLE), and there are many new projects incorporating 
+\wobble\ into their pipelines.
+Also, we are partners in the forthcoming \HARPS-3 project
+\project{Terra Hunting Experiment}, which has a direct engineering
+requirement to obtain better than $20\,cmps$ precision
+\RV\ measurements for quiet G-type stars.
+\project{Terra Hunting} needs our help on stellar variability, and will adopt
+the mitigation strategies we discover and build.
+We have also operated many very successful workshops and hack weeks
+bringing new methods and new data to the astrophysics community.
+These include the \project{Gaia Sprints}, \project{Preparing for
+  TESS}, and NASA-funded \project{Telluric-line Hack Week}.
+These events have brought together diverse communities and spread
+the gospel of good methods.
+But above all, the whole \EPRV\ community is very thirsty for new
+successes in mitigating noise. If we succeed in the Second and Third
+Stages of this project, we will have no trouble developing community
+interest.
 
 \paragraph{Hasn't this already been done?}
+It certainly is true that the community is working hard on time
+variability in some \EPRV\ contexts.
+However, most of the work (with very notable exceptions) has centered
+around stellar activity, and most of the work has centered on the
+cross-correlation function (\CCF).
+It is our view that this is such a tall pole for \EPRV\ that we need
+to launch and support multiple groups working from multiple angles.
+We will be different from the community in a number of ways, but one
+is that we are considering fully data-driven approaches, and in the
+full outer-product space of time and wavelength.
+We also have a conceptual bent: We will try to change the conversation
+about \EPRV\ and then build mitigation strategies that talk to the
+new frameworks and languages.
+We have unique things to provide.
+This does not represent a duplication of effort.
 
 \paragraph{Isn't it all just about getting better instrument stability and calibration?}
+No! New spectrographs are consistently getting few-$\cmps$ consistency
+in internal calibration.
+The problems are external---in the star and in the atmosphere.
+Of course the telluric absorption and micro-tellurics are also
+probably important, and we are working on those issues too (HOGG CITE
+WOBBLE).
+But there is no approach to $10\,\cmps$-level \EPRV\ without a direct
+attack on stellar spectral variability.
 
 \paragraph{You can't ever really get rid of stochastic stellar noise, right?}
+If something is called ``noise'' we tend to think ``oh well, it's
+noisy''. But if noise is structured---in spectral space or temporal
+space or both---then it can be modeled continuously.
+This proposal argues that all the important noise sources in \EPRV\ coming
+from spectral variability will be structured in both time and wavelength.
+Therefore there are handles for modeling and mitigation.
+We are optimistic that these approaches will work.
+If they don't, at least we will know that we have tried very very hard.
 
 \paragraph{How does this connect to \XRP\ program priorities?}
-
-Three things: (1)~detection and characterization of exoplanets in
-general, across many projects and communities. (2)~suppport of the
-existing \NNEXPLORE\ program goals. (3)~answering the hard question
-about taking \EPRV\ to space.
+There are three answers to this. The first is that this project
+improves the ability of \EPRV\ projects to detect and characterize
+exoplanets, which are two of the main goals of the \XRP\ program.
+The second is that the results of this project will directly support
+and enhance the science being done in the \NASA\ \NNEXPLORE\ program,
+which is deploying the \NEID\ Spectrograph this year.
+The third is that this work is essential to \NASA's medium-term planning
+for new missions: If we can't mitigate stellar variability, there is no
+point in taking \EPRV\ to space.
 
 \clearpage
 \nasasection*{References}
