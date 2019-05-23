@@ -15,6 +15,7 @@
 
 \documentclass[12pt, letterpaper]{article}
 \usepackage{fancyhdr, graphicx}
+\usepackage{natbib}
 \setlength{\headsep}{2ex}
 \input{hogg_nasa}
   \renewcommand{\headrulewidth}{0pt}
@@ -42,16 +43,16 @@ I APOLOGIZE FOR SHOUTING, BUT I AM WRITING THIS ON A LOUD AIRPLANE.
 
 \noindent
 Many fundamental measurements for the detection and characterization of 
-exoplanetary systems rest crucially on extreme precision radial-velocity (\EPRV)
-measurements. Through \EPRV, we can detect planets in the medium-to-long 
+exoplanetary systems rest crucially on the extreme precision radial-velocity (\EPRV)
+technique. Through \EPRV, we can detect planets in the medium-to-long 
 orbital period regime that is mostly lacking from the transit approach; we can measure the 
 masses of known transiting planets, a crucial piece of the \TESS\ mission's 
 fundamental goal; and we can characterize host stars and systems in exquisite 
-detail using the Rossiter-McLaughlin effect. In the next generation of \EPRV\ 
+detail using the Rossiter-McLaughlin effect. With the next generation of \EPRV\ 
 instruments, including the \NEID\ spectrograph, we hope to detect terrestrial 
 planets on Earth-like orbits.
 
-From a fundamental perspective, there is essentially no limit to how
+From a physical perspective, there is essentially no limit to how
 precisely astronomers might measure the radial velocity variations
 of the center of mass of a distant star with an \EPRV\ spectrograph.
 Of course in real life, there are real limits, set
@@ -62,7 +63,8 @@ velocities measured consistently with an empirical scatter
 (\acronym{RMS} around the mean) smaller than $\approx~100\,\cmps$ 
 ($1\,\mps$).\footnote{At least not in the literature! We have heard rumors and 
 seen flashes of figures suggesting that the \acronym{ESO} spectrograph
-\ESPRESSO\ (CITE) and the Yale spectrograph \EXPRES\ (CITE) are seeing 
+\ESPRESSO\ \citep{Pepe2010} and the Yale spectrograph \EXPRES\ 
+\citep{Jurgenson2016} are seeing 
 30-ish $\cmps$ around certain very quiet stars. This is very promising but 
 unlikely to hold true for the vast majority of stars, or even for these targets during a
 different phase of their activity cycles.}
@@ -79,7 +81,7 @@ both from existing archival data and from new data from new programs.
 
 \paragraph{Stellar variability is the ``tall pole'':}
 Right now the best spectrographs are obtaining internal calibration
-consistencies of a few $\cmps$ (BEDELL: REFERENCE?).
+consistencies of a few $\cmps$ \citep{espresso-eprv4, expres-eprv4}.
 These internal precisions are determined by repeatability and
 stability of calibration references such as arc lamps, etalon
 (Fabry--Perot) interferometer signals, gas cells, or laser-frequency
@@ -99,7 +101,7 @@ We believe that the answer is \emph{yes}.
 
 There is also noise coming from telluric lines in the Earth's atmosphere
 (especially unmodeled tiny micro-tellurics).
-In a separate but related project (HOGG CITE WOBBLE) we are addressing this
+In a separate but related project \citep{Bedell2019} we are addressing this
 source of noise as well.
 Our work suggests that tellurics and micro-tellurics are addressable problems
 and do not currently dominate the end-to-end noise budget.
@@ -124,7 +126,7 @@ luminosity distances and parallaxes, for example).
 The Co-I Bedell has developed new techniques to make exceedingly
 precise measurements of stellar element abundances without explicit
 use of stellar models, by designing perfectly differential stellar
-comparisons (BEDELL CITE).
+comparisons \citep{Bedell2014, Bedell2018}.
 PI Hogg has the current best-in-class methods for determining stellar
 parameters and abundances from survey-quality spectroscopy (HOGG
 CITE).
@@ -133,7 +135,7 @@ data-driven but designed to capture the smooth variations (with
 respect to parameters) that we expect in stellar spectra.
 
 And most relevant of all, PI Hogg and Co-I Bedell built an open-source
-pipeline for \EPRV\ data analysis (\wobble, HOGG CITE).
+pipeline for \EPRV\ data analysis \citep[\wobble][]{Bedell2019}.
 This pipeline has many novel aspects to it, but some of the key ideas
 are the following: 
 It separates stellar and telluric signals in the data in a purely
@@ -193,7 +195,7 @@ Finally, in the context of the US Decadal Survey and proposals for near-future
 The answer to this question depends critically on the detailed error budget on
 \EPRV\ measurements.
 If \EPRV\ measurements have uncertainties dominated by instrument
-stability, atmosphere, and tellurics, then space is the place to be (CITE PLAVCHEN).
+stability, atmosphere, and tellurics, then space is the place to be \citep[e.g.][]{Plavchan2018}.
 \textbf{If we cannot calibrate out or mitigate stellar variability
   in \EPRV\ measurements, then taking
   \EPRV\ to space should not be a priority.}
@@ -308,7 +310,7 @@ the fundamental \EPRV\ precision is limited by the Cramer-Rao Bound, which is
 the Fisher Information in this case.
 The Fisher Information is the best possible inverse-variance that can be obtained
 on any \RV\ measurement, and it appears in the literature in multiple places,
-although not usually written in this language (BEDELL CITES?).
+although not usually written in this language \citep{Butler1996, Bouchy2003}.
 Symbolically the Fisher Information $\sigma_v^{-2}$ is given by
 \begin{equation}\label{eq:fisher}
 \sigma_v^{-2} =
@@ -439,7 +441,7 @@ As the star pulsates, its surface sinusoidally moves towards and away from
 the observer, imparting a Doppler shift at the (NUMBER) level.
 Traditionally these oscillations are dealt with by ``integrating over'' them
 with a 15-minute exposure, but recent works have cast doubt on the efficiency 
-of this approach (BEDELL CITE). 
+of this approach \citep{Medina2018, Chaplin2019}. 
 While the exact correct method for dealing with p-modes in \EPRV\ has yet 
 to be convincingly established, we can regard this noise source as a 
 \textit{best-case} scenario for correlated noise. That is, we believe that 
@@ -449,7 +451,8 @@ The first is that
 \textbf{p-modes are temporally coherent} on reasonable time scales (days to months, depending on
 stellar type). Therefore, they can be fit as sinusoids over time intervals 
 short relative to the coherence time. Furthermore, the frequencies are known,
-or can be known, through monitoring (with the \EPRV\ spectrogaph itself (BEDELL CITE),
+or can be known, through monitoring (with the \EPRV\ spectrograph itself 
+\citep[][and references therein]{Bouchy2003},
 or photometrically with a \TESS-like mission).
 The second important property is that
 \textbf{p-modes have associated temperature signatures}. Indeed, the star gets
@@ -463,7 +466,7 @@ mitigation strategies for p-modes:
 \item
 \textbf{Choosing resonant integration times:}
 There is hope in the \EPRV\ community that cleverly chosen integration
-times can obviate p-mode noise (see, \eg, HOGG CITE CHAPMAN).
+times can obviate p-mode noise \citep[see, \eg][]{Chaplin2019}.
 Current work in this area makes somewhat naive assumptions about the
 stability of the p-mode amplitudes.
 We will revisit this with real data; the \HARPS\ Archive includes
@@ -857,6 +860,7 @@ point in taking \EPRV\ to space.
 \clearpage
 \nasasection*{References}
 
-(BEDELL CAN YOU START THIS?)
+\bibliographystyle{apj}
+\bibliography{description.bib}%general,myref,inprep}
 
 \end{document}
