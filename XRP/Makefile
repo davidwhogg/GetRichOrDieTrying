@@ -9,8 +9,6 @@ all: facilities.pdf description.pdf biosketch_hogg.pdf
 
 %.pdf: %.tex hogg_nasa.tex
 	${LATEX} $<
-	bibtex $*
-	${LATEX} $<
 	( ${CHECK_RERUN} && ${LATEX} $< ) || echo "Done."
 	( ${CHECK_RERUN} && ${LATEX} $< ) || echo "Done."
 
