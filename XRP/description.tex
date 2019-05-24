@@ -3,7 +3,7 @@
 % Copyright 2019 David W. Hogg and Megan Bedell
 
 % # Style notes
-% - Third person, not first person!!
+% - Third person mainly (but maybe not exclusively -- use first for emphasis!)
 % - Use macros for acronyms, project names, and so on!
 % - Use \nasasection{} not \section{} so we can tweak typography
 
@@ -17,7 +17,7 @@
 
 \documentclass[12pt, letterpaper]{article}
 \usepackage{fancyhdr, graphicx, natbib}
-\setlength{\bibsep}{0.0pt}
+\setlength{\bibsep}{0.5ex}
 \setlength{\headheight}{2ex}
 \setlength{\headsep}{2ex}
 \input{hogg_nasa}
@@ -30,16 +30,18 @@
 
 \nasasection*{Introduction}
 
-\noindent
 Many fundamental measurements for the detection and characterization of 
-exoplanetary systems rest crucially on the extreme precision radial-velocity (\EPRV)
-technique. Through \EPRV, we can detect planets in the medium-to-long 
-orbital period regime that is mostly lacking from the transit approach; we can measure the 
-masses of known transiting planets, a crucial piece of the \TESS\ mission's 
-fundamental goal; and we can characterize host stars and systems in exquisite 
-detail using the Rossiter-McLaughlin effect. With the next generation of \EPRV\ 
-instruments, including the \NEID\ spectrograph, we hope to detect terrestrial 
-planets on Earth-like orbits.
+exoplanets and exoplanetary systems require extreme precision radial-velocity (\EPRV)
+measurements.
+Through \EPRV, we can detect planets in the medium-to-long 
+orbital-period regime that is under-represented in transit searches;
+we can measure the 
+masses (and hence compositions) of transiting planets,
+serving directly \TESS\ Mission goals;
+and we can characterize host stars and systems in exquisite detail.
+With the next generation of \EPRV\ 
+instruments, including the \NEID\ Spectrograph in the \NNEXPLORE\ Program,
+we hope to detect terrestrial planets on Earth-like orbits.
 
 From a physical perspective, there is essentially no limit to how
 precisely astronomers might measure the radial velocity variations
@@ -47,16 +49,18 @@ of the center of mass of a distant star with an \EPRV\ spectrograph.
 Of course in real life, there are real limits, set
 by (for example) photon noise, stellar surface convection and activity,
 variations in the atmosphere, and spectrograph calibration stability.
-In practice, almost no stars have had their center-of-mass
+In practice, almost no stars\footnote{%
+  At least not in the literature! We have heard rumors and 
+  seen flashes of figures suggesting that the \acronym{ESO} spectrograph
+  \ESPRESSO\ \citep{Pepe2010} and the Yale spectrograph \EXPRES\ 
+  \citep{Jurgenson2016} are seeing 
+  30-ish $\cmps$ around certain very quiet stars. This is very promising but 
+  unlikely to hold true for the vast majority of stars, or even for these targets during a
+  different phase of their activity cycles.}
+have had their center-of-mass
 velocities measured consistently with an empirical scatter
-(\acronym{RMS} around the mean) smaller than $\approx 100\,\cmps$ 
-($1\,\mps$).\footnote{At least not in the literature! We have heard rumors and 
-seen flashes of figures suggesting that the \acronym{ESO} spectrograph
-\ESPRESSO\ \citep{Pepe2010} and the Yale spectrograph \EXPRES\ 
-\citep{Jurgenson2016} are seeing 
-30-ish $\cmps$ around certain very quiet stars. This is very promising but 
-unlikely to hold true for the vast majority of stars, or even for these targets during a
-different phase of their activity cycles.}
+smaller than $\approx 100\,\cmps$ 
+($1\,\mps$).
 
 At the same time, \EPRV\ is responsible for hundreds of \foreign{ab
 initio} exoplanet discoveries and hundreds more \foreign{a
@@ -171,13 +175,16 @@ ground-based observing programs, including those at public, private,
 and \NASA-supported facilities.
 
 This project is directly aimed at improving the capabilities of the
-\NEID\ Spectrograph, which sees first light this year.
-This spectrograph is part of the \NASA\ \NNEXPLORE\ program.
+\NEID\ Spectrograph, which sees first light this year,
+as part of the \NASA\ \NNEXPLORE\ program.
+By serving the \EPRV\ community generally, this project will
+directly and indirectly help the \NASA\ \TESS\ Mission,
+which requires good \RV\ follow-up for many of its mission goals.
 Thus this proposal is written to develop capabilities that will
 directly support and improve the legacy value of existing
 \NASA\ missions.
 It will also make possible new observing programs and strategies for
-community proposers to the \NNEXPLORE\ facility.
+community proposers to the \NNEXPLORE\ facilities.
 
 Finally, in the context of the US Decadal Survey and proposals for near-future
 \NASA\ missions, the question arises: Should we be doing \EPRV\ from space?
@@ -840,11 +847,12 @@ There are three answers to this. The first is that this project
 improves the ability of \EPRV\ projects to detect and characterize
 exoplanets, which are two of the main goals of the \XRP\ program.
 The second is that the results of this project will directly support
-and enhance the science being done in the \NASA\ \NNEXPLORE\ program,
-which is deploying the \NEID\ Spectrograph this year.
+and enhance the science being done in the \NASA\ \NNEXPLORE\ Program,
+which is deploying the \NEID\ Spectrograph this year,
+and also support the \TESS\ Mission and community.
 The third is that this work is essential to \NASA's medium-term planning
 for new missions: If we can't mitigate stellar variability, there is no
-point in taking \EPRV\ to space.
+point in taking \EPRV\ to space!
 
 \clearpage
 \bibliographystyle{apalike}
