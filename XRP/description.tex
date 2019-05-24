@@ -12,10 +12,13 @@
 % - Search for all occurrences of HOGG
 % - Search for all occurrences of BEDELL
 % - Search for all occurrences of ...
+% - get management experience into biosketch
+% - put some ``and others'' into the bibtex; possibly fix bst file?
 
 \documentclass[12pt, letterpaper]{article}
-\usepackage{fancyhdr, graphicx}
-\usepackage{natbib}
+\usepackage{fancyhdr, graphicx, natbib}
+\setlength{\bibsep}{0.0pt}
+\setlength{\headheight}{2ex}
 \setlength{\headsep}{2ex}
 \input{hogg_nasa}
   \renewcommand{\headrulewidth}{0pt}
@@ -844,9 +847,8 @@ for new missions: If we can't mitigate stellar variability, there is no
 point in taking \EPRV\ to space.
 
 \clearpage
-\nasasection*{References}\raggedright
-
 \bibliographystyle{apalike}
+\raggedright
 \bibliography{description.bib}%general,myref,inprep}
 
 \end{document}

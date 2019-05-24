@@ -1,9 +1,7 @@
 \begin{thebibliography}{}
 
 \bibitem[{Bedell} et~al., 2018]{Bedell2018}
-{Bedell}, M., {Bean}, J.~L., {Mel{\'e}ndez}, J., {Spina}, L., {Ram{\'\i}rez},
-  I., {Asplund}, M., {Alves-Brito}, A., {dos Santos}, L., {Dreizler}, S.,
-  {Yong}, D., {Monroe}, T., and {Casagrande}, L. (2018).
+{Bedell}, M. et~al. (2018).
 \newblock {The Chemical Homogeneity of Sun-like Stars in the Solar
   Neighborhood}.
 \newblock {\em ApJ}, 865(1):68.
@@ -57,22 +55,12 @@
 
 \bibitem[{Pepe}, 2019]{espresso-eprv4}
 {Pepe}, F.~A. (2019).
-\newblock Espresso.
+\newblock {ESPRESSO}.
 \newblock In {\em Extreme Precision Radial Velocities IV conference},
   https://indico.cern.ch/event/743355/contributions/3320596/.
 
 \bibitem[{Pepe} et~al., 2010]{Pepe2010}
-{Pepe}, F.~A., {Cristiani}, S., {Rebolo Lopez}, R., {Santos}, N.~C., {Amorim},
-  A., {Avila}, G., {Benz}, W., {Bonifacio}, P., {Cabral}, A., {Carvas}, P.,
-  {Cirami}, R., {Coelho}, J., {Comari}, M., {Coretti}, I., {De Caprio}, V.,
-  {Dekker}, H., {Delabre}, B., {Di Marcantonio}, P., {D'Odorico}, V., {Fleury},
-  M., {Garc{\'\i}a}, R., {Herreros Linares}, J.~M., {Hughes}, I., {Iwert}, O.,
-  {Lima}, J., {Lizon}, J.-L., {Lo Curto}, G., {Lovis}, C., {Manescau}, A.,
-  {Martins}, C., {M{\'e}gevand}, D., {Moitinho}, A., {Molaro}, P., {Monteiro},
-  M., {Monteiro}, M., {Pasquini}, L., {Mordasini}, C., {Queloz}, D., {Rasilla},
-  J.~L., {Rebord{\~a}o}, J.~M., {Santana Tschudi}, S., {Santin}, P.,
-  {Sosnowska}, D., {Span{\`o}}, P., {Tenegi}, F., {Udry}, S., {Vanzella}, E.,
-  {Viel}, M., {Zapatero Osorio}, M.~R., and {Zerbi}, F. (2010).
+{Pepe}, F.~A. et~al. (2010).
 \newblock {ESPRESSO: the Echelle spectrograph for rocky exoplanets and stable
   spectroscopic observations}.
 \newblock In {\em Ground-based and Airborne Instrumentation for Astronomy III},
@@ -80,22 +68,14 @@
   Conference Series}, page 77350F.
 
 \bibitem[{Plavchan} et~al., 2018]{Plavchan2018}
-{Plavchan}, P., {Cale}, B., {Newman}, P., {Hamze}, B., {Latouf}, N., {Matzko},
-  W., {Beichman}, C., {Ciardi}, D., {Purcell}, B., {Lightsey}, P., {Cegla}, H.,
-  {Dumusque}, X., {Bourrier}, V., {Dressing}, C., {Gao}, P., {Vasisht}, G.,
-  {Leifer}, S., {Wang}, S., {Gagne}, J., {Thompson}, S., {Crass}, J.,
-  {Bechter}, A., {Bechter}, E., {Blake}, C., {Halverson}, S., {Mayo}, A.,
-  {Beatty}, T., {Wright}, J.~T., {Wise}, A., {Tanner}, A., {Eastman}, J.,
-  {Quinn}, S., {Fischer}, D., {Basu}, S., {Sanchez-Maes}, S., {Howard}, A.,
-  {Vahala}, K., {Wang}, J., {Diddams}, S., {Papp}, S., {Pope}, B.~J., {Martin},
-  E., and {Murphy}, S. (2018).
+{Plavchan}, P. et~al. (2018).
 \newblock {EarthFinder: A Precise Radial Velocity Probe Mission Concept For the
   Detection of Earth-Mass Planets Orbiting Sun-like Stars}.
 \newblock {\em arXiv e-prints}, page arXiv:1803.03960.
 
 \bibitem[{Zhao}, 2019]{expres-eprv4}
 {Zhao}, L. (2019).
-\newblock Expres.
+\newblock {EXPRES}.
 \newblock In {\em Extreme Precision Radial Velocities IV conference},
   https://indico.cern.ch/event/743355/contributions/3320599/.
 
