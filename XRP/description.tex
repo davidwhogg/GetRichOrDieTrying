@@ -16,7 +16,7 @@
 
 \documentclass[12pt, letterpaper]{article}
 \usepackage{fancyhdr}
-\setlength{\headheight}{2ex}
+\setlength{\headheight}{3ex}
 \setlength{\headsep}{2ex}
 \input{hogg_nasa}
   \renewcommand{\headrulewidth}{0pt}
@@ -110,7 +110,7 @@ the ``unknown unknown'' effects of stellar variability.
 
 \paragraph{Why this team?}
 PI Hogg has built novel data-driven models of the color--magnitude diagram of
-stars, improving ESA \Gaia\ parallax measurements (HOGG CITE).
+stars, improving ESA \Gaia\ parallax measurements (\citealt{Leistedt, Widmark, Anderson}).
 These models re-purpose machine-learning tools to build models that
 have causal structure useful to astronomers (they know about
 luminosity distances and parallaxes, for example).
@@ -119,14 +119,13 @@ precise measurements of stellar element abundances without explicit
 use of stellar models, by designing perfectly differential stellar
 comparisons \citep{Bedell2014, Bedell2018}.
 PI Hogg has the current best-in-class methods for determining stellar
-parameters and abundances from survey-quality spectroscopy (HOGG
-CITE).
+parameters and abundances from survey-quality spectroscopy (\citealt{Cannon2, Doppel}).
 These methods (called \project{The Cannon} after Annie Jump) are
 data-driven but designed to capture the smooth variations (with
 respect to parameters) that we expect in stellar spectra.
 
 And most relevant of all, PI Hogg and Co-I Bedell built an open-source
-pipeline for \EPRV\ data analysis \citep[\wobble][]{Bedell2019}.
+pipeline for \EPRV\ data analysis (\wobble; \citealt{Bedell2019}).
 This pipeline has many novel aspects to it, but some of the key ideas
 are the following: 
 It separates stellar and telluric signals in the data in a purely
@@ -393,7 +392,7 @@ long-term stellar monitoring, because it is justified only in a hard
 limit.
 However, there are many such projects starting now.
 (This method is conceptually related to things we have done with
-\Kepler\ and \Ktwo\ for planet discovery (HOGG CITE WANG DFM).)
+\Kepler\ and \Ktwo\ for planet discovery; \citealt{CPM, DFMK2, CPMdiff}.)
 \end{itemize}
 
 HOGG: THIS IS ALL VERY VAPORWARE-SOUNDING. CAN WE ADD A 
@@ -567,7 +566,7 @@ temperature from the surface of the star.
 Therefore they ought to be visible in the two-dimensional space of
 spectrum and wavelength as a cooler stellar patch slightly more
 localized in velocity than the whole stellar surface.
-Our approach on star spots, building on prior work (CITE GULLY) will
+Our approach on star spots, building on prior work (\citealt{Gully}) will
 be to consider lower-temperature spectral components with small
 velocity shifts try to fit everything simultaneously.
 If the spots are reliably lower in temperature, it should be possible
@@ -745,8 +744,8 @@ Ultra-precise photometry in crowded fields: A self-calibration approach:}
 This small project (\Ktwo\ \acronym{GO} program)
 was to bring a data-driven model to light-curve calibration
 in the \Ktwo\ extension of the \Kepler\ Mission.
-It resulted in a paper (HOGG CITE), a codebase (HOGG GitHub link),
-and a set of methods that were deployed in the \Ktwo\ microlensing campaign (HOGG CITE).
+It resulted in a paper (\citealt{CPMdiff}), a codebase (HOGG GitHub link),
+and a set of methods that were deployed in the \Ktwo\ microlensing campaign (\citealt{K2C9}).
 This grant also supported the PhD research and dissertation of \NYU\ graduate
 student Dun Wang (now at Kensho Technologies, Cambridge, MA) and work
 by PI Hogg, Bernhard Sch\"olkopf (T\"ubingen), Dan Foreman-Mackey
@@ -773,10 +772,10 @@ searching for time-domain sources in the photon time stream.
 
 The grant was very productive. Over its four-year duration, it
 \textbf{directly supported 24 papers in the astrophysics literature}, on a
-range of subjects from modeling images (\eg, HOGG CITE)
-to measuring stars (\eg, HOGG CITE)
-to pedagogical contributions on computational data analysis (\eg, HOGG CITE)
-in addition to the direct work on the \GALEX\ data (\eg, HOGG CITE).
+range of subjects from modeling images (\eg, \citealt{UNWISE})
+to measuring stellar photometry (\eg, \citealt{CPM})
+to pedagogical contributions on computational data analysis (\eg, \citealt{MCMC})
+in addition to the direct work on the \GALEX\ data (\eg, \citealt{Mohammed}).
 Some of the final papers are still in preparation, but the grant
 supported the PhD research and dissertations of Dun Wang (NYU PhD
 mentioned above) and Steven Mohammed (Columbia PhD).
@@ -844,8 +843,7 @@ No! New spectrographs are consistently getting few-$\cmps$ consistency
 in internal calibration.
 The problems are external---in the star and in the atmosphere.
 Of course the telluric absorption and micro-tellurics are also
-probably important, and we are working on those issues too (HOGG CITE
-WOBBLE).
+probably important, and we are working on those issues too (\citealt{Bedell2019}).
 But there is no approach to $10\,\cmps$-level \EPRV\ without a direct
 attack on stellar spectral variability.
 
