@@ -15,15 +15,14 @@
 % - put some ``and others'' into the bibtex; possibly fix bst file?
 
 \documentclass[12pt, letterpaper]{article}
-\usepackage{fancyhdr, graphicx, natbib}
-\setlength{\bibsep}{0.5ex}
+\usepackage{fancyhdr}
 \setlength{\headheight}{2ex}
 \setlength{\headsep}{2ex}
 \input{hogg_nasa}
   \renewcommand{\headrulewidth}{0pt}
   \pagestyle{fancy}
-  \lhead{\textsf{Hogg \& Bedell / \EPRV\ in the presence of intrinsic stellar variability}}
-  \rhead{\textsf{\thepage}}
+  \lhead{\textcolor{darkgrey}{\textsf{Hogg \& Bedell / \EPRV\ in the presence of intrinsic stellar variability}}}
+  \rhead{\textcolor{darkgrey}{\textsf{\thepage}}}
   \cfoot{}
 \begin{document}\sloppy\sloppypar\raggedbottom\frenchspacing
 
@@ -299,7 +298,7 @@ onto RV derivative) affect fundamental limits on the precision of
 That is, in the First Stage we are trying to understand what is theoretically
 possible for \EPRV.
 
-HOGG: YES, BOX THIS SHIT
+\hoggbox{\paragraph{\textsl{Reminder}---Information Theory:}
 As a reminder, in the case in which the stellar spectrum never varies,
 the fundamental \EPRV\ precision is limited by the Cramer-Rao Bound, which is
 the Fisher Information in this case.
@@ -327,6 +326,7 @@ become rectangular projection operators and the Information tensor (matrix)
 must be matrix-inverted to deliver nuisance-marginalized uncertainties). 
 HOGG: rephrase the above to explicitly tie ``nuisance parameters'' to the situation 
 where the spectrum is intrinsically variable?
+}
 
 There are four approaches we will take in the First Stage (information)
 to answering these theory questions,
@@ -342,8 +342,9 @@ If the stellar spectral variability has low amplitude, and either has
 no spectral or time structure, or else we are pessimistic about
 modeling it in any way, we face the \emph{worst-case scenario}.
 In this scenario, all we can do is add the spectral noise to the photon noise
-in the noise tensor $C$ in the Fisher Information definition (\ref{eq:fisher})
-(maintaining the spectral correlations in the noise, which are important),
+in the noise tensor $C$ in the Fisher Information definition (\ref{eq:fisher}),
+in the box on page~\pageref{eq:fisher},
+maintaining the spectral correlations in the noise (which are important),
 and re-compute the Information in this bad context.
 The Fisher Information will get smaller as the stellar variability
 gets worse, and the resulting theoretical \EPRV\ uncertainties will

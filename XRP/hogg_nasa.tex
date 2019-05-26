@@ -1,3 +1,10 @@
+%----- import some packages
+\usepackage{graphicx, natbib, color}
+
+%----- set up some colors
+\definecolor{darkgrey}{rgb}{0.3,0.3,0.3}
+\definecolor{lightgrey}{rgb}{0.95,0.95,0.95}
+
 %----- exact 1-in margins
 % NB: headheight and headsep MUST exist and be set
 \setlength{\textwidth}{6.5in}
@@ -75,6 +82,7 @@
 \makeatother
 
 %----- Tighten up paragraphs and lists
+\setlength{\bibsep}{0.5ex}
 \setlength{\parskip}{0.0ex}
 \setlength{\parindent}{0.2in}
 \renewenvironment{itemize}{\begin{list}{$\bullet$}{%
@@ -142,6 +150,19 @@
    \resizebox{\textwidth}{!}{\includegraphics{#1}}%
    \textsf{\caption[]{\footnotesize {#2}}}%
    \end{figure}}
+
+%----- float box for reminders and sidebars
+\newcommand{\hoggbox}[1]{%
+  \begin{figure}[t]%
+  \setlength{\fboxsep}{0pt}%
+  \,\fbox{\sffamily%
+  {\setlength{\fboxsep}{0.01\textwidth}\colorbox{lightgrey}{%
+  \parbox{0.97\textwidth}{%
+  #1
+  }}}}\end{figure}}
+
+%----- tighten up space around floats
+\setlength{\textfloatsep}{2ex}
 
 %----- deal with pdf page-size stupidity
 \special{papersize=8.5in,11in}
