@@ -14,7 +14,7 @@
 % - HOGG get management experience into biosketch
 
 \documentclass[12pt, letterpaper]{article}
-\usepackage{fancyhdr}
+\usepackage{fancyhdr, varioref}
 \setlength{\headheight}{3ex}
 \setlength{\headsep}{2ex}
 \input{hogg_nasa}
@@ -270,17 +270,29 @@ of the spectral expectation $f$ (seen as a column vector) with respect to \RV\ $
 and the inverse variance of the noise in the spectrum is $C^{-1}$ (diagonal in the
 simple case that all spectral pixels are independently measured; more complex in
 what follows!).
-That is, the inverse of the squared uncertainty (the inverse variance) on the
-\RV\ is an inner product of the derivative of the spectrum with
-respect to \RV\ with itself, taken through the inverse variance tensor on the
-spectral pixels.
-Things get a bit more complicated when there are nuisance parameters, but
-not fundamentally different (and we know how to deal with it; the derivatives
-become rectangular projection operators and the Information tensor (matrix)
-must be matrix-inverted to deliver nuisance-marginalized uncertainties). 
 
-HOGG: rephrase the above to explicitly tie ``nuisance parameters'' to the situation 
-where the spectrum is intrinsically variable?
+Things get a bit more complicated when there are nuisance parameters, but
+not fundamentally different: The derivatives
+become rectangular projection operators and the Information becomes a tensor (matrix)
+must be inverted to deliver nuisance-marginalized uncertainties.
+
+When we turn on stellar variability, there will be two ways to modify the Fisher
+Information.
+In one framework, the stellar variability is seen as an additional source of noise
+in the space of wavelength and time.
+The Information gets modified by having $f$ become not just one spectrum but a
+full time series of spectra, and by having $C$ become not just the variance tensor
+of the instrumental noise, but also of the ``noise'' associated with the spectral
+variability (which will be covariant in both wavelength and time).
+The additional noise will increase the eigenvalues of $C$, decrease the eigenvalues
+of $C^{-1}$, and decrease the precision (increase $\sigma_v$).
+
+In another framework, the stellar variability is seen as an additional set of
+nuisance parameters (for example, the amplitudes of eigenspectral contributions
+to the spectrum at each observation).
+In this framework, the stellar variability is seen as a set of nuisance parameters
+that add dimensions to the Information tensor.
+This will also serve to reduce the precision (increase $\sigma_v$).
 }
 
 Once the spectrum is permitted to vary between exposures (and we know that
@@ -318,6 +330,8 @@ strategies are required.
 The most adversarial kind of spectral variability is that which looks
 like the derivative of the spectrum with respect to \RV.
 \end{itemize}
+
+\noindent
 All of these issues will come up again below in the Second Stage (p-modes)
 and Third Stage (stochastics).
 But in the First Stage, we want to understand precisely and quantitatively
@@ -342,12 +356,14 @@ no spectral or time structure, or else we are pessimistic about
 modeling it in any way, we face the \emph{worst-case scenario}.
 In this scenario, all we can do is add the spectral noise to the photon noise
 in the noise tensor $C$ in the Fisher Information definition (\ref{eq:fisher}),
-in the box on page~\pageref{eq:fisher},
+in the box \vpageref{eq:fisher},
 maintaining the spectral correlations in the noise (which are important),
 and re-compute the Information in this bad context.
 The Fisher Information will get smaller as the stellar variability
 gets worse, and the resulting theoretical \EPRV\ uncertainties will
 get larger.
+
+HOGG wants to say more things here.
 \item
 \textbf{Spectral filtering:}
 If the variability in the spectral domain is low-dimensional, then it is
@@ -395,15 +411,7 @@ However, there are many such projects starting now.
 \Kepler\ and \Ktwo\ for planet discovery; \citealt{CPM, DFMK2, CPMdiff}.)
 \end{itemize}
 
-HOGG: THIS IS ALL VERY VAPORWARE-SOUNDING. CAN WE ADD A 
-``CASE STUDY'' OF WHAT PURSUING ONE OF THESE APPROACHES 
-MIGHT LOOK LIKE? e.g. how would we simulate these things? 
-what's the metric of success or failure in terms
-of whether these approaches are the right ones to pursue? 
-what useful things for the EPRV community would we produce - probably 
-useful metrics for what kinds of stars to observe and what kind of observing 
-strategy to use, right? would we use any real data to test our conclusions? 
-
+\noindent
 As we work down these approaches, we will develop results and assemble them
 into something like two papers on the theory of \EPRV\ in the presence of
 stellar spectral variability. These two papers, and the associated open-source
@@ -521,6 +529,7 @@ prior information about \RV\ variations and create another mitigation
 strategy.
 \end{itemize}
 
+\noindent
 Because we have access to public \HARPS\ asteroseismic campaigns for 
 several seismic stars including $\beta$ Hyi, $\alpha$ Cen B, and 18 Sco,
 we can perform these experiments on existing, real data.
@@ -633,6 +642,7 @@ representation of the spectral domain.
 That's speculative, but it is worth finding out if it is true.
 \end{itemize}
 
+\noindent
 We will not consider all of the possible sources of stochastic variability;
 the project staffing and timeline are not large enough.
 We will instead prioritize around the intersection of team interests (and
