@@ -51,6 +51,12 @@
   Velocity Observations}.
 \newblock {\em \aj}, 157(4):163.
 
+\bibitem[{Foreman-Mackey} et~al., 2017]{DFMGP}
+{Foreman-Mackey}, D., {Agol}, E., {Ambikasaran}, S., and {Angus}, R. (2017).
+\newblock {Fast and Scalable Gaussian Process Modeling with Applications to
+  Astronomical Time Series}.
+\newblock {\em \aj}, 154(6):220.
+
 \bibitem[{Foreman-Mackey} et~al., 2015]{DFMK2}
 {Foreman-Mackey}, D., {Montet}, B.~T., {Hogg}, D.~W., {Morton}, T.~D., {Wang},
   D., and {Sch{\"o}lkopf}, B. (2015).
@@ -82,6 +88,13 @@
 \newblock In {\em Ground-based and Airborne Instrumentation for Astronomy VI},
   volume 9908 of {\em Society of Photo-Optical Instrumentation Engineers (SPIE)
   Conference Series}, page 99086T.
+
+\bibitem[{Kochukhov} et~al., 2011]{doppler}
+{Kochukhov}, O., {Rivinius}, T., {Oksala}, M.~E., and {Romanyuk}, I. (2011).
+\newblock {Magnetic Doppler imaging of early-type stars}.
+\newblock In {Neiner}, C., {Wade}, G., {Meynet}, G., and {Peters}, G., editors,
+  {\em Active OB Stars: Structure, Evolution, Mass Loss, and Critical Limits},
+  volume 272 of {\em IAU Symposium}, pages 166--171.
 
 \bibitem[{Lang} et~al., 2016]{UNWISE}
 {Lang}, D., {Hogg}, D.~W., and {Schlegel}, D.~J. (2016).

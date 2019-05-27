@@ -235,7 +235,7 @@ Stellar variability is the tall pole in \EPRV\ at the present day.
 We propose to build customized, data-driven models to capture and mitigate these
 stellar astrophysical noise sources.
 Our goal is to make \EPRV\ measurements an order of magnitude more precise
-(two orders of magnitude more informative) (HOGG what does this mean?) and thereby transform the science
+and thereby transform the science
 that can be done with the current and next generation of spectrographs.
 
 \nasasection{First Stage: Information about \EPRV\ in time-varying stars (information)}
@@ -500,8 +500,8 @@ taken for any time intervals at any time lags.
 Thus it might be possible to fit any set of exposures with a bespoke
 Gaussian Process, perfectly suited to capture the p-modes for each
 star, including the coherent and incoherent effects all simultaneously.
-There has been some work in other domains along this direction (CITE
-SOMETHING), but it hasn't been applied to \EPRV\ and it is extremely
+There has been some work in other domains along this direction (\citealt{DFMGP}),
+but it hasn't been applied to \EPRV\ and it is extremely
 promising for p-mode mitigation.
 \item
 \textbf{Simultaneous temperature monitoring:}
@@ -581,7 +581,9 @@ ways.
 The main difference between star spots and other kinds of surface
 features is that we don't have a good idea of the intrinsic spectral
 properties of other kinds of features, which can show up as chemical
-anomalies (HOGG CITE), temperature anomalies, or mixtures of the two.
+anomalies (at least in hot stars; \citealt{doppler}),
+temperature anomalies (\citealt{Gully}; BEDELL WHAT ELSE?),
+or mixtures of the two.
 If we want to be flexible about surface features, we want to model
 them as we propose for star spots, but permitting their spectral
 properties to be determined by the data directly.
@@ -744,8 +746,8 @@ Ultra-precise photometry in crowded fields: A self-calibration approach:}
 This small project (\Ktwo\ \acronym{GO} program)
 was to bring a data-driven model to light-curve calibration
 in the \Ktwo\ extension of the \Kepler\ Mission.
-It resulted in a paper (\citealt{CPMdiff}), a codebase (HOGG GitHub link),
-and a set of methods that were deployed in the \Ktwo\ microlensing campaign (\citealt{K2C9}).
+It resulted in a paper (\citealt{CPMdiff}), an open-source codebase,
+and a set of methods that wer deployed in the \Ktwo\ microlensing campaign (\citealt{K2C9}).
 This grant also supported the PhD research and dissertation of \NYU\ graduate
 student Dun Wang (now at Kensho Technologies, Cambridge, MA) and work
 by PI Hogg, Bernhard Sch\"olkopf (T\"ubingen), Dan Foreman-Mackey
@@ -802,7 +804,7 @@ commissioning of many new instruments.
 \paragraph{How can these two influence the whole community?}
 We might look like outsiders (and especially the PI).
 But we are not: We have one of the very few open-source \EPRV\ codes
-(\wobble; HOGG CITE WOBBLE), and there are many new projects incorporating 
+(\wobble; \citealt{Bedell2019}), and there are many new projects incorporating 
 \wobble\ into their pipelines.
 Also, we are partners in the forthcoming \HARPS-3 project
 \project{Terra Hunting Experiment}, which has a direct engineering
