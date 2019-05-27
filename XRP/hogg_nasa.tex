@@ -88,13 +88,17 @@
 %----- Tighten up paragraphs and lists
 \setlength{\bibsep}{0.5ex}
 \setlength{\parskip}{0.0ex}
-\setlength{\parindent}{0.2in}
+\newlength{\hoggindent}
+\setlength{\hoggindent}{0.2in}
+\setlength{\parindent}{\hoggindent}
 \renewenvironment{itemize}{\begin{list}{$\bullet$}{%
   \setlength{\topsep}{0.0ex}%
   \setlength{\parsep}{0.0ex}%
   \setlength{\partopsep}{0.0ex}%
   \setlength{\itemsep}{0.0ex}%
-  \setlength{\leftmargin}{2.0\parindent}}}{\end{list}}
+  \setlength{\leftmargin}{\hoggindent}%
+  \setlength{\listparindent}{\hoggindent}%
+}}{\end{list}}
 \newcounter{actr}
 \renewenvironment{enumerate}{\begin{list}{{\textbf{\textsf{\arabic{actr}.}}}}{%
   \usecounter{actr}%
@@ -102,7 +106,9 @@
   \setlength{\parsep}{0.0ex}%
   \setlength{\partopsep}{0.0ex}%
   \setlength{\itemsep}{0.0ex}%
-  \setlength{\leftmargin}{2.0\parindent}}}{\end{list}}
+  \setlength{\leftmargin}{\hoggindent}%
+  \setlength{\listparindent}{\hoggindent}%
+}}{\end{list}}
 
 %----- mess with paragraph spacing!
 \makeatletter
@@ -115,7 +121,7 @@
 %----- Special Hogg list for references
   \newcommand{\hogglist}{%
     \rightmargin=0in
-    \leftmargin=0.25in
+    \leftmargin=\hoggindent
     \topsep=0ex
     \partopsep=0pt
     \itemsep=0ex
@@ -157,11 +163,11 @@
 
 %----- float box for reminders and sidebars
 \newcommand{\hoggbox}[1]{%
-  \begin{figure}[t]%
+  \begin{figure}[t!]%
   \setlength{\fboxsep}{0pt}%
   \,\fbox{\sffamily%
   {\setlength{\fboxsep}{0.01\textwidth}\colorbox{lightgrey}{%
-  \parbox{0.97\textwidth}{\setlength{\parindent}{0.2in}%
+  \parbox{0.97\textwidth}{\setlength{\parindent}{\hoggindent}%
   #1
   }}}}\end{figure}}
 
