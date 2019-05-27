@@ -424,7 +424,39 @@ understand the time correlations of the spectral variability well, or
 when those time correlations are on time scales far from the orbital
 times of interest.
 
-In this approach   ... HOGG wants to say more here
+In this approach, the idea would be to put a parameterized, rigid
+prior on the exoplanet-induce signals (that is, that they are produced
+by an N-body Kepler system), and a stochastic prior (like a Gaussian
+Process) on the stellar-variability-induced signals, treating the
+\RV\ measurements as being created by the sum of these two
+processes.
+Or even the spectral variability as being caused by these two
+processes (if we want to treat the \RV\ shift as a variability).
+This approach would require estimation of the statistical properties
+(time coherence or covariance as a function of time lag) for the
+\RV\ signals induced by the stellar spectral variability.
+These can be estimated with statistics that look like auto-correlation
+functions.
+
+The information-theoretic question would then be asked in the space
+of the Kepler parameters instead of the \RV\ measurements themselves.
+And the Gaussian Process would become part of the nuisance space of
+the problem.
+This would require a substantial reformulation of the information
+theory written in the box \vpageref{eq:fisher}, but it is not
+difficult in principle.
+It would end up answering a different question, however:
+We would not ask ``how well can we measure \RV?''; we would ask
+``how well can we learn Kepler parameters?''.
+This is the best approach if the stellar variability \emph{does} look
+like or contain within its subspace the derivative of the mean spectrum
+with respect to \RV.
+That is, this is the approach for worst-case scenarios.
+In non-worst-case it is still useful, however, because this approach
+can be combined with the above approaches to deliver
+information-theoretic limits on Kepler parameters in the face of
+different kinds of spectral variability.
+We also propose to look at that question.
 \item
 \textbf{Causal modeling:}
 Finally, for long-term stellar monitoring campaigns, there is an idea
@@ -443,7 +475,17 @@ However, there are many such projects starting now.
 (This method is conceptually related to things we have done with
 \Kepler\ and \Ktwo\ for planet discovery; \citealt{CPM, DFMK2, CPMdiff}.)
 
-HOGG wants to say more here
+This approach is similar to the previous approach (time-domain processes),
+but we determine the impact of the variability on the \RV\ measurements
+by considering the extent to which the stellar spectrum variations
+associated with the induced \RV\ measurements can be used to predict
+the \RV.
+The idea is to perform regressions and look at the predictive power, and
+turn statistics of that predictive power into a quantitative estimate
+of the impact on \EPRV\ precision.
+The impact will be related to the covariance of the spectral variation
+and the \RV\ variation; that is, it will be possible to estimate it
+empirically.
 \end{itemize}
 
 \noindent
@@ -459,6 +501,8 @@ various kinds of empirically observed stellar variability on their
 end-to-end expected precision,
 and help them to understand whether their end-to-end results are
 achieving the \RV\ precisions they ought to expect.
+That is, we will deliver methods for estimating variability, and methods
+for estimating the quantitative impact of those variabilities on \RV\ precision.
 
 One extremely important point, which we want to make in the papers we write
 in the First Stage, is the following:
