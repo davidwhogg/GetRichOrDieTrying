@@ -11,6 +11,7 @@
 % - Put in references. Search for all occurrences of CITE
 % - Search for all occurrences of HOGG
 % - Search for all occurrences of BEDELL
+% - Choose more or different sentences or phrases to \textbf{}
 % - HOGG get management experience into biosketch
 
 \documentclass[12pt, letterpaper]{article}
@@ -99,7 +100,7 @@ But it is certainly also an important area for work and study.
 
 Our approach to stellar variability is to build data-driven models of what
 we don't understand, but with model structure carefully constructed to
-match what little we \emph{do} understand. (HOGG MAKE SURE THIS THEME CARRIES THROUGH.)
+match what little we \emph{do} understand.
 That is, to build flexible models which have their capacity tuned to
 capture the variations we expect to see. 
 Such models will capitalize on our physics-based expectations to
@@ -363,7 +364,18 @@ The Fisher Information will get smaller as the stellar variability
 gets worse, and the resulting theoretical \EPRV\ uncertainties will
 get larger.
 
-HOGG wants to say more things here.
+In this approach, the idea would be to estimate (either empirically or
+theoretically) the excess variance (in spectrum space) induced by the stellar
+spectral variability.
+This estimation could be performed with something like PCA, or a more
+sophisticated latent-variable model (\eg, that of \citealt{HMF}).
+That excess variance would be noise that is covariant in wavelength space,
+but which could be added directly to the instrument (photon and calibration
+and tellurics) noise tensor $C$ in the Information tensor (\ref{eq:fisher}).
+The goal of this approach would be to demonstrate how an investigator
+can estimate quantitatively the impact of various kinds of observed or
+theorized stellar variability, if the investigator has an estimate of
+its variance tensor in the observed space.
 \item
 \textbf{Spectral filtering:}
 If the variability in the spectral domain is low-dimensional, then it is
@@ -377,6 +389,25 @@ to dimensionality) and is
 promising so long as the variability subspace does not contain (or come very
 close to containing) the derivative of the spectral expectation with respect
 to \RV\ (the derivative in the Fisher Information).
+
+In this approach, the idea would be to estimate the (hopefully
+low-rank) subspace (eigenspace) in which the stellar spectrum varies.
+Once again, this could be estimated with PCA or more sophisticated
+methods.
+Then the idea is that at each epoch, the spectrum of the star is
+described by a mean spectrum, a \RV, and a set of amplitudes with
+which the eigenspectra co-add to fit the individual spectrum taken at
+that epoch.
+These amplitudes become nuisance parameters which complexity the
+Information computation, as described in the box \vpageref{eq:fisher}.
+In general the existence of this subspace will reduce the expected
+\RV\ precision.
+However, the amount that it reduces it will depend most strongly on
+the projection of the \RV\ derivative of the mean spectrum onto the
+subspace.
+This method is called ``filtering'' because this information-theoretic
+operation is equivalent to projecting the data onto a subpsace that is
+tangent to the spectral-variability subspace.
 \item
 \textbf{Time-domain process priors:}
 Variabilities can be incoherent (most are) or coherent (as p-modes are
@@ -392,6 +423,8 @@ These approches work well in certain limits, and work best when we can
 understand the time correlations of the spectral variability well, or
 when those time correlations are on time scales far from the orbital
 times of interest.
+
+In this approach   ... HOGG wants to say more here
 \item
 \textbf{Causal modeling:}
 Finally, for long-term stellar monitoring campaigns, there is an idea
@@ -409,6 +442,8 @@ limit.
 However, there are many such projects starting now.
 (This method is conceptually related to things we have done with
 \Kepler\ and \Ktwo\ for planet discovery; \citealt{CPM, DFMK2, CPMdiff}.)
+
+HOGG wants to say more here
 \end{itemize}
 
 \noindent
@@ -417,6 +452,13 @@ into something like two papers on the theory of \EPRV\ in the presence of
 stellar spectral variability. These two papers, and the associated open-source
 code we generate to perform the justifying experiments, will constitute the
 key deliverables of this First Stage (information).
+However, this Stage will also deliver advice and methods to
+\EPRV\ investigators.
+These methods will permit investigators to determine the impact of
+various kinds of empirically observed stellar variability on their
+end-to-end expected precision,
+and help them to understand whether their end-to-end results are
+achieving the \RV\ precisions they ought to expect.
 
 One extremely important point, which we want to make in the papers we write
 in the First Stage, is the following:
@@ -652,8 +694,26 @@ impact on \EPRV\ projects (amplitudes of signals, flowed down to final measureme
 Since we don't yet understand these variabilities in detail, part of this
 proposal is to do the work to make those priority decisions.
 
-HOGG GET MORE SPECIFIC HERE ABOUT WHAT ONE OF THESE MODELS OR
-APPROACHES MIGHT LOOK LIKE. PERHAPS STAR SPOTS AS AN EXAMPLE.
+As we said in the Introduction, the key idea is that the form of the
+data-driven models we generate match the form of the variability that
+we expect.
+So, for example, when we build a model to capture star spots, we want
+to give the model the structure that we expect to have in star spots,
+but the flexibility to adapt to the data.
+This might look like adding to the \wobble\ model extra spectral
+components that have the flexibility to look like cooler star surface
+spots, and which have velocities relative to the mean stellar surface
+velocity in the range permitted by the stellar rotation ($v\sin i$).
+It might additionally involve requiring observations that are close
+in time to have these additional spot components have velocities that
+are close in velocity space.
+After all, we expect star spots to be patches of star with a different
+spectrum, moving continuously relative to the stellar mean velocity.
+Such additional components could then be optimized along with the other
+components of \wobble.
+That's just an example, but shows the kinds of approaches we imagine taking.
+
+BEDELL: DO WE NEED TO HAVE A BOX SOMEWHERE (WELL BEFORE NOW) THAT EXPLAINS WOBBLE?
 
 Again, for this Third Stage (stochastics), we will do experiments on
 public \HARPS\ data from the Archive.
