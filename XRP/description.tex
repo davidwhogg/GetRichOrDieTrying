@@ -253,6 +253,37 @@ This point depends on the assumption that the spectrum does not vary
 between exposures!
 Or that it doesn't vary \emph{adversarially} between exposures.
 
+\hoggbox{\paragraph{\textsl{Reminder}---Information Theory:}
+The fundamental limit on \EPRV\ precision is given by the Cramer-Rao Bound, which is
+the Fisher Information in this case.
+The Fisher Information is the best possible inverse-variance that can be obtained
+on any \RV\ measurement, and it appears in the literature in multiple places,
+although not usually written in this language \citep{Butler1996, Bouchy2003}.
+Symbolically, in the case of a time-invariant spectrum,
+the Fisher Information $\sigma_v^{-2}$ is given by
+\begin{equation}\label{eq:fisher}
+\sigma_v^{-2} =
+\left[\frac{\dd f}{\dd v}\right]^{\mathsf T}\cdot C^{-1}\cdot
+\left[\frac{\dd f}{\dd v}\right] \quad ,
+\end{equation}
+where $\sigma_v$ is the \RV\ uncertainty, the derivatives are the derivative
+of the spectral expectation $f$ (seen as a column vector) with respect to \RV\ $v$,
+and the inverse variance of the noise in the spectrum is $C^{-1}$ (diagonal in the
+simple case that all spectral pixels are independently measured; more complex in
+what follows!).
+That is, the inverse of the squared uncertainty (the inverse variance) on the
+\RV\ is an inner product of the derivative of the spectrum with
+respect to \RV\ with itself, taken through the inverse variance tensor on the
+spectral pixels.
+Things get a bit more complicated when there are nuisance parameters, but
+not fundamentally different (and we know how to deal with it; the derivatives
+become rectangular projection operators and the Information tensor (matrix)
+must be matrix-inverted to deliver nuisance-marginalized uncertainties). 
+
+HOGG: rephrase the above to explicitly tie ``nuisance parameters'' to the situation 
+where the spectrum is intrinsically variable?
+}
+
 Once the spectrum is permitted to vary between exposures (and we know that
 it does), the fundamental assumptions of the \EPRV\ literature break down.
 In the First Stage (information) we propose to fix this problem, by
@@ -296,36 +327,6 @@ onto RV derivative) affect fundamental limits on the precision of
 \EPRV\ measurements.
 That is, in the First Stage we are trying to understand what is theoretically
 possible for \EPRV.
-
-\hoggbox{\paragraph{\textsl{Reminder}---Information Theory:}
-As a reminder, in the case in which the stellar spectrum never varies,
-the fundamental \EPRV\ precision is limited by the Cramer-Rao Bound, which is
-the Fisher Information in this case.
-The Fisher Information is the best possible inverse-variance that can be obtained
-on any \RV\ measurement, and it appears in the literature in multiple places,
-although not usually written in this language \citep{Butler1996, Bouchy2003}.
-Symbolically the Fisher Information $\sigma_v^{-2}$ is given by
-\begin{equation}\label{eq:fisher}
-\sigma_v^{-2} =
-\left[\frac{\dd f}{\dd v}\right]^{\mathsf T}\cdot C^{-1}\cdot
-\left[\frac{\dd f}{\dd v}\right] \quad ,
-\end{equation}
-where $\sigma_v$ is the \RV\ uncertainty, the derivatives are the derivative
-of the spectral expectation $f$ (seen as a column vector) with respect to \RV\ $v$,
-and the inverse variance of the noise in the spectrum is $C^{-1}$ (diagonal in the
-simple case that all spectral pixels are independently measured; more complex in
-what follows!).
-That is, the inverse of the squared uncertainty (the inverse variance) on the
-\RV\ is an inner product of the derivative of the spectrum with
-respect to \RV\ with itself, taken through the inverse variance tensor on the
-spectral pixels.
-Things get a bit more complicated when there are nuisance parameters, but
-not fundamentally different (and we know how to deal with it; the derivatives
-become rectangular projection operators and the Information tensor (matrix)
-must be matrix-inverted to deliver nuisance-marginalized uncertainties). 
-HOGG: rephrase the above to explicitly tie ``nuisance parameters'' to the situation 
-where the spectrum is intrinsically variable?
-}
 
 There are four approaches we will take in the First Stage (information)
 to answering these theory questions,
