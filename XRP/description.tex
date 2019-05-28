@@ -97,9 +97,9 @@ Our work suggests that tellurics and micro-tellurics are addressable problems
 and do not currently dominate the end-to-end noise budget.
 But it is certainly also an important area for work and study.
 
-Our approach to stellar variability is to build data-driven models of what
+\textbf{Our approach to stellar variability is to build data-driven models of what
 we don't understand, but with model structure carefully constructed to
-match what little we \emph{do} understand.
+match what little we \emph{do} understand.}
 That is, to build flexible models which have their capacity tuned to
 capture the variations we expect to see. 
 Such models will capitalize on our physics-based expectations to
@@ -226,7 +226,9 @@ does not yet include plans for planets outside the Solar System
 (nothing past Mars?), we admit that our relevance to this part of the
 \NASA\ Strategy is weak! But if it did extend that far, we could make some 
 outlandish promises to deliver the new Earth 2.0 via next-generation \EPRV\ 
-experiments.
+experiments. 
+(HOGG: I know I was the one to add this joke but now I think it's maybe too cynical? 
+Delete if needed!)
 \end{itemize}
 
 \paragraph{This proposal, in a nutshell:}
@@ -490,9 +492,9 @@ empirically.
 \noindent
 As we work down these approaches, we will develop results and assemble them
 into something like two papers on the theory of \EPRV\ in the presence of
-stellar spectral variability. These two papers, and the associated open-source
+stellar spectral variability. \textbf{These two papers, and the associated open-source
 code we generate to perform the justifying experiments, will constitute the
-key deliverables of this First Stage (information).
+key deliverables of this First Stage (information).}
 However, this Stage will also deliver advice and methods to
 \EPRV\ investigators.
 These methods will permit investigators to determine the impact of
@@ -500,8 +502,8 @@ various kinds of empirically observed stellar variability on their
 end-to-end expected precision,
 and help them to understand whether their end-to-end results are
 achieving the \RV\ precisions they ought to expect.
-That is, we will deliver methods for estimating variability, and methods
-for estimating the quantitative impact of those variabilities on \RV\ precision.
+\textbf{That is, we will deliver methods for estimating variability, and methods
+for estimating the quantitative impact of those variabilities on \RV\ precision.}
 
 One extremely important point, which we want to make in the papers we write
 in the First Stage, is the following:
@@ -555,7 +557,7 @@ mitigation strategies for p-modes:
 \textbf{Choosing resonant integration times:}
 There is hope in the \EPRV\ community that cleverly chosen integration
 times can obviate p-mode noise \citep[see, \eg][]{Chaplin2019}.
-Current work in this area makes somewhat naive assumptions about the
+Current work in this area makes somewhat na\"ive assumptions about the
 stability of the p-mode amplitudes.
 We will revisit this with real data; the \HARPS\ Archive includes
 asteroseismic campaigns that can be empirically coadded into different
@@ -599,8 +601,9 @@ promising for p-mode mitigation.
 \item
 \textbf{Simultaneous temperature monitoring:}
 It has been shown that \RV\ variations from p-modes can be predicted
-to some extent with stellar luminosity variations (BEDELL WHAT TO
-CITE?); the \RV\ variations are related to the time derivative of the
+to some extent with stellar luminosity variations (HOGG: I think this is false! 
+Aigrain+2012 showed this for stellar activity, not p-modes);
+the \RV\ variations are related to the time derivative of the
 luminosity variations.
 As we note above, luminosity variations will be associated with
 temperature variations, and at high signal-to-noise these may be
@@ -669,14 +672,14 @@ least to first order.
 This modeling is possible to implement as an extremely straightforward
 extension of the \wobble\ framework.
 \item
-\textbf{plages, faculi, and other surface features:}
+\textbf{plages, faculae, and other surface features:}
 These features are similar to star spots and will imprint in similar
 ways.
 The main difference between star spots and other kinds of surface
 features is that we don't have a good idea of the intrinsic spectral
 properties of other kinds of features, which can show up as chemical
 anomalies (at least in hot stars; \eg, \citealt{doppler}),
-temperature anomalies (\citealt{Gully}; BEDELL WHAT ELSE?),
+temperature anomalies (\eg\ \citealt{Gully}, \citealt{Milbourne2019}),
 or mixtures of the two.
 If we want to be flexible about surface features, we want to model
 them as we propose for star spots, but permitting their spectral
@@ -903,8 +906,8 @@ Since this is a proposal, no-one has actually really asked us that many question
 about it. But here's pretending!
 
 \paragraph{Why do this now?}
-There are a few extremely precise spectrographs operating now (BEDELL
-CITATIONS), and many more on the horizon (BEDELL CITATIONS?).
+There are a few extremely precise spectrographs operating now, 
+and many more on the horizon \citep{Wright2017}.
 \EPRV\ is entering a golden era, brought on in part by missions like
 \TESS, which require solid follow-up, and in part by a hope that
 \EPRV\ can detect the true Earth analogs (long-period, low-mass, rocky
@@ -913,6 +916,22 @@ If we don't solve these stellar spectral-variability issues, these
 projects will not live up to their greatest promise.
 And the three-year time scale of this grant is well matched to the
 commissioning of many new instruments.
+
+\paragraph{Isn't this proposal a giant fishing expedition?}
+Kind of! It's true that we (and the community in general) are not yet certain 
+which aspects of stellar variability are most critical to address, and which 
+methods are best-suited to mitigating them. We are not promising to 
+``solve'' stellar activity in this proposal, and much of our work will be 
+experimental. But this proposal is more than a series of experiments. 
+We firmly believe that overcoming the hurdle of stellar variability and 
+discovering Earth analogs will require data and effort from multiple, 
+diverse \EPRV\ instruments and groups. To this end, we will establish 
+a common language and statistically-motivated theoretical framework 
+to guide the broader community. Through the papers produced in this 
+program and through ``hack week''-style events hosted by us, we aim to 
+lay the groundwork that \textit{will} solve the problem of stellar variability 
+in \EPRV, regardless of the success rate of the granular experiments we do. 
+HOGG: is this cool??
 
 \paragraph{How can these two influence the whole community?}
 We might look like outsiders (and especially the PI).
