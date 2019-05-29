@@ -9,9 +9,10 @@ Hogg's random proposals.  Read them at your own risk!
 - Jonathan Goodman (NYU)
 - Mike O'Neil (NYU)
 - Kate Storey-Fisher (NYU)
+- Megan Bedell (Flatiron)
 
 ## License:
-Copyright 2014, 2015, 2016, 2017, 2018 the author and contributors.
+Copyright 2014, 2015, 2016, 2017, 2018, 2019 the author and contributors.
 **All rights reserved**.
 
 ## Contents:
@@ -21,4 +22,5 @@ Copyright 2014, 2015, 2016, 2017, 2018 the author and contributors.
 - `Simons`: Applied mathematics and astrophysics inference; for Simons
 - `DDD`: Individual investigator proposal for Moore
 - `K2flatfield`: K2C9 proposal on calibration; for NASA
+- `XRP`: NASA proposal related to EPRV
 - *Many more proposals live in the Astrometry.net SVN and the NYU Astro CVS.*
