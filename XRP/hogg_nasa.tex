@@ -1,0 +1,183 @@
+%----- import some packages
+\usepackage{graphicx, natbib, xcolor}
+
+%----- set up some colors
+\definecolor{darkgrey}{rgb}{0.3,0.3,0.3}
+\definecolor{lightgrey}{rgb}{0.95,0.95,0.95}
+
+%----- exact 1-in margins
+% NB: headheight and headsep MUST exist and be set
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+\addtolength{\textheight}{-1.0\headheight}
+\addtolength{\textheight}{-1.0\headsep}
+\setlength{\topmargin}{0.0in}
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+
+%----- make it easier on the tired eyes.
+% (This is a knob to tune as the proposal gets close to completion.)
+\linespread{1.03}
+
+%----- typeset certain kinds of words
+\newcommand{\acronym}[1]{{\small{#1}}}
+\newcommand{\RV}{\acronym{RV}}
+\newcommand{\EPRV}{\acronym{EPRV}}
+\newcommand{\CCF}{\acronym{CCF}}
+\newcommand{\NYU}{\acronym{NYU}}
+\newcommand{\GRA}{\acronym{GRA}}
+\newcommand{\AAS}{\acronym{AAS}}
+\newcommand{\NASA}{\acronym{NASA}}
+\newcommand{\XRP}{\acronym{XRP}}
+\newcommand{\NSF}{\acronym{NSF}}
+\newcommand{\PI}{\acronym{PI}}
+\newcommand{\ESA}{\acronym{ESA}}
+\newcommand{\ESO}{\acronym{ESO}}
+\newcommand{\WIYN}{\acronym{WIYN}}
+\newcommand{\observatory}[1]{\textsl{#1}}
+\newcommand{\package}[1]{\textsf{#1}}
+\newcommand{\project}[1]{\textsl{#1}}
+\newcommand{\GALEX}{\observatory{\acronym{GALEX}}}
+\newcommand{\Kepler}{\observatory{Kepler}}
+\newcommand{\Ktwo}{\observatory{\acronym{K2}}}
+\newcommand{\Gaia}{\observatory{Gaia}}
+\newcommand{\TESS}{\observatory{\acronym{TESS}}}
+\newcommand{\HARPS}{\project{\acronym{HARPS}}}
+\newcommand{\EXPRES}{\project{\acronym{EXPRES}}}
+\newcommand{\ESPRESSO}{\project{\acronym{ESPRESSO}}}
+\newcommand{\NEID}{\project{\acronym{NEID}}}
+\newcommand{\NNEXPLORE}{\project{\acronym{NN-EXPLORE}}}
+\newcommand{\wobble}{\project{wobble}}
+\newcommand{\foreign}[1]{\textsl{#1}}
+\newcommand{\eg}{\foreign{e.g.}}
+\newcommand{\etal}{\foreign{et~al.}}
+\newcommand{\etc}{\foreign{etc.}}
+\newcommand{\ie}{\foreign{i.e.}}
+\newcommand{\vs}{\foreign{vs.}}
+
+%----- math shih
+\newcommand{\given}{\,|\,}
+\newcommand{\dd}{\mathrm{d}}
+
+%----- units
+\newcommand{\cmps}{{\mathrm{cm\,s^{-1}}}}
+\newcommand{\mps}{{\mathrm{m\,s^{-1}}}}
+\newcommand{\kmps}{{\mathrm{km\,s^{-1}}}}
+
+%----- typeset journals
+\newcommand{\aj}{Astron.\,J.}
+\newcommand{\apj}{Astrophys.\,J.}
+\newcommand{\apjl}{Astrophys.\,J.\,Lett.}
+\newcommand{\apjs}{Astrophys.\,J.\,Supp.\,Ser.}
+\newcommand{\mnras}{Mon.\,Not.\,Roy.\,Ast.\,Soc.}
+\newcommand{\pasp}{Pubs.\,Astron.\,Soc.\,Pac.}
+\newcommand{\aap}{Astron.\,\&~Astrophys.}
+
+%----- fix bibtex shit
+\newcommand{\dodoi}[1]{}
+\newcommand{\doarXiv}[1]{}
+
+%----- Ensmallen headers
+\makeatletter
+\newcommand\nasasection{\@startsection {section}{1}{\z@}%
+                                   {-2.0ex \@plus -1.0ex \@minus -.2ex}% Change this line to modify space above heading
+                                   {1.0ex \@plus.2ex}% Change this line to modify space below heading
+                                   {\normalfont\bfseries}}
+\makeatother
+
+%----- Tighten up paragraphs and lists
+\setlength{\bibsep}{0.5ex}
+\setlength{\parskip}{0.0ex}
+\newlength{\hoggindent}
+\setlength{\hoggindent}{0.2in}
+\setlength{\parindent}{\hoggindent}
+\renewenvironment{itemize}{\begin{list}{$\bullet$}{%
+  \setlength{\topsep}{0.5ex}%
+  \setlength{\parsep}{0.0ex}%
+  \setlength{\partopsep}{0.0ex}%
+  \setlength{\itemsep}{0.5ex}%
+  \setlength{\leftmargin}{\hoggindent}%
+  \setlength{\listparindent}{\hoggindent}%
+}}{\end{list}}
+\newcounter{actr}
+\renewenvironment{enumerate}{\begin{list}{{\textbf{\textsf{\arabic{actr}.}}}}{%
+  \usecounter{actr}%
+  \setlength{\topsep}{0.5ex}%
+  \setlength{\parsep}{0.0ex}%
+  \setlength{\partopsep}{0.0ex}%
+  \setlength{\itemsep}{0.5ex}%
+  \setlength{\leftmargin}{\hoggindent}%
+  \setlength{\listparindent}{\hoggindent}%
+}}{\end{list}}
+
+%----- mess with paragraph spacing!
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                                    {1ex}%
+                                    {-1em}%
+                                    {\normalfont\normalsize\bfseries}}
+\makeatother
+
+%----- Special Hogg list for references
+  \newcommand{\hogglist}{%
+    \rightmargin=0in
+    \leftmargin=\hoggindent
+    \topsep=0ex
+    \partopsep=0pt
+    \itemsep=0ex
+    \parsep=0pt
+    \itemindent=-1.0\leftmargin
+    \listparindent=\leftmargin
+    \settowidth{\labelsep}{~}
+    \usecounter{enumi}
+  }
+
+%----- side-to-side figure macro
+%------- make numbers add up to 94%
+ \newlength{\figurewidth}
+ \newlength{\captionwidth}
+ \newcommand{\ssfigure}[3]{%
+   \setlength{\figurewidth}{#2\textwidth}
+   \setlength{\captionwidth}{\textwidth}
+   \addtolength{\captionwidth}{-\figurewidth}
+   \addtolength{\captionwidth}{-0.02\figurewidth}
+   \begin{figure}[htb]%
+   \begin{tabular}{cc}%
+     \begin{minipage}[c]{\figurewidth}%
+       \resizebox{\figurewidth}{!}{\includegraphics{#1}}%
+     \end{minipage} &%
+     \begin{minipage}[c]{\captionwidth}%
+       \textsf{\caption[]{\footnotesize {#3}}}%
+     \end{minipage}%
+   \end{tabular}%
+   \end{figure}}
+
+%----- top-bottom figure macro
+ \newlength{\figureheight}
+ \setlength{\figureheight}{0.75\textheight}
+ \newcommand{\tbfigure}[2]{%
+   \begin{figure}[htp]%
+   \resizebox{\textwidth}{!}{\includegraphics{#1}}%
+   \textsf{\caption[]{\footnotesize {#2}}}%
+   \end{figure}}
+
+%----- float box for reminders and sidebars
+\newcommand{\hoggbox}[1]{%
+  \begin{figure}[t!]%
+  \setlength{\fboxsep}{0pt}%
+  \,\fbox{\sffamily%
+  {\setlength{\fboxsep}{0.01\textwidth}\colorbox{lightgrey}{%
+  \parbox{0.97\textwidth}{\setlength{\parindent}{\hoggindent}%
+  #1
+  }}}}\end{figure}}
+
+%----- tighten up space around floats
+\setlength{\textfloatsep}{2ex}
+
+%----- deal with pdf page-size stupidity
+\special{papersize=8.5in,11in}
+\setlength{\pdfpageheight}{\paperheight}
+\setlength{\pdfpagewidth}{\paperwidth}
+
+% no more bad lines, etc
+\sloppy\sloppypar\raggedbottom\frenchspacing

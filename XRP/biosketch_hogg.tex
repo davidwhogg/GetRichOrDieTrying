@@ -1,0 +1,232 @@
+% this is a LaTeX file
+\documentclass[12pt,letterpaper]{article}
+\usepackage{color, hyperref}
+\usepackage{ifthen}
+
+% put in the date -- or not
+  \renewcommand{\today}{2019 May}
+
+% hypertex insanity
+  \definecolor{linkcolor}{rgb}{0,0,0.33}
+  \definecolor{grey}{rgb}{0.5,0.5,0.5}
+  \hypersetup{
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=grey,        % color of internal links
+    citecolor=linkcolor,    % color of links to bibliography
+    filecolor=black,        % color of file links
+    urlcolor=linkcolor      % color of external links
+  }
+
+% repeated text formatting
+  \newcommand{\latin}[1]{\textsl{#1}}
+  \newcommand{\etal}{\latin{et~al.}}
+  \newcommand{\satellite}[1]{\textsl{#1}}
+  \newcommand{\project}[1]{\textsl{#1}}
+  \newcommand{\usd}[1]{{#1}\,\textsc{usd}}
+  \newcommand{\eur}[1]{{#1}\,\textsc{eur}}
+  \newcommand{\grantnumber}[2]{{\footnotesize{#1}}; #2,~\textsc{pi}}
+% literature links--use doi if you can
+  \newcommand{\doi}[2]{\href{http://dx.doi.org/#1}{{#2}}}
+  \newcommand{\ads}[2]{\href{http://adsabs.harvard.edu/abs/#1}{{#2}}}
+  \newcommand{\isbn}[1]{{\footnotesize(\textsc{isbn:}{#1})}}
+  \newcommand{\arxiv}[2]{\href{http://arxiv.org/abs/#1}{{#2}\ (\texttt{arXiv:#1})}}
+% define de-emphasize commands
+  \newcommand{\deemph}[1]{\textcolor{grey}{\footnotesize{#1}}}
+  \newcommand{\pubnumber}[1]{\deemph{{#1}.}}
+% define heading command SERIOUS HACKING HERE
+  \newcommand{\hoggheading}[1]{\addvspace{1ex}\pagebreak[2]%
+    \par\textbf{#1}}
+% custom list characteristics
+  \newcounter{refpubnum}
+  \newcommand{\hogglist}{%
+    \rightmargin=0in
+    \leftmargin=0.18in
+    \topsep=0ex
+    \partopsep=0pt
+    \itemsep=0.2ex
+    \parsep=0pt
+    \itemindent=-1.0\leftmargin
+    \listparindent=0.0\leftmargin
+    \settowidth{\labelsep}{~}
+    \usecounter{refpubnum}
+  }
+  \newcommand{\note}[1]{{\small\par{#1}}}
+% Margins and spaces
+  \raggedright
+  \setlength{\oddsidemargin}{0in}
+  \setlength{\topmargin}{0in}
+  \setlength{\headsep}{0.20in}
+  \setlength{\headheight}{0.25in}
+  \setlength{\textheight}{9.00in}
+%  \addtolength{\textheight}{-\headsep}
+%  \addtolength{\textheight}{-\headheight}
+  \addtolength{\topmargin}{-\headsep}
+  \addtolength{\topmargin}{-\headheight}
+  \setlength{\textwidth}{6.50in}
+  \setlength{\parindent}{0in}
+  \setlength{\parskip}{1ex}
+% Headings and footing
+\pagestyle{plain}
+
+\begin{document}\sloppy\sloppypar\raggedbottom\frenchspacing
+\setlength{\tabcolsep}{0em}
+\begin{tabular}{lll}
+\textbf{\Large David W. Hogg}             & & \deemph{\today} \\[\parskip]
+\texttt{david.hogg@nyu.edu}               & & \url{http://cosmo.nyu.edu/hogg/}\\[\parskip]
+Center for Cosmology and Particle Physics & \hspace{6em} & \deemph{also:} \\
+Department of Physics                     & & Center for Data Science \\
+New York University                       & & New York University \\
+\end{tabular}
+
+\hoggheading{Education}
+\begin{list}{}{\hogglist}
+\item
+PhD 1998, Physics, California Institute of Technology.
+\item
+SB 1992 (Physics), Massachusetts Institute of Technology.
+\end{list}
+
+\hoggheading{Current positions}
+\begin{list}{}{\hogglist}
+\item
+Professor of Physics and Data Science, New York University, 2014--.
+\item
+(part-time) Group Leader, Astronomical Data Group, Flatiron Institute, 2017--.
+\end{list}
+
+\hoggheading{Recent service}
+% reverse chronological by END date.
+\begin{list}{}{\hogglist}
+\item
+\project{Sloan Digital Sky Survey IV} Collaboration Council,
+2013--present.
+\item
+US National Astronomy and Astrophysics Advisory Committee (AAAC)
+2014--2017.
+\end{list}
+
+\hoggheading{Relevant management experience}
+%%% reverse order by expxsyiration date
+\begin{list}{}{\hogglist}
+\item
+Advisor for 11 graduated PhD students and 2 current PhD students:
+Morad~Masjedi (2007);
+Dustin~Lang (2009);
+Ronin~Wu (2010);
+Jo~Bovy (2011);
+Adi~Zolotov (2011);
+Tao~Jiang (2012);
+Fengji~Hou (2014);
+Daniel~Foreman-Mackey (2015);
+Mohammadjavad~Vakili (2017);
+Dun~Wang (2018);
+Alex~Malz (2019);
+Kate~Storey-Fisher (current);
+Suroor~Gandhi (current).
+\item
+Mentor for postdocs at NYU, the Flatiron Institute, and MPIA.
+\item
+Member of the Oversight Committee for the \textsc{nasa} \project{Spitzer Space Telescope}.
+\item
+Member of the Technical Advisory Group for the \project{Sloan Digital Sky Survey V}.
+\item
+Co-developer and co-maintainer for many open-source code bases,
+including:\\
+\project{Astrometry.net} (automatic recognition and calibration of arbitrary astronomical imaging);\\
+\project{The Joker} (a custom Monte Carlo sampler for exoplanets and binary stars);\\
+\project{wobble} (a data-driven model to measure radial velocities at extreme precision);\\
+and many more.
+\item
+PI on many past Federally funded projects including these recent
+\textsc{nasa} projects:\\
+\grantnumber{80NSSC19K0533}{Bean}: 
+\textit{Improving the sensitivity of radial velocity spectrographs with
+data-driven techniques},
+\usd{308,326}, 2019--2021;\\
+\grantnumber{NNX16AC70G}{Hogg}:
+\textit{Ultra-precise photometry in crowded fields: A self-calibration approach},
+\usd{100,000}, 2016--2017;\\
+\grantnumber{NNX12AI50G}{Hogg}:
+\textit{The Lives and Deaths of Planets and Stars in the Value-Added UV Photon Catalog},
+\usd{473,705}, 2012--2017; and\\
+\grantnumber{AR-13250}{Hogg}:
+\textit{Probabilistic Self-Calibration of the \textsc{wfc3} IR Channel},
+\usd{119,988}, 2013--2016.
+\end{list}
+
+\clearpage
+\hypersetup{linkcolor=black}%
+\hoggheading{Selected relevant publications}
+\begin{list}{}{\hogglist}
+\item
+Hogg,~D.~W., Myers,~A.~D., \& Bovy,~J., 2010,
+\doi{10.1088/0004-637X/725/2/2166}{Inferring the eccentricity distribution},
+\textit{Astrophys.\,J.}\ \textbf{725} 2166--2175.
+\item
+Hou,~F., Goodman,~J., Hogg,~D.~W., Weare,~J., \& Schwab,~C., 2012,
+\doi{10.1088/0004-637X/745/2/198}{An affine-invariant sampler for exoplanet fitting and discovery in radial velocity data},
+\textit{Astrophys.\,J.}\ \textbf{745} 198.
+\item
+Tsalmantza,~P. \& Hogg,~D.~W., 2012,
+\doi{10.1088/0004-637X/753/2/122}{A data-driven model for spectra:\ Finding double redshifts in the \project{Sloan Digital Sky Survey}},
+\textit{Astrophys.\,J.}\ \textbf{753} 122.
+\item
+Foreman-Mackey,~D., Montet,~B.~T., Hogg,~D.~W., Morton,~T.~D.,
+Wang,~D., \& Sch\"olkopf,~B., 2015,
+\doi{10.1088/0004-637X/806/2/215}{A systematic search for transiting planets in the \project{K2} data},
+\textit{Astrophys.\,J.}\ \textbf{806} 215.
+\item
+Ness,~M., Hogg,~D.~W., Rix,~H.-W., Ho,~A.~Y.~Q., \& Zasowski,~G., 2015,
+\doi{10.1088/0004-637X/808/1/16}{\project{The~Cannon}: A data-driven
+approach to stellar label determination},
+\textit{Astrophys.\,J.}\ \textbf{808} 16.
+\item
+Price-Whelan,~A.~M., Hogg,~D.~W., Foreman-Mackey,~D., \& Rix,~H.-W., 2017,
+\doi{10.3847/1538-4357/aa5e50}{The Joker: A Custom Monte Carlo Sampler for Binary-star and Exoplanet Radial Velocity Data},
+\textit{Astrophys.\,J.}\ \textbf{837} 20.
+\item
+Anderson,~L., Hogg~D.~W., Leistedt,~B., Price-Whelan,~A.~M., \& Bovy,~J., 2018,
+\doi{10.3847/1538-3881/aad7bf}{Improving \project{Gaia} parallax precision with a data-driven model of stars},
+\textit{Astron.\,J.}\ \textbf{156} 145.
+\item
+El-Badry,~K., Ting,~Y.-S., Rix,~H.-W., Quataert,~E., Weisz,~D.~R., Cargile,~P., Conroy,~C., Hogg,~D.~W., Bergemann,~M., \& Liu,~C., 2018,
+\doi{10.1093/mnras/sty240}{Discovery and Characterization of 3000+ Main-Sequence Binaries from \project{APOGEE} Spectra},
+\textit{Mon.\,Not.\,R.\,Astr.\,Soc.}\ \textbf{476} 528--553.
+\item
+Bedell,~M., Hogg,~D.~W., Foreman-Mackey,~D., Montet,~B.~T., \& Luger,~R.,
+\arxiv{1901.00503}{Wobble: A data-driven method for precision radial velocities}.
+\end{list}
+
+\hoggheading{Other important publications}
+\begin{list}{}{\hogglist}
+\item
+Hogg,~D.~W. \etal, 2004,
+\doi{10.1086/381749}{The dependence on environment of the color--magnitude relation of galaxies},
+\textit{Astrophys.\,J.\,Lett.}\ \textbf{601} L29--L32.
+\item
+Willman,~B., Blanton,~M.~R., West,~A.~A., Dalcanton,~J.~J, Hogg,~D.~W., Schneider,~D.~P., Wherry,~N., Yanny,~B., \& Brinkmann,~J., 2005,
+\doi{10.1086/430214}{A new Milky Way companion:\ Unusual globular cluster or extreme dwarf satellite?},
+\textit{Astron.\,J.}\ \textbf{129} 2692--2700.
+\item
+Eisenstein,~D.~J., Zehavi,~I., Hogg,~D.~W., \etal, 2005,
+\doi{10.1086/466512}{Detection of the baryon acoustic peak in the large-scale correlation function of \project{Sloan Digital Sky Survey} Luminous Red Galaxies},
+\textit{Astrophys.\,J.}\ \textbf{633} 560--574.
+\item
+Lang,~D., Hogg,~D.~W., Mierle,~K., Blanton,~M., \& Roweis,~S., 2010,
+\doi{10.1088/0004-6256/139/5/1782}{\project{Astrometry.net}:\ Blind astrometric calibration of arbitrary astronomical images},
+\textit{Astron.\,J.}\ \textbf{139} 1782--1800.
+\item
+Bovy,~J., Hennawi,~J.~F., Hogg,~D.~W., \etal, 2011,
+\doi{10.1088/0004-637X/729/2/141}{Think outside the color-box:\ Probabilistic target selection and the \textsc{sdss-xdqso} quasar targeting catalog},
+\textit{Astrophys.\,J.}\ \textbf{729} 141.
+\item
+Oppenheimer,~B.~R. \etal, 2013,
+\doi{10.1088/0004-637X/768/1/24}{Reconnaissance of the HR~8799 exosolar system.\ I.\ Near-infrared spectroscopy},
+\textit{Astrophys.\,J.}\ \textbf{768} 24.
+\item
+Foreman-Mackey,~D., Hogg,~D.~W., Lang,~D., \& Goodman,~J., 2013,
+\doi{10.1086/670067}{\project{emcee}:\ The MCMC Hammer},
+\textit{Pubs.\,Astr.\,Soc.\,Pac.}\ \textbf{125} 306--312.
+\label{rpcount}\end{list}
+
+\end{document}

@@ -1,0 +1,9 @@
+This project will not produce new data per se, but it does produce methods, code, and documents (code documentation and scientific papers). It might also produce model parameters or components of spectral models. All of the code, parameters, models, documentation, and all written documents relating to the project will be maintained in publicly visible version-control repositories on the GitHub and GitLab platforms. These repositories can be cloned and reproduced at no cost by any user in the world.
+
+The code and documents will be licensed for re-use by others under permissive licenses (MIT for code, CC-by for documents). This permits re-use, reproducibility, and re-publication by others.
+
+Although we do not expect to deliver large data sets, if we do create any catalog of stellar radial velocities or RV corrections or other per-observation data or meta-data, we will volunteer these to the HARPS and ESPRESSO Archives (as appropriate) for hosting and preservation. If the Archives are not interested, we will host these data on versioned and mirrored Github and GitLab repositories, both of which accept data sets as large as anything that we could produce here. Once again, these would be globally available and licensed for arbitrary re-use.
+
+Any cite-able data, code, or documentation will be delivered to Zenodo for preservation and creation of a lasting and cite-able DOI. All documents and papers will be submitted to the arXiv and also AAS-family journals for long-term preservation, cite-ability, and publication.
+
+The PI and Co-I both have strong reputations for open science, performing data analysis and writing in the open, and strong preferences for working in open and public data sets. The PI is a long-term supporter and maintainer of open-source software systems of wide use in the astronomical community.
